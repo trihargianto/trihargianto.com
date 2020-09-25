@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Tri Hargianto Website`,
+    title: `Tri Hargianto`,
     author: {
       name: `Tri Hargianto`,
       summary: `Developer yang sekarang sedang tinggal dan bekerja di Yogyakarta, Indonesia`,
@@ -16,8 +16,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/content`,
+        name: `content`,
       },
     },
     {

@@ -5,15 +5,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const BlogPostComponent = path.resolve(`./src/templates/blog-post.js`)
+  const PagePostComponent = path.resolve(`./src/templates/page.js`)
 
   // Get all markdown blog posts sorted by date
-  const result = await graphql(
+  const blogs = await graphql(
     `
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
+          filter: { frontmatter: { category: { eq: "blog" } } }
         ) {
           nodes {
             fields {
@@ -28,32 +30,73 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  if (result.errors) {
+  // Get all markdown blog pages
+  const pages = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          limit: 1000
+          filter: { frontmatter: { category: { eq: "page" } } }
+        ) {
+          nodes {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (blogs.errors) {
     reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      result.errors
+      `There was an error loading your blog/page posts`,
+      blogs.errors
+    )
+    return
+  } else if (pages.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog/page posts`,
+      blogs.errors
     )
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const blogPosts = blogs.data.allMarkdownRemark.nodes
+  const pagePosts = pages.data.allMarkdownRemark.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1]
-      const next = index === 0 ? null : posts[index - 1]
+  if (blogPosts.length > 0) {
+    blogPosts.forEach((post, index) => {
+      const previous =
+        index === blogPosts.length - 1 ? null : blogPosts[index + 1]
+      const next = index === 0 ? null : blogPosts[index - 1]
 
       createPage({
         path: post.fields.slug,
-        component: blogPost,
+        component: BlogPostComponent,
         context: {
           slug: post.fields.slug,
           previous,
           next,
+        },
+      })
+    })
+  }
+
+  if (pagePosts.length > 0) {
+    pagePosts.forEach(post => {
+      createPage({
+        path: post.fields.slug,
+        component: PagePostComponent,
+        context: {
+          slug: post.fields.slug,
         },
       })
     })
@@ -64,13 +107,48 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    let slug = createFilePath({ node, getNode })
 
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
+    const BLOG_POST_REGEX = /([0-9]+)\-([0-9]+)\-([0-9]+)\-(.+)$/
+    const PAGE_REGEX = /(.*\/)(.+)$/
+
+    const blogMatch = BLOG_POST_REGEX.exec(slug)
+    const pageMatch = PAGE_REGEX.exec(slug)
+
+    if (blogMatch !== null) {
+      const year = blogMatch[1]
+      const month = blogMatch[2]
+      const day = blogMatch[3]
+
+      const filename = blogMatch[4]
+      const date = new Date(year, month - 1, day)
+
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `/${filename}`,
+      })
+
+      createNodeField({
+        name: `date`,
+        node,
+        value: date.toJSON(),
+      })
+    } else if (pageMatch) {
+      const filename = pageMatch[2]
+
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `/${filename}`,
+      })
+    } else {
+      createNodeField({
+        name: `slug`,
+        node,
+        value: slug,
+      })
+    }
   }
 }
 

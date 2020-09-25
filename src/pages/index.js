@@ -68,16 +68,21 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { category: { eq: "blog" } } }
+    ) {
       nodes {
         excerpt
         fields {
           slug
+          date(formatString: "DD MMMM YYYY")
         }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          category
         }
       }
     }
