@@ -1,14 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Tri Hargianto Website`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Tri Hargianto`,
+      summary: `Developer yang sekarang sedang tinggal dan bekerja di Yogyakarta, Indonesia`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `Website ini adalah catatan digital saya, mengandung tulisan dari apa yang saya pelajari dan apapun yang ingin saya tulis.`,
+    siteUrl: `https://trihargianto.netlify.app/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `trihargianto`,
+      github: `trihargianto`,
     },
   },
   plugins: [
