@@ -1,33 +1,17 @@
 .gatsby-highlight {
   border-radius: 0.5em;
-  padding: 1em;
-  padding-top: 2em;
+  padding: 1.5em 1em;
   overflow: auto;
   position: relative;
 }
 
-/** show window title bar  */
-.gatsby-highlight:before {
-  content: "\2022 \2022 \2022";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #eaeaea;
-  color: #b9bcbd;
-  width: 100%;
-  font-size: 4.5rem;
-  line-height: 0;
-  padding: 15px 0px;
-  text-indent: 6px;
-  letter-spacing: -13px;
-}
-
 .gatsby-highlight pre[class*="language-"] {
-  margin-top: 14px;
+  padding: 0 1.5em 0 55px;
 }
 
 .gatsby-highlight pre[class*="language-"]:not(.line-numbers) {
-  padding-left: 0;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .gatsby-highlight pre[class*="language-"].line-numbers {

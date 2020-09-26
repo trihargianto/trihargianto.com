@@ -6,20 +6,41 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #eee;
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  height: 58px;
+  z-index: 2;
+  box-shadow: 0 2px 2px -5px rgba(0, 0, 0, 0.1);
+`
+
+const WrapperHeightHelper = styled.div`
+  height: 58px;
 `
 
 const Logo = styled(Link)`
   font-size: 18px;
   font-weight: bold;
   text-decoration: none;
+  padding: 2px 5px;
+`
+
+const LogoName = styled.span`
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 const Nav = styled.nav`
-  width: 900px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 15px 15px;
+
+  @media (min-width: 768px) {
+    width: 768px;
+  }
 `
 
 const ListWrapper = styled.ul`
@@ -50,21 +71,24 @@ const ListLink = styled(Link)`
 
 export default function Navbar() {
   return (
-    <Wrapper>
-      <Nav>
-        <Logo to="/">
-          <span role="img" aria-label="floppy disk emoji">
-            👨‍💻
-          </span>{" "}
-          &nbsp;Tri Hargianto
-        </Logo>
+    <React.Fragment>
+      <Wrapper>
+        <Nav>
+          <Logo to="/">
+            <span role="img" aria-label="floppy disk emoji">
+              👨‍💻
+            </span>{" "}
+            <LogoName>Tri Hargianto</LogoName>
+          </Logo>
 
-        <ListWrapper>
-          <List>
-            <ListLink to="/about">About Me</ListLink>
-          </List>
-        </ListWrapper>
-      </Nav>
-    </Wrapper>
+          <ListWrapper>
+            <List>
+              <ListLink to="/about">About Me</ListLink>
+            </List>
+          </ListWrapper>
+        </Nav>
+      </Wrapper>
+      <WrapperHeightHelper />
+    </React.Fragment>
   )
 }

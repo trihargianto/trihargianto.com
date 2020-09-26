@@ -9,6 +9,11 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 50px;
+  flex-wrap: wrap-reverse;
+
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+  }
 `
 
 const Blabla = styled.div`
@@ -23,11 +28,20 @@ const Hello = styled.h1`
   margin-bottom: 24px;
 `
 
-const ShortDescription = styled.p``
+const ShortDescription = styled.p`
+  margin-bottom: 20px;
+`
 
 const ProfilePic = styled.img`
   border-radius: 16px;
-  width: 100%;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `
 
 export default function Greeting() {
