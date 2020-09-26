@@ -64,7 +64,7 @@ export default function Navbar() {
             <ListLink to="/">Blog</ListLink>
           </List>
           <List>
-            <ListLink to="/">About</ListLink>
+            <ListLink to="/about">About</ListLink>
           </List>
         </ListWrapper>
       </Nav>
