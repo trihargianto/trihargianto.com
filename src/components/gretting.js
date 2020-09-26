@@ -35,11 +35,16 @@ export default function Greeting() {
     query {
       site {
         siteMetadata {
+          feedbackUrl
           description
         }
       }
     }
   `)
+
+  function handleClickFeedback() {
+    window.open(data.site.siteMetadata.feedbackUrl)
+  }
 
   return (
     <Wrapper>
@@ -48,7 +53,7 @@ export default function Greeting() {
         <ShortDescription>
           {data.site.siteMetadata.description}
         </ShortDescription>
-        <Button>📝 &nbsp; Kasih Feedback</Button>
+        <Button onClick={handleClickFeedback}>📝 &nbsp; Kasih Feedback</Button>
       </Blabla>
 
       <Photo>
