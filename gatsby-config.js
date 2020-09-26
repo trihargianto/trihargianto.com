@@ -62,13 +62,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Tri Hargianto Website`,
+        short_name: `trihargianto website`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/man-technologist.png`,
       },
     },
     `gatsby-plugin-react-helmet`,

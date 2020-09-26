@@ -1,6 +1,11 @@
 import React from "react"
+import styled from "styled-components"
 
 import Navbar from "./navbar"
+
+const Footer = styled.footer`
+  text-align: center;
+`
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -12,11 +17,7 @@ const Layout = ({ location, title, children }) => {
 
       <div className="global-wrapper" data-is-root-path={isRootPath}>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        <Footer>© {new Date().getFullYear()}</Footer>
       </div>
     </div>
   )

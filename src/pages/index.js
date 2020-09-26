@@ -15,13 +15,7 @@ const SectionTitle = styled.h3`
 
 const BlogPosts = ({ posts }) => {
   if (posts.length === 0) {
-    return (
-      <p>
-        No blog posts found. Add markdown posts to "content/blog" (or the
-        directory you specified for the "gatsby-source-filesystem" plugin in
-        gatsby-config.js).
-      </p>
-    )
+    return <p>No blog posts found.</p>
   }
 
   return posts.map(post => {
@@ -39,7 +33,7 @@ const BlogPosts = ({ posts }) => {
               <span itemProp="headline">{title}</span>
             </Link>
           </h2>
-          <small>{post.frontmatter.date}</small>
+          <small>{post.fields.date}</small>
         </header>
         <section>
           <p
@@ -60,7 +54,7 @@ const Homepage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <SEO title="Home" />
       <Gretting />
 
       <SectionTitle>Artikel</SectionTitle>
@@ -89,7 +83,6 @@ export const pageQuery = graphql`
           date(formatString: "DD MMMM YYYY")
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
           title
           description
           category

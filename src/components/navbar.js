@@ -54,7 +54,7 @@ export default function Navbar() {
       <Nav>
         <Logo to="/">
           <span role="img" aria-label="floppy disk emoji">
-            💾
+            👨‍💻
           </span>{" "}
           &nbsp;Tri Hargianto
         </Logo>
