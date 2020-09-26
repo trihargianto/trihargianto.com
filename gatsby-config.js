@@ -5,7 +5,7 @@ module.exports = {
       name: `Tri Hargianto`,
       summary: `Developer yang sekarang sedang tinggal dan bekerja di Yogyakarta, Indonesia`,
     },
-    description: `Website ini adalah catatan digital saya, mengandung tulisan dari apa yang saya pelajari dan apapun yang ingin saya tulis.`,
+    description: `Website ini adalah catatan digital saya, berisi tulisan dari apa yang saya pelajari dan apapun yang ingin saya tulis. Saya harap tulisan saya bisa bermanfaat.`,
     siteUrl: `https://trihargianto.netlify.app/`,
     social: {
       twitter: `trihargianto`,
