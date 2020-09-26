@@ -49,11 +49,21 @@ export default function Greeting() {
   return (
     <Wrapper>
       <Blabla>
-        <Hello>Halo, salam kenal! senang kamu datang ke sini 👋</Hello>
+        <Hello>
+          Halo, salam kenal! senang kamu datang ke sini{" "}
+          <span role="img" aria-label="wave emoji">
+            👋
+          </span>
+        </Hello>
         <ShortDescription>
           {data.site.siteMetadata.description}
         </ShortDescription>
-        <Button onClick={handleClickFeedback}>📝 &nbsp; Kasih Feedback</Button>
+        <Button onClick={handleClickFeedback}>
+          <span role="img" aria-label="write feedback emoji">
+            📝
+          </span>{" "}
+          &nbsp; Kasih Feedback
+        </Button>
       </Blabla>
 
       <Photo>

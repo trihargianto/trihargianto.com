@@ -52,7 +52,12 @@ export default function Navbar() {
   return (
     <Wrapper>
       <Nav>
-        <Logo to="/">💾 &nbsp;Tri Hargianto</Logo>
+        <Logo to="/">
+          <span role="img" aria-label="floppy disk emoji">
+            💾
+          </span>{" "}
+          &nbsp;Tri Hargianto
+        </Logo>
 
         <ListWrapper>
           <List>
