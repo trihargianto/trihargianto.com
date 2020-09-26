@@ -7,4 +7,6 @@ import "./src/normalize.css"
 import "./src/style.css"
 
 // Highlighting for code blocks
-import "prismjs/themes/prism.css"
+import "gatsby-prismjs-dracula"
+import "prismjs/plugins/command-line/prism-command-line.css"
+import "./src/prismjs-customize.css"

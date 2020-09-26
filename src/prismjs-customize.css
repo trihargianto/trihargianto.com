@@ -1,0 +1,68 @@
+.gatsby-highlight {
+  border-radius: 0.5em;
+  padding: 1em;
+  padding-top: 2em;
+  overflow: auto;
+  position: relative;
+}
+
+/** show window title bar  */
+.gatsby-highlight:before {
+  content: "\2022 \2022 \2022";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #eaeaea;
+  color: #b9bcbd;
+  width: 100%;
+  font-size: 4.5rem;
+  line-height: 0;
+  padding: 15px 0px;
+  text-indent: 6px;
+  letter-spacing: -13px;
+}
+
+.gatsby-highlight pre[class*="language-"] {
+  margin-top: 14px;
+}
+
+.gatsby-highlight pre[class*="language-"]:not(.line-numbers) {
+  padding-left: 0;
+}
+
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  overflow: initial;
+}
+
+.gatsby-highlight
+  pre[class*="language-"].line-numbers
+  .line-numbers-rows
+  > span:before {
+  border-bottom-color: transparent;
+}
+
+/**
+ * Shell Styling
+ */
+
+.command-line-prompt {
+  margin-right: 0px;
+  border-right: 0;
+}
+
+.command-line-prompt > span:before {
+  color: #999;
+  content: " ";
+  display: block;
+  padding-right: 0.8em;
+}
+
+/* Prompt for all users */
+.command-line-prompt > span[data-user]:before {
+  content: "$";
+}
+
+/* Prompt for root */
+.command-line-prompt > span[data-user="root"]:before {
+  content: "#";
+}
