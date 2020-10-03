@@ -33,13 +33,19 @@ Cukup _annoying_ bukan?
 
 Nah si [thefuck](https://github.com/nvbn/thefuck) ini ngebantu kita buat ngebenerin typo atau hal lain. Penggunaanya cukup simpel, tiap kali kita gagal ngejalanin suatu perintah, kita tinggal tulis `fuck`, maka perintahnya jalan 😅
 
-<img src="./thefuck-plugin-in-action.gif" alt="Thefuck in action" width="100%"/>
+<video autoplay loop muted playsinline width="100%">
+  <source src="thefuck-plugin-in-action.webm" type="video/webm">
+  <source src="thefuck-plugin-in-action.mp4" type="video/mp4">
+</video>
 <p align="center"><small><i>Gambar 2: thefuck in action</i></small></p>
 
 Kalo kamu perhatikan di video di atas, thefuck masih akan nanya ke kita terlebih dahulu tentang perintah yang kita maksud sebelum dia eksekusi. Jika kita oke, maka kita cukup tekan Enter.
 Kalo kita lagi frustasi dan lagi sensitif dan gak pengen ditanya-tanya, kita cukup ketikkan perintah `fuck --yeah` dan thefuck gak bakal nanya kekita terlebih dahulu dan dia langsung akan eksekusi perintah yang dia rasa benar.
 
-<img src="./thefuck-plugin-in-action-2.gif" alt="Thefuck in action" width="100%"/>
+<video autoplay loop muted playsinline width="100%">
+  <source src="thefuck-plugin-in-action-2.webm" type="video/webm">
+  <source src="thefuck-plugin-in-action-2.mp4" type="video/mp4">
+</video>
 <p align="center"><small><i>Gambar 3: fuck yeah!</i></small></p>
 
 ## [Oh-My-ZSH](https://github.com/ohmyZSH/ohmyZSH)
@@ -51,7 +57,10 @@ Jadi, ketika Oh-my-ZSH ini kita install, kita bakal dapet banyak banget plugin s
 
 Konon katanya, orang kalo udah pakai oh-my-ZSH trus tau plugin2 nya yg keren, dia bakal ngomong "Oh My Ziii"
 
-<img src="https://media.giphy.com/media/3o6UBgTW5niwy25kkw/giphy.gif" alt="Oh My Ziii" width="100%"/>
+<video autoplay loop muted playsinline width="100%">
+  <source src="oh-my.webm" type="video/webm">
+  <source src="oh-my.mp4" type="video/mp4">
+</video
 <p align="center"><small><i>Gambar 4: Oh My Zii</i></small></p>
 
 Kamu bisa install Oh-My-ZSH [di sini](https://github.com/ohmyzsh/ohmyzsh), Tapi ingat ya Oh-My-ZSH ini tuh semacam framework buat ZSH, jadi kamu perlu install dulu ZSH nya [di sini](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
@@ -77,7 +86,10 @@ Berikut beberapa contoh shortcut yang saya maksud :
 
 Dan masih banyak lagi, kamu bisa lihat shortcut lengkapnya dan juga cara install pluginnya [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
 
-<img src="git-plugin-in-action.gif" alt="Git Plugin in action" width="100%"/>
+<video autoplay loop muted playsinline width="100%">
+  <source src="git-plugin-in-action.webm" type="video/webm">
+  <source src="git-plugin-in-action2.mp4" type="video/mp4">
+</video>
 <p align="center"><small><i>Gambar 5: Git Plugin in action</i></small></p>
 
 ### Yarn & Composer
@@ -101,7 +113,10 @@ Karena kerjaan saya sehari hari berhubungan dengan node package dan sedikit comp
 Kamu bisa lihat shortcut lengkapnya dan juga cara install plugin yarn [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
 dan composer [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/composer).
 
-<img src="./yarn-plugin-in-action.gif" alt="Yarn Plugin in action" width="100%"/>
+<video autoplay loop muted playsinline width="100%">
+  <source src="yarn-plugin-in-action.webm" type="video/webm">
+  <source src="yarn-plugin-in-action.mp4" type="video/mp4">
+</video>
 <p align="center"><small><i>Gambar 6: Yarn in action</i></small></p>
 
 ### Alias-Finder
@@ -114,7 +129,10 @@ Trus gimana caranya kita bisa hafal? Nah, dengan alias-finder ini kita bisa cari
 
 Misal kita mau checkout ke sebuah branch tapi lupa apa shortcutnya, kita tinggal ketik `alias-finder -l` di ikuti perintah yang kita cari.
 
-<img src="alias-finder-in-action.gif" alt="Alias finder Plugin in action" width="100%"/>
+<video autoplay loop muted playsinline width="100%">
+  <source src="alias-finder-in-action.webm" type="video/webm">
+  <source src="alias-finder-in-action.mp4" type="video/mp4">
+</video>
 <p align="center"><small><i>Gambar 7: Alias-finder in action</i></small></p>
 
 **Tips**: Kalo kamu rasa perintah `alias-finder -l` masih terlalu panjang, kita bisa modifikasi sedikit supaya lebih singkat.
@@ -137,7 +155,10 @@ Namun, kadang kita gak tau apa tepatnya nama folder yang mau kita tuju, jadi kit
 
 Dengan plugin Interactive CD, kita bisa lihat langsung apa aja direktori yang ada saat kita mengetikkan perintah `cd` diikuti spasi, lalu tekan tombol Tab.
 
-<img src="interactive-cd-in-action.gif" alt="Interactive CD in action" width="100%"/>
+<video autoplay loop muted playsinline width="100%">
+  <source src="interactive-cd-in-action.webm" type="video/webm">
+  <source src="interactive-cd-in-action.mp4" type="video/mp4">
+</video>
 <p align="center"><small><i>Gambar 8: Interactive CD in action</i></small></p>
 
 Lihat cara install Interactive CD [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-interactive-cd).
@@ -162,8 +183,11 @@ Lihat cara install Autojump [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/ma
 
 Selain beberapa plugin untuk navigasi direktori di atas, ada satu lagi plugin yang sering saya pakai, namanya ZSH-Autosuggestions. Jadi dia akan menampilkan suggestion perintah berdasarkan yang pernah kita tulis.
 
-<img src="zsh-autosuggestions.gif" alt="ZSH Autosuggestions on action" width="100%"/>
-<p align="center"><small><i>Gambar 8: ZSH Autosuggestions on action</i></small></p>
+<video autoplay loop muted playsinline width="100%">
+  <source src="zsh-autosuggestions.webm" type="video/webm">
+  <source src="zsh-autosuggestions.mp4" type="video/mp4">
+</video>
+<p align="center"><small><i>Gambar 9: ZSH Autosuggestions on action</i></small></p>
 
 Lihat cara install ZSH-Autosuggestions [di sini](https://github.com/zsh-users/zsh-autosuggestions).
 
@@ -174,7 +198,7 @@ Selain Plugins, Oh-My-ZSH juga udah nyediain kita banyak banget tema yang bisa k
 Kalo untuk tema favorit yang saya gunakan adalah powerlevel10k, karena kita tinggal pilih tema secara interaktif dengan mengetikkan `p10k configure` dan juga _fully_ support icon-icon yang keren!
 
 <img src="powerlevel10k.png" alt="powerlevel10k" width="100%"/>
-<p align="center"><small><i>Gambar 8: powerlevel10k. Credit: <a href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a></i></small></p>
+<p align="center"><small><i>Gambar 10: powerlevel10k. Credit: <a href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a></i></small></p>
 
 Karena PowerLevel10k ini tidak _include_ di dalam Oh-My-ZSH, maka kamu perlu download dulu temanya, [di sini](https://github.com/romkatv/powerlevel10k).
 
