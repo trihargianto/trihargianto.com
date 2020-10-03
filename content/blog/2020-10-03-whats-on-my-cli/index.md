@@ -131,8 +131,51 @@ Kamu bisa lihat shortcut lengkapnya dan juga cara install plugin yarn [di sini](
 
 ### Interactive CD
 
+Berinteraksi dengan Command Line pasti gak pernah lepas sama yang namanya navigasi antar direktori. Untuk navigasi antar direktori biasanya kita pakai perintah `cd`.
+
+Namun, kadang kita gak tau apa tepatnya nama folder yang mau kita tuju, jadi kita harus lihat dulu daftar folder yang ada dengan perintah `ls`.
+
+Dengan plugin Interactive CD, kita bisa lihat langsung apa aja direktori yang ada saat kita mengetikkan perintah `cd` diikuti spasi, lalu tekan tombol Tab.
+
+<img src="interactive-cd-in-action.gif" alt="Interactive CD in action" width="100%"/>
+<p align="center"><small><i>Gambar 8: Interactive CD in action</i></small></p>
+
+Lihat cara install Interactive CD [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-interactive-cd).
+
 ### Autojump
+
+Interactive CD sangat membantu kita buat navigasi antar direktori. Gimana kalo ada plugin yang kita tinggal ngetikin sedikit perintah saja kita bisa langsung ke direktori yang kita tuju?
+
+Nah, kamu bisa install Autojump buat dapet fitur itu. Misal saya sedang aktif di home direktori dan mau lompat ke direktori _blog_, maka saya cukup ketik perintah `j blog`.
+
+Kalo nama direktorimu terlalu panjang, misal _direktori-project-keren_, kamu bisa tinggal ketikkin `j keren`.
+
+Cara kerja Autojump ini, dia bakal ngerekam direktori-direktori yang sering kita kunjungi, dan ketika kita ketik perintah `j blog`, maka dia akan cari direktori _blog_ di databasenya dia buat nyari folder dengan kata _blog_.
+
+Ketika ada 2 direktori dengan nama yang mengandung kata _blog_, maka dia akan pilih yang lebih sering dikunjungi.
+
+Untuk bisa mulai lompat ke direktori dengan plugin ini, kita harus mengunjungi sebuah direktori minimal sekali setelah menginstall plugin ini.
+
+Lihat cara install Autojump [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump).
 
 ### ZSH-Autosuggestions
 
-### ZSH-Syntax-Highlighting
+Selain beberapa plugin untuk navigasi direktori di atas, ada satu lagi plugin yang sering saya pakai, namanya ZSH-Autosuggestions. Jadi dia akan menampilkan suggestion perintah berdasarkan yang pernah kita tulis.
+
+<img src="zsh-autosuggestions.gif" alt="ZSH Autosuggestions on action" width="100%"/>
+<p align="center"><small><i>Gambar 8: ZSH Autosuggestions on action</i></small></p>
+
+Lihat cara install ZSH-Autosuggestions [di sini](https://github.com/zsh-users/zsh-autosuggestions).
+
+## Tema
+
+Selain Plugins, Oh-My-ZSH juga udah nyediain kita banyak banget tema yang bisa kita pakai, kamu bisa lihat semua tema yang tersedia dan juga cara installnya [di sini]().
+
+Kalo untuk tema favorit yang saya gunakan adalah powerlevel10k, karena kita tinggal pilih tema secara interaktif dengan mengetikkan `p10k configure` dan juga _fully_ support icon-icon yang keren!
+
+<img src="p10kpowerline.png" alt="P10kpowerline" width="100%"/>
+<p align="center"><small><i>Gambar 8: P10kPowerline. Credit: <a href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a></i></small></p>
+
+## Penutup
+
+Ada banyak sekali plugin dari Oh-My-ZSH yang bisa kita install, semua plugin yang ada tentu berguna bagi sebagian orang, namun juga gak berguna bagi sebagian orang lagi karena semua adalah masalah preferensi. Terimakasih sudah membaca 👋
