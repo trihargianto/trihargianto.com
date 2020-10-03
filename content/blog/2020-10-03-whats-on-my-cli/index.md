@@ -1,15 +1,15 @@
 ---
-title: Lebih Produktif Dengan Plugin Command Line
-description: Beberapa Plugin Command Line yang saya gunakan sehari-hari untuk menunjang produktivitas
+title: Koding Lebih Produktif dengan Plugin Terminal
+description: Beberapa Plugin Terminal yang saya gunakan sehari-hari untuk menunjang produktivitas
 category: blog
 ---
 
-Halo, disini saya mau sharing beberapa tips di command line yang saya pakai sehari-hari.
+Halo, disini saya mau sharing beberapa tips di Terminal yang saya pakai sehari-hari.
 Tips yang mau saya bagikan di sini lebih ke sharing plugin-plugin yang bisa di install di terminal kalian ya.. Niscaya, dengan sharing plugin-plugin yang saya pakai di sini semoga bisa berguna dan membantu hidup kamu 😀
 
 ## iTerm
 
-Hampir tiap hari saya pakai command line di kerjaan saya, entah itu buat ngejalanin perintah git, install node dependencies, ngejalanin npm scripts, dan lain-lain. Karena kebetulan saya pakai Mac, Terminal bawaan dari Mac tidak cukup bikin saya puas karena kustomisasi yang tersedia cukup sedikit.
+Hampir tiap hari saya pakai Terminal di kerjaan saya, entah itu buat ngejalanin perintah git, install node dependencies, ngejalanin npm scripts, dan lain-lain. Karena kebetulan saya pakai Mac, Terminal bawaan dari Mac tidak cukup bikin saya puas karena kustomisasi yang tersedia cukup sedikit.
 
 Jadi buat ngegantinya, saya install iTerm karena iTerm ini punya banyak opsi yang bisa di kustomisasi, contohnya seperti shortcut, tema, dan banyak pengaturan lain yang bisa kita atur sesuai keinginan kita. Yaa, sebenernya gak banyak sih yang saya kustomisasi di iTerm, tapi karena saya udah terbiasa pakai ini dari dulu, jadi belum coba alternatif terminal yang lain.
 
@@ -131,7 +131,7 @@ Kamu bisa lihat shortcut lengkapnya dan juga cara installnya [di sini](https://g
 
 ### Interactive CD
 
-Berinteraksi dengan Command Line pasti gak pernah lepas sama yang namanya navigasi antar direktori. Untuk navigasi antar direktori biasanya kita pakai perintah `cd`.
+Berinteraksi dengan Terminal pasti gak pernah lepas sama yang namanya navigasi antar direktori. Untuk navigasi antar direktori biasanya kita pakai perintah `cd`.
 
 Namun, kadang kita gak tau apa tepatnya nama folder yang mau kita tuju, jadi kita harus lihat dulu daftar folder yang ada dengan perintah `ls`.
 
