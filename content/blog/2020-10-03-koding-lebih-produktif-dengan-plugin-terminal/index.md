@@ -5,7 +5,7 @@ category: blog
 ---
 
 Halo, disini saya mau sharing beberapa tips di Terminal yang saya pakai sehari-hari.
-Tips yang mau saya bagikan di sini lebih ke sharing plugin-plugin yang bisa di install di terminal kalian ya.. Niscaya, dengan sharing plugin-plugin yang saya pakai di sini semoga bisa berguna dan membantu hidup kamu 😀
+Tips yang mau saya bagikan di sini lebih ke sharing plugin-plugin yang bisa di install di terminal kita.. Harapannya, plugin-plugin yang saya pakai di sini semoga bisa berguna dan memudahkan pekerjaan kamu juga.
 
 ## iTerm
 
