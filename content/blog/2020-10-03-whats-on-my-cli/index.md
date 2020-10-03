@@ -75,21 +75,64 @@ Berikut beberapa contoh shortcut yang saya maksud :
 - `gcb "nama branch"` → `git checkout -b "nama branch"`
 - `gco "nama branch"` → `git checkout "nama branch"`
 
-Dan masih banyak lagi, kamu bisa lihat shortcut lengkapnya dan juga install pluginnya [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
+Dan masih banyak lagi, kamu bisa lihat shortcut lengkapnya dan juga cara install pluginnya [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
 
 <img src="git-plugin-in-action.gif" alt="Git Plugin in action" width="100%"/>
 <p align="center"><small><i>Gambar 5: Git Plugin in action</i></small></p>
 
-### Yarn
+### Yarn & Composer
 
-### Composer
+Karena saya kerjaan saya sehari hari berhubungan dengan node package dan sedikit composer package. Plugin yarn & composer ini kurang lebih sama dengan Git, dia sudah nyediain shortcut-shortcut yang bisa kita pakai.
+
+#### Yarn
+
+- `y` → `yarn`
+- `yd` → `yarn dev`
+- `yt` → `yarn test`
+- `yb` → `yarn build`
+- `yad nama-package` → `yarn add -D nama-package`
+- `yup nama-package` → `yarn upgrade nama-package`
+
+#### Composer
+
+- `c` → `composer`
+- `ci nama-package` → `composer install nama-package`
+
+Kamu bisa lihat shortcut lengkapnya dan juga cara install plugin yarn [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
+dan composer [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/composer).
+
+<img src="./yarn-plugin-in-action.gif" alt="Yarn Plugin in action" width="100%"/>
+<p align="center"><small><i>Gambar 6: Yarn in action</i></small></p>
 
 ### Alias-Finder
 
+Sekarang kita udah tau kalo dengan nginstall plugin-plugin di atas kita bisa dapet shortcut dari perintah yang biasanya kita ketik panjang.
+
+Karena shortcut nya itu banyak banget, dan kalo ngehapalin shortcut satu-satu pastinya kita males dong, akhirnya shortcutnya gak dipake karena males ngapalin semuanya sekaligus..
+
+Trus gimana caranya kita bisa hafal? Nah, dengan alias-finder ini kita bisa cari tau alias yang udah kita daftarin. Dengan adanya alias-finder ini kita bisa hafal dengan shortcut-shortcut di atas seiring berjalannya waktu.
+
+Misal kita mau checkout ke sebuah branch tapi lupa apa shortcutnya, kita tinggal ketik `alias-finder -l` di ikuti perintah yang kita cari.
+
+<img src="alias-finder-in-action.gif" alt="Alias finder Plugin in action" width="100%"/>
+<p align="center"><small><i>Gambar 7: Alias-finder in action</i></small></p>
+
+**Tips**: Kalo kamu rasa perintah `alias-finder -l` masih terlalu panjang, kita bisa modifikasi sedikit supaya lebih singkat.
+
+Buka file konfigurasi ZSH dengan cara ketik perintah `nano ~/.zshrc`, trus tambahin perintah berikut didalamnya:
+
+```shell
+alias af="alias-finder -l"
+```
+
+Jangan lupa reload konfigurasimu dengan perintah `source ~/.zshrc`. Sekarang kamu cukup ketik perintah `af git status` buat nyari shortcut dari git status.
+
+Kamu bisa lihat shortcut lengkapnya dan juga cara install plugin yarn [di sini](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
+
 ### Interactive CD
 
-### ZSH-Autosuggestions
-
 ### Autojump
+
+### ZSH-Autosuggestions
 
 ### ZSH-Syntax-Highlighting
