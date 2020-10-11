@@ -7,6 +7,12 @@ category: blog
 Halo, disini saya mau sharing beberapa tips di Terminal yang saya pakai sehari-hari.
 Tips yang mau saya bagikan di sini lebih ke sharing plugin-plugin yang bisa di install di terminal kita.. Harapannya, plugin-plugin yang saya pakai di sini semoga bisa berguna dan memudahkan pekerjaan kamu juga.
 
+## Table of Contents
+
+```toc
+
+```
+
 ## iTerm
 
 Hampir tiap hari saya pakai Terminal di kerjaan saya, entah itu buat ngejalanin perintah git, install node dependencies, ngejalanin npm scripts, dan lain-lain. Karena kebetulan saya pakai Mac, Terminal bawaan dari Mac tidak cukup bikin saya puas karena kustomisasi yang tersedia cukup sedikit.
