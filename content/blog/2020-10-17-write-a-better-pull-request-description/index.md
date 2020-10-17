@@ -6,6 +6,12 @@ category: blog
 
 ![Membaca kode](write-a-better-pull-request-cover.jpg)
 
+## Table Of Contents
+
+```toc
+
+```
+
 ## Preface
 
 Code Review merupakan bagian yang sangat penting ketika mengembangkan sebuah produk digital. Di Github dan beberapa hosting repository, Pull Request (disebut Merge Request di Gitlab) digunakan untuk me-_review_ kode di suatu _branch_ sebelum kode tersebut bisa menjangkau _branch_ master/target. Seringnya membutuhkan anggota tim yang berpengalaman yang harus meluangkan waktu buat membaca, mengevaluasi, merespon, dan memberi masukkan dari kode untuk fitur baru tersebut.
@@ -120,6 +126,8 @@ Contohnya, dari yang tadinya **_"Menghapus middleware auth dan menggantinya deng
 Karena judulnya berupa perintah, bagaimana kita melaksanakan perintah tersebut ada di dalam deskripsi dan kodenya.
 
 ### Body
+
+<br />
 
 #### Deskripsi yang informatif
 
