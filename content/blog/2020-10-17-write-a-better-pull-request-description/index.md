@@ -2,9 +2,12 @@
 title: Menulis Deskripsi Pull Request yang lebih baik
 description: Apa pentingnya menulis deskripsi di suatu Pull Request dan bagaimana menulis Pull Request yang lebih baik supaya kode kita lebih mudah dipahami orang lain.
 category: blog
+featured: cover.jpg
 ---
 
-![Membaca kode](write-a-better-pull-request-cover.jpg)
+<img src="cover.jpg" alt="Menulis Deskripsi Pull Request yang lebih baik" />
+
+<p align="center"><small><span>Photo by <a href="https://www.pexels.com/@thisisengineering?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels" target="_blank" rel="noopener">ThisIsEngineering</a></span></small></p>
 
 ## Table Of Contents
 
@@ -48,7 +51,7 @@ Trus gimana caranya kita meringankan beban Reviewer dan kode kita bisa cepat _me
 
 Selalu tanamkan di pikiran kalau sebuah PR adalah produkmu. Tiap kali kamu bikin PR, seseorang bernama "Reviewer” adalah kustomer mu. Kamu mau supaya kustomer tersebut membeli produkmu, supaya produkmu yang dalam bentuk PR itu bisa di-_deploy_ ke _server_ secepatnya bukan?
 
-Tiap kali mau bikin PR berhentilah sejenak, bayangkan kamu menjadi si "Reviewer”, trus **tanya ke dirimu sendiri**. "Gimana ya supaya ini mudah dipahami?”
+Tiap kali mau bikin PR berhentilah sejenak, bayangkan kamu menjadi si "Reviewer”, trus **tanya ke dirimu sendiri**. "Gimana ya supaya ini mudah dipahami?”.
 
 Kalau kamu belum yakin kenapa menulis deskripsi PR itu penting, mungkin poin-poin berikut bisa membantu:
 

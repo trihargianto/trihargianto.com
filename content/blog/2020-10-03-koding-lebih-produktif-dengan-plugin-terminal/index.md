@@ -2,7 +2,12 @@
 title: Koding Lebih Produktif dengan Plugin Terminal
 description: Beberapa Plugin Terminal yang saya gunakan sehari-hari untuk menunjang produktivitas
 category: blog
+featured: cover.jpg
 ---
+
+<img src="cover.jpg" alt="Koding Lebih Produktif dengan Plugin Terminal" />
+
+<p align="center"><small>Photo by <a href="https://www.pexels.com/@kevin-ku-92347?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels" target="_blank" rel="noopener">Kevin Ku</a></small></p>
 
 ## Table Of Contents
 

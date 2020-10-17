@@ -2,7 +2,12 @@
 title: Tutorial Git - Memulai menggunakan Version Control
 description: Belajar bagaimana menggunakan Git untuk membantu proses development. Git merupakan alat utama yang pasti akan kamu gunakan setiap hari, sepanjang karirmu sebagai developer.
 category: blog
+featured: cover.jpg
 ---
+
+<img src="cover.jpg" alt="Tutorial Git - Memulai menggunakan Version Control" />
+
+<p align="center"><small><span>Photo by <a href="https://unsplash.com/@yancymin?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener">Yancy Min</a></span></small></p>
 
 ## Table of Contents
 
