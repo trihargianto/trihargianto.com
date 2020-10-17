@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Share from "../components/share"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -11,6 +12,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const image = post.frontmatter.image
     ? post.frontmatter.image.childImageSharp.resize
     : null
+  const twitter = data.site.siteMetadata.social.twitter
+  const url = data.site.siteMetadata.siteUrl
   const { previous, next } = pageContext
 
   return (
@@ -35,6 +38,16 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           itemProp="articleBody"
         />
         <hr />
+        <Share
+          socialConfig={{
+            twitter,
+            config: {
+              url: `${url}${post.fields.slug}`,
+              title: post.frontmatter.title,
+              description: post.frontmatter.description || post.excerpt,
+            },
+          }}
+        />
         <footer>
           <Bio />
         </footer>
@@ -76,6 +89,10 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
+        social {
+          twitter
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -83,6 +100,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       fields {
+        slug
         date(formatString: "DD MMM YYYY")
       }
       frontmatter {
