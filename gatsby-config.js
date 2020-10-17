@@ -6,7 +6,7 @@ module.exports = {
       summary: `Developer yang sekarang sedang tinggal dan bekerja di Yogyakarta, Indonesia`,
     },
     description: `Website ini adalah catatan digital saya, berisi tulisan dari apa yang saya pelajari dan apapun yang ingin saya tulis. Saya harap tulisan saya bisa bermanfaat.`,
-    siteUrl: `https://trihargianto.com/`,
+    siteUrl: `https://www.trihargianto.com/`,
     feedbackUrl: `https://docs.google.com/forms/d/e/1FAIpQLSc-2e4XWfd1AeFJd21dhLALLl-QiiUPt-lOe9gHU2aOQ7zf0w/viewform?usp=sf_link`,
     social: {
       twitter: `trihargianto`,
