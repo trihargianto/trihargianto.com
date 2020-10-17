@@ -4,6 +4,12 @@ description: Belajar bagaimana menggunakan Git untuk membantu proses development
 category: blog
 ---
 
+## Table of Contents
+
+```toc
+
+```
+
 ## Apa itu Git?
 
 Git merupakan tool utama yang pasti akan kamu gunakan setiap hari sepanjang karirmu sebagai developer. Dengan menggunakan Git, kita dapat tau apa aja perubahan yang kita buat dalam sebuah project.
