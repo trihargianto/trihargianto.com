@@ -25,6 +25,9 @@ const SEO = ({
           siteMetadata {
             title
             description
+            author {
+              name
+            }
             siteUrl
             social {
               twitter
@@ -38,6 +41,7 @@ const SEO = ({
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
+  const authorName = site.siteMetadata.author.name
   const image =
     metaImage && metaImage.src
       ? `${site.siteMetadata.siteUrl}${metaImage.src}`
@@ -61,6 +65,10 @@ const SEO = ({
           : []
       }
       meta={[
+        {
+          name: `author`,
+          content: authorName,
+        },
         {
           name: `description`,
           content: metaDescription,
