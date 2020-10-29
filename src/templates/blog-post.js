@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { Link, graphql } from "gatsby"
+import styled from "styled-components"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -7,7 +8,26 @@ import SEO from "../components/seo"
 import Share from "../components/share"
 import ScrollToTop from "../components/button-scroll-top"
 
+const CommentTitle = styled.div`
+  font-size: var(--fontSize-3);
+  font-weight: bold;
+  margin-bottom: var(--spacing-4);
+`
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
+  useEffect(() => {
+    const script = document.createElement("script")
+
+    script.src = "https://utteranc.es/client.js"
+    script.async = true
+    script.setAttribute("issue-term", "pathname")
+    script.setAttribute("repo", "trihargianto/comments")
+    script.setAttribute("theme", "github-light")
+    script.setAttribute("crossorigin", "anonymous")
+
+    commentsContainer.current.appendChild(script)
+  }, [])
+
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const image = post.frontmatter.image
@@ -16,6 +36,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const twitter = data.site.siteMetadata.social.twitter
   const url = data.site.siteMetadata.siteUrl
   const { previous, next } = pageContext
+
+  const commentsContainer = useRef(null)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -56,6 +78,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <Bio />
         </footer>
       </article>
+
       <nav className="blog-post-nav">
         <ul
           style={{
@@ -82,6 +105,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </li>
         </ul>
       </nav>
+
+      <div>
+        <CommentTitle>Komentar</CommentTitle>
+        <div ref={commentsContainer}></div>
+      </div>
     </Layout>
   )
 }
