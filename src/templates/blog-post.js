@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Share from "../components/share"
+import ScrollToTop from "../components/button-scroll-top"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -24,6 +25,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         image={image}
         pathname={location.pathname}
       />
+
+      <ScrollToTop>⬆</ScrollToTop>
+
       <article
         className="blog-post"
         itemScope
