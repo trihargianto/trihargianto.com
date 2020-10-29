@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
-import Button from "./Button"
+import Button from "./button"
 
 const StyledFab = styled(Button)`
   position: fixed;
@@ -47,7 +47,9 @@ export default function Fab({ children, ...props }) {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  window.addEventListener("scroll", checkScrollTop)
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", checkScrollTop)
+  }
 
   return (
     <StyledFab
