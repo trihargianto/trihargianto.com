@@ -73,7 +73,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { order: DESC, fields: [fields___date] }
       filter: { frontmatter: { category: { eq: "blog" } } }
     ) {
       nodes {
