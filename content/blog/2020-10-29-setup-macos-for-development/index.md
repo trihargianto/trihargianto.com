@@ -57,6 +57,7 @@ Berikut aplikasi yang selalu saya install:
 | [Rectangle](https://rectangleapp.com/)                         | Resize Window Tool         |
 | [Git](https://git-scm.com/download/mac)                        | Version Control            |
 | [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable) | Node Package Manager       |
+| [Neovim](https://neovim.io/)                                   | Vim Alternative            |
 | [Logi Options](https://www.logitech.com/en-us/product/options) | Logitech Mouse App         |
 
 ### Install Otomatis
@@ -64,7 +65,7 @@ Berikut aplikasi yang selalu saya install:
 Setelah Homebrew terinstall, saya bisa install semua aplikasi yang saya butuhkan via Homebrew secara otomatis.
 
 ```shell{promptUser: tri}
-brew install git yarn && brew cask install visual-studio-code google-chrome iterm2 docker slack spotify postman notion sequel-pro gifox imageoptim rectangle
+brew install git yarn neovim && brew cask install visual-studio-code google-chrome iterm2 docker slack spotify postman notion sequel-pro gifox imageoptim rectangle
 ```
 
 ### Install Manual
@@ -81,11 +82,68 @@ Saya terbiasa pakai [Zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-Catatan Plugin favorit apa saja yang sering saya pakai sudah pernah saya tulis di artikel [Koding Lebih Produktif dengan Plugin Terminal](/koding-lebih-produktif-dengan-plugin-terminal/)
+Plugin-plugin yang saya sering pakai di ZSH adalah sebagai berikut:
+
+### Built-In Plugin
+
+Plugin-plugin yang sudah otomatis ada ketika menginstall Oh-My-ZSH
+
+| Plugin                                                                                          | Fungsi                                      |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| [Git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)                               | Shortcut perintah Git                       |
+| [Yarn](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/yarn)                             | Shortcut perintah Yarn                      |
+| [Alias Finder](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder)             | Untuk mencari alias di Shell                |
+| [Autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump)                     | Lompat direktori di Shell dengan cepat      |
+| [ZSH Reload](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh_reload)                 | Cara cepat reload konfigurasi ZSH           |
+| [Copydir](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copydir)                       | Copy path direktori yang aktif ke clipboard |
+| [ZSH Interactive CD](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-interactive-cd) | Navigasi direktori lebih mudah              |
+
+### External Plugin
+
+Plugin-plugin yang harus download manual
+
+| Plugin                                                                  | Fungsi                           |
+| ----------------------------------------------------------------------- | -------------------------------- |
+| [ZSH Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) | Autocomplete berdasarkan history |
+| [ZSH Vim Mode](https://github.com/softmoth/zsh-vim-mode)                | Shell rasa Vim                   |
+
+Jalankan perintah berikut untuk menginstall plugin eksternal di atas
+
+```shell{promptUser: tri}
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/softmoth/zsh-vim-mode.git
+```
+
+### Aktifkan Plugin di `~/.zshrc`
+
+Setelah semua plugin siap, kita tinggal aktifkan pluginnya di file `~/.zshrc` dan atur beberapa konfigurasi di pluginnya
+
+```
+# Aktifkan keymap jj di plugin ZSH Vim Mode
+VIM_MODE_VICMD_KEY='jj'
+
+# Buat alias untuk alias-finder supaya perintahnya lebih pendek
+alias af="alias-finder -l"
+
+# Daftar plugin yang terpasang
+plugins=(
+ git
+ yarn
+ alias-finder
+ autojump
+ npm
+ zsh_reload
+ copydir
+ zsh-interactive-cd
+ zsh-autosuggestions
+ zsh-vim-mode
+)
+```
+
+> Saya pernah membahas tentang plugin-plugin di atas di artikel [Koding Lebih Produktif dengan Plugin Terminal](/koding-lebih-produktif-dengan-plugin-terminal/)
 
 ## Node.js
 
-Saya memilih buat install Node.js via Node Version Manager (NVM) supaya bisa ganti-ganti versi dengan mudah, karena sering kali saya perlu ganti ke Node versi lama maupun ke Node versi baru.
+Sebenarnya Node.JS sudah otomatis terinstall ketika kita menginstall Yarn via Homebrew di atas, tapi biasanya yang didownload merupakan versi terbaru. Supaya bisa ganti-ganti versi dengan mudah, saya perlu menginstall Node Version Manager (NVM) karena sering kali saya perlu ganti ke Node versi lama maupun ke Node versi baru.
 
 ### Install NVM
 
@@ -118,6 +176,38 @@ Setelah Git terinstall, pastikan atur profil di konfigurasi global
 ```shell{promptUser: tri}
 git config --global user.name "Nama Lengkap" && git config --global user.email "alamatemail@mail.com"
 ```
+
+## Pengaturan Aplikasi
+
+Setelah menginstal semua aplikasi di atas, ada beberapa aplikasi yang perlu diatur sesuai preferensi saya
+
+### Visual Studio Code
+
+_Kamu bisa skip ini kalau preferensimu berbeda dengan saya_
+
+#### Theme & Extensions
+
+Saya sudah membuat sebuah repository di [Github](https://github.com/trihargianto/vscode-extensions-installer) untuk menginstall semua yang saya butuhkan. Sehingga untuk menginstall semua extensions yang dibutuhkan, cukup menjalankan perintah berikut: 
+
+```shell{promptUser: tri}
+git clone https://github.com/trihargianto/vscode-extensions-installer ~/vscode-exts && ~/vscode-exts/script.sh && rm -rf ~/vscode-exts
+```
+
+Perintah di atas akan menginstall semua extensions VSCode yang disebutkan [di sini](https://github.com/trihargianto/vscode-extensions-installer#available-extensions).
+
+#### Settings
+
+VSCode Setting milik saya
+
+`gist:trihargianto/c33c03f151645387da3c4308927632d2#settings.json`
+
+### Neovim
+
+Saya sedang belajar menggunakan VIM, jadi terkadang saya _switch_ dari VSCode ke Neovim ketika mengerjakan sebuah project. Karena konfigurasinya cukup banyak, saya menaruh file konfigurasinya di Gist.
+
+Konfigurasinya masih cukup berantakan.
+
+`gist:b50b9cf330c722507e335e5d447ad668`
 
 ## System Preferences
 

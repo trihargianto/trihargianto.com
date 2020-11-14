@@ -57,6 +57,12 @@ module.exports = {
               className: `heading-markdown`,
             },
           },
+          {
+            resolve: "gatsby-remark-embed-gist",
+            options: {
+              username: "trihargianto",
+            },
+          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
