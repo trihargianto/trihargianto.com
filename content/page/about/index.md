@@ -19,8 +19,8 @@ Kebanyakan tulisan di website ini berisi hal teknis seputar pemrograman, teknolo
 - **2018**: Saya lulus kuliah tapi sial karena H-1 wisuda saya kecelakaan jadi gak bisa ikut wisuda. Tapi saya tetap bersyukur karena masih diberi keselamatan oleh Allah SWT.
 - **2018 - 2019**: Karena perusahaan sebelumnya tutup, saya dan teman-teman saya kerja sama bareng buat jadi fulltime freelancer. Alhamdulilah waktu itu dapet beberapa client yang bisa bikin saya beli iPhone terbaru waktu itu, hehe.
 - **2019**: Di awal tahun 2019, saya bergabung dengan [Hacktiv8](https://hacktiv8.com/), sebuah sekolah pemrograman yang berpusat di Jakarta, dan menjadi part-time instruktur pemrograman. Saya jadi instruktur buat kelas yang berada di Jogja, dan bahkan masih aktif sampai sekarang. Kelas yang saya sudah isi di antaranya [Front-End Web Development Basic](https://hacktiv8.com/frontend/jakarta/) & [Intro to Programming](https://hacktiv8.com/intro-to-programming/jakarta/).
-- **2019**: Di akhir tahun 2019, saya berhenti jadi fulltime freelancer karena merasa perlu belajar hal baru lagi,dan saya diterima bekerja di [Ralali.com](https://www.ralali.com/) sebagai Front-End Engineer, namun sayang saya hanya bertahan bekerja selama 6 bulan di sana karena muncul wabah Covid-19 yang memaksa perusahaan memberhentikan puluhan/ratusan karyawan waktu itu. Sedih, tapi _at least_ ketika saya tua nanti saya bisa cerita ke cucu saya kalo dampak corona lumayan besar, sampai-sampai saya kena PHK, hehe.
-- **2020**: Seberhentinya di [Ralali.com](https://www.ralali.com/), saya lalu bergabung di [Mamikos](https://mamikos.com/) menjadi Front-End Engineer sampai sekarang.
+- **2019**: Di akhir tahun 2019, saya berhenti jadi fulltime freelancer karena merasa perlu belajar hal baru lagi,dan lalu saya diterima bekerja di [Ralali.com](https://www.ralali.com/) sebagai Front-End Engineer, namun saya hanya bekerja selama 6 bulan di sana.
+- **2020**: Seberhentinya di [Ralali.com](https://www.ralali.com/), saya lalu bergabung di [Mamikos](https://mamikos.com/) dan menjadi Front-End Engineer sampai sekarang.
 
 ### Beberapa kutipan
 
