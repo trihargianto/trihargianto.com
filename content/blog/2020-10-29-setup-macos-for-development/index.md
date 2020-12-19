@@ -201,14 +201,6 @@ VSCode Setting milik saya
 
 `gist:trihargianto/c33c03f151645387da3c4308927632d2#settings.json`
 
-### Neovim
-
-Saya sedang belajar menggunakan VIM, jadi terkadang saya _switch_ dari VSCode ke Neovim ketika mengerjakan sebuah project. Karena konfigurasinya cukup banyak, saya menaruh file konfigurasinya di Gist.
-
-Konfigurasinya masih cukup berantakan.
-
-`gist:b50b9cf330c722507e335e5d447ad668`
-
 ## System Preferences
 
 _Bagian ini kembali ke selera masing-masing._
