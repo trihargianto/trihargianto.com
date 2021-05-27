@@ -3,14 +3,14 @@ import styled from "styled-components"
 
 const StyledButton = styled.button`
   padding: 15px 20px;
-  background-color: #5c7cfa;
+  background-color: var(--color-primary);
   color: white;
   border-radius: 4px;
   border-width: 0;
   cursor: pointer;
 
   &:hover {
-    background-color: #3b5bdb;
+    opacity: .8;
   }
 `
 

@@ -10,7 +10,7 @@ const SectionTitle = styled.h3`
   font-size: 28px;
   margin: 10px 0px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 `
 
 const BlogPosts = ({ posts }) => {
