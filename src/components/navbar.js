@@ -1,30 +1,23 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { ThemeToggler } from "gatsby-plugin-dark-mode"
+import DarkModeToggle from "react-dark-mode-toggle"
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #eee;
-  background-color: white;
-  /* position: fixed; */
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-navbar);
+  position: fixed;
   width: 100%;
   height: 58px;
   z-index: 2;
   box-shadow: 0 2px 2px -5px rgba(0, 0, 0, 0.1);
 `
 
-const Logo = styled(Link)`
-  font-size: var(--fontSize-2);
-  font-weight: var(--fontWeight-medium);
-  text-decoration: none;
-  padding: 2px 5px;
-`
-
-const LogoName = styled.span`
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
+const WrapperHeightHelper = styled.div`
+  height: 48px;
 `
 
 const Nav = styled.nav`
@@ -54,14 +47,13 @@ const List = styled.li`
 const ListLink = styled(Link)`
   padding: 10px 15px;
   text-decoration: none;
+  font-weight: var(--fontWeight-semibold);
 
-  background-color: #edf2ff;
   color: #5c7cfa;
   border-radius: 4px;
 
   &:hover {
-    background-color: #5c7cfa;
-    color: white;
+    background-color: var(--border-color);
   }
 `
 
@@ -70,20 +62,25 @@ export default function Navbar() {
     <React.Fragment>
       <Wrapper>
         <Nav>
-          <Logo to="/">
-            <span role="img" aria-label="floppy disk emoji">
-              👨‍💻
-            </span>{" "}
-            <LogoName>Tri Hargianto</LogoName>
-          </Logo>
+          <ThemeToggler>
+            {({ theme, toggleTheme }) => (
+              <DarkModeToggle
+                onChange={checked => toggleTheme(checked ? "dark" : "light")}
+                checked={theme === "dark"}
+                size={60}
+              />
+            )}
+          </ThemeToggler>
 
           <ListWrapper>
             <List>
-              <ListLink to="/about">About Me</ListLink>
+              <ListLink to="/">Home</ListLink>
+              <ListLink to="/about">About</ListLink>
             </List>
           </ListWrapper>
         </Nav>
       </Wrapper>
+      <WrapperHeightHelper />
     </React.Fragment>
   )
 }

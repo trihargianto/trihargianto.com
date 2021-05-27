@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Button from "../components/button"
 import profilePic from "../img/profile-pic.jpeg"
 
 const Wrapper = styled.div`
@@ -72,12 +71,6 @@ export default function Greeting() {
         <ShortDescription>
           {data.site.siteMetadata.description}
         </ShortDescription>
-        <Button onClick={handleClickFeedback}>
-          <span role="img" aria-label="write feedback emoji">
-            📝
-          </span>{" "}
-          &nbsp; Kasih Feedback
-        </Button>
       </Blabla>
 
       <Photo>
