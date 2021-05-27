@@ -1,6 +1,6 @@
 ---
 title: Tetap Waras & Produktif Selama WFH
-description: Beberapa buat ngatur task yang sejauh ini cukup efektif bagi saya
+description: Cara Saya Supaya Bisa Tetep Waras dan Produktif Meskipun Kerja Dari Rumah
 category: blog
 featured: cover.jpg
 ---
