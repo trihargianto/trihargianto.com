@@ -49,11 +49,12 @@ Lead Software Engineer
 
 Saya harap kamu suka website ini, jika ada yang mau kamu bicarakan dengan saya, jangan sungkan buat kontak saya via email. Saya sangat terbuka dengan komentar, feedback, & saran.
 
-<h4 style="margin-top: 0; margin-bottom: 45px;">
-    <a href="mailto:trihargianto@gmail.com">
-        💌 &nbsp;trihargianto@gmail.com
-    </a>
-</h4>
+<p style="font-size: var(--fontSize-3); margin-top: 0; margin-bottom: 45px; padding-top: 0;">
+  💌 &nbsp;
+  <a href="mailto:trihargianto@gmail.com">
+    trihargianto@gmail.com
+  </a>
+</p>
 
 - 🖼 Instagram : [@trihargianto](https://instagram.com/trihargianto)
 - 🐙 GitHub : [@trihargianto](https://github.com/trihargianto)

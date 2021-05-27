@@ -1,3 +1,11 @@
+@import url("http://fonts.cdnfonts.com/css/cascadia-mono");
+
+pre[class*="language-"],
+code[class*="language-"] {
+  font-family: "Cascadia Mono", sans-serif;
+  font-size: 1em;
+}
+
 .gatsby-highlight {
   border-radius: 0.5em;
   padding: 1.5em 1em;

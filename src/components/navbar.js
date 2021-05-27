@@ -7,27 +7,23 @@ const Wrapper = styled.div`
   justify-content: center;
   border-bottom: 1px solid #eee;
   background-color: white;
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
   height: 58px;
   z-index: 2;
   box-shadow: 0 2px 2px -5px rgba(0, 0, 0, 0.1);
 `
 
-const WrapperHeightHelper = styled.div`
-  height: 58px;
-`
-
 const Logo = styled(Link)`
-  font-size: 18px;
-  font-weight: bold;
+  font-size: var(--fontSize-2);
+  font-weight: var(--fontWeight-medium);
   text-decoration: none;
   padding: 2px 5px;
 `
 
 const LogoName = styled.span`
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
@@ -88,7 +84,6 @@ export default function Navbar() {
           </ListWrapper>
         </Nav>
       </Wrapper>
-      <WrapperHeightHelper />
     </React.Fragment>
   )
 }
