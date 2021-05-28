@@ -48,16 +48,11 @@ export default function Greeting() {
     query {
       site {
         siteMetadata {
-          feedbackUrl
           description
         }
       }
     }
   `)
-
-  function handleClickFeedback() {
-    window.open(data.site.siteMetadata.feedbackUrl)
-  }
 
   return (
     <Wrapper>

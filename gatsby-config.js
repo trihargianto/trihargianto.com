@@ -7,7 +7,6 @@ module.exports = {
     },
     description: `Website ini adalah catatan digital saya, berisi tulisan dari apa yang saya pelajari dan apapun yang ingin saya tulis. Saya harap tulisan saya bisa bermanfaat.`,
     siteUrl: `https://www.trihargianto.com/`,
-    feedbackUrl: `https://docs.google.com/forms/d/e/1FAIpQLSc-2e4XWfd1AeFJd21dhLALLl-QiiUPt-lOe9gHU2aOQ7zf0w/viewform?usp=sf_link`,
     social: {
       twitter: `trihargianto`,
       github: `trihargianto`,
@@ -97,7 +96,7 @@ module.exports = {
         showSpinner: false,
       },
     },
-    'gatsby-plugin-dark-mode'
+    "gatsby-plugin-dark-mode",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

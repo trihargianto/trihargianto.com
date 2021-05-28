@@ -7,13 +7,13 @@ const Footer = styled.footer`
   text-align: center;
 `
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 
   return (
     <div>
-      <Navbar />
+      <Navbar location={location} />
 
       <div className="global-wrapper" data-is-root-path={isRootPath}>
         <main>{children}</main>
