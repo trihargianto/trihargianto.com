@@ -48,7 +48,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         pathname={location.pathname}
       />
 
-      <ScrollToTop>⬆</ScrollToTop>
+      <ScrollToTop />
 
       <article
         className="blog-post"

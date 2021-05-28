@@ -2,24 +2,28 @@ import React, { useState } from "react"
 import styled from "styled-components"
 
 import Button from "./button"
+import IconArrowUpward from "./IconArrowUpward"
 
 const StyledFab = styled(Button)`
   position: fixed;
-  width: 40px;
+  width: 167px;
   height: 40px;
-  right: 20px;
-  bottom: 20px;
+  right: 24px;
+  bottom: 18px;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   cursor: pointer;
+  -webkit-animation: fadeIn 0.3s;
+  -webkit-transition: opacity 0.4s;
   animation: fadeIn 0.3s;
   transition: opacity 0.4s;
-  border-radius: 50%;
-  opacity: 0.5;
+  border-radius: 18px;
 
-  &:hover {
-    opacity: 1;
+  @media (max-width: 768px) {
+    left: 0;
+    right: 0;
+    margin: auto;
   }
 
   @keyframes fadeIn {
@@ -58,7 +62,8 @@ export default function Fab({ children, ...props }) {
       onClick={scrollTop}
       style={{ display: showScroll ? "flex" : "none" }}
     >
-      {children}
+      <IconArrowUpward />
+      <span style={{ marginLeft: 8 }}>Scroll ke atas</span>
     </StyledFab>
   )
 }
