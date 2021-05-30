@@ -48,7 +48,7 @@ Dengan adanya kegiatan *error monitoring* seperti ini, kami bisa meningkatkan *p
 
 Di pertengahan tahun 2020, kami memutuskan untuk membangun sebuah Design System sendiri, dengan harapan kami bisa punya *single source of truth* untuk tiap komponen, UI yang lebih konsisten, dan mengurangi membuat komponen yang sama berulang-ulang. Nah, tim yang bertanggung jawab untuk mengembangkan design system untuk web adalah tim Core FE. 
 
-Apa saja dan bagaimana proses kami membangun design system Mamikos dari perspektif Front-End semoga bisa segera saya publikasikan di artikel terpisah.
+Apa saja dan bagaimana proses kami membangun design system Mamikos dari perspektif Front-End Engineer bisa di baca di artikel [Cerita Proses Membangun Design System di Mamikos](https://www.trihargianto.com/cerita-proses-membangun-design-system-di-mamikos/)
 
 ## Front-End Ops
 
