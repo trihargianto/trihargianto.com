@@ -121,7 +121,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       const day = blogMatch[3]
 
       const filename = blogMatch[4]
-      const date = new Date(year, month - 1, day)
+      const date = new Date(Date.UTC(year, month - 1, day))
 
       createNodeField({
         name: `slug`,
