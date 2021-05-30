@@ -158,14 +158,13 @@ Menurut kami, beberapa poin yang harus ada di sebuah dokumentasi yaitu:
 1. Cara install dan cara upgrade BanGul
 2. Cara pakai dan _property_ apa aja yang tersedia di tiap komponen
 
-<img src="demo-button-property.png" width="100%" alt="Variasi Komponen Button" style="margin-top: 10px;" />
-<p align="center"><small><i>Gambar 5: Variasi Komponen Button</i></small></p>
-<br />
+<img src="demo-button-property.png" width="100%" alt="Property yang disediakan" style="margin-top: 10px;" />
+<p align="center"><small><i>Gambar 5: Property yang disediakan</i></small></p>
 
 3. Variasi yang tersedia di tiap komponen
 
 <img src="demo-button-variant.png" width="100%" alt="Variasi Komponen Button" style="margin-top: 10px;" />
-<p align="center"><small><i>Gambar 1: Variasi Komponen Button</i></small></p>
+<p align="center"><small><i>Gambar 6: Variasi Komponen Button</i></small></p>
 <br />
 
 4. Transparansi informasi tiap adanya penambahan dan perubahan fitur via Release Note / Changelog.
@@ -176,7 +175,7 @@ Menurut kami, beberapa poin yang harus ada di sebuah dokumentasi yaitu:
   <source src="demo-button-playground.webm" type="video/webm">
   <source src="demo-button-playground.mp4" type="video/mp4">
 </video>
-<p align="center"><small><i>Gambar 6: Playground Demo</i></small></p>
+<p align="center"><small><i>Gambar 7: Demo Playground</i></small></p>
 
 <br />
 
@@ -189,7 +188,7 @@ Untungnya untuk hal ini, kami cukup dimudahkan karena kami memilih [Storybook](h
 ## Design Sync Meetup
 
 <img src="meeting.jpg" width="100%" alt="Design Sync Meetup" />
-<p align="center"><small><i>Gambar 7: Design Sync Meetup</i></small></p>
+<p align="center"><small><i>Gambar 8: Design Sync Meetup</i></small></p>
 <br />
 
 Tentunya, design yang udah dibikin UI Designer bukan design yang sekali jadi, tapi designnya akan selalu ada perubahan karena memang menyesuaikan kebutuhan bisnis Mamikos.
