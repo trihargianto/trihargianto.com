@@ -68,7 +68,7 @@ Nyaman disini artinya, kami harus berusaha supaya BanGul mudah dipakai tapi fitu
 
 Kami juga harus berusaha memastikan BanGul stabil dan _pattern_ tiap komponen selalu konsisten. Karena kalau BanGul sendiri gak stabil, gak ada developer di Mamikos yang mau pakai dan akhirnya mereka bikin komponen mereka sendiri-sendiri.
 
-### Mempercepat proses development tiap tim
+### Mempercepat development
 
 Kami juga harus memastikan komponen yang dibikin nanti memang bisa mempercepat pekerjaan temen-temen engineer yang lain, jadi mereka bisa fokus ke fitur yang dikerjakan dan gak perlu memikirkan untuk membuat komponen yang sudah BanGul sediakan.
 
@@ -81,7 +81,7 @@ Kami juga harus memastikan komponen yang dibikin nanti memang bisa mempercepat p
 
 Setelah kami punya principles yang jelas, kami juga harus menentukan teknologi apa aja yang dipakai untuk membangun BanGul. Cara kami memilih teknologinya dibagi jadi dua tahap:
 
-### Mengumpulkan teknologi yang familiar
+### Teknologi yang familiar
 
 Sebagai informasi, tim yang bertugas mengerjakan BanGul adalah tim Core Front-End saja (termasuk saya). Tapi, walaupun yang mengerjakan dari Core Team, kami ingin supaya kedepannya teman-teman dari tim lain bisa berkontribusi mengembangkan BanGul.
 
@@ -89,9 +89,9 @@ Membuka kesempatan bagi teman-teman yang lain supaya bisa berkontribusi artinya 
 
 Supaya hal ini bisa ter-realisasi, kami harus memakai teknologi dan arsitektur yang kami semua cukup familiar dan pakai di Mamikos. Untuk itu, kami harus memetakan apa saja library, framework, arsitektur, dan gimana struktur komponen di semua project Mamikos, lalu memilah mana saja yang paling banyak digunakan. Dari hasil pilah-pilah itu lah teknologi yang dipakai ditentukan.
 
-### Me-riset project open source lain.
+### Me-riset project lain
 
-Setelah tau teknologi apa aja yang mau kita pakai di BanGul. Kami masih perlu meriset lagi bagaimana sebuah UI library/framework pada umumnya dibangun.
+Setelah tau teknologi apa aja yang mau kita pakai di BanGul. Kami masih perlu meriset lagi bagaimana sebuah UI library/framework pada umumnya dibangun dengan melihat beberapa project Open Source seperti Polaris, Pajama, Primer-React, dan lain-lain. 
 
 Step ini juga penting kami lakukan karena ini pertama kalinya kami membuat sebuah UI framework.
 
@@ -143,9 +143,9 @@ Selain itu, dengan unit testing juga bisa melakukan test ke logic internal tiap 
 <p align="center"><small><i>Gambar 4: Unit Testing</i></small></p>
 <br />
 
-### Manual Testing (Validasi design oleh Designer)
+### Validasi Design
 
-Selain test yang bersifat otomatis seperti di atas, kami juga meminta _approval_ dari designer untuk memastikan komponen yang kami buat sudah sesuai design.
+Selain test yang bersifat otomatis seperti di atas, kami juga meminta _approval_ dari Designer untuk memastikan komponen yang kami buat sudah sesuai design.
 
 <p align="center">. &nbsp; . &nbsp; .</p><br />
 
