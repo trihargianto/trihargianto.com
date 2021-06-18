@@ -7,6 +7,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Share from "../components/share"
 import ScrollToTop from "../components/button-scroll-top"
+import { getPostIdBySlug, insertNewPost } from "../api/services/posts"
+import { getIpAddress } from "../api/services/ip"
+import { insertPostLikes } from "../api/services/likes"
 
 const CommentTitle = styled.div`
   font-size: var(--fontSize-3);
@@ -27,6 +30,23 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
     commentsContainer.current.appendChild(script)
   }, [])
+
+  async function handleLikeBtnClick(slug) {
+    try {
+      let postId = await getPostIdBySlug(slug)
+      const isPostNotExist = postId === null
+
+      if (isPostNotExist) {
+        const result = await insertNewPost(slug)
+        postId = result[0].id
+      }
+
+      const userIpAddress = await getIpAddress()
+      await insertPostLikes(postId, userIpAddress)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
