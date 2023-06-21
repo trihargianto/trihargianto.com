@@ -1,9 +1,9 @@
 [[redirects]]
-  from = "/wedding-invitation/"
-  to = "https://tri-and-siska-wedding.netlify.app/wedding-invitation/"
+  from = "/wedding-invitation"
+  to = "https://tri-and-siska-wedding.netlify.app/wedding-invitation"
   status = 200
 
 [[redirects]]
-  from = "/wedding-invitation/*"
-  to = "https://tri-and-siska-wedding.netlify.app/:splat"
+  from = "/wedding-invitation/_nuxt/*"
+  to = "https://tri-and-siska-wedding.netlify.app/_nuxt/:splat"
   status = 200
