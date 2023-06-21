@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/wedding-invitation/*"
-  to = "https://tri-and-siska-wedding.netlify.app/:splat"
+  to = "https://tri-and-siska-wedding.netlify.app/wedding-invitation/:splat"
   status = 200
