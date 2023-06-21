@@ -7,3 +7,8 @@
   from = "/wedding-invitation/_nuxt/*"
   to = "https://tri-and-siska-wedding.netlify.app/_nuxt/:splat"
   status = 200
+
+[[redirects]]
+  from = "/wedding-invitation/img/*"
+  to = "https://tri-and-siska-wedding.netlify.app/wedding-invitation/img/:splat"
+  status = 200
