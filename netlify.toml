@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/netlify-site/*"
+  to = "https://tri-and-siska-wedding.netlify.app/:splat"
+  status = 200
