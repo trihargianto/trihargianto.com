@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 
-import profilePic from "../img/profile-pic.jpeg"
+import profilePic from "../img/profile-pic-v2.jpg"
 
 const Wrapper = styled.div`
   display: flex;
