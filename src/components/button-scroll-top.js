@@ -36,7 +36,7 @@ const StyledFab = styled(Button)`
   }
 `
 
-export default function Fab({ children, ...props }) {
+export default function Fab({ ...props }) {
   const [showScroll, setShowScroll] = useState(false)
 
   const checkScrollTop = () => {
