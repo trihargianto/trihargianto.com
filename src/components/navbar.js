@@ -43,7 +43,7 @@ const ListWrapper = styled.ul`
 const List = styled.li`
   list-style: none;
   float: left;
-  margin-left: 15px;
+  margin-left: 0px;
   margin-bottom: 0px;
 `
 
@@ -94,6 +94,13 @@ export default function Navbar({ location }) {
             <List>
               <ListLink to="/" active={isHomePageActive}>
                 Home
+              </ListLink>
+              <ListLink
+                to="https://trihargianto.notion.site/trihargianto/Resume-e7af731cfb5a473e8ef128b18a5c35ce"
+                target="_blank"
+                rel="noopener noreferer"
+              >
+                Resume
               </ListLink>
               <ListLink to="/about" active={isAboutPageActive}>
                 About
