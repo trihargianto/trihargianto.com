@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import Navbar from "./navbar"
+import NavBar from "./03-organisms/NavBar"
 
 const Footer = styled.footer`
   text-align: center;
@@ -13,7 +13,7 @@ const Layout = ({ location, children }) => {
 
   return (
     <div>
-      <Navbar location={location} />
+      <NavBar location={location} />
 
       <div className="global-wrapper" data-is-root-path={isRootPath}>
         <main>{children}</main>

@@ -139,7 +139,7 @@ Tujuan Unit Testing ini buat memverifikasi tingkah laku tiap komponen. Tingkah l
 
 Selain itu, dengan unit testing juga bisa melakukan test ke logic internal tiap komponen.
 
-<img src="unit-test.png" width="100%" alt="Unit Testing" />
+<img src="./unit-test.png" width="100%" alt="Unit Testing" />
 <p align="center"><small><i>Gambar 4: Unit Testing</i></small></p>
 <br />
 
