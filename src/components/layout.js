@@ -1,15 +1,15 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
-import NavBar from "./03-organisms/NavBar"
+import NavBar from "./03-organisms/NavBar";
 
 const Footer = styled.footer`
   text-align: center;
-`
+`;
 
 const Layout = ({ location, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
+  const rootPath = `${__PATH_PREFIX__}/`;
+  const isRootPath = location?.pathname === rootPath;
 
   return (
     <div>
@@ -20,7 +20,7 @@ const Layout = ({ location, children }) => {
         <Footer>© {new Date().getFullYear()}</Footer>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

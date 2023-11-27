@@ -6,9 +6,9 @@ export type FontSizeTypes =
   | "heading5"
   | "heading6"
   | "body1"
-  | "body2"
+  | "body2";
 
-export type FontWeightTypes = "normal" | "semibold" | "bold"
+export type FontWeightTypes = "normal" | "semibold" | "bold";
 
 export type HTMLTagTypes =
   | "span"
@@ -19,19 +19,19 @@ export type HTMLTagTypes =
   | "h3"
   | "h4"
   | "h5"
-  | "h6"
+  | "h6";
 
 export type StyledSpanPropTypes = {
-  size?: FontSizeTypes
-  weight?: FontWeightTypes
-}
+  size?: FontSizeTypes;
+  weight?: FontWeightTypes;
+};
 
 export type TypographyPropTypes = {
-  children?: React.ReactNode
-  size?: FontSizeTypes
-  weight?: FontWeightTypes
-  tag?: HTMLTagTypes
+  children?: React.ReactNode;
+  size?: FontSizeTypes;
+  weight?: FontWeightTypes;
+  tag?: HTMLTagTypes;
   dangerouslySetInnerHTML?: {
-    __html: string
-  }
-}
+    __html: string;
+  };
+};

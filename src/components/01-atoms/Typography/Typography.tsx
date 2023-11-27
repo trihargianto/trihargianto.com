@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
-import * as types from "./types"
-import * as styled from "./styled"
+import * as types from "./types";
+import * as styled from "./styled";
 
 const Typography = (props: types.TypographyPropTypes) => {
   const {
@@ -10,7 +10,7 @@ const Typography = (props: types.TypographyPropTypes) => {
     weight = "normal",
     children = null,
     dangerouslySetInnerHTML = null,
-  } = props
+  } = props;
 
   return (
     <styled.Text
@@ -21,7 +21,7 @@ const Typography = (props: types.TypographyPropTypes) => {
     >
       {children}
     </styled.Text>
-  )
-}
+  );
+};
 
-export default Typography
+export default Typography;

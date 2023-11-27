@@ -1,49 +1,48 @@
-import React, { useEffect, useRef } from "react"
-import { Link, graphql } from "gatsby"
-import styledComponent from "styled-components"
+import React, { useEffect, useRef } from "react";
+import { Link, graphql } from "gatsby";
+import styledComponent from "styled-components";
 
-import ArticleCredit from "../../02-molecules/ArticleCredit"
-import NavBar from "../../03-organisms/NavBar"
-import Footer from "../../03-organisms/Footer"
-import * as styled from "./styled"
+import ArticleCredit from "../../02-molecules/ArticleCredit";
+import NavBar from "../../03-organisms/NavBar";
+import Footer from "../../03-organisms/Footer";
+import * as styled from "./styled";
 
 /**
  * TODO: LEGACY
  */
-import SEO from "../../seo"
-import Share from "../../share"
-import ScrollToTop from "../../button-scroll-top"
+import SEO from "../../seo";
+import Share from "../../share";
+import ScrollToTop from "../../button-scroll-top";
 
 const CommentTitle = styledComponent.div`
   font-size: var(--fontSize-3);
   font-weight: bold;
   margin-bottom: var(--spacing-4);
-`
+`;
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const commentsContainer = useRef<HTMLDivElement>(null)
-  
-  useEffect(() => {
-    const script = document.createElement("script")
+  const commentsContainer = useRef<HTMLDivElement>(null);
 
-    script.src = "https://utteranc.es/client.js"
-    script.async = true
-    script.setAttribute("issue-term", "pathname")
-    script.setAttribute("repo", "trihargianto/comments")
-    script.setAttribute("theme", "github-light")
-    script.setAttribute("crossorigin", "anonymous")
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src = "https://utteranc.es/client.js";
+    script.async = true;
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("repo", "trihargianto/comments");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("crossorigin", "anonymous");
 
     commentsContainer.current?.appendChild(script);
-  }, [])
+  }, []);
 
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const post = data.markdownRemark;
   const image = post.frontmatter.image
     ? post.frontmatter.image.childImageSharp.resize
-    : null
-  const twitter = data.site.siteMetadata.social.twitter
-  const url = data.site.siteMetadata.siteUrl
-  const { previous, next } = pageContext
+    : null;
+  const twitter = data.site.siteMetadata.social.twitter;
+  const url = data.site.siteMetadata.siteUrl;
+  const { previous, next } = pageContext;
 
   return (
     <>
@@ -124,8 +123,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <Footer />
       </styled.Wrapper>
     </>
-  )
-}
+  );
+};
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -161,6 +160,6 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
 
-export default BlogPostTemplate
+export default BlogPostTemplate;

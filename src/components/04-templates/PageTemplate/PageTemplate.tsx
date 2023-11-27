@@ -1,13 +1,13 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import NavBar from "../../03-organisms/NavBar"
-import Footer from "../../03-organisms/Footer"
-import SEO from "../../seo"
-import * as styled from "./styled"
+import NavBar from "../../03-organisms/NavBar";
+import Footer from "../../03-organisms/Footer";
+import SEO from "../../seo";
+import * as styled from "./styled";
 
 const PageTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
+  const post = data.markdownRemark;
 
   return (
     <>
@@ -28,7 +28,7 @@ const PageTemplate = ({ data, location }) => {
             <p>{post.frontmatter.date}</p>
           </header>
           <section
-						className="rendered-markdown"
+            className="rendered-markdown"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </article>
@@ -36,10 +36,10 @@ const PageTemplate = ({ data, location }) => {
         <Footer />
       </styled.Wrapper>
     </>
-  )
-}
+  );
+};
 
-export default PageTemplate
+export default PageTemplate;
 
 export const pageQuery = graphql`
   query PagePostBySlug($slug: String!) {
@@ -58,4 +58,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

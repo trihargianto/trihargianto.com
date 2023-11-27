@@ -1,11 +1,11 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import Image from "../../01-atoms/Image"
-import * as styled from "./styled"
+import Image from "../../01-atoms/Image";
+import * as styled from "./styled";
 
-// @ts-ignore
-import profilePic from "../../../img/profile-pic-v2.jpg"
+// @ts-expect-error Just an image
+import profilePic from "../../../img/profile-pic-v2.jpg";
 
 const GreetingCard = () => {
   const data = useStaticQuery(graphql`
@@ -16,7 +16,7 @@ const GreetingCard = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <styled.Wrapper>
@@ -41,7 +41,7 @@ const GreetingCard = () => {
         />
       </styled.RightContent>
     </styled.Wrapper>
-  )
-}
+  );
+};
 
-export default GreetingCard
+export default GreetingCard;

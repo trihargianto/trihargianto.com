@@ -1,12 +1,12 @@
-import React from "react"
+import React from "react";
 
-import Link from "../../01-atoms/Link"
-import Typography from "../../01-atoms/Typography"
-import * as types from "./types"
-import * as styled from "./styled"
+import Link from "../../01-atoms/Link";
+import Typography from "../../01-atoms/Typography";
+import * as types from "./types";
+import * as styled from "./styled";
 
 const ArticleCard = (props: types.ArticleCardPropTypes) => {
-  const { slug, title, date, shortDescHTML } = props
+  const { slug, title, date, shortDescHTML } = props;
 
   return (
     <styled.Article key={slug}>
@@ -27,7 +27,7 @@ const ArticleCard = (props: types.ArticleCardPropTypes) => {
         />
       </section>
     </styled.Article>
-  )
-}
+  );
+};
 
-export default ArticleCard
+export default ArticleCard;

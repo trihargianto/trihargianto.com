@@ -1,45 +1,41 @@
-import React from "react"
-import { navigate } from "gatsby"
-import { ThemeToggler } from "gatsby-plugin-dark-mode"
-import DarkModeToggle from "react-dark-mode-toggle"
+import React from "react";
+import { navigate } from "gatsby";
+import { useTheme } from "@skagami/gatsby-plugin-dark-mode";
+import DarkModeToggle from "react-dark-mode-toggle";
 
-import isMobile from "../../../utils/isMobile"
-import Icon from "../../01-atoms/Icon"
-import * as styled from "./styled"
-import * as types from "./types"
+import isMobile from "../../../utils/isMobile";
+import Icon from "../../01-atoms/Icon";
+import * as styled from "./styled";
+import * as types from "./types";
 
 export default function Navbar({ location }: types.NavBarPropTypes) {
-  const isHomePageActive = location.pathname === "/"
-  const isAboutPageActive = location.pathname === "/about"
+  const isHomePageActive = location.pathname === "/";
+  const isAboutPageActive = location.pathname === "/about";
+  const [theme, toggleTheme] = useTheme();
 
   return (
     <>
       <styled.Wrapper>
         <styled.Nav>
-          <ThemeToggler>
-            {({ theme, toggleTheme }) => (
-              <>
-                {!isHomePageActive && isMobile() ? (
-                  <button
-                    className="btn-plain"
-                    onClick={() => {
-                      // @ts-ignore
-                      navigate(-1, { replace: true })
-                    }}
-                  >
-                    {/* @TODO handle theme <IconArrowBack theme={theme} /> */}
-                    <Icon name="arrow-back" />
-                  </button>
-                ) : null}
+          {!isHomePageActive && isMobile() ? (
+            <button
+              className="btn-plain"
+              onClick={() => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
+                navigate(-1, { replace: true });
+              }}
+            >
+              {/* @TODO handle theme <IconArrowBack theme={theme} /> */}
+              <Icon name="arrow-back" />
+            </button>
+          ) : null}
 
-                <DarkModeToggle
-                  onChange={checked => toggleTheme(checked ? "dark" : "light")}
-                  checked={theme === "dark"}
-                  size={60}
-                />
-              </>
-            )}
-          </ThemeToggler>
+          <DarkModeToggle
+            onChange={(checked) => toggleTheme(checked ? "dark" : "light")}
+            checked={theme === "dark"}
+            size={60}
+          />
 
           <styled.ListWrapper>
             <styled.List>
@@ -65,5 +61,5 @@ export default function Navbar({ location }: types.NavBarPropTypes) {
       </styled.Wrapper>
       <styled.WrapperHeightHelper />
     </>
-  )
+  );
 }

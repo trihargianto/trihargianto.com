@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 const StyledButton = styled.button`
   padding: 15px 20px;
@@ -10,14 +10,14 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
-`
+`;
 
 export default function Button({ children, ...props }) {
   return (
     <StyledButton {...props} type="button">
       {children}
     </StyledButton>
-  )
+  );
 }

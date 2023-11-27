@@ -1,4 +1,4 @@
-export const LINE_HEIGHT = 1.5
+export const LINE_HEIGHT = 1.5;
 
 export const FONT_SIZES_IN_REM_UNIT = {
   scale01: 0.833,
@@ -13,13 +13,13 @@ export const FONT_SIZES_IN_REM_UNIT = {
   scale10: 2.5,
   scale11: 2.75,
   scale12: 3,
-}
+};
 
 export const FONT_WEIGHT = {
   normal: 400,
   semibold: 600,
   bold: 700,
-}
+};
 
 export const FONT_SIZE_ALIASES = {
   heading1: FONT_SIZES_IN_REM_UNIT.scale07,
@@ -30,4 +30,4 @@ export const FONT_SIZE_ALIASES = {
   heading6: FONT_SIZES_IN_REM_UNIT.scale02,
   body1: FONT_SIZES_IN_REM_UNIT.scale01,
   body2: FONT_SIZES_IN_REM_UNIT.scale02,
-}
+};

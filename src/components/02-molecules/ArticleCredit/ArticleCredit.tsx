@@ -1,8 +1,8 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 
-import * as styled from "./styled"
+import * as styled from "./styled";
 
 const ArticleCredit = () => {
   const data = useStaticQuery(graphql`
@@ -23,16 +23,17 @@ const ArticleCredit = () => {
         }
       }
     }
-  `)
+  `);
 
-  const author = data.site.siteMetadata?.author
-  const avatar = data?.avatar?.childImageSharp?.fixed
+  // TODO: `author` and author's summary didn't work
+  const author = data?.site?.siteMetadata?.author;
+  const avatar = data?.avatar?.childImageSharp?.fixed;
 
   return (
     <styled.Wrapper>
       {avatar && (
-        <Image
-          fixed={avatar}
+        <GatsbyImage
+          image={avatar}
           alt={author?.name || ``}
           imgStyle={{
             borderRadius: `50%`,
@@ -50,7 +51,7 @@ const ArticleCredit = () => {
         </p>
       )}
     </styled.Wrapper>
-  )
-}
+  );
+};
 
-export default ArticleCredit
+export default ArticleCredit;

@@ -1,5 +1,5 @@
-import { HLocation } from "@reach/router"
+import { HLocation } from "@reach/router";
 
 export type NavBarPropTypes = {
-  location: HLocation
-}
+  location: HLocation;
+};

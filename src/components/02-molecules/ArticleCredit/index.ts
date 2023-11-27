@@ -1,3 +1,3 @@
-import ArticleCredit from "./ArticleCredit"
+import ArticleCredit from "./ArticleCredit";
 
-export default ArticleCredit
+export default ArticleCredit;

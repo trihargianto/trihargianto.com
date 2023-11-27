@@ -1,5 +1,5 @@
-import BlogPosts from "./BlogPosts"
+import BlogPosts from "./BlogPosts";
 
-export * as types from "./types"
+export * as types from "./types";
 
-export default BlogPosts
+export default BlogPosts;

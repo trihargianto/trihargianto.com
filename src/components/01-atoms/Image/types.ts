@@ -1,18 +1,18 @@
-export type ImageRatioTypes = "1:1" | "16:9"
+export type ImageRatioTypes = "1:1" | "16:9";
 
-export type ImageVariantTypes = "normal" | "rounded" | "circle"
+export type ImageVariantTypes = "normal" | "rounded" | "circle";
 
 export type ImagePropTypes = {
-  src: string
-  alt: string
-  ratio?: ImageRatioTypes
-  variant?: ImageVariantTypes
-}
+  src: string;
+  alt: string;
+  ratio?: ImageRatioTypes;
+  variant?: ImageVariantTypes;
+};
 
 export type StyledWrapperPropTypes = {
-  ratio: ImageRatioTypes
-}
+  ratio: ImageRatioTypes;
+};
 
 export type StyledImagePropTypes = {
-  variant: ImageVariantTypes
-}
+  variant: ImageVariantTypes;
+};
