@@ -1,24 +1,24 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import SEO from "../components/seo"
-import HomeTemplate from "../components/04-templates/HomeTemplate"
+import SEO from "../components/seo";
+import HomeTemplate from "../components/04-templates/HomeTemplate";
 
 const MainPage = ({ data, location }) => {
-  const posts = data.allMarkdownRemark.nodes
+  const posts = data.allMarkdownRemark.nodes;
 
   return (
     <>
       <SEO title="Home" />
       <HomeTemplate location={location} posts={posts} />
     </>
-  )
-}
+  );
+};
 
 export const pageQuery = graphql`
   query {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [fields___date] }
+      sort: { fields: { date: DESC } }
       filter: { frontmatter: { category: { eq: "blog" } } }
     ) {
       nodes {
@@ -34,6 +34,6 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
 
-export default MainPage
+export default MainPage;

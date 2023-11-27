@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -7,7 +7,7 @@ import {
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-} from "react-share"
+} from "react-share";
 
 const Share = ({ socialConfig }) => (
   <React.Fragment>
@@ -47,7 +47,7 @@ const Share = ({ socialConfig }) => (
       </LinkedinShareButton>
     </div>
   </React.Fragment>
-)
+);
 
 Share.propTypes = {
   socialConfig: PropTypes.shape({
@@ -58,6 +58,6 @@ Share.propTypes = {
       description: PropTypes.string.isRequired,
     }),
   }).isRequired,
-}
+};
 
-export default Share
+export default Share;

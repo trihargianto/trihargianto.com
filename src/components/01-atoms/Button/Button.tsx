@@ -1,8 +1,8 @@
-import React from "react"
+import React from "react";
 
-import Typography from "../Typography"
-import * as types from "./types"
-import * as styled from "./styled"
+import Typography from "../Typography";
+import * as types from "./types";
+import * as styled from "./styled";
 
 const Button = (props: types.ButtonPropTypes) => {
   const {
@@ -11,7 +11,7 @@ const Button = (props: types.ButtonPropTypes) => {
     isRounded = false,
     isActive = false,
     ...restProps
-  } = props
+  } = props;
 
   return (
     <styled.Button
@@ -24,7 +24,7 @@ const Button = (props: types.ButtonPropTypes) => {
         {children}
       </Typography>
     </styled.Button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

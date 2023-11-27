@@ -1,3 +1,3 @@
-import GreetingCard from './GreetingCard'
+import GreetingCard from "./GreetingCard";
 
 export default GreetingCard;

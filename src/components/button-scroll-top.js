@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import styled from "styled-components"
+import React, { useState } from "react";
+import styled from "styled-components";
 
-import Button from "./button"
-import IconArrowUpward from "./IconArrowUpward"
+import Button from "./button";
+import IconArrowUpward from "./IconArrowUpward";
 
 const StyledFab = styled(Button)`
   position: fixed;
@@ -34,25 +34,25 @@ const StyledFab = styled(Button)`
       opacity: 0.5;
     }
   }
-`
+`;
 
 export default function Fab({ ...props }) {
-  const [showScroll, setShowScroll] = useState(false)
+  const [showScroll, setShowScroll] = useState(false);
 
   const checkScrollTop = () => {
     if (!showScroll && window.pageYOffset > 400) {
-      setShowScroll(true)
+      setShowScroll(true);
     } else if (showScroll && window.pageYOffset <= 400) {
-      setShowScroll(false)
+      setShowScroll(false);
     }
-  }
+  };
 
   const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   if (typeof window !== "undefined") {
-    window.addEventListener("scroll", checkScrollTop)
+    window.addEventListener("scroll", checkScrollTop);
   }
 
   return (
@@ -65,5 +65,5 @@ export default function Fab({ ...props }) {
       <IconArrowUpward />
       <span style={{ marginLeft: 8 }}>Scroll ke atas</span>
     </StyledFab>
-  )
+  );
 }

@@ -1,3 +1,3 @@
-import BlogPostTemplate from "./BlogPostTemplate"
+import BlogPostTemplate from "./BlogPostTemplate";
 
-export default BlogPostTemplate
+export default BlogPostTemplate;

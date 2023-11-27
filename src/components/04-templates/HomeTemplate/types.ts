@@ -1,7 +1,7 @@
-import { HLocation } from "@reach/router"
+import { HLocation } from "@reach/router";
 
-import { types as blogPostsTypes } from "../../03-organisms/BlogPosts"
+import { types as blogPostsTypes } from "../../03-organisms/BlogPosts";
 
 export type HomeTemplateTypes = {
-  location: HLocation
-} & blogPostsTypes.BlogPostsPropTypes
+  location: HLocation;
+} & blogPostsTypes.BlogPostsPropTypes;

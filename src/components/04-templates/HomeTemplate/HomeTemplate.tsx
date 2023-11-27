@@ -1,13 +1,13 @@
-import React from "react"
+import React from "react";
 
-import Typography from "../../01-atoms/Typography"
-import GreetingCard from "../../02-molecules/GreetingCard"
-import NavBar from "../../03-organisms/NavBar"
-import Footer from "../../03-organisms/Footer"
-import BlogPosts from "../../03-organisms/BlogPosts/BlogPosts"
+import Typography from "../../01-atoms/Typography";
+import GreetingCard from "../../02-molecules/GreetingCard";
+import NavBar from "../../03-organisms/NavBar";
+import Footer from "../../03-organisms/Footer";
+import BlogPosts from "../../03-organisms/BlogPosts/BlogPosts";
 
-import * as styled from "./styled"
-import * as types from "./types"
+import * as styled from "./styled";
+import * as types from "./types";
 
 const HomeTemplate = ({ location, posts }: types.HomeTemplateTypes) => {
   return (
@@ -27,7 +27,7 @@ const HomeTemplate = ({ location, posts }: types.HomeTemplateTypes) => {
         <Footer />
       </styled.Wrapper>
     </>
-  )
-}
+  );
+};
 
-export default HomeTemplate
+export default HomeTemplate;

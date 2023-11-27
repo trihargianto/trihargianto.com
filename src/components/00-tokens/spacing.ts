@@ -12,4 +12,4 @@ export const SPACING_IN_PX_UNIT = {
   X5L: 40,
   X6L: 44,
   X7L: 48,
-}
+};

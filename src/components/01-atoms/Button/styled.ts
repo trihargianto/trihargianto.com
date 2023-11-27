@@ -1,8 +1,8 @@
-import styled, { css } from "styled-components"
+import styled, { css } from "styled-components";
 
-import { RADIUS_IN_PX_UNIT } from "../../00-tokens/radius"
-import * as colors from "../../00-tokens/colors"
-import * as types from "./types"
+import { RADIUS_IN_PX_UNIT } from "../../00-tokens/radius";
+import * as colors from "../../00-tokens/colors";
+import * as types from "./types";
 
 function getPrimaryStyles(isActive = false) {
   return css`
@@ -12,7 +12,7 @@ function getPrimaryStyles(isActive = false) {
     &:hover {
       background-color: ${colors.BLUE.B700};
     }
-  `
+  `;
 }
 
 function getPrimaryGhostStyles(isActive = false) {
@@ -23,7 +23,7 @@ function getPrimaryGhostStyles(isActive = false) {
     &:hover {
       background-color: ${colors.NEUTRAL.N100};
     }
-  `
+  `;
 }
 
 export const Button = styled.button<types.StyledButtonPropTypes>`
@@ -31,18 +31,18 @@ export const Button = styled.button<types.StyledButtonPropTypes>`
   padding: 10px;
   text-decoration: none;
   border: 0;
-  border-radius: ${props =>
+  border-radius: ${(props) =>
     props.isRounded ? RADIUS_IN_PX_UNIT.LG : RADIUS_IN_PX_UNIT.SM}px;
 
-  ${props => {
-    const { variant, isActive } = props
+  ${(props) => {
+    const { variant, isActive } = props;
 
     switch (variant) {
       case "primary":
-        return getPrimaryStyles(isActive)
+        return getPrimaryStyles(isActive);
 
       case "primary-ghost":
-        return getPrimaryGhostStyles(isActive)
+        return getPrimaryGhostStyles(isActive);
     }
   }}
-`
+`;

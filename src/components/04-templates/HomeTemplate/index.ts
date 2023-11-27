@@ -1,3 +1,3 @@
-import HomeTemplate from "./HomeTemplate"
+import HomeTemplate from "./HomeTemplate";
 
-export default HomeTemplate
+export default HomeTemplate;
