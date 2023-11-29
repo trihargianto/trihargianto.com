@@ -1,8 +1,9 @@
 import React from "react";
+import Button from "../../01-atoms/Button";
 
-type LatestArticleTypes = {
+interface LatestArticleTypes {
   className: string;
-};
+}
 
 const articles = [
   "Lorem ipsum dolor sit amet. Lorem ipsum dolor",
@@ -16,9 +17,7 @@ const LatestArticle = (props: LatestArticleTypes) => (
   <div className={props.className}>
     <div className="mb-8 flex items-center justify-between">
       <h2 className="text-3xl font-semibold">Artikel Terbaru</h2>
-      <button className="rounded-sm bg-blue-500 px-4 py-3 text-white hover:bg-blue-400">
-        Lihat Semua
-      </button>
+      <Button>Lihat Semua</Button>
     </div>
 
     {articles.map((item, index) => (
