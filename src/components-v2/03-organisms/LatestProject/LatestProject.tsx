@@ -22,7 +22,7 @@ const LatestProject = (props: LatestProjectTypes) => (
 
     <div className="flex gap-5">
       {articles.map((item, index) => (
-        <ProjectCard key={`latest-project-${index}`} name="Nama proyek">
+        <ProjectCard key={`latest-project-${index}`} name="Apparel Customizer">
           Deskripsi projet
         </ProjectCard>
       ))}
