@@ -15,9 +15,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@mdx-js/react": "^3.0.0",
     "@skagami/gatsby-plugin-dark-mode": "^2.0.0",
     "autoprefixer": "^10.4.16",
+    "clsx": "^2.0.0",
     "gatsby": "^5.12.4",
     "gatsby-plugin-google-gtag": "^5.12.3",
     "gatsby-plugin-image": "^3.12.3",

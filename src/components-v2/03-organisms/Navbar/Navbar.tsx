@@ -11,7 +11,7 @@ const DarkModeSwitcher = () => (
 const Navbar = () => {
   return (
     <nav className="container mx-auto flex justify-between py-6">
-      <BrandLogo />
+      <BrandLogo className="hidden sm:block" />
 
       <ul className="flex items-center gap-8">
         {navbarMenu.map((item, index) => (
