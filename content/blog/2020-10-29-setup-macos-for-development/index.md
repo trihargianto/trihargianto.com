@@ -64,7 +64,7 @@ Berikut aplikasi yang selalu saya install:
 Setelah Homebrew terinstall, saya bisa install semua aplikasi yang saya butuhkan via Homebrew secara otomatis.
 
 ```shell{promptUser: tri}
-brew install git yarn && brew cask install visual-studio-code google-chrome iterm2 docker slack spotify postman notion sequel-pro gifox imageoptim rectangle
+brew install git yarn && brew install --cask visual-studio-code google-chrome iterm2 docker slack spotify postman notion sequel-pro gifox imageoptim rectangle
 ```
 
 ### Install Manual
