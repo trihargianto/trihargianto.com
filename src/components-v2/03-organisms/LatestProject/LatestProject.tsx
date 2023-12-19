@@ -19,7 +19,7 @@ const LatestProject = ({ projects, className }: LatestProjectTypes) => (
       </button>
     </div>
 
-    <div className="-m-1 flex flex-col flex-wrap sm:flex-row">
+    <div className="-m-1 flex flex-wrap sm:flex-row">
       {projects.map((item, index) => (
         <div
           className="w-full p-1 md:w-1/2 lg:w-1/3"
