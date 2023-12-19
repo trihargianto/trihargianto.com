@@ -5,9 +5,11 @@ const config: GatsbyConfig = {
     title: "Tri Hargianto",
     author: {
       name: "Tri Hargianto",
-      summary: "Developer yang sekarang sedang tinggal dan bekerja di Yogyakarta, Indonesia",
+      summary:
+        "Developer yang sekarang sedang tinggal dan bekerja di Yogyakarta, Indonesia",
     },
-    description: "Website ini adalah catatan digital saya, berisi tulisan dari apa yang saya pelajari dan apapun yang ingin saya tulis. Saya harap tulisan saya bisa bermanfaat.",
+    description:
+      "Website ini adalah catatan digital saya, berisi tulisan dari apa yang saya pelajari dan apapun yang ingin saya tulis. Saya harap tulisan saya bisa bermanfaat.",
     siteUrl: "https://www.trihargianto.com/",
     social: {
       twitter: "trihargianto",
@@ -41,7 +43,7 @@ const config: GatsbyConfig = {
           {
             resolve: "gatsby-remark-images",
             options: {
-              maxWidth: 630,
+              maxWidth: 900,
             },
           },
           {

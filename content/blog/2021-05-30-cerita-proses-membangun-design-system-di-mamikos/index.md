@@ -48,6 +48,7 @@ Lalu, karena Engineer gak mau nama _library_ nya kepanjangan, maka kami singkat 
 ## Principles
 
 <img src="ideas.jpg" width="100%" alt="Principles Illustration" />
+
 <p align="center"><small><i>Gambar 1: Principles Illustration</i></small></p>
 
 Sebelum memulai men-_develop_ Design System, hal yang pertama kali kami lakukan adalah menentukan _principle_ developer BanGul dulu.
@@ -91,7 +92,7 @@ Supaya hal ini bisa ter-realisasi, kami harus memakai teknologi dan arsitektur y
 
 ### Me-riset project lain
 
-Setelah tau teknologi apa aja yang mau kita pakai di BanGul. Kami masih perlu meriset lagi bagaimana sebuah UI library/framework pada umumnya dibangun dengan melihat beberapa project Open Source seperti Polaris, Pajama, Primer-React, dan lain-lain. 
+Setelah tau teknologi apa aja yang mau kita pakai di BanGul. Kami masih perlu meriset lagi bagaimana sebuah UI library/framework pada umumnya dibangun dengan melihat beberapa project Open Source seperti Polaris, Pajama, Primer-React, dan lain-lain.
 
 Step ini juga penting kami lakukan karena ini pertama kalinya kami membuat sebuah UI framework.
 

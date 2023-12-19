@@ -5,7 +5,7 @@ category: blog
 featured: cover.jpg
 ---
 
-<img src="cover.jpg" alt="Static Testing di Javascript" />
+<img src="cover.jpg" alt="Static Testing di Javascript" class="w-full" />
 
 <p align="center"><small><span>Photo by <a href='https://www.freepik.com/vectors/school'>upklyak</a></span></small></p>
 
@@ -82,9 +82,9 @@ Sampai di sini kita bakal dapet file bernama `.eslintrc.json` secara otomatis, d
 Sampai di sini, kita harus punya setidaknya satu file Javascript buat dicek oleh Eslint. Di sini saya membuat file bernama `demo.js` dengan kode simpel seperti berikut:
 
 ```js
-var king = "Bran Stark"
+var king = "Bran Stark";
 
-console.log(king)
+console.log(king);
 ```
 
 Setelah itu kita bisa coba jalankan Eslint di terminal:
@@ -189,7 +189,7 @@ Fitur Auto Fix Eslint bisa juga dijalankan di VSCode dengan menekan tombol `CTRL
 
 ### Mengabaikan file di Eslinit
 
-Beberapa file mungkin tidak perlu diolah oleh Eslint, misalnya hasil _build_ atau direktori *node_modules*, dll karena bukan ranah kita mengatur file di direktori tersebut. Untuk itu kita bisa membuat file **.eslintignore** dan isi dengan direktori atau file apa saja yang mau diabaikan. 
+Beberapa file mungkin tidak perlu diolah oleh Eslint, misalnya hasil _build_ atau direktori _node_modules_, dll karena bukan ranah kita mengatur file di direktori tersebut. Untuk itu kita bisa membuat file **.eslintignore** dan isi dengan direktori atau file apa saja yang mau diabaikan.
 
 Cara kerjanya sangat mirip dengan **.gitignore** di Git.
 
@@ -305,7 +305,7 @@ Selanjutnya, kita tinggal tambahkan bagian `extends` di file `.eslintrc`
 
 > "prettier" merupakan singkatan dari "eslint-config-prettier"
 
-Cara kerja plugin ini adalah, dia bakal mematikan semua peraturan *error*/*warning* yang telah di-extends, sehingga Eslint akan mengalah.
+Cara kerja plugin ini adalah, dia bakal mematikan semua peraturan _error_/_warning_ yang telah di-extends, sehingga Eslint akan mengalah.
 
 Karena plugin ini cara kerjanya menimpa peraturan yang telah di-extends, maka wajib di taruh di array terakhir.
 
@@ -322,11 +322,11 @@ Kalau meng-extends suatu plugin, disarankan juga menambahkan `prettier/plugin-te
 }
 ```
 
-kode di atas meng-extend plugin [*eslint-config-airbnb*](https://www.npmjs.com/package/eslint-config-airbnb). Nah supaya Eslint & Prettier gak bertabrakan lagi, kita include kan juga *prettier/react*.
+kode di atas meng-extend plugin [_eslint-config-airbnb_](https://www.npmjs.com/package/eslint-config-airbnb). Nah supaya Eslint & Prettier gak bertabrakan lagi, kita include kan juga _prettier/react_.
 
 <p align="center">. &nbsp; . &nbsp; .</p><br />
 
-## Membuat scripts 
+## Membuat scripts
 
 Perintah-perintah terminal di atas akan lebih mudah kalau kita tambahkan _scripts_ di file **package.json** supaya lebih singkat tiap kali mau ngejalaninnya.
 
@@ -342,7 +342,7 @@ Perintah-perintah terminal di atas akan lebih mudah kalau kita tambahkan _script
 }
 ```
 
-Dengan begini, tiap kali kita mau memastikan apakah semua kode kita sudah terformat dan mengikuti aturan Eslint dan Prettier, kita tinggal jalanin perintah `yarn validate`. 
+Dengan begini, tiap kali kita mau memastikan apakah semua kode kita sudah terformat dan mengikuti aturan Eslint dan Prettier, kita tinggal jalanin perintah `yarn validate`.
 
 > Penggunaan perintah `yarn validate` yang mengkombinasikan Eslint dan Prettier untuk memindai semua file sangat sempurna diletakkan di Pipeline Continuous Integration
 
@@ -350,13 +350,13 @@ Dengan begini, tiap kali kita mau memastikan apakah semua kode kita sudah terfor
 
 ## Husky
 
-Pada project besar yang dikerjakan banyak orang, terkadang akan susah mengontrol semua orang untuk menggunakan Eslint dan Prettier. 
+Pada project besar yang dikerjakan banyak orang, terkadang akan susah mengontrol semua orang untuk menggunakan Eslint dan Prettier.
 
-Entah karena ada orang yang gak menginstall ekstensi Prettier / Eslint jadi gak tau kalau ada kode yang menyalahi aturan, atau mungkin sengaja gak nginstall ekstensinya tapi lupa ngejalanin perintah Eslint dan Prettier di Terminal. 
+Entah karena ada orang yang gak menginstall ekstensi Prettier / Eslint jadi gak tau kalau ada kode yang menyalahi aturan, atau mungkin sengaja gak nginstall ekstensinya tapi lupa ngejalanin perintah Eslint dan Prettier di Terminal.
 
 Untuk itu, kita bisa memanfaatkan <a href="https://www.npmjs.com/package/husky" target="_blank" rel="noopener">Husky</a> untuk menjalankan perintah Eslint dan Prettier tiap kali ada commit baru yang akan masuk di Git.
 
-Kamu bisa menginstall <a href="https://www.npmjs.com/package/husky" target="_blank" rel="noopener">Husky</a> dengan menjalankan perintah berikut: 
+Kamu bisa menginstall <a href="https://www.npmjs.com/package/husky" target="_blank" rel="noopener">Husky</a> dengan menjalankan perintah berikut:
 
 ```shell{promptUser: tri}
 yarn add --dev husky
@@ -380,7 +380,7 @@ Sekarang, tiap kali kita mau commit sesuatu di Git, perintah `yarn validate` aka
 
 Di titik ini, tiap kali kita mau commit sesuatu dan ada kode yang gak terformat dengan benar atau gak lolos cek, maka commit akan gagal. Dengan begini, kode di aplikasi kita bisa terjamin akan selalu mengikuti aturan-aturan yang telah ditetapkan di Eslint dan Prettier.
 
-Walaupun bagus, di perspektif developer ini bisa sangat mengganggu. Bayangkan saja kamu mengedit file A dan B lalu temanmu si Jon mengedit file C dan D. 
+Walaupun bagus, di perspektif developer ini bisa sangat mengganggu. Bayangkan saja kamu mengedit file A dan B lalu temanmu si Jon mengedit file C dan D.
 
 File C dan D yang ditulis Jon belum rapi dan telah ter-commit tanpa mengikuti aturan di Eslint dan Prettier kita (Salah satu kemungkinannya, si Jon melakukan commit tepat sebelum konfigurasi Eslint dan Prettier dibuat).
 
