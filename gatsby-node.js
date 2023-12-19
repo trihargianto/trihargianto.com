@@ -5,13 +5,6 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  createPage({
-    path: `/test-create-page`,
-    component: path.resolve(
-      `./src/components-v2/04-templates/BlogPostTemplate.tsx`,
-    ),
-  });
-
   // Get all markdown blog posts sorted by date
   const blogs = await graphql(`
     {
@@ -33,43 +26,42 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `);
 
   // Get all markdown blog pages
-  const pages = await graphql(`
-    {
-      allMarkdownRemark(
-        limit: 1000
-        filter: { frontmatter: { category: { eq: "page" } } }
-      ) {
-        nodes {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-  `);
+  // const pages = await graphql(`
+  //   {
+  //     allMarkdownRemark(
+  //       limit: 1000
+  //       filter: { frontmatter: { category: { eq: "page" } } }
+  //     ) {
+  //       nodes {
+  //         fields {
+  //           slug
+  //         }
+  //         frontmatter {
+  //           title
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
   // Get all markdown projects
-  const projects = await graphql(`
-    {
-      allMarkdownRemark(
-        limit: 50
-        filter: { frontmatter: { category: { eq: "project" } } }
-      ) {
-        nodes: {
-          fields: {
-            slug
-          }
-          frontmatter {
-            title
-            description
-          }
-        }
-      }
-    }
-  `);
+  // const projects = await graphql(`
+  //   {
+  //     allMarkdownRemark(
+  //       limit: 1000
+  //       filter: { frontmatter: { category: { eq: "page" } } }
+  //     ) {
+  //       nodes {
+  //         fields {
+  //           slug
+  //         }
+  //         frontmatter {
+  //           title
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
   if (blogs.errors) {
     reporter.panicOnBuild(
@@ -77,19 +69,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       blogs.errors,
     );
     return;
-  } else if (pages.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your page posts`,
-      blogs.errors,
-    );
-    return;
-  } else if (projects.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your project posts`,
-      blogs.errors,
-    );
-    return;
   }
+  // else if (pages.errors) {
+  //   reporter.panicOnBuild(
+  //     `There was an error loading your page posts`,
+  //     blogs.errors,
+  //   );
+  //   return;
+  // } else if (projects.errors) {
+  //   reporter.panicOnBuild(
+  //     `There was an error loading your project posts`,
+  //     blogs.errors,
+  //   );
+  //   return;
+  // }
 
   const blogPosts = blogs.data.allMarkdownRemark.nodes;
   // const pagePosts = pages.data.allMarkdownRemark.nodes;
@@ -108,7 +101,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: post.fields.slug,
         component: path.resolve(
-          `./src/components-v2/04-templates/BlogPostTemplate.tsx`,
+          `./src/components-v2/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
         ),
         context: {
           slug: post.fields.slug,
