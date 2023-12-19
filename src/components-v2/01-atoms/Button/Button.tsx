@@ -32,7 +32,7 @@ const buttonClasses = {
     const sizeClasses: { [key: string]: string } = {
       xs: "px-2 py-1.5 text-sm",
       sm: "px-3 py-2",
-      md: "px-4 py-3",
+      md: "px-4 py-2.5",
     };
 
     return sizeClasses[size];

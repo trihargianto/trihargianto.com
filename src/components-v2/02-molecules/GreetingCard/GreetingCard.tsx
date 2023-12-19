@@ -15,25 +15,24 @@ const GreetingCard = () => {
   `);
 
   return (
-    <div className="w-5/62 flex items-center gap-9">
+    <div className="flex flex-col gap-8 sm:flex-row sm:py-6 md:w-full lg:w-5/6">
       <div>
         <img
           src={profilePic}
           alt="Tri Hargianto"
-          className="aspect-square rounded-xl"
-          width={350}
+          className="xs:w-52 aspect-square w-40 rounded-xl sm:w-full"
         />
       </div>
 
       <div>
-        <p className="mb-7 text-4xl font-semibold">
+        <p className="mb-5 text-2xl font-semibold sm:mb-7 sm:text-3xl">
           Halo, salam kenal!{" "}
           <span role="img" aria-label="wave emoji">
             👋
           </span>
         </p>
         <p className="mb-5">
-          Saya seorang Software Engineer yang berasal dari{" "}
+          Saya seorang Software Engineer dari{" "}
           <span className="font-semibold">Yogyakarta, Indonesia 🇮🇩</span>
         </p>
         <p>{data.site.siteMetadata.description}</p>

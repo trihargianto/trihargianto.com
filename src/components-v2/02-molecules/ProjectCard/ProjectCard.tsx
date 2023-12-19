@@ -8,7 +8,7 @@ type ProjectCardTypes = {
 };
 
 const ProjectCard = ({ name, children }: ProjectCardTypes) => (
-  <div className="w-1/3">
+  <div className="w-full">
     <div className="border-2 px-6 py-5">
       <p className="mb-2">{name}</p>
       <p className="text-slate-400">{children}</p>
@@ -19,9 +19,6 @@ const ProjectCard = ({ name, children }: ProjectCardTypes) => (
         </Button>
         <Button size="xs" className="mx-2" variant="secondary">
           Demo <ArrowTopRightOnSquareIcon className="inline w-4" />
-        </Button>
-        <Button size="xs" variant="secondary">
-          Source <ArrowTopRightOnSquareIcon className="inline w-4" />
         </Button>
       </div>
     </div>
