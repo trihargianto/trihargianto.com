@@ -26,42 +26,42 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `);
 
   // Get all markdown blog pages
-  // const pages = await graphql(`
-  //   {
-  //     allMarkdownRemark(
-  //       limit: 1000
-  //       filter: { frontmatter: { category: { eq: "page" } } }
-  //     ) {
-  //       nodes {
-  //         fields {
-  //           slug
-  //         }
-  //         frontmatter {
-  //           title
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+  const pages = await graphql(`
+    {
+      allMarkdownRemark(
+        limit: 1000
+        filter: { frontmatter: { category: { eq: "page" } } }
+      ) {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+  `);
 
   // Get all markdown projects
-  // const projects = await graphql(`
-  //   {
-  //     allMarkdownRemark(
-  //       limit: 1000
-  //       filter: { frontmatter: { category: { eq: "page" } } }
-  //     ) {
-  //       nodes {
-  //         fields {
-  //           slug
-  //         }
-  //         frontmatter {
-  //           title
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+  const projects = await graphql(`
+    {
+      allMarkdownRemark(
+        limit: 1000
+        filter: { frontmatter: { category: { eq: "page" } } }
+      ) {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+  `);
 
   if (blogs.errors) {
     reporter.panicOnBuild(
@@ -69,14 +69,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       blogs.errors,
     );
     return;
+  } else if (pages.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your page posts`,
+      blogs.errors,
+    );
+    return;
   }
-  // else if (pages.errors) {
-  //   reporter.panicOnBuild(
-  //     `There was an error loading your page posts`,
-  //     blogs.errors,
-  //   );
-  //   return;
-  // } else if (projects.errors) {
+  // else if (projects.errors) {
   //   reporter.panicOnBuild(
   //     `There was an error loading your project posts`,
   //     blogs.errors,
@@ -85,8 +85,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // }
 
   const blogPosts = blogs.data.allMarkdownRemark.nodes;
-  // const pagePosts = pages.data.allMarkdownRemark.nodes;
-  // const projectPosts = projects.data.allMarkdownRemark.nodes;
+  const pagePosts = pages.data.allMarkdownRemark.nodes;
+  const projectPosts = projects.data.allMarkdownRemark.nodes;
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -112,33 +112,33 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   }
 
-  // if (pagePosts.length > 0) {
-  //   pagePosts.forEach((post) => {
-  //     createPage({
-  //       path: post.fields.slug,
-  //       component: path.resolve(
-  //         `./src/components/04-templates/PageTemplate/PageTemplate.tsx`,
-  //       ),
-  //       context: {
-  //         slug: post.fields.slug,
-  //       },
-  //     });
-  //   });
-  // }
+  if (pagePosts.length > 0) {
+    pagePosts.forEach((post) => {
+      createPage({
+        path: post.fields.slug,
+        component: path.resolve(
+          `./src/components-v2/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
+        ),
+        context: {
+          slug: post.fields.slug,
+        },
+      });
+    });
+  }
 
-  // if (projectPosts.length > 0) {
-  //   projectPosts.forEach((post) => {
-  //     createPage({
-  //       path: post.fields.slug,
-  //       component: path.resolve(
-  //         `./src/components/04-templates/PageTemplate/PageTemplate.tsx`,
-  //       ),
-  //       context: {
-  //         slug: post.fields.slug,
-  //       },
-  //     });
-  //   });
-  // }
+  if (projectPosts.length > 0) {
+    projectPosts.forEach((post) => {
+      createPage({
+        path: post.fields.slug,
+        component: path.resolve(
+          `./src/components-v2/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
+        ),
+        context: {
+          slug: post.fields.slug,
+        },
+      });
+    });
+  }
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

@@ -15,7 +15,7 @@ const GreetingCard = () => {
   `);
 
   return (
-    <div className="flex flex-col gap-8 sm:flex-row sm:py-6 md:w-full lg:w-5/6">
+    <div className="flex flex-col gap-8 sm:flex-row md:w-full lg:w-5/6">
       <div>
         <img
           src={profilePic}

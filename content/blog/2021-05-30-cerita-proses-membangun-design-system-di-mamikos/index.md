@@ -126,7 +126,7 @@ Selanjutnya, ketika kami melakukan perubahan kode, lalu test runner dijalankan, 
 
 Dengan begini kami bisa tau semua perubahan yang terjadi, dari perubahan yang disengaja dan tak disengaja.
 
-<video autoplay loop muted playsinline width="100%" style="margin-top: -32px;">
+<video autoplay loop muted playsinline width="100%">
   <source src="component-visual-testing.webm" type="video/webm">
   <source src="component-visual-testing.mp4" type="video/mp4">
 </video>
@@ -159,12 +159,12 @@ Menurut kami, beberapa poin yang harus ada di sebuah dokumentasi yaitu:
 1. Cara install dan cara upgrade BanGul
 2. Cara pakai dan _property_ apa aja yang tersedia di tiap komponen
 
-<img src="demo-button-property.png" width="100%" alt="Property yang disediakan" style="margin-top: 10px;" />
+<img src="demo-button-property.png" width="100%" alt="Property yang disediakan" />
 <p align="center"><small><i>Gambar 5: Property yang disediakan</i></small></p>
 
 3. Variasi yang tersedia di tiap komponen
 
-<img src="demo-button-variant.png" width="100%" alt="Variasi Komponen Button" style="margin-top: 10px;" />
+<img src="demo-button-variant.png" width="100%" alt="Variasi Komponen Button" />
 <p align="center"><small><i>Gambar 6: Variasi Komponen Button</i></small></p>
 <br />
 
