@@ -5,14 +5,15 @@ type ButtonVariantTypes = "primary" | "secondary" | "tertiary";
 
 type ButtonSizeTypes = "xs" | "sm" | "md";
 
-export interface ButtonPropTypes
-  extends React.ComponentPropsWithoutRef<"button"> {
+export type ButtonPropTypes = {
   children: React.ReactNode;
   variant?: ButtonVariantTypes;
   size?: ButtonSizeTypes;
   isRounded?: boolean;
   isActive?: boolean;
-}
+  as?: "button" | "a";
+  className?: string;
+} & React.ComponentProps<"button" | "a">;
 
 const buttonClasses = {
   base: "rounded-sm",
@@ -42,12 +43,16 @@ const buttonClasses = {
 const Button = ({
   variant = "primary",
   size = "md",
+  as = "button",
   children,
   className,
   ...restProps
 }: ButtonPropTypes) => {
+  const Element = as;
+
   return (
-    <button
+    /** @ts-expect-error unknown type */
+    <Element
       className={clsx([
         buttonClasses.base,
         buttonClasses.variant(variant),
@@ -57,7 +62,7 @@ const Button = ({
       {...restProps}
     >
       {children}
-    </button>
+    </Element>
   );
 };
 
