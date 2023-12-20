@@ -5,18 +5,36 @@ import Button from "../../01-atoms/Button";
 type ProjectCardTypes = {
   name: string;
   demoLink?: string;
+  githubLink?: string;
   children: React.ReactNode;
 };
 
-const ProjectCard = ({ name, children, demoLink }: ProjectCardTypes) => (
+const ProjectCard = ({
+  name,
+  children,
+  demoLink,
+  githubLink,
+}: ProjectCardTypes) => (
   <div className="flex h-full w-full flex-col border-2 bg-white px-6 py-5">
     <p className="mb-2 font-semibold">{name}</p>
     <p className="flex-1 text-slate-400">{children}</p>
 
-    <div className="mt-5">
+    <div className="mt-5 flex gap-2">
       {/* <Button size="xs" variant="secondary">
         Artikel
       </Button> */}
+      {githubLink && (
+        <Button
+          size="xs"
+          variant="secondary"
+          as="a"
+          href={githubLink}
+          target="__blank"
+          rel="noopener noreferrer"
+        >
+          Source <ArrowTopRightOnSquareIcon className="inline w-4" />
+        </Button>
+      )}
       {demoLink && (
         <Button
           size="xs"

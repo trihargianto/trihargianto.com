@@ -8,7 +8,8 @@ type LatestProjectTypes = {
   projects: {
     title: string;
     description: string;
-    demoLink: string;
+    demoLink?: string;
+    githubLink?: string;
   }[];
   className: string;
 
@@ -36,7 +37,11 @@ const LatestProject = ({
           className="w-full p-1 md:w-1/2 lg:w-1/3"
           key={`latest-project-${index}`}
         >
-          <ProjectCard name={item.title} demoLink={item.demoLink}>
+          <ProjectCard
+            name={item.title}
+            demoLink={item.demoLink}
+            githubLink={item.githubLink}
+          >
             {item.description}
           </ProjectCard>
         </div>

@@ -35,6 +35,7 @@ interface IndexPageProps {
         title: string;
         description: string;
         demoLink: string;
+        githubLink: string;
       };
     }[];
   };
@@ -52,6 +53,7 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
     slug: node.fields.slug,
     description: node.frontmatter.description,
     demoLink: node.frontmatter.demoLink,
+    githubLink: node.frontmatter.githubLink,
   }));
 
   const latestPublications = publications.slice(0, LIMIT_LATEST_ARTICLES);
@@ -120,6 +122,7 @@ export const pageQuery = graphql`
           title
           description
           demoLink
+          githubLink
         }
       }
     }

@@ -17,6 +17,7 @@ interface ProjectPageProps {
         title: string;
         description: string;
         demoLink: string;
+        githubLink: string;
       };
     }[];
   };
@@ -28,6 +29,7 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
     slug: node.fields.slug,
     description: node.frontmatter.description,
     demoLink: node.frontmatter.demoLink,
+    githubLink: node.frontmatter.githubLink,
   }));
 
   return (
@@ -43,7 +45,11 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
               className="w-full p-1 md:w-1/2 lg:w-1/3"
               key={`latest-project-${index}`}
             >
-              <ProjectCard name={item.title} demoLink={item.demoLink}>
+              <ProjectCard
+                name={item.title}
+                demoLink={item.demoLink}
+                githubLink={item.githubLink}
+              >
                 {item.description}
               </ProjectCard>
             </div>
@@ -69,6 +75,7 @@ export const pageQuery = graphql`
           title
           description
           demoLink
+          githubLink
         }
       }
     }
