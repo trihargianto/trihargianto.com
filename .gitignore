@@ -3,3 +3,12 @@ node_modules/
 public
 src/gatsby-types.d.ts
 yarn-error.log
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
