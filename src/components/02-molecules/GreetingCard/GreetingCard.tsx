@@ -1,10 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Image from "../../01-atoms/Image";
-import * as styled from "./styled";
-
-// @ts-expect-error Just an image
 import profilePic from "../../../img/profile-pic-v2.jpg";
 
 const GreetingCard = () => {
@@ -19,28 +15,29 @@ const GreetingCard = () => {
   `);
 
   return (
-    <styled.Wrapper>
-      <styled.LeftContent>
-        <styled.TextHeading size="heading3" weight="bold">
-          Halo, salam kenal! senang kamu datang ke sini{" "}
+    <div className="flex flex-col gap-8 sm:flex-row md:w-full lg:w-5/6">
+      <div>
+        <img
+          src={profilePic}
+          alt="Tri Hargianto"
+          className="xs:w-52 aspect-square w-40 rounded-xl sm:w-full"
+        />
+      </div>
+
+      <div>
+        <p className="mb-5 text-2xl font-semibold sm:mb-7 sm:text-3xl">
+          Halo, salam kenal!{" "}
           <span role="img" aria-label="wave emoji">
             👋
           </span>
-        </styled.TextHeading>
-        <styled.TextBody size="body2" tag="p">
-          {data.site.siteMetadata.description}
-        </styled.TextBody>
-      </styled.LeftContent>
-
-      <styled.RightContent>
-        <Image
-          src={profilePic}
-          alt="Tri Hargianto"
-          ratio="1:1"
-          variant="rounded"
-        />
-      </styled.RightContent>
-    </styled.Wrapper>
+        </p>
+        <p className="mb-5">
+          Saya seorang Software Engineer dari{" "}
+          <span className="font-semibold">Yogyakarta, Indonesia 🇮🇩</span>
+        </p>
+        <p>{data.site.siteMetadata.description}</p>
+      </div>
+    </div>
   );
 };
 

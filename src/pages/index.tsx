@@ -1,11 +1,11 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 
-import GreetingCard from "../components-v2/02-molecules/GreetingCard";
-import LatestArticle from "../components-v2/03-organisms/LatestArticle";
-import LatestProject from "../components-v2/03-organisms/LatestProject";
-import Navbar from "../components-v2/03-organisms/Navbar";
-import Footer from "../components-v2/03-organisms/Footer";
+import GreetingCard from "../components/02-molecules/GreetingCard";
+import LatestArticle from "../components/03-organisms/LatestArticle";
+import LatestProject from "../components/03-organisms/LatestProject";
+import Navbar from "../components/03-organisms/Navbar";
+import Footer from "../components/03-organisms/Footer";
 
 import { publications } from "../../content/publications";
 

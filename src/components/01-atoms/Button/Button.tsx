@@ -1,29 +1,68 @@
 import React from "react";
+import clsx from "clsx";
 
-import Typography from "../Typography";
-import * as types from "./types";
-import * as styled from "./styled";
+type ButtonVariantTypes = "primary" | "secondary" | "tertiary";
 
-const Button = (props: types.ButtonPropTypes) => {
-  const {
-    children,
-    variant = "primary",
-    isRounded = false,
-    isActive = false,
-    ...restProps
-  } = props;
+type ButtonSizeTypes = "xs" | "sm" | "md";
+
+export type ButtonPropTypes = {
+  children: React.ReactNode;
+  variant?: ButtonVariantTypes;
+  size?: ButtonSizeTypes;
+  isRounded?: boolean;
+  isActive?: boolean;
+  as?: "button" | "a";
+  className?: string;
+} & React.ComponentProps<"button" | "a">;
+
+const buttonClasses = {
+  base: "rounded-sm",
+
+  variant: (variant: ButtonVariantTypes) => {
+    const variantClasses: { [key: string]: string } = {
+      primary:
+        "text-white bg-blue-500 border-blue-500 border hover:bg-blue-600",
+      secondary:
+        "text-slate-600 bg-slate-200 border-slate-300 border hover:bg-slate-300",
+    };
+
+    return variantClasses[variant];
+  },
+
+  size: (size: ButtonSizeTypes) => {
+    const sizeClasses: { [key: string]: string } = {
+      xs: "px-2 py-1.5 text-sm",
+      sm: "px-3 py-2",
+      md: "px-4 py-2.5",
+    };
+
+    return sizeClasses[size];
+  },
+};
+
+const Button = ({
+  variant = "primary",
+  size = "md",
+  as = "button",
+  children,
+  className,
+  ...restProps
+}: ButtonPropTypes) => {
+  const Element = as;
 
   return (
-    <styled.Button
-      variant={variant}
-      isRounded={isRounded}
-      isActive={isActive}
+    /** @ts-expect-error unknown type */
+    <Element
+      className={clsx([
+        buttonClasses.base,
+        buttonClasses.variant(variant),
+        buttonClasses.size(size),
+        className,
+      ])}
       {...restProps}
     >
-      <Typography size="body2" weight="semibold">
-        {children}
-      </Typography>
-    </styled.Button>
+      {children}
+    </Element>
   );
 };
 

@@ -101,7 +101,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: post.fields.slug,
         component: path.resolve(
-          `./src/components-v2/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
+          `./src/components/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
         ),
         context: {
           slug: post.fields.slug,
@@ -117,7 +117,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: post.fields.slug,
         component: path.resolve(
-          `./src/components-v2/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
+          `./src/components/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
         ),
         context: {
           slug: post.fields.slug,
@@ -131,7 +131,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: post.fields.slug,
         component: path.resolve(
-          `./src/components-v2/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
+          `./src/components/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
         ),
         context: {
           slug: post.fields.slug,

@@ -1,26 +1,54 @@
-import React, { useEffect, useRef } from "react";
-import { Link, graphql } from "gatsby";
-import styledComponent from "styled-components";
+import React, { useRef, useEffect } from "react";
+import { graphql } from "gatsby";
 
-import ArticleCredit from "../../02-molecules/ArticleCredit";
-import NavBar from "../../03-organisms/NavBar";
+import SocialShareButtons from "../../02-molecules/SocialShareButtons";
+import SEO from "../../02-molecules/SEO";
+import Navbar from "../../03-organisms/Navbar";
 import Footer from "../../03-organisms/Footer";
-import * as styled from "./styled";
 
-/**
- * TODO: LEGACY
- */
-import SEO from "../../seo";
-import Share from "../../share";
-import ScrollToTop from "../../button-scroll-top";
+interface BlogPostTemplateProps {
+  data: {
+    markdownRemark: {
+      html: string;
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+        description: string;
+        image?: {
+          childImageSharp?: {
+            resize?: {
+              src: string;
+              height: string;
+              width: string;
+            };
+          };
+        };
+      };
+    };
+    site: {
+      siteMetadata: {
+        title: string;
+        siteUrl: string;
+        social: {
+          twitter: string;
+        };
+      };
+    };
+  };
+}
 
-const CommentTitle = styledComponent.div`
-  font-size: var(--fontSize-3);
-  font-weight: bold;
-  margin-bottom: var(--spacing-4);
-`;
+const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
+  const htmlContent = data.markdownRemark.html;
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+  const image = data.markdownRemark.frontmatter.image?.childImageSharp?.resize;
+  const title = data.markdownRemark.frontmatter.title;
+  const slug = data.markdownRemark.fields.slug;
+  const description = data.markdownRemark.frontmatter.description;
+  const twitter = data.site.siteMetadata.social.twitter;
+  const url = data.site.siteMetadata.siteUrl;
+
   const commentsContainer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,114 +64,54 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     commentsContainer.current?.appendChild(script);
   }, []);
 
-  const post = data.markdownRemark;
-  const image = post.frontmatter.image
-    ? post.frontmatter.image.childImageSharp.resize
-    : null;
-  const twitter = data.site.siteMetadata.social.twitter;
-  const url = data.site.siteMetadata.siteUrl;
-  const { previous, next } = pageContext;
-
   return (
     <>
-      <NavBar location={location} />
+      <SEO
+        title={title}
+        description={description}
+        image={image}
+        pathname={location.pathname}
+      />
 
-      <styled.Wrapper>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-          image={image}
-          pathname={location.pathname}
+      <Navbar />
+
+      <section
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+        className="rendered-markdown container mx-auto"
+      />
+
+      <div className="container mx-auto">
+        <hr className="my-8" />
+
+        <SocialShareButtons
+          socialConfig={{
+            twitter,
+            config: {
+              url: `${url}${slug}`,
+              title,
+              description,
+            },
+          }}
         />
 
-        <ScrollToTop />
+        <p className="mb-6 text-left text-2xl font-semibold md:text-center">
+          Komentar
+        </p>
 
-        <article
-          className="blog-post"
-          itemScope
-          itemType="http://schema.org/Article"
-        >
-          <header>
-            <h1 itemProp="headline">{post.frontmatter.title}</h1>
-            <p>{post.fields.date}</p>
-          </header>
-          <section
-            dangerouslySetInnerHTML={{ __html: post.html }}
-            itemProp="articleBody"
-            className="rendered-markdown"
-          />
-          <hr />
-          <Share
-            socialConfig={{
-              twitter,
-              config: {
-                url: `${url}${post.fields.slug}`,
-                title: post.frontmatter.title,
-                description: post.frontmatter.description || post.excerpt,
-              },
-            }}
-          />
-          <footer>
-            <ArticleCredit />
-          </footer>
-        </article>
+        <div ref={commentsContainer}></div>
+      </div>
 
-        <nav className="blog-post-nav">
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
-
-        <div>
-          <CommentTitle>Komentar</CommentTitle>
-          <div ref={commentsContainer}></div>
-        </div>
-
-        <Footer />
-      </styled.Wrapper>
+      <Footer />
     </>
   );
 };
 
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-        social {
-          twitter
-        }
-      }
-    }
+export const query = graphql`
+  query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
       html
       fields {
         slug
-        date(formatString: "DD MMM YYYY")
       }
       frontmatter {
         title
@@ -156,6 +124,15 @@ export const pageQuery = graphql`
               width
             }
           }
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        siteUrl
+        social {
+          twitter
         }
       }
     }
