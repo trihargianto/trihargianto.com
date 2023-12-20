@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 
 import SocialShareButtons from "../../02-molecules/SocialShareButtons";
 import SEO from "../../02-molecules/SEO";
 import Navbar from "../../03-organisms/Navbar";
 import Footer from "../../03-organisms/Footer";
 
-interface BlogPostTemplateProps {
+type BlogPostTemplateProps = {
   data: {
     markdownRemark: {
       html: string;
@@ -37,9 +37,9 @@ interface BlogPostTemplateProps {
       };
     };
   };
-}
+} & PageProps;
 
-const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
+const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
   const htmlContent = data.markdownRemark.html;
 
   const image = data.markdownRemark.frontmatter.image?.childImageSharp?.resize;
@@ -48,6 +48,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
   const description = data.markdownRemark.frontmatter.description;
   const twitter = data.site.siteMetadata.social.twitter;
   const url = data.site.siteMetadata.siteUrl;
+  const pathname = location.pathname;
 
   const commentsContainer = useRef<HTMLDivElement>(null);
 
@@ -70,7 +71,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         title={title}
         description={description}
         image={image}
-        pathname={location.pathname}
+        pathname={pathname}
       />
 
       <Navbar />
