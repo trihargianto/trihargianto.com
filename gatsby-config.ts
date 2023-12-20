@@ -87,9 +87,6 @@ const config: GatsbyConfig = {
     // https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/
     "gatsby-plugin-mdx",
 
-    // https://www.gatsbyjs.com/plugins/@skagami/gatsby-plugin-dark-mode/
-    "@skagami/gatsby-plugin-dark-mode",
-
     // https://www.npmjs.com/package/gatsby-plugin-image
     "gatsby-plugin-image",
 
