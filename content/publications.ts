@@ -30,4 +30,20 @@ export const publications = [
     date: "May 16, 2020",
     link: "https://medium.com/@trihargianto/javascript-fundamental-scope-part-1-bahasa-indonesia-af160ec5a52d",
   },
+  {
+    title: "Javascript itu mudah ketika kita tidak paham",
+    date: "May 16, 2020",
+    link: "https://medium.com/@trihargianto/javascript-itu-mudah-ketika-kita-tidak-paham-d4ded2e094f5",
+  },
+  {
+    title: "Belajar React JS Bagian 2 : Mengenal create-react-app",
+    date: "Jan 3, 2018",
+    link: "https://medium.com/@trihargianto/belajar-react-js-bagian-2-mengenal-create-react-app-a9785d155535",
+  },
+  {
+    title:
+      "Belajar React JS Bagian 1 : Manual Set Up Environment React dengan Babel & Webpack",
+    date: "Dec 24, 2017",
+    link: "https://medium.com/@trihargianto/belajar-react-js-bagian-1-manual-set-up-environment-react-dengan-babel-webpack-19fd768c0408",
+  },
 ];
