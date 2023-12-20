@@ -1,0 +1,32 @@
+/** ADD LINE HIGHLIGHTING STYLES **/
+.gatsby-highlight {
+  @apply rounded-md text-sm;
+
+  background-color: #2f2f2f;
+  margin: 0.5em 0;
+  padding: 1em;
+  overflow: auto;
+}
+
+.gatsby-highlight pre[class*="language-"] {
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+  float: left;
+  min-width: 100%;
+}
+
+.gatsby-highlight-code-line {
+  background-color: #454545;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
+}
+
+/** ADD LINE NUMBERING **/
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  padding-left: 2.8em;
+}

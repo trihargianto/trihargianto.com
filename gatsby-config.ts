@@ -35,7 +35,6 @@ const config: GatsbyConfig = {
     // https://www.gatsbyjs.com/plugins/gatsby-plugin-image/
     "gatsby-plugin-image",
 
-    // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -65,7 +64,20 @@ const config: GatsbyConfig = {
               className: "heading-markdown",
             },
           },
-          "gatsby-remark-prismjs",
+
+          // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              showLineNumbers: false,
+              prompt: {
+                user: "user",
+                host: "local",
+                global: true,
+              },
+            },
+          },
+
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
         ],

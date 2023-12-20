@@ -46,7 +46,7 @@ Kalau muncul pesan semacam _command not found_, maka kamu perlu menginstall Git 
 
 Kamu bisa install Git via [Homebrew](https://brew.sh/).
 
-```shell{promptUser: tri}
+```shell
 brew install git
 ```
 
@@ -68,7 +68,7 @@ Dengan posisi Terminal yang sudah terbuka, kamu bisa coba ketikkan perintah `pwd
 
 Setelah tau dimana direktori yang sedang aktif sekarang, buat sebuah direktori baru bernama **latihan-git** dengan `mkdir`
 
-```shell{promptUser: tri}
+```shell
 mkdir latihan-git
 ```
 
@@ -79,7 +79,7 @@ Untuk melihat apakah direktori kita berhasil dibuat atau tidak, kita bisa cek de
 
 Karena direktori kita sudah siap, masuk ke direktori tersebut dengan perintah `cd`:
 
-```shell{promptUser: tri}
+```shell
 cd latihan-git
 ```
 
@@ -93,7 +93,7 @@ Perintah yang bisa digunakan di Git ada banyak sekali, namun kamu ngga perlu bel
 
 Git Config dipakai buat mengatur konfigurasi Git. Umumnya, kita ngga perlu buat mengatur semuanya secara manual dan pakai konfigurasi bawaan aja udah cukup. Tapi, sebelum memulai pakai Git, kamu wajib atur dulu profil yang kamu gunakan.
 
-```shell{promptUser: tri}
+```shell
 git config --global user.name "Nama Kamu"
 git config --global user.email "emailkamu@gmail.com"
 ```
@@ -102,7 +102,7 @@ Atur isi "Nama Kamu" dan "emailkamu@gmail.com" dengan identitasmu sendiri. **Per
 
 Untuk lihat apakah identitasmu udah berhasil didaftarkan atau belum, ketikkan perintah berikut:
 
-```shell{promptUser: tri}
+```shell
 git config --global user.name
 git config --global user.email
 ```
@@ -115,7 +115,7 @@ Kamu cuma perlu mengeksekusi perintah ini sekali saja di setiap direktori/projec
 
 Perintah `git init` digunakan buat ngasih tau ke Git kalau kita pengen supaya direktori yang sedang aktif sekarang (**latihan-git**) dikenali oleh Git, sehingga segala perubahan yang kita buat bisa dikenali olehnya.
 
-```shell{promptUser: tri}
+```shell
 git init
 ```
 
@@ -127,8 +127,8 @@ Setelah kamu eksekusi perintah di atas maka akan muncul pesan _Initialized empty
 
 Buat latihan, sekarang tambahkan file bernama **index.html** pakai _text editor_ kesukaanmu. Lalu, isi filenya dengan kode berikut:
 
-```html
-<!DOCTYPE html>
+```html{numberLines: true}
+<!doctype html>
 <html>
   <head>
     <title>Git Tutorial</title>
@@ -148,7 +148,7 @@ Dari _output_ di atas, Git ngasih tau ke kita kalau ada satu file yang tidak ia 
 
 Git ngga akan bisa mengenali perubahan yang terjadi pada suatu file kalau kita ngga ngedaftarin file yang **_Untracked_** ke Git. Ketik perintah berikut buat ngedaftarin filenya ke Git:
 
-```shell{promptUser: tri}
+```shell
 git add index.html
 ```
 
@@ -165,7 +165,7 @@ Masih ingat kan analogi Game di awal artikel ini? di Git, aktivitas menyimpan pe
 
 Supaya bisa menyimpan progress kita sekarang, tuliskan perintah berikut di Terminal:
 
-```shell{promptUser: tri}
+```shell
 git commit -m "Membuat file index.html"
 ```
 
