@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.1",
     "@heroicons/react": "^2.0.18",
     "@mdx-js/react": "^3.0.0",
     "autoprefixer": "^10.4.16",
