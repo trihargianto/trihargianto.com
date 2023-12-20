@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { graphql } from "gatsby";
 
 import Navbar from "../../03-organisms/Navbar";
@@ -18,6 +18,21 @@ interface BlogPostTemplateProps {
 const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
   const htmlContent = data.markdownRemark.html;
 
+  const commentsContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src = "https://utteranc.es/client.js";
+    script.async = true;
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("repo", "trihargianto/comments");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("crossorigin", "anonymous");
+
+    commentsContainer.current?.appendChild(script);
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -26,6 +41,14 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         dangerouslySetInnerHTML={{ __html: htmlContent }}
         className="rendered-markdown container mx-auto"
       />
+
+      <div className="container mx-auto">
+        <hr className="my-8" />
+
+        <p className="mb-6 text-center text-2xl font-semibold">Komentar</p>
+
+        <div ref={commentsContainer}></div>
+      </div>
 
       <Footer />
     </>
