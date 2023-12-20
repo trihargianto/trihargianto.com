@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql, Link, PageProps } from "gatsby";
 
-import SectionTitle from "../components-v2/01-atoms/SectionTitle";
-import Navbar from "../components-v2/03-organisms/Navbar";
-import Footer from "../components-v2/03-organisms/Footer";
+import SectionTitle from "../components/01-atoms/SectionTitle";
+import Navbar from "../components/03-organisms/Navbar";
+import Footer from "../components/03-organisms/Footer";
 
 interface BlogPageProps {
   articles: {

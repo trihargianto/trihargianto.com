@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 
-import SectionTitle from "../components-v2/01-atoms/SectionTitle";
-import Navbar from "../components-v2/03-organisms/Navbar";
-import Footer from "../components-v2/03-organisms/Footer";
-import ProjectCard from "../components-v2/02-molecules/ProjectCard";
+import SectionTitle from "../components/01-atoms/SectionTitle";
+import Navbar from "../components/03-organisms/Navbar";
+import Footer from "../components/03-organisms/Footer";
+import ProjectCard from "../components/02-molecules/ProjectCard";
 
 interface ProjectPageProps {
   projects: {
