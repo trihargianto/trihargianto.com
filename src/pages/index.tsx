@@ -4,7 +4,7 @@ import { graphql, PageProps } from "gatsby";
 import GreetingCard from "../components/02-molecules/GreetingCard";
 import LatestArticle from "../components/03-organisms/LatestArticle";
 import LatestProject from "../components/03-organisms/LatestProject";
-import Navbar from "../components/03-organisms/Navbar";
+import NavigationBar from "../components/03-organisms/NavigationBar";
 import Footer from "../components/03-organisms/Footer";
 
 import { publications } from "../../content/publications";
@@ -58,7 +58,7 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
 
   return (
     <div className="mb-10">
-      <Navbar isBorderBottomVisible={false} />
+      <NavigationBar isBorderBottomVisible={false} />
 
       <div className="container mx-auto mt-5">
         <GreetingCard />

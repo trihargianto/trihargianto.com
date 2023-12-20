@@ -3,7 +3,7 @@ import { graphql, PageProps } from "gatsby";
 
 import SocialShareButtons from "../../02-molecules/SocialShareButtons";
 import SEO from "../../02-molecules/SEO";
-import Navbar from "../../03-organisms/Navbar";
+import NavigationBar from "../../03-organisms/NavigationBar";
 import Footer from "../../03-organisms/Footer";
 
 type BlogPostTemplateProps = {
@@ -74,7 +74,7 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
         pathname={pathname}
       />
 
-      <Navbar />
+      <NavigationBar />
 
       <section
         dangerouslySetInnerHTML={{ __html: htmlContent }}

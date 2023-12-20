@@ -5,11 +5,13 @@ import { Link } from "gatsby";
 import BrandLogo from "../../01-atoms/BrandLogo";
 import { navbarMenu } from "../../../constants/navbar-menu";
 
-interface NavbarProps {
+interface NavigationBarProps {
   isBorderBottomVisible?: boolean;
 }
 
-const Navbar = ({ isBorderBottomVisible = true }: NavbarProps) => {
+const NavigationBarProps = ({
+  isBorderBottomVisible = true,
+}: NavigationBarProps) => {
   return (
     <nav
       className={clsx(
@@ -40,4 +42,4 @@ const Navbar = ({ isBorderBottomVisible = true }: NavbarProps) => {
   );
 };
 
-export default Navbar;
+export default NavigationBarProps;

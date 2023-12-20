@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, Link, PageProps } from "gatsby";
 
 import SectionTitle from "../components/01-atoms/SectionTitle";
-import Navbar from "../components/03-organisms/Navbar";
+import NavigationBar from "../components/03-organisms/NavigationBar";
 import Footer from "../components/03-organisms/Footer";
 
 interface BlogPageProps {
@@ -30,7 +30,7 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
 
   return (
     <div className="mb-10">
-      <Navbar />
+      <NavigationBar />
 
       <div className="container mx-auto mt-5">
         <SectionTitle>Articles</SectionTitle>

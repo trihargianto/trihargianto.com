@@ -2,13 +2,13 @@ import React from "react";
 
 import { publications } from "../../content/publications";
 import SectionTitle from "../components/01-atoms/SectionTitle";
-import Navbar from "../components/03-organisms/Navbar";
+import NavigationBar from "../components/03-organisms/NavigationBar";
 import Footer from "../components/03-organisms/Footer";
 
 const PublicationsPage = () => {
   return (
     <div className="mb-10">
-      <Navbar />
+      <NavigationBar />
 
       <div className="container mx-auto mt-5">
         <SectionTitle>Publications</SectionTitle>
