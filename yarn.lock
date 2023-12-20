@@ -8498,6 +8498,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-omni-font-loader@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "gatsby-omni-font-loader@npm:2.0.2"
+  peerDependencies:
+    gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+    react-helmet: ">=6.0.0"
+  checksum: 4ce90f35f2ab457c94f96ee1381340d9a0be540a4e4d5294e1d428fa06821dcfe775497206f792e8199ef400dca56e9fdcaebc7097a9940646f5852a11b128aa
+  languageName: node
+  linkType: hard
+
 "gatsby-page-utils@npm:^3.12.1":
   version: 3.12.1
   resolution: "gatsby-page-utils@npm:3.12.1"
@@ -17022,6 +17032,7 @@ __metadata:
     eslint-config-prettier: "npm:^9.0.0"
     eslint-plugin-react: "npm:^7.33.2"
     gatsby: "npm:^5.12.4"
+    gatsby-omni-font-loader: "npm:^2.0.2"
     gatsby-plugin-google-gtag: "npm:^5.12.3"
     gatsby-plugin-image: "npm:^3.12.3"
     gatsby-plugin-manifest: "npm:^5.12.3"

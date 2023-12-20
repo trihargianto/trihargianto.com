@@ -3,62 +3,12 @@
 @tailwind utilities;
 
 body {
+  font-family: "Inter";
+
   @apply bg-slate-100;
 }
 
 .rendered-markdown {
-  // .global-wrapper {
-  //   @apply my-0 mt-auto px-5 py-8;
-  // }
-
-  // .global-header {
-  //   @apply mb-12;
-  // }
-
-  // .post-list-item {
-  //   @apply my-8;
-  // }
-
-  // .post-list-item p {
-  //   @apply mb-0;
-  // }
-
-  // .post-list-item h2 {
-  //   @apply mb-2 mt-0 text-2xl text-blue-500;
-  // }
-
-  // .post-list-item header {
-  //   @apply mb-4;
-  // }
-
-  // .header-link-home {
-  //   @apply text-lg font-bold no-underline;
-  // }
-
-  // .blog-post header h1 {
-  //   @apply mx-0 mb-4 mt-0;
-  // }
-
-  // .blog-post header p {
-  //   @apply text-lg;
-  // }
-
-  // .blog-post-nav ul {
-  //   @apply my-0 mb-8 mt-5;
-  // }
-
-  // .gatsby-highlight {
-  //   @apply mb-8;
-  // }
-
-  // .btn-plain {
-  //   @apply bg-transparent;
-  // }
-
-  // .heading-markdown {
-  //   @apply top-auto;
-  // }
-
   hr {
     @apply my-4 h-[1px] border-0 bg-gray-300;
   }
@@ -105,7 +55,7 @@ body {
   }
 
   p {
-    @apply mb-4;
+    @apply mb-5 leading-7;
   }
 
   ul,
@@ -149,14 +99,20 @@ body {
   // }
 
   a {
-    @apply hover:underline;
+    @apply text-blue-600 underline decoration-2;
   }
 
   /* Table of Contents */
   .table-of-contents {
     @apply font-normal;
 
+    a {
+      @apply text-inherit no-underline hover:underline;
+    }
+
     ul {
+      @apply pl-1;
+
       li {
         @apply my-2;
 
@@ -165,7 +121,7 @@ body {
         }
 
         ul {
-          @apply pl-3 text-sm;
+          @apply pl-0 text-sm;
         }
       }
     }
