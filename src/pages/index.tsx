@@ -56,7 +56,7 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
 
   return (
     <div className="mb-10">
-      <Navbar />
+      <Navbar isBorderBottomVisible={false} />
 
       <div className="container mx-auto mt-5">
         <GreetingCard />

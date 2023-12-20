@@ -1,5 +1,6 @@
 import React from "react";
 
+import SectionTitle from "../../01-atoms/SectionTitle";
 import ProjectCard from "../../02-molecules/ProjectCard";
 
 type LatestProjectTypes = {
@@ -13,7 +14,8 @@ type LatestProjectTypes = {
 const LatestProject = ({ projects, className }: LatestProjectTypes) => (
   <div className={className}>
     <div className="mb-8 flex items-center justify-between">
-      <h2 className="text-2xl font-semibold sm:text-3xl">Projects</h2>
+      <SectionTitle>Projects</SectionTitle>
+
       <button className="rounded-sm bg-blue-500 px-4 py-3 text-white hover:bg-blue-400">
         Lihat Semua
       </button>

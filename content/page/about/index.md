@@ -4,6 +4,8 @@ description: Sebuah halaman perkenalan Tri Hargianto
 category: page
 ---
 
+## About Me
+
 Halo, perkenalkan saya Tri Hargianto. Biasa dipanggil Tri. <br />
 Sekarang sedang kerja jadi seorang fulltime Front-End Engineer di [Mamikos](https://mamikos.com). <br />
 Website ini adalah personal website saya dimana saya bisa berbagai apapun yang saya tahu dan mau. <br />
@@ -49,12 +51,12 @@ Lead Software Engineer
 
 Saya harap kamu suka website ini, jika ada yang mau kamu bicarakan dengan saya, jangan sungkan buat kontak saya via email. Saya sangat terbuka dengan komentar, feedback, & saran.
 
-<p style="font-size: var(--fontSize-3); margin-top: 0; margin-bottom: 45px; padding-top: 0;">
+<p>
   💌 &nbsp;
   <a href="mailto:trihargianto@gmail.com">
     trihargianto@gmail.com
   </a>
 </p>
 
-- 🖼 Instagram : [@trihargianto](https://instagram.com/trihargianto)
 - 🐙 GitHub : [@trihargianto](https://github.com/trihargianto)
+- 🤵‍♂️ LinkedIn : [@trihargianto](https://www.linkedin.com/in/trihargianto/)
