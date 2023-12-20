@@ -5,25 +5,36 @@ import Button from "../../01-atoms/Button";
 import SectionTitle from "../../01-atoms/SectionTitle";
 
 interface LatestArticleTypes {
+  // Section title
   sectionTitle: string;
+
+  // Articles
   articles: {
     title: string;
     date: string;
     slug?: string;
     link?: string;
   }[];
+
+  // CSS Classes
   className: string;
+
+  // A path link to see the articles when the button is clicked
+  seeAllLink: string;
 }
 
 const LatestArticle = ({
   sectionTitle,
   articles,
   className,
+  seeAllLink,
 }: LatestArticleTypes) => (
   <div className={className}>
-    <div className="mb-8 flex items-center justify-between">
+    <div className="mb-4 flex items-center justify-between">
       <SectionTitle>{sectionTitle}</SectionTitle>
-      <Button>Lihat Semua</Button>
+      <Button as="a" href={seeAllLink}>
+        Lihat Semua
+      </Button>
     </div>
 
     {articles.map((item, index) => (

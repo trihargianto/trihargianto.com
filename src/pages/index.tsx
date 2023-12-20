@@ -34,6 +34,7 @@ interface IndexPageProps {
       frontmatter: {
         title: string;
         description: string;
+        demoLink: string;
       };
     }[];
   };
@@ -50,6 +51,7 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
     title: node.frontmatter.title,
     slug: node.fields.slug,
     description: node.frontmatter.description,
+    demoLink: node.frontmatter.demoLink,
   }));
 
   const latestPublications = publications.slice(0, LIMIT_LATEST_ARTICLES);
@@ -65,15 +67,21 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
           sectionTitle="Artikel Terbaru"
           articles={latestArticles}
           className="mt-14"
+          seeAllLink="/blog"
         />
 
         <LatestArticle
           sectionTitle="Publikasi"
           articles={latestPublications}
           className="mt-14"
+          seeAllLink="/publications"
         />
 
-        <LatestProject projects={latestProjects} className="mt-14" />
+        <LatestProject
+          projects={latestProjects}
+          className="mt-14"
+          seeAllLink="/projects"
+        />
 
         <Footer />
       </div>
@@ -111,6 +119,7 @@ export const pageQuery = graphql`
         frontmatter {
           title
           description
+          demoLink
         }
       }
     }

@@ -7,11 +7,11 @@ export const navbarMenu: {
   isExternalLink?: boolean;
 }[] = [
   {
-    path: "/",
+    path: "/blog",
     label: "Blog",
   },
   {
-    path: "/",
+    path: "/projects",
     label: "Projects",
   },
   {
