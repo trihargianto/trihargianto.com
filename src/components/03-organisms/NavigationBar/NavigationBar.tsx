@@ -19,9 +19,9 @@ const NavigationBarProps = ({
         isBorderBottomVisible ? "border-b border-b-gray-200" : "",
       )}
     >
-      <div className="container mx-auto flex items-center justify-start py-4 sm:justify-between">
+      <div className="container mx-auto flex items-center justify-between py-4">
         <Link to="/">
-          <BrandLogo className="hidden sm:block" />
+          <BrandLogo />
         </Link>
 
         <ul className="flex items-center gap-8">
