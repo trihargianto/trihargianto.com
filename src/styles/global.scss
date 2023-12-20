@@ -60,7 +60,7 @@ body {
   // }
 
   hr {
-    @apply h-[1px] border-0 bg-white;
+    @apply my-4 h-[1px] border-0 bg-gray-300;
   }
 
   h1,
@@ -105,7 +105,7 @@ body {
   }
 
   p {
-    @apply mb-5;
+    @apply mb-4;
   }
 
   ul,
@@ -128,7 +128,7 @@ body {
   // }
 
   blockquote {
-    @apply ml-4 border-l-2 border-l-gray-300 pl-3 italic text-gray-400;
+    @apply border-l-2 border-l-gray-300 pl-5 italic text-gray-500;
   }
 
   // blockquote > :last-child {

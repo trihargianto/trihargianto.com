@@ -9,8 +9,8 @@ type ProjectCardTypes = {
 };
 
 const ProjectCard = ({ name, children, demoLink }: ProjectCardTypes) => (
-  <div className="flex h-full w-full flex-col border-2 px-6 py-5">
-    <p className="mb-2">{name}</p>
+  <div className="flex h-full w-full flex-col border-2 bg-white px-6 py-5">
+    <p className="mb-2 font-semibold">{name}</p>
     <p className="flex-1 text-slate-400">{children}</p>
 
     <div className="mt-5">
