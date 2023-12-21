@@ -1,5 +1,18 @@
 # tri-hargianto-official-website
 
+## 2.3.0
+
+### Minor Changes
+
+- 7873b21: Avoid reloading when click "Lihat Semua" button
+- a23a1a0: Add transition when switching theme
+- d1c7e68: Add SEO title tag for all pages
+- d133848: Sync comment feature theme with the dark mode theme switcher
+
+### Patch Changes
+
+- cfa5ec6: Fix border bottom on publication page is not match with dark mode theme
+
 ## 2.2.0
 
 ### Minor Changes
