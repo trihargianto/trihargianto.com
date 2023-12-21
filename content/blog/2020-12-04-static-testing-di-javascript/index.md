@@ -34,7 +34,7 @@ Untuk dapat menggunakan Eslint, kita harus menginstall dulu Eslint di aplikasi k
 
 > Saya menggunakan Yarn sebagai package manager pengganti NPM. Kamu bisa tetap menggunakan NPM kalau belum install Yarn. Perbedaan perintah NPM dan Yarn bisa di lihat <a href="https://www.digitalocean.com/community/tutorials/nodejs-npm-yarn-cheatsheet">di sini</a>.
 
-```js
+```shell
 yarn add --dev eslint
 ```
 
@@ -42,7 +42,7 @@ yarn add --dev eslint
 
 Selanjutnya, kita perlu membuat file konfigurasi yang berisi aturan-aturan untuk kode kita. Kita cukup menjalankan perintah berikut untuk membuat file konfigurasinya:
 
-```js
+```shell
 yarn eslint --init
 ```
 
@@ -61,7 +61,7 @@ Sisa pertanyaan lainnya bisa dilihat di _screenshot_ berikut (kamu bebas mengatu
 <img src="yarn-init-answers.png" width="100%" alt="Yarn init - Rekap Jawaban" />
 <p align="center"><small><i>Gambar 3: Yarn Init - Rekap Jawaban</i></small></p>
 
-Sampai di sini kita bakal dapet file bernama `.eslintrc.json` secara otomatis, dan isi filenya kurang lebih seperti berikut:
+Sampai di sini kita bakal dapet file bernama **.eslintrc.json** secara otomatis, dan isi filenya kurang lebih seperti berikut:
 
 ```json
 {
@@ -79,7 +79,7 @@ Sampai di sini kita bakal dapet file bernama `.eslintrc.json` secara otomatis, d
 
 ### Menjalankan Eslint
 
-Sampai di sini, kita harus punya setidaknya satu file Javascript buat dicek oleh Eslint. Di sini saya membuat file bernama `demo.js` dengan kode simpel seperti berikut:
+Sampai di sini, kita harus punya setidaknya satu file Javascript buat dicek oleh Eslint. Di sini saya membuat file bernama **demo.js** dengan kode simpel seperti berikut:
 
 ```js
 var king = "Bran Stark";
@@ -89,7 +89,7 @@ console.log(king);
 
 Setelah itu kita bisa coba jalankan Eslint di terminal:
 
-```js
+```shell
 yarn eslint .
 ```
 
@@ -104,7 +104,7 @@ Untuk menambahkan aturan, buka file **eslintrc.json**, lalu tambahkan aturan/_ru
 
 Saya akan coba menambahkan `"no-console": "warn"`.
 
-```js
+```json
 {
   "env": {
     "browser": true,
@@ -152,7 +152,7 @@ Padahal kita cuma punya `"no-console": "warn"` di file **eslintrc.json**, kenapa
 
 Jawabannya, karena `"extends": "eslint:recommended"` ada di file **eslintrc.json**
 
-```js
+```json
 {
   "env": {
     "browser": true,
@@ -176,7 +176,7 @@ Mengatur aturan-aturan di _property_ **rules** pastinya membosankan bukan? Apala
 
 Kita bisa menyuruh Eslint untuk memperbaiki semua _warning_/_error_ yang ada secara otomatis dengan menambahkan `--fix` saat menjalankan Eslint.
 
-```shell{promptUser: tri}
+```shell
 yarn eslint . --fix
 ```
 
@@ -195,7 +195,7 @@ Cara kerjanya sangat mirip dengan **.gitignore** di Git.
 
 Oh ya, kita bisa memanfaatkan file **.gitignore** daripada membuat file **.eslintignore**. Caranya dengan menambahkan option `--ignore-path` ketika menjalankan Eslint.
 
-```shell{promptUser: tri}
+```shell
 yarn eslint --ignore-path .gitignore .
 ```
 
@@ -211,60 +211,60 @@ Dengan memakai Prettier, kita cukup fokus membuat aplikasi kita saja dan gak per
 
 ### Instalasi dan Konfigurasi
 
-```shell{promptUser: tri}
+```shell
 yarn add --dev prettier
 ```
 
 Untuk mencoba mem-format kode suatu file, jalankan perintah berikut:
 
-```shell{promptUser: tri}
+```shell
 yarn prettier demo.js
 ```
 
 Menjalankan perintah di atas cuma akan menampilkan hasil yang sudah di format di terminal saja. Untuk memformat file dan sekaligus kodenya, tambahkan `--write`.
 
-```shell{promptUser: tri}
+```shell
 yarn prettier demo.js --write
 ```
 
 Kita juga bisa menyuruh Prettier untuk memformat semua file di project kita dengan tanda . (titik)
 
-```shell{promptUser: tri}
+```shell
 yarn prettier . --write
 ```
 
 Bahkan kamu juga bisa pakai Regex untuk memilih apa saja file yang kita mau supaya ditangani oleh Prettier.
 
-```shell{promptUser: tri}
+```shell
 yarn prettier \"**/*.+(js|json)\" --write
 ```
 
 Sama seperti Eslint, kita bisa menambahkan `--ignore-path` buat mengabaikan kode yang gak perlu di format
 
-```shell{promptUser: tri}
+```shell
 yarn prettier --ignore-path node_modules \"**/*.+(js|json)\" --write
 ```
 
 dan memanfaatkan **.gitignore** seperti yang kita lakukan di Eslint.
 
-```shell{promptUser: tri}
+```shell
 yarn prettier --ignore-path .gitignore \"**/*.+(js|json)\" --write
 ```
 
-Kita juga bisa mengatur bagaimana Prettier memformat kode kita dengan cara membuat file bernama `.prettierrc`
+Kita juga bisa mengatur bagaimana Prettier memformat kode kita dengan cara membuat file bernama **.prettierrc**
 
-Untuk memudahkan, buka [https://prettier.io/playground/](https://prettier.io/playground/) lalu klik **Show Options**. Disitu bakal ada opsi yang bisa kita atur sesuai preferensi kita. Setelah nemu yang cocok, klik **Copy config JSON** lalu paste ke file `.prettierrc`
+Untuk memudahkan, buka [https://prettier.io/playground/](https://prettier.io/playground/) lalu klik "Show Options". Disitu bakal ada opsi yang bisa kita atur sesuai preferensi kita. Setelah nemu yang cocok, klik "Copy config JSON" lalu paste ke file **.prettierrc**
 
 ### Prettier di VSCode
 
-VSCode juga punya ekstensi buat Prettier! Kamu tinggal install [ekstensinya](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), lalu buka file `settings.json` di VSCode.
+VSCode juga punya ekstensi buat Prettier! Kamu tinggal install [ekstensinya](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), lalu buka file **settings.json** di VSCode.
 
 Selanjutnya, pastikan kamu menambahkan dua pengaturan berikut:
 
-```js
+```json
 {
   "editor.defaultFormatter": "esbenp.pretter-vscode",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": true
 }
 ```
 
@@ -288,18 +288,15 @@ Hal ini bisa bikin frustasi karena setiap kita membetulkan error yang muncul di 
 
 Solusinya adalah dengan menginstall [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
 
-```js
+```shell
 yarn add --dev eslint-config-prettier
 ```
 
-Selanjutnya, kita tinggal tambahkan bagian `extends` di file `.eslintrc`
+Selanjutnya, kita tinggal tambahkan bagian `extends` di file **.eslintrc**
 
-```js
+```json
 {
-  "extends": [
-    "some-other-config-you-use",
-    "prettier"
-  ]
+  "extends": ["some-other-config-you-use", "prettier"]
 }
 ```
 
@@ -311,14 +308,9 @@ Karena plugin ini cara kerjanya menimpa peraturan yang telah di-extends, maka wa
 
 Kalau meng-extends suatu plugin, disarankan juga menambahkan `prettier/plugin-tersebut` (kalau tersedia). Contohnya:
 
-```js
+```json
 {
-  ...,
-  "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/react"
-  ]
+  "extends": ["airbnb", "prettier", "prettier/react"]
 }
 ```
 
@@ -330,7 +322,7 @@ kode di atas meng-extend plugin [_eslint-config-airbnb_](https://www.npmjs.com/p
 
 Perintah-perintah terminal di atas akan lebih mudah kalau kita tambahkan _scripts_ di file **package.json** supaya lebih singkat tiap kali mau ngejalaninnya.
 
-```js
+```json
 {
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
@@ -358,13 +350,13 @@ Untuk itu, kita bisa memanfaatkan <a href="https://www.npmjs.com/package/husky" 
 
 Kamu bisa menginstall <a href="https://www.npmjs.com/package/husky" target="_blank" rel="noopener">Husky</a> dengan menjalankan perintah berikut:
 
-```shell{promptUser: tri}
+```shell
 yarn add --dev husky
 ```
 
-Lalu, buat sebuah file bernama `.huskyrc` dan isi dengan konten berikut:
+Lalu, buat sebuah file bernama **.huskyrc** dan isi dengan konten berikut:
 
-```js
+```json
 {
   "hooks": {
     "pre-commit": "yarn validate"
@@ -392,25 +384,21 @@ Gimana caranya, supaya kamu cuma perlu mengurusi kode yang kamu ubah saja (file 
 
 Install dulu Lint-Staged via terminal:
 
-```shell{promptUser: tri}
+```shell
 yarn add --dev lint-staged
 ```
 
 Lalu, buat file bernama **.lintstagedrc** dan isi dengan konten berikut:
 
-```js
+```json
 {
-  "*.js": [
-    "eslint --fix",
-		"prettier --write",
-		"git add"
-  ]
+  "*.js": ["eslint --fix", "prettier --write", "git add"]
 }
 ```
 
 Lalu update file **.huskyrc**
 
-```js
+```json
 {
   "hooks": {
     "pre-commit": "lint-staged"
