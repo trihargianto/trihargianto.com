@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
+import path from "path";
+import { createFilePath } from "gatsby-source-filesystem";
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -75,14 +74,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       blogs.errors,
     );
     return;
+  } else if (projects.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your project posts`,
+      blogs.errors,
+    );
+    return;
   }
-  // else if (projects.errors) {
-  //   reporter.panicOnBuild(
-  //     `There was an error loading your project posts`,
-  //     blogs.errors,
-  //   );
-  //   return;
-  // }
 
   const blogPosts = blogs.data.allMarkdownRemark.nodes;
   const pagePosts = pages.data.allMarkdownRemark.nodes;
@@ -145,7 +143,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    let slug = createFilePath({ node, getNode });
+    const slug = createFilePath({ node, getNode });
 
     const BLOG_POST_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.+)$/;
     const PAGE_REGEX = /(page\/)(.+)$/;
@@ -156,12 +154,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const projectMatch = PROJECT_REGEX.exec(slug);
 
     if (blogMatch !== null) {
-      const year = blogMatch[1];
-      const month = blogMatch[2];
-      const day = blogMatch[3];
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const [_, year, month, day] = blogMatch;
 
       const filename = blogMatch[4];
-      const date = new Date(Date.UTC(year, month - 1, day));
+      const date = new Date(Number(year), Number(month) - 1, Number(day));
 
       createNodeField({
         name: `slug`,
@@ -172,7 +169,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       createNodeField({
         name: `date`,
         node,
-        value: date.toJSON(),
+        value: date,
       });
     } else if (pageMatch) {
       const filename = pageMatch[2];

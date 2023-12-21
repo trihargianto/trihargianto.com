@@ -16,7 +16,7 @@ const NavigationBarProps = ({
   return (
     <nav
       className={clsx(
-        "mb-5",
+        "mb-8",
         isBorderBottomVisible
           ? "border-b border-b-gray-200 dark:border-b-gray-800"
           : "",

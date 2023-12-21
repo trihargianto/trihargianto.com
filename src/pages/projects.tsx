@@ -2,7 +2,6 @@ import React from "react";
 import { graphql, PageProps } from "gatsby";
 
 import SEO from "../components/02-molecules/SEO";
-import SectionTitle from "../components/01-atoms/SectionTitle";
 import NavigationBar from "../components/03-organisms/NavigationBar";
 import Footer from "../components/03-organisms/Footer";
 import ProjectCard from "../components/02-molecules/ProjectCard";
@@ -41,7 +40,7 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
         <NavigationBar />
 
         <div className="container mx-auto mt-5">
-          <SectionTitle>Projects</SectionTitle>
+          <h1 className="mb-8 text-3xl font-semibold sm:text-4xl">Projects</h1>
 
           <div className="-m-2 flex flex-wrap sm:flex-row">
             {projects.map((item, index) => (

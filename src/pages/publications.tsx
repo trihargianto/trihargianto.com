@@ -1,7 +1,6 @@
 import React from "react";
 
 import { publications } from "../../content/publications";
-import SectionTitle from "../components/01-atoms/SectionTitle";
 import NavigationBar from "../components/03-organisms/NavigationBar";
 import Footer from "../components/03-organisms/Footer";
 import SEO from "../components/02-molecules/SEO";
@@ -15,7 +14,9 @@ const PublicationsPage = () => {
         <NavigationBar />
 
         <div className="container mx-auto mt-5">
-          <SectionTitle>Publications</SectionTitle>
+          <h1 className="mb-8 text-3xl font-semibold sm:text-4xl">
+            Publications
+          </h1>
 
           {publications.map((item, index) => (
             <div
