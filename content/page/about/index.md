@@ -4,7 +4,7 @@ description: Sebuah halaman perkenalan Tri Hargianto
 category: page
 ---
 
-## About Me
+# About Me
 
 Halo, perkenalkan saya Tri Hargianto. Biasa dipanggil Tri. <br />
 Sekarang sedang kerja jadi seorang fulltime Front-End Engineer di [Mamikos](https://mamikos.com). <br />
