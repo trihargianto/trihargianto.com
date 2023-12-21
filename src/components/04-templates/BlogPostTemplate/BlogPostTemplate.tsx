@@ -5,6 +5,7 @@ import SocialShareButtons from "../../02-molecules/SocialShareButtons";
 import SEO from "../../02-molecules/SEO";
 import NavigationBar from "../../03-organisms/NavigationBar";
 import Footer from "../../03-organisms/Footer";
+import { useDarkMode } from "../../../hooks/useDarkMode";
 
 type BlogPostTemplateProps = {
   data: {
@@ -40,6 +41,8 @@ type BlogPostTemplateProps = {
 } & PageProps;
 
 const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
+  const { theme } = useDarkMode();
+
   const htmlContent = data.markdownRemark.html;
 
   const image = data.markdownRemark.frontmatter.image?.childImageSharp?.resize;
@@ -59,11 +62,22 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
     script.async = true;
     script.setAttribute("issue-term", "pathname");
     script.setAttribute("repo", "trihargianto/comments");
-    script.setAttribute("theme", "github-light");
+
+    script.setAttribute(
+      "theme",
+      theme === "light" ? "github-light" : "github-dark",
+    );
+
     script.setAttribute("crossorigin", "anonymous");
 
     commentsContainer.current?.appendChild(script);
-  }, []);
+
+    return () => {
+      if (commentsContainer.current) {
+        commentsContainer.current.innerHTML = "";
+      }
+    };
+  }, [theme]);
 
   return (
     <>
