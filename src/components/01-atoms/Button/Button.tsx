@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import clsx from "clsx";
 
 type ButtonVariantTypes = "primary" | "secondary" | "tertiary";
@@ -12,6 +13,7 @@ export type ButtonPropTypes = {
   isRounded?: boolean;
   isActive?: boolean;
   as?: "button" | "a";
+  href?: string;
   className?: string;
 } & React.ComponentProps<"button" | "a">;
 
@@ -46,9 +48,10 @@ const Button = ({
   as = "button",
   children,
   className,
+  href,
   ...restProps
 }: ButtonPropTypes) => {
-  const Element = as;
+  const Element = as === "a" ? Link : as;
 
   return (
     /** @ts-expect-error unknown type */
@@ -59,6 +62,7 @@ const Button = ({
         buttonClasses.size(size),
         className,
       ])}
+      {...(href ? { to: href } : {})}
       {...restProps}
     >
       {children}
