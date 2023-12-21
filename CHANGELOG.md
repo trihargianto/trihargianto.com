@@ -1,5 +1,12 @@
 # tri-hargianto-official-website
 
+## 2.2.0
+
+### Minor Changes
+
+- 38ee318: Improve code snippets readibility
+- cc6d4b4: Add dark mode feature
+
 ## 2.1.0
 
 ### Minor Changes
