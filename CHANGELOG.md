@@ -1,5 +1,15 @@
 # tri-hargianto-official-website
 
+## 2.5.0
+
+### Minor Changes
+
+- 4ba98e7: Make section title use english on homepage
+- 24a7ff7: Group articles by year on article page
+- 626cbbb: Add Endorsements section in About page
+- ead82b1: Redesign Publication list
+- 4c11152: Make endorsments component support dark mode
+
 ## 2.4.0
 
 ### Minor Changes
