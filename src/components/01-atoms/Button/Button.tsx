@@ -21,9 +21,9 @@ const buttonClasses = {
   variant: (variant: ButtonVariantTypes) => {
     const variantClasses: { [key: string]: string } = {
       primary:
-        "text-white bg-blue-500 border-blue-500 border hover:bg-blue-600",
+        "text-white bg-blue-500 border-blue-500 border hover:bg-blue-600 dark:bg-blue-800 dark:border-transparent dark:hover:bg-blue-900",
       secondary:
-        "text-slate-600 bg-slate-200 border-slate-300 border hover:bg-slate-300",
+        "text-slate-600 bg-slate-200 border-slate-300 border hover:bg-slate-300 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-900 dark:text-slate-200",
     };
 
     return variantClasses[variant];

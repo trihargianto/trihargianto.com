@@ -2,8 +2,9 @@ import React from "react";
 import clsx from "clsx";
 import { Link } from "gatsby";
 
-import BrandLogo from "../../01-atoms/BrandLogo";
 import { navbarMenu } from "../../../constants/navbar-menu";
+import BrandLogo from "../../01-atoms/BrandLogo";
+import DarkModeSwitcher from "../../02-molecules/DarkModeSwitcher";
 
 interface NavigationBarProps {
   isBorderBottomVisible?: boolean;
@@ -16,7 +17,9 @@ const NavigationBarProps = ({
     <nav
       className={clsx(
         "mb-5",
-        isBorderBottomVisible ? "border-b border-b-gray-200" : "",
+        isBorderBottomVisible
+          ? "border-b border-b-gray-200 dark:border-b-gray-800"
+          : "",
       )}
     >
       <div className="container mx-auto flex items-center justify-between py-4">
@@ -24,7 +27,7 @@ const NavigationBarProps = ({
           <BrandLogo />
         </Link>
 
-        <ul className="flex items-center gap-8">
+        <ul className="flex items-center gap-7">
           {navbarMenu.map((item, index) => (
             <li key={`menu-${index}`}>
               {item.isExternalLink ? (
@@ -32,10 +35,23 @@ const NavigationBarProps = ({
                   {item.label}
                 </a>
               ) : (
-                <Link to={item.path}>{item.label}</Link>
+                <Link
+                  to={item.path}
+                  className={clsx([
+                    item.label === "Blog" || item.label === "Projects"
+                      ? "hidden sm:block"
+                      : "",
+                  ])}
+                >
+                  {item.label}
+                </Link>
               )}
             </li>
           ))}
+
+          <li>
+            <DarkModeSwitcher />
+          </li>
         </ul>
       </div>
     </nav>

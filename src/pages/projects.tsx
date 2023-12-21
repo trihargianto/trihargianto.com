@@ -39,10 +39,10 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
       <div className="container mx-auto mt-5">
         <SectionTitle>Projects</SectionTitle>
 
-        <div className="-m-1 flex flex-wrap sm:flex-row">
+        <div className="-m-2 flex flex-wrap sm:flex-row">
           {projects.map((item, index) => (
             <div
-              className="w-full p-1 md:w-1/2 lg:w-1/3"
+              className="w-full p-2 md:w-1/2 lg:w-1/3"
               key={`latest-project-${index}`}
             >
               <ProjectCard

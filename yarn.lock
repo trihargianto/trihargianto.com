@@ -17063,6 +17063,7 @@ __metadata:
     sass: "npm:^1.69.5"
     tailwindcss: "npm:^3.3.5"
     typescript: "npm:^5.3.0"
+    use-local-storage-state: "npm:^19.1.0"
   languageName: unknown
   linkType: soft
 
@@ -17779,6 +17780,16 @@ __metadata:
     file-loader:
       optional: true
   checksum: 71b6300e02ce26c70625eae1a2297c0737635038c62691bb3007ac33e85c0130efc74bfb444baf5c6b3bad5953491159d31d66498967d1417865d0c7e7cd1a64
+  languageName: node
+  linkType: hard
+
+"use-local-storage-state@npm:^19.1.0":
+  version: 19.1.0
+  resolution: "use-local-storage-state@npm:19.1.0"
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 22b81f4784af5dd7ddabaccd49f09ca87a3aa75b02b395fd97beaf16299074faada21b36f4ea8e1ff51abf74ecb98456ac7fd9eda231c312109a9b6eae8674b4
   languageName: node
   linkType: hard
 

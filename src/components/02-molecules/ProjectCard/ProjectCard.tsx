@@ -15,7 +15,7 @@ const ProjectCard = ({
   demoLink,
   githubLink,
 }: ProjectCardTypes) => (
-  <div className="flex h-full w-full flex-col border-2 bg-white px-6 py-5">
+  <div className="flex h-full w-full flex-col border-2 bg-white px-6 py-5 dark:border-transparent dark:bg-blue-950">
     <p className="mb-2 font-semibold">{name}</p>
     <p className="flex-1 text-slate-400">{children}</p>
 

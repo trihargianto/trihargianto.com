@@ -38,7 +38,7 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
         {articles.map((item, index) => (
           <div
             key={`latest-article-${index}`}
-            className="flex flex-row justify-between border-b-2 py-3"
+            className="flex flex-row justify-between border-b border-b-gray-200 py-3 dark:border-b-gray-800"
           >
             <Link to={item.slug} className="font-medium hover:underline">
               {item.title}

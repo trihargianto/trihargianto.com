@@ -1,16 +1,24 @@
 import React from "react";
-import Button from "../../01-atoms/Button";
+
 import MoonIcon from "../../../img/icons/moon-filled.svg";
 import SunIcon from "../../../img/icons/sun.svg";
+import { useDarkMode } from "../../../hooks/useDarkMode";
 
 const DarkModeSwitcher = () => {
-  // TODO: Get from React Context
-  const IS_DARK_MODE = false;
+  const { theme, setDarkMode, setLightMode } = useDarkMode();
 
   return (
-    <Button type="button" variant="secondary" size="sm">
-      <img src={IS_DARK_MODE ? MoonIcon : SunIcon} alt="sun icon" width={24} />
-    </Button>
+    <button
+      type="button"
+      className="flex p-1"
+      onClick={theme === "light" ? setDarkMode : setLightMode}
+    >
+      <img
+        src={theme === "dark" ? MoonIcon : SunIcon}
+        alt="sun icon"
+        width={24}
+      />
+    </button>
   );
 };
 
