@@ -70,14 +70,14 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
           <GreetingCard />
 
           <LatestArticle
-            sectionTitle="Artikel Terbaru"
+            sectionTitle="Latest Articles"
             articles={latestArticles}
             className="mt-14"
             seeAllLink="/blog"
           />
 
           <LatestArticle
-            sectionTitle="Publikasi"
+            sectionTitle="Publications"
             articles={latestPublications}
             className="mt-14"
             seeAllLink="/publications"
