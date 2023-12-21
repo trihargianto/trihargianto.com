@@ -5,6 +5,8 @@ import SEO from "../../02-molecules/SEO";
 import NavigationBar from "../../03-organisms/NavigationBar";
 import Footer from "../../03-organisms/Footer";
 
+import Endorsements from "../../03-organisms/Endorsements";
+
 type PageTemplateProps = {
   data: {
     markdownRemark: {
@@ -49,6 +51,10 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
         dangerouslySetInnerHTML={{ __html: htmlContent }}
         className="rendered-markdown container mx-auto"
       />
+
+      <div className="container relative mx-auto mt-14">
+        <Endorsements />
+      </div>
 
       <Footer />
     </>

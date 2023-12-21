@@ -24,29 +24,6 @@ Kebanyakan tulisan di website ini berisi hal teknis seputar pemrograman, teknolo
 - **2019**: Di akhir tahun 2019, saya berhenti jadi fulltime freelancer karena merasa perlu belajar hal baru lagi,dan lalu saya diterima bekerja di [Ralali.com](https://www.ralali.com/) sebagai Front-End Engineer, namun saya hanya bekerja selama 6 bulan di sana.
 - **2020**: Seberhentinya di [Ralali.com](https://www.ralali.com/), saya lalu bergabung di [Mamikos](https://mamikos.com/) dan menjadi Front-End Engineer sampai sekarang.
 
-### Beberapa kutipan
-
-[Giga Prakosa](https://www.linkedin.com/in/gigaprakosa/)
-(Engineering Manager):
-
-> As his Manager, I have seen the exceptional contributions he has made as a Lead Front-End Engineer. Tri is an innovative problem-solver who is always willing to go above and beyond to ensure that his tasks are completed to the highest standard. He is a strong communicator and has a talent for breaking down complex technical concepts for his team and stakeholders. I have no doubt that he will just keep getting better.
-
-[Ahmad Alfan](https://www.linkedin.com/in/alfan-nevo/) (Senior Software Engineer)
-
-> Tri is skilled and dependable software developer. Every project we have done together has been delivered within high-quality, with all tasks solved and even with some extras. I had the pleasure to work shoulder to shoulder with Tri and it was a really good experience. He's very solid technically and his soft skills make him a great person to work with. He will becomes a great asset wherever he is, and Tri earns my highest recommendation.
-
-[William Notowidagdo](https://www.linkedin.com/in/williamn/) (SVP of Engineering)
-
-> "Tri is a good software engineer who understands to get things done. When he started with Ralali, Tri show a good pace in ramping up on his role and did not take long to start adding value to his squad."
-
-[Yunda Bella](https://www.linkedin.com/in/yunda-bella-paramitha-25404966/) (Product Manager)
-
-> "Tri always ensure his tasks met the quality and timely delivery. Not only the dedication, his collaborative and positive manner lit up the team spirit. He brings ideas and feedback to solve issues, and open to other perspective at the same time. He really is a valuable talent!"
-
-[Anggi Susanto](https://www.linkedin.com/in/anggi-susanto/) (Lead Software Engineer)
-
-> "Working with Tri is an ease, he's very skillful and do the things with his strong passion. He won't down with any challenges, strike them with glorious victory. I work with him on some projects and find that he's completely done his task faster and prettier than anyone. Hope we can work together again in the future."
-
 ### Get in touch
 
 Saya harap kamu suka website ini, jika ada yang mau kamu bicarakan dengan saya, jangan sungkan buat kontak saya via email. Saya sangat terbuka dengan komentar, feedback, & saran.
@@ -57,6 +34,3 @@ Saya harap kamu suka website ini, jika ada yang mau kamu bicarakan dengan saya, 
     trihargianto@gmail.com
   </a>
 </p>
-
-- 🐙 GitHub : [@trihargianto](https://github.com/trihargianto)
-- 🤵‍♂️ LinkedIn : [@trihargianto](https://www.linkedin.com/in/trihargianto/)
