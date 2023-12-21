@@ -18,7 +18,7 @@ const EndorseCard = ({
   return (
     <div
       key={name}
-      className="flex h-full flex-col justify-center bg-gray-800 px-6 py-6"
+      className="flex h-full flex-col justify-center bg-white px-6 py-6 dark:bg-gray-800"
     >
       <p className="mb-8">
         {'"'}
@@ -44,7 +44,7 @@ const EndorseCard = ({
               {name}
             </a>
           </p>
-          <p className="text-xs text-slate-400">{title}</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400">{title}</p>
         </div>
       </div>
     </div>

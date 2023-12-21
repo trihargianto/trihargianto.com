@@ -91,12 +91,11 @@ const Endorsements = () => {
       {!isAllEndorserVisible && (
         <>
           <div
-            className="absolute bottom-[0] left-[0] right-[0] z-10 h-96 w-full"
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(31,41,55,0), #121927)",
-              opacity: 1,
-            }}
+            className={clsx(
+              "absolute bottom-[0] left-[0] right-[0] z-10 h-96 w-full",
+              "bg-gradient-to-b from-[rgba(31,41,55,0)] to-slate-100",
+              "dark:bg-gradient-to-b dark:from-[rgba(31,41,55,0)] dark:to-[#121927]",
+            )}
           />
 
           <div className="absolute bottom-[10px] left-[0] right-[0] z-20 flex justify-center">
