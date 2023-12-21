@@ -1,6 +1,6 @@
 ---
 title: trihargianto.com
-description: Source code website ini. Dibuat menggunakan React & GatsbyJs
+description: The source code of this site. Created using Gatsby, React.
 category: project
 githubLink: https://github.com/trihargianto/trihargianto.com
 ---
