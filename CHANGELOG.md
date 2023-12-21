@@ -1,5 +1,11 @@
 # tri-hargianto-official-website
 
+## 2.4.0
+
+### Minor Changes
+
+- 5f90a1a: Add Pokedex to the project page
+
 ## 2.3.0
 
 ### Minor Changes
