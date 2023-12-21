@@ -20,7 +20,7 @@ const PublicationsPage = () => {
           {publications.map((item, index) => (
             <div
               key={`latest-article-${index}`}
-              className="flex flex-row justify-between border-b-2 py-3"
+              className="flex flex-row justify-between border-b-2 py-3 dark:border-b-gray-800"
             >
               <a
                 href={item.link}
