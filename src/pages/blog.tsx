@@ -4,6 +4,7 @@ import { graphql, Link, PageProps } from "gatsby";
 import SectionTitle from "../components/01-atoms/SectionTitle";
 import NavigationBar from "../components/03-organisms/NavigationBar";
 import Footer from "../components/03-organisms/Footer";
+import SEO from "../components/02-molecules/SEO";
 
 interface BlogPageProps {
   articles: {
@@ -29,28 +30,34 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
   }));
 
   return (
-    <div className="mb-10">
-      <NavigationBar />
+    <>
+      <SEO title="Blog" />
 
-      <div className="container mx-auto mt-5">
-        <SectionTitle>Articles</SectionTitle>
+      <div className="mb-10">
+        <NavigationBar />
 
-        {articles.map((item, index) => (
-          <div
-            key={`latest-article-${index}`}
-            className="flex flex-row justify-between border-b border-b-gray-200 py-3 dark:border-b-gray-800"
-          >
-            <Link to={item.slug} className="font-medium hover:underline">
-              {item.title}
-            </Link>
+        <div className="container mx-auto mt-5">
+          <SectionTitle>Articles</SectionTitle>
 
-            <span className="hidden text-slate-400 md:block">{item.date}</span>
-          </div>
-        ))}
+          {articles.map((item, index) => (
+            <div
+              key={`latest-article-${index}`}
+              className="flex flex-row justify-between border-b border-b-gray-200 py-3 dark:border-b-gray-800"
+            >
+              <Link to={item.slug} className="font-medium hover:underline">
+                {item.title}
+              </Link>
 
-        <Footer />
+              <span className="hidden text-slate-400 md:block">
+                {item.date}
+              </span>
+            </div>
+          ))}
+
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

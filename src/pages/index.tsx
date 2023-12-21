@@ -8,6 +8,7 @@ import NavigationBar from "../components/03-organisms/NavigationBar";
 import Footer from "../components/03-organisms/Footer";
 
 import { publications } from "../../content/publications";
+import SEO from "../components/02-molecules/SEO";
 
 const LIMIT_LATEST_ARTICLES = 5;
 
@@ -59,35 +60,39 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
   const latestPublications = publications.slice(0, LIMIT_LATEST_ARTICLES);
 
   return (
-    <div className="mb-10">
-      <NavigationBar isBorderBottomVisible={false} />
+    <>
+      <SEO title="Home" />
 
-      <div className="container mx-auto mt-5">
-        <GreetingCard />
+      <div className="mb-10">
+        <NavigationBar isBorderBottomVisible={false} />
 
-        <LatestArticle
-          sectionTitle="Artikel Terbaru"
-          articles={latestArticles}
-          className="mt-14"
-          seeAllLink="/blog"
-        />
+        <div className="container mx-auto mt-5">
+          <GreetingCard />
 
-        <LatestArticle
-          sectionTitle="Publikasi"
-          articles={latestPublications}
-          className="mt-14"
-          seeAllLink="/publications"
-        />
+          <LatestArticle
+            sectionTitle="Artikel Terbaru"
+            articles={latestArticles}
+            className="mt-14"
+            seeAllLink="/blog"
+          />
 
-        <LatestProject
-          projects={latestProjects}
-          className="mt-14"
-          seeAllLink="/projects"
-        />
+          <LatestArticle
+            sectionTitle="Publikasi"
+            articles={latestPublications}
+            className="mt-14"
+            seeAllLink="/publications"
+          />
 
-        <Footer />
+          <LatestProject
+            projects={latestProjects}
+            className="mt-14"
+            seeAllLink="/projects"
+          />
+
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
