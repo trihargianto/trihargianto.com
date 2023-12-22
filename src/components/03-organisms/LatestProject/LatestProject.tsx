@@ -23,7 +23,7 @@ const LatestProject = ({
 }: LatestProjectTypes) => (
   <div className={className}>
     <div className="mb-4 flex items-center justify-between">
-      <h2>Projects</h2>
+      <h2>Pet Projects</h2>
 
       <Button as="a" href={seeAllLink}>
         Lihat Semua
