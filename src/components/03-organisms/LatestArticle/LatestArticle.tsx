@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "gatsby";
 
 import Button from "../../01-atoms/Button";
-import SectionTitle from "../../01-atoms/SectionTitle";
 
 interface LatestArticleTypes {
   // Section title
@@ -31,7 +30,8 @@ const LatestArticle = ({
 }: LatestArticleTypes) => (
   <div className={className}>
     <div className="mb-4 flex items-center justify-between">
-      <SectionTitle>{sectionTitle}</SectionTitle>
+      <h2>{sectionTitle}</h2>
+
       <Button as="a" href={seeAllLink}>
         Lihat Semua
       </Button>

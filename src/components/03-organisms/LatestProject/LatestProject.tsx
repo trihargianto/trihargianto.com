@@ -1,6 +1,5 @@
 import React from "react";
 
-import SectionTitle from "../../01-atoms/SectionTitle";
 import ProjectCard from "../../02-molecules/ProjectCard";
 import Button from "../../01-atoms/Button";
 
@@ -24,7 +23,7 @@ const LatestProject = ({
 }: LatestProjectTypes) => (
   <div className={className}>
     <div className="mb-4 flex items-center justify-between">
-      <SectionTitle>Projects</SectionTitle>
+      <h2>Projects</h2>
 
       <Button as="a" href={seeAllLink}>
         Lihat Semua

@@ -90,6 +90,11 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
 
       <NavigationBar />
 
+      <div className="container mx-auto mb-10">
+        <h1 className="mb-0">{title}</h1>
+        <p className="mt-1 text-sm text-gray-500 sm:text-base">{description}</p>
+      </div>
+
       <section
         dangerouslySetInnerHTML={{ __html: htmlContent }}
         className="rendered-markdown container mx-auto"

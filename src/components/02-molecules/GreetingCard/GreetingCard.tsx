@@ -25,12 +25,13 @@ const GreetingCard = () => {
       </div>
 
       <div>
-        <p className="mb-5 text-2xl font-semibold sm:mb-7 sm:text-3xl">
+        <h1>
           Halo, salam kenal!{" "}
           <span role="img" aria-label="wave emoji">
             👋
           </span>
-        </p>
+        </h1>
+
         <p className="mb-5">
           Saya seorang Software Engineer dari{" "}
           <span className="font-semibold">Yogyakarta, Indonesia 🇮🇩</span>

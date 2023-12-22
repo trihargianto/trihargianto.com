@@ -42,13 +42,11 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
         <NavigationBar />
 
         <div className="container mx-auto mt-5">
-          <h1 className="mb-8 text-3xl font-semibold sm:text-4xl">Blog</h1>
+          <h1>Blog</h1>
 
           {years.map((year) => (
             <div key={year} className="mb-10">
-              <h3 className="mb-2 text-2xl font-semibold sm:text-3xl">
-                {year}
-              </h3>
+              <h2 className="mb-2">{year}</h2>
 
               {articlesByYear[year].map((item, index) => (
                 <div

@@ -14,9 +14,7 @@ const PublicationsPage = () => {
         <NavigationBar />
 
         <div className="container mx-auto mt-5">
-          <h1 className="mb-8 text-3xl font-semibold sm:text-4xl">
-            Publications 📰
-          </h1>
+          <h1>Publications 📰</h1>
 
           {publications.map((item, index) => (
             <div
