@@ -12,7 +12,7 @@ export const navbarMenu: {
   },
   {
     path: "/projects",
-    label: "Projects",
+    label: "Pet Projects",
   },
   {
     path: "/about",

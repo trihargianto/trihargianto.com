@@ -38,7 +38,7 @@ const NavigationBarProps = ({
                 <Link
                   to={item.path}
                   className={clsx([
-                    item.label === "Blog" || item.label === "Projects"
+                    item.label === "Blog" || item.label === "Pet Projects"
                       ? "hidden sm:block"
                       : "",
                   ])}

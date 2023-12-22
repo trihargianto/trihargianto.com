@@ -40,7 +40,10 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
         <NavigationBar />
 
         <div className="container mx-auto mt-5">
-          <h1>Pet Projects</h1>
+          <div className="mb-8">
+            <h1 className="mb-0">Pet Projects 🐈</h1>
+            <p className="mt-1 text-sm text-gray-500 sm:text-base">Some of my work that I worked on my spare time for fun</p>
+          </div>
 
           <div className="-m-2 flex flex-wrap sm:flex-row">
             {projects.map((item, index) => (
