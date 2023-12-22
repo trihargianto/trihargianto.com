@@ -34,13 +34,13 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
 
   return (
     <>
-      <SEO title="Projects" />
+      <SEO title="Pet Projects" />
 
       <div className="mb-10">
         <NavigationBar />
 
         <div className="container mx-auto mt-5">
-          <h1>Projects</h1>
+          <h1>Pet Projects</h1>
 
           <div className="-m-2 flex flex-wrap sm:flex-row">
             {projects.map((item, index) => (
