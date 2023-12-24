@@ -47,3 +47,9 @@
 .gatsby-code-title span::after {
   @apply absolute bottom-[0] left-1 top-[0] m-auto h-4 w-4 text-xs content-["📄"];
 }
+
+/** GATSBY-REMARK-PRISMJS-COPY-BUTTON **/
+.gatsby-remark-prismjs-copy-button-container {
+  left: 0;
+  padding-right: 8px;
+}
