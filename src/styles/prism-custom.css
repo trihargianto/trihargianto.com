@@ -1,9 +1,8 @@
 /** ADD LINE HIGHLIGHTING STYLES **/
 .gatsby-highlight {
-  @apply rounded-md text-sm;
+  @apply rounded-md text-sm my-5;
 
   background-color: #2f2f2f;
-  margin: 0.5em 0;
   padding: 1em;
   overflow: auto;
 }
@@ -29,4 +28,17 @@
 /** ADD LINE NUMBERING **/
 .gatsby-highlight pre[class*="language-"].line-numbers {
   padding-left: 2.8em;
+}
+
+/** OVERRIDE PROMPT USER & PROMPT HOST FROM GATSBY PRISM **/
+.command-line-prompt {
+  margin-right: .5em;
+}
+
+.command-line-prompt > span[data-user]:before {
+  content: "$";
+}
+
+.command-line-prompt > span:before {
+  padding-right: .5em;
 }

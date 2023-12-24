@@ -71,8 +71,6 @@ const config: GatsbyConfig = {
             options: {
               showLineNumbers: false,
               prompt: {
-                user: "user",
-                host: "local",
                 global: true,
               },
             },

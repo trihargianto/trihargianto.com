@@ -68,15 +68,20 @@ h6 {
   }
 
   table {
-    @apply mb-8 w-full border-collapse border-spacing-1;
+    @apply mb-6 mt-4 w-full;
   }
 
-  table thead tr th {
-    @apply border-b border-solid text-gray-400;
+  table {
+    tr {
+      th,
+      td {
+        @apply border px-2 py-1 text-left dark:border-gray-700;
+      }
+    }
   }
 
   a {
-    @apply text-blue-600 underline decoration-2 dark:text-blue-400;
+    @apply underline decoration-2 hover:no-underline;
   }
 
   /* Table of Contents */
