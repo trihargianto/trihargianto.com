@@ -5,13 +5,13 @@ import SunIcon from "../../../img/icons/sun.svg";
 import { useDarkMode } from "../../../hooks/useDarkMode";
 
 const DarkModeSwitcher = () => {
-  const { theme, setDarkMode, setLightMode } = useDarkMode();
+  const { theme, setDarkTheme, setLightTheme } = useDarkMode();
 
   return (
     <button
       type="button"
       className="flex p-1"
-      onClick={theme === "light" ? setDarkMode : setLightMode}
+      onClick={theme === "light" ? setDarkTheme : setLightTheme}
     >
       <img
         src={theme === "dark" ? MoonIcon : SunIcon}
