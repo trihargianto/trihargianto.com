@@ -2,8 +2,7 @@ import React from "react";
 import { graphql, PageProps } from "gatsby";
 
 import SEO from "../../02-molecules/SEO";
-import NavigationBar from "../../03-organisms/NavigationBar";
-import Footer from "../../03-organisms/Footer";
+import Layout from "../Layout";
 
 import Endorsements from "../../03-organisms/Endorsements";
 
@@ -37,15 +36,13 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
   const pathname = location.pathname;
 
   return (
-    <>
+    <Layout>
       <SEO
         title={title}
         description={description}
         image={image}
         pathname={pathname}
       />
-
-      <NavigationBar />
 
       <section
         dangerouslySetInnerHTML={{ __html: htmlContent }}
@@ -55,9 +52,7 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
       <div className="container relative mx-auto mt-14">
         <Endorsements />
       </div>
-
-      <Footer />
-    </>
+    </Layout>
   );
 };
 
