@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { graphql, PageProps } from "gatsby";
 
 import SocialShareButtons from "../../02-molecules/SocialShareButtons";
@@ -13,6 +13,10 @@ type BlogPostTemplateProps = {
       html: string;
       fields: {
         slug: string;
+        date: string;
+        readingTime: {
+          text: string;
+        };
       };
       frontmatter: {
         title: string;
@@ -51,6 +55,8 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
   const description = data.markdownRemark.frontmatter.description;
   const twitter = data.site.siteMetadata.social.twitter;
   const url = data.site.siteMetadata.siteUrl;
+  const date = data.markdownRemark.fields.date;
+  const readingTimeText = data.markdownRemark.fields.readingTime.text;
   const pathname = location.pathname;
 
   const commentsContainer = useRef<HTMLDivElement>(null);
@@ -90,9 +96,18 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
 
       <NavigationBar />
 
-      <div className="container mx-auto mb-10">
+      <div className="container mx-auto">
         <h1 className="mb-0">{title}</h1>
-        <p className="mt-1 text-sm text-gray-500 sm:text-base">{description}</p>
+
+        <p className="mb-6 mt-1 text-sm text-gray-700 sm:text-base">
+          {description}
+        </p>
+
+        <p className="mb-3 mt-1 text-sm text-gray-500">
+          <span>🗓️ {date}</span>
+          <span className="mx-2 text-base font-bold">·</span>
+          <span>⏳ {readingTimeText}</span>
+        </p>
       </div>
 
       <section
@@ -132,6 +147,10 @@ export const query = graphql`
       html
       fields {
         slug
+        date(formatString: "DD MMMM YYYY")
+        readingTime {
+          text
+        }
       }
       frontmatter {
         title
