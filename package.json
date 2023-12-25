@@ -26,6 +26,7 @@
     "gatsby-plugin-image": "^3.13.0",
     "gatsby-plugin-manifest": "^5.12.3",
     "gatsby-plugin-mdx": "^5.12.3",
+    "gatsby-plugin-nprogress": "^5.13.0",
     "gatsby-plugin-postcss": "^6.12.0",
     "gatsby-plugin-sass": "^6.12.3",
     "gatsby-plugin-sharp": "^5.13.0",

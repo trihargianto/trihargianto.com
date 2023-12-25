@@ -160,6 +160,15 @@ const config: GatsbyConfig = {
         ],
       },
     },
+
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-nprogress/
+    {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: '#2463EB',
+        showSpinner: true,
+      },
+    },
   ],
 };
 
