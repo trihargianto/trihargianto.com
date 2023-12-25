@@ -1,5 +1,15 @@
 # tri-hargianto-official-website
 
+## 2.6.0
+
+### Minor Changes
+
+- 6081302: Make footer stick to the bottom
+- c9275b4: Add progress indicator when opening pages
+- 5c06936: Add code title to the code snippet
+- 5c0477e: Add Reading Time to article detail page
+- 260e3aa: Detecting Dark Mode based on System Settings
+
 ## 2.5.0
 
 ### Minor Changes
