@@ -1,12 +1,12 @@
 /** ADD LINE HIGHLIGHTING STYLES **/
 .gatsby-highlight {
-  @apply mb-5 overflow-auto rounded-md py-2 text-sm;
+  @apply mb-5 overflow-hidden rounded-md p-1 pl-1 pr-3 text-sm;
 
   background-color: #2f2f2f;
 }
 
 .gatsby-highlight pre[class*="language-"] {
-  @apply float-left m-0 min-w-full overflow-auto py-1;
+  @apply m-0 min-w-full overflow-auto py-1;
 }
 
 .gatsby-highlight-code-line {
