@@ -3,8 +3,7 @@ import { graphql, PageProps } from "gatsby";
 
 import SocialShareButtons from "../../02-molecules/SocialShareButtons";
 import SEO from "../../02-molecules/SEO";
-import NavigationBar from "../../03-organisms/NavigationBar";
-import Footer from "../../03-organisms/Footer";
+import Layout from "../Layout";
 import { useDarkMode } from "../../../hooks/useDarkMode";
 
 type BlogPostTemplateProps = {
@@ -86,15 +85,13 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
   }, [theme]);
 
   return (
-    <>
+    <Layout>
       <SEO
         title={title}
         description={description}
         image={image}
         pathname={pathname}
       />
-
-      <NavigationBar />
 
       <div className="container mx-auto">
         <h1 className="mb-0">{title}</h1>
@@ -135,9 +132,7 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
 
         <div ref={commentsContainer}></div>
       </div>
-
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

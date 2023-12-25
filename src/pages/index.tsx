@@ -4,8 +4,7 @@ import { graphql, PageProps } from "gatsby";
 import GreetingCard from "../components/02-molecules/GreetingCard";
 import LatestArticle from "../components/03-organisms/LatestArticle";
 import LatestProject from "../components/03-organisms/LatestProject";
-import NavigationBar from "../components/03-organisms/NavigationBar";
-import Footer from "../components/03-organisms/Footer";
+import Layout from "../components/04-templates/Layout";
 
 import { publications } from "../../content/publications";
 import SEO from "../components/02-molecules/SEO";
@@ -60,12 +59,10 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
   const latestPublications = publications.slice(0, LIMIT_LATEST_ARTICLES);
 
   return (
-    <>
+    <Layout isNavBorderBottomVisible={false}>
       <SEO title="Home" />
 
       <div className="mb-10">
-        <NavigationBar isBorderBottomVisible={false} />
-
         <div className="container mx-auto mt-5">
           <GreetingCard />
 
@@ -88,11 +85,9 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
             className="mt-14"
             seeAllLink="/projects"
           />
-
-          <Footer />
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

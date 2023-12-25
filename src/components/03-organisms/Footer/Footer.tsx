@@ -10,7 +10,7 @@ const Footer = () => {
   const { theme } = useDarkMode();
 
   return (
-    <footer className="mb-8 mt-16 flex flex-col items-center justify-center md:mt-20">
+    <footer className="absolute bottom-[0] flex h-48 w-full flex-col items-center justify-end pb-8">
       <div className="mb-8 flex gap-4">
         <a
           href="https://github.com/trihargianto"

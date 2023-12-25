@@ -2,8 +2,7 @@ import React from "react";
 import { graphql, Link, PageProps } from "gatsby";
 import { groupBy } from "lodash-es";
 
-import NavigationBar from "../components/03-organisms/NavigationBar";
-import Footer from "../components/03-organisms/Footer";
+import Layout from "../components/04-templates/Layout";
 import SEO from "../components/02-molecules/SEO";
 
 interface BlogPageProps {
@@ -35,12 +34,10 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
   const years = Object.keys(articlesByYear).sort().reverse();
 
   return (
-    <>
+    <Layout>
       <SEO title="Blog" />
 
       <div className="mb-10">
-        <NavigationBar />
-
         <div className="container mx-auto mt-5">
           <h1>Blog</h1>
 
@@ -64,11 +61,9 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
               ))}
             </div>
           ))}
-
-          <Footer />
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

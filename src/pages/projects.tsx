@@ -2,8 +2,7 @@ import React from "react";
 import { graphql, PageProps } from "gatsby";
 
 import SEO from "../components/02-molecules/SEO";
-import NavigationBar from "../components/03-organisms/NavigationBar";
-import Footer from "../components/03-organisms/Footer";
+import Layout from "../components/04-templates/Layout";
 import ProjectCard from "../components/02-molecules/ProjectCard";
 
 interface ProjectPageProps {
@@ -33,16 +32,16 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
   }));
 
   return (
-    <>
+    <Layout>
       <SEO title="Pet Projects" />
 
       <div className="mb-10">
-        <NavigationBar />
-
         <div className="container mx-auto mt-5">
           <div className="mb-8">
             <h1 className="mb-0">Pet Projects 🐈</h1>
-            <p className="mt-1 text-sm text-gray-500 sm:text-base">Some of my work that I worked on my spare time for fun</p>
+            <p className="mt-1 text-sm text-gray-500 sm:text-base">
+              Some of my work that I worked on my spare time for fun
+            </p>
           </div>
 
           <div className="-m-2 flex flex-wrap sm:flex-row">
@@ -61,11 +60,9 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
               </div>
             ))}
           </div>
-
-          <Footer />
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
