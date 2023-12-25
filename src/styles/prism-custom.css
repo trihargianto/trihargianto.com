@@ -37,7 +37,7 @@
 }
 
 .gatsby-code-title + .gatsby-highlight {
-  @apply mt-3;
+  @apply mt-3 rounded-t-none;
 }
 
 .gatsby-code-title span {
