@@ -81,6 +81,9 @@ const config: GatsbyConfig = {
 
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
+
+          // https://www.gatsbyjs.com/plugins/gatsby-remark-reading-time/
+          "gatsby-remark-reading-time",
         ],
       },
     },
@@ -163,9 +166,9 @@ const config: GatsbyConfig = {
 
     // https://www.gatsbyjs.com/plugins/gatsby-plugin-nprogress/
     {
-      resolve: 'gatsby-plugin-nprogress',
+      resolve: "gatsby-plugin-nprogress",
       options: {
-        color: '#2463EB',
+        color: "#2463EB",
         showSpinner: true,
       },
     },
