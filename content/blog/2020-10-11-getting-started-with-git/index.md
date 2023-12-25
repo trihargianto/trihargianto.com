@@ -127,7 +127,7 @@ Setelah kamu eksekusi perintah di atas maka akan muncul pesan _Initialized empty
 
 Buat latihan, sekarang tambahkan file bernama **index.html** pakai _text editor_ kesukaanmu. Lalu, isi filenya dengan kode berikut:
 
-```html{numberLines: true}
+```html:title=index.html
 <!doctype html>
 <html>
   <head>

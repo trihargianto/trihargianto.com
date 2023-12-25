@@ -1,38 +1,26 @@
 /** ADD LINE HIGHLIGHTING STYLES **/
 .gatsby-highlight {
-  @apply rounded-md text-sm my-5;
+  @apply mb-5 overflow-auto rounded-md py-2 text-sm;
 
   background-color: #2f2f2f;
-  padding: 1em;
-  overflow: auto;
 }
 
 .gatsby-highlight pre[class*="language-"] {
-  margin: 0;
-  padding: 0;
-  overflow: initial;
-  float: left;
-  min-width: 100%;
+  @apply float-left m-0 min-w-full overflow-auto py-1;
 }
 
 .gatsby-highlight-code-line {
-  background-color: #454545;
-  display: block;
-  margin-right: -1em;
-  margin-left: -1em;
-  padding-right: 1em;
-  padding-left: 0.75em;
-  border-left: 0.25em solid #f99;
+  @apply -ml-4 -mr-2 block border-l-4 border-l-green-200 bg-neutral-600 pl-2 pr-4;
 }
 
-/** ADD LINE NUMBERING **/
+/** ADD LINE NUMBERING. (NOT WORKING AFTER GATSBY REMARK PRISMJS TITLE INSTALLED) **/
 .gatsby-highlight pre[class*="language-"].line-numbers {
-  padding-left: 2.8em;
+  @apply pl-11;
 }
 
 /** OVERRIDE PROMPT USER & PROMPT HOST FROM GATSBY PRISM **/
 .command-line-prompt {
-  margin-right: .5em;
+  @apply mr-2;
 }
 
 .command-line-prompt > span[data-user]:before {
@@ -40,5 +28,22 @@
 }
 
 .command-line-prompt > span:before {
-  padding-right: .5em;
+  @apply pr-2;
+}
+
+/** https://github.com/otanu/gatsby-remark-prismjs-title **/
+.gatsby-code-title {
+  @apply relative top-3 block flex h-10 w-full items-end rounded-tl-md rounded-tr-md bg-neutral-900 px-3 text-sm dark:bg-neutral-950;
+}
+
+.gatsby-code-title + .gatsby-highlight {
+  @apply mt-3;
+}
+
+.gatsby-code-title span {
+  @apply relative z-10 inline rounded-sm rounded-b-none border-b-2 border-b-blue-600 bg-neutral-800 py-1 pl-6 pr-2 text-gray-200 dark:bg-neutral-800;
+}
+
+.gatsby-code-title span::after {
+  @apply absolute bottom-[0] left-1 top-[0] m-auto h-4 w-4 text-xs content-["📄"];
 }

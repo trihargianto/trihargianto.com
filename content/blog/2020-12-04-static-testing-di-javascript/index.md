@@ -63,7 +63,7 @@ Sisa pertanyaan lainnya bisa dilihat di _screenshot_ berikut (kamu bebas mengatu
 
 Sampai di sini kita bakal dapet file bernama **.eslintrc.json** secara otomatis, dan isi filenya kurang lebih seperti berikut:
 
-```json
+```json:title=.eslintrc.json
 {
   "env": {
     "browser": true,
@@ -81,7 +81,7 @@ Sampai di sini kita bakal dapet file bernama **.eslintrc.json** secara otomatis,
 
 Sampai di sini, kita harus punya setidaknya satu file Javascript buat dicek oleh Eslint. Di sini saya membuat file bernama **demo.js** dengan kode simpel seperti berikut:
 
-```js
+```js:title=demo.js
 var king = "Bran Stark";
 
 console.log(king);
@@ -100,11 +100,11 @@ yarn eslint .
 
 ### Menambahkan Aturan di Eslint
 
-Untuk menambahkan aturan, buka file **eslintrc.json**, lalu tambahkan aturan/_rule_ nya ke dalam _property_ **rules**.
+Untuk menambahkan aturan, buka file **.eslintrc.json**, lalu tambahkan aturan/_rule_ nya ke dalam _property_ **rules**.
 
 Saya akan coba menambahkan `"no-console": "warn"`.
 
-```json
+```json:title=.eslintrc.json
 {
   "env": {
     "browser": true,
@@ -150,9 +150,9 @@ Sampai di sini, kode **demo.js** mempunyai satu _warning_, yaitu gak boleh ada `
 
 Padahal kita cuma punya `"no-console": "warn"` di file **eslintrc.json**, kenapa Eslint bisa melaporkan warning itu?
 
-Jawabannya, karena `"extends": "eslint:recommended"` ada di file **eslintrc.json**
+Jawabannya, karena `"extends": "eslint:recommended"` ada di file **.eslintrc.json**
 
-```json
+```json:title=.eslintrc.json
 {
   "env": {
     "browser": true,
@@ -261,7 +261,8 @@ VSCode juga punya ekstensi buat Prettier! Kamu tinggal install [ekstensinya](htt
 
 Selanjutnya, pastikan kamu menambahkan dua pengaturan berikut:
 
-```json
+
+```json:title=settings.json
 {
   "editor.defaultFormatter": "esbenp.pretter-vscode",
   "editor.formatOnSave": true
@@ -292,9 +293,9 @@ Solusinya adalah dengan menginstall [eslint-config-prettier](https://github.com/
 yarn add --dev eslint-config-prettier
 ```
 
-Selanjutnya, kita tinggal tambahkan bagian `extends` di file **.eslintrc**
+Selanjutnya, kita tinggal tambahkan bagian `extends` di file **.eslintrc.json**
 
-```json
+```json:title=.eslintrc.json
 {
   "extends": ["some-other-config-you-use", "prettier"]
 }
@@ -308,7 +309,7 @@ Karena plugin ini cara kerjanya menimpa peraturan yang telah di-extends, maka wa
 
 Kalau meng-extends suatu plugin, disarankan juga menambahkan `prettier/plugin-tersebut` (kalau tersedia). Contohnya:
 
-```json
+```json:title=.eslintrc.json
 {
   "extends": ["airbnb", "prettier", "prettier/react"]
 }
@@ -322,7 +323,7 @@ kode di atas meng-extend plugin [_eslint-config-airbnb_](https://www.npmjs.com/p
 
 Perintah-perintah terminal di atas akan lebih mudah kalau kita tambahkan _scripts_ di file **package.json** supaya lebih singkat tiap kali mau ngejalaninnya.
 
-```json
+```json:title=package.json
 {
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
@@ -356,7 +357,7 @@ yarn add --dev husky
 
 Lalu, buat sebuah file bernama **.huskyrc** dan isi dengan konten berikut:
 
-```json
+```json:title=.huskyrc
 {
   "hooks": {
     "pre-commit": "yarn validate"
@@ -390,7 +391,7 @@ yarn add --dev lint-staged
 
 Lalu, buat file bernama **.lintstagedrc** dan isi dengan konten berikut:
 
-```json
+```json:title=.lintstagedrc
 {
   "*.js": ["eslint --fix", "prettier --write", "git add"]
 }
@@ -398,7 +399,7 @@ Lalu, buat file bernama **.lintstagedrc** dan isi dengan konten berikut:
 
 Lalu update file **.huskyrc**
 
-```json
+```json:title=.huskyrc
 {
   "hooks": {
     "pre-commit": "lint-staged"

@@ -8903,6 +8903,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-remark-prismjs-title@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "gatsby-remark-prismjs-title@npm:1.0.0"
+  dependencies:
+    unist-util-visit: "npm:~1.4.0"
+  checksum: 340102a7fb064b075510b498a17d59b23252b396bce39c870c12471834106b89403b626dd75b5a99118d2a087e4e22ec24ca4c5c91875b093ed62e3f2d728251
+  languageName: node
+  linkType: hard
+
 "gatsby-remark-prismjs@npm:^7.12.0":
   version: 7.12.0
   resolution: "gatsby-remark-prismjs@npm:7.12.0"
@@ -17129,6 +17138,7 @@ __metadata:
     gatsby-remark-copy-linked-files: "npm:^6.12.0"
     gatsby-remark-images: "npm:^7.12.3"
     gatsby-remark-prismjs: "npm:^7.12.0"
+    gatsby-remark-prismjs-title: "npm:^1.0.0"
     gatsby-remark-responsive-iframe: "npm:^6.12.0"
     gatsby-remark-smartypants: "npm:^6.12.0"
     gatsby-remark-table-of-contents: "npm:^2.0.0"
@@ -17624,6 +17634,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"unist-util-is@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "unist-util-is@npm:3.0.0"
+  checksum: e46186214fabcef3c4947ab188ae272965465ec5c40652934025f6382c58dff6edca40860528f72718e42f858d1ce7db2754d5198beb96eff0379e4c3c34218f
+  languageName: node
+  linkType: hard
+
 "unist-util-is@npm:^4.0.0":
   version: 4.1.0
   resolution: "unist-util-is@npm:4.1.0"
@@ -17731,6 +17748,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"unist-util-visit-parents@npm:^2.0.0":
+  version: 2.1.2
+  resolution: "unist-util-visit-parents@npm:2.1.2"
+  dependencies:
+    unist-util-is: "npm:^3.0.0"
+  checksum: ca88e2f88f3c4849f1bb4e90edb3f5fa66bf94656165dd74027971c393274d25b1b34974b18da336c4e2b45771495d5dac2f80571fa25f86c8cec859287c25f8
+  languageName: node
+  linkType: hard
+
 "unist-util-visit-parents@npm:^3.0.0, unist-util-visit-parents@npm:^3.1.1":
   version: 3.1.1
   resolution: "unist-util-visit-parents@npm:3.1.1"
@@ -17770,6 +17796,15 @@ __metadata:
     unist-util-is: "npm:^5.0.0"
     unist-util-visit-parents: "npm:^5.1.1"
   checksum: 56a1f49a4d8e321e75b3c7821d540a45165a031dd06324bb0e8c75e7737bc8d73bdddbf0b0ca82000f9708a4c36861c6ebe88d01f7cf00e925f5d75f13a3a017
+  languageName: node
+  linkType: hard
+
+"unist-util-visit@npm:~1.4.0":
+  version: 1.4.1
+  resolution: "unist-util-visit@npm:1.4.1"
+  dependencies:
+    unist-util-visit-parents: "npm:^2.0.0"
+  checksum: 8fb61725270059034d987813816e6c2d6362f55d4d19936db9ce23a5ace0ae4d584064ceb94dee6618e3318aef087505607f7ccc8c4305fbb644c3b643ae0059
   languageName: node
   linkType: hard
 
