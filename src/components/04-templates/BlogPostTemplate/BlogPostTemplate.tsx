@@ -75,7 +75,9 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
 
     script.setAttribute("crossorigin", "anonymous");
 
-    commentsContainer.current?.appendChild(script);
+    setTimeout(() => {
+      commentsContainer.current?.appendChild(script);
+    }, 300);
 
     return () => {
       if (commentsContainer.current) {
