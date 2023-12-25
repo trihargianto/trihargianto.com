@@ -4230,6 +4230,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"accessible-nprogress@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "accessible-nprogress@npm:2.1.2"
+  checksum: c0636ad13f25ec1620a2885408d3b07efdcf301f0be9ed5369caa26d4c7919d7ea324cda67f68be9a15175b56e07a713a8ae31e977bd360f33eeccf18abbb80c
+  languageName: node
+  linkType: hard
+
 "acorn-import-assertions@npm:^1.9.0":
   version: 1.9.0
   resolution: "acorn-import-assertions@npm:1.9.0"
@@ -8686,6 +8693,18 @@ __metadata:
     react: ^18.0.0 || ^0.0.0
     react-dom: ^18.0.0 || ^0.0.0
   checksum: 7abf51c093526a79f89a7d53657c85f525bf8e6d3c4d5f85a6cc0ce0d098d523eb7f61230d8e3f83da59528b19c8af933cf1156f3db2277019afdbfce34874f3
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-nprogress@npm:^5.13.0":
+  version: 5.13.0
+  resolution: "gatsby-plugin-nprogress@npm:5.13.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.20.13"
+    accessible-nprogress: "npm:^2.1.2"
+  peerDependencies:
+    gatsby: ^5.0.0-next
+  checksum: e6eb8f7f23bce4a421c172e296a997b24e06805386f0a9bac6354ebf2817a48c8e63dd9fd37139f9200775f38bf0cc60892205c4c33783b09d43bf0c30b948e4
   languageName: node
   linkType: hard
 
@@ -17130,6 +17149,7 @@ __metadata:
     gatsby-plugin-image: "npm:^3.13.0"
     gatsby-plugin-manifest: "npm:^5.12.3"
     gatsby-plugin-mdx: "npm:^5.12.3"
+    gatsby-plugin-nprogress: "npm:^5.13.0"
     gatsby-plugin-postcss: "npm:^6.12.0"
     gatsby-plugin-sass: "npm:^6.12.3"
     gatsby-plugin-sharp: "npm:^5.13.0"
