@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, Link, PageProps } from "gatsby";
 import { groupBy } from "lodash-es";
+import dayjs from "dayjs";
 
 import Layout from "../components/04-templates/Layout";
 import SEO from "../components/02-molecules/SEO";
@@ -26,7 +27,7 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
   const articles = data.articles.nodes.map((item) => ({
     slug: item.fields.slug,
     title: item.frontmatter.title,
-    date: item.fields.date,
+    date: dayjs(item.fields.date).format("DD MMM YYYY"),
     year: item.fields.year,
   }));
 
@@ -76,7 +77,7 @@ export const pageQuery = graphql`
       nodes {
         fields {
           slug
-          date(formatString: "DD MMMM YYYY")
+          date
           year: date(formatString: "YYYY")
         }
         frontmatter {

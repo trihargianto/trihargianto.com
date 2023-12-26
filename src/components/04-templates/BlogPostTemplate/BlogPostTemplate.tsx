@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { graphql, PageProps } from "gatsby";
+import dayjs from "dayjs";
 
 import SocialShareButtons from "../../02-molecules/SocialShareButtons";
 import SEO from "../../02-molecules/SEO";
@@ -54,7 +55,7 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
   const description = data.markdownRemark.frontmatter.description;
   const twitter = data.site.siteMetadata.social.twitter;
   const url = data.site.siteMetadata.siteUrl;
-  const date = data.markdownRemark.fields.date;
+  const date = dayjs(data.markdownRemark.fields.date).format("DD MMM YYYY");
   const readingTimeText = data.markdownRemark.fields.readingTime.text;
   const pathname = location.pathname;
 
@@ -144,7 +145,7 @@ export const query = graphql`
       html
       fields {
         slug
-        date(formatString: "DD MMMM YYYY")
+        date
         readingTime {
           text
         }
