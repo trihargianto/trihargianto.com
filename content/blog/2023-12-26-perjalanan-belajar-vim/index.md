@@ -130,7 +130,7 @@ harus saya pelajari cara ngaturnya.
 
 ## Kelebihan & Kekurangan
 
-Saat ini saya akan berada Fase 4 untuk beberapa bulan ke depan. Di fase
+Saat ini saya berada di Fase 4 untuk beberapa bulan ke depan. Di fase
 selanjutnya mungkin saya mau coba install Vim polosan di MacBook saya dan coba
 _setup_ semua pluginnya sendiri.
 
@@ -151,7 +151,7 @@ Beberapa poin yang bisa saya ambil sejauh ini sebagai berikut:
   mendedikasikan waktu khusus untuk mempelajari dan membiasakannya.
 - Sangat bisa jadi _boomerang_ untuk produktivitas, bahkan jadi _blocker_ besar
   untuk pekerjaan kita kalau kita belum biasa.
-- Kompleksitasi cara install plugin bisa jadi rumit dibandingkan dengan VSCode
+- Kompleksitas cara install plugin bisa jadi rumit dibandingkan dengan VSCode
   yang rata-rata tinggal klik-klik saja.
 
 ## Penutup
