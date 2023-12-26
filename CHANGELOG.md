@@ -1,5 +1,18 @@
 # tri-hargianto-official-website
 
+## 2.7.0
+
+### Minor Changes
+
+- 9ac67bd: Change /projects path to /pet-projects
+
+### Patch Changes
+
+- af66516: Fix floating weird footer on About page
+- eb5314f: Fix scrolling code snippet issue
+- 3c2df56: Fix showed date is not correct for posts
+- 3fbff35: Fix unhandled runtime error on article page
+
 ## 2.6.0
 
 ### Minor Changes
