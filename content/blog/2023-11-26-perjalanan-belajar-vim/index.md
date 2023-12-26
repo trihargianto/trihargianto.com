@@ -95,7 +95,7 @@ kita bisa merasakan pakai Vim di Prompt Terminal. Jadi misal kita punya command
 yang panjang, navigasi teks jauh lebih mudah dengan plugin ini.
 
 <p class="flex justify-center">
-    <video autoplay loop muted playsinline style="max-width: 600px">
+    <video autoplay loop muted playsinline style="width: 600px; max-width: 100%;">
       <source src="images/zsh-vi-mode.webm" type="video/webm">
       <source src="images/zsh-vi-mode.mp4" type="video/mp4">
     </video>
