@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
+import dayjs from "dayjs";
 
 import GreetingCard from "../components/02-molecules/GreetingCard";
 import LatestArticle from "../components/03-organisms/LatestArticle";
@@ -44,7 +45,7 @@ interface IndexPageProps {
 const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
   const latestArticles = data.latestPosts.nodes.map((node) => ({
     title: node.frontmatter.title,
-    date: node.fields.date,
+    date: dayjs(node.fields.date).format("DD MMM YYYY"),
     slug: node.fields.slug,
   }));
 
@@ -101,7 +102,7 @@ export const pageQuery = graphql`
       nodes {
         fields {
           slug
-          date(formatString: "DD MMMM YYYY")
+          date
         }
         frontmatter {
           title
