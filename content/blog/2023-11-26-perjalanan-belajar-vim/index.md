@@ -55,7 +55,7 @@ Akhirnya terbesit di pikiran saya:
 
 Saya akhirnya membuat komitmen untuk selalu memakai Vim ketika memang tidak ada
 deadline atau di waktu luang, misalnya ketika ngerjain
-[Pet Projects](/projects). Alasannya:
+[Pet Projects](/pet-projects). Alasannya:
 
 - Mencoba sekali lagi, untuk membuktikan apakah sebenernya pake Vim itu bikin
   produktif atau malah sebaliknya.

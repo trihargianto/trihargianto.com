@@ -83,7 +83,7 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
           <LatestProject
             projects={latestProjects}
             className="mt-14"
-            seeAllLink="/projects"
+            seeAllLink="/pet-projects"
           />
         </div>
       </div>
