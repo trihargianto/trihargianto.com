@@ -11,7 +11,7 @@ export const navbarMenu: {
     label: "Blog",
   },
   {
-    path: "/projects",
+    path: "/pet-projects",
     label: "Pet Projects",
   },
   {
