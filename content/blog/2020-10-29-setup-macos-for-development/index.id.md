@@ -147,7 +147,7 @@ Plugin Ohmzsh yang harus di download manual:
 
 Setelah memastikan Built-in dan External Plugin di atas telah terinstall, kita tinggal aktifkan plugin-nya di file **~/.zshrc**
 
-```{numberLines: true}{3, 5-16}
+```txt{3,5-16}:title=~/.zshrc
 ...
 
 alias af="alias-finder -l"
@@ -219,6 +219,10 @@ brew install yarn
 
 ## Git
 
+Instalasi dan Konfigurasi Git
+
+### Install
+
 Install Git via Homebrew:
 
 ```shell
@@ -230,6 +234,37 @@ Setelah Git terinstall, pastikan atur profil di konfigurasi global
 ```shell
 git config --global user.name "Nama Lengkap" && git config --global user.email "alamatemail@mail.com"
 ```
+
+### Git Syntax Highlighter
+
+Saya juga suka menggunakan [Delta](https://dandavison.github.io/delta/) untuk keperluan _syntax highlighter_ di Git supaya lebih nyaman ketika melakukan `git diff` atau `git show`.
+
+Install Delta:
+
+```shell
+brew install git-delta
+```
+
+Lalu edit file **~/.gitconfig**. Biasanya untuk konfigurasinya saya seperti ini saja.  
+
+```txt:title=~/.gitconfig
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+```
+
+[Klik disini](https://dandavison.github.io/delta/configuration.html) untuk lihat apa saja konfigurasi yang tersedia.
 
 ## System Settings
 

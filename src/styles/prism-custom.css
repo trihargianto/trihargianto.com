@@ -13,7 +13,7 @@
   @apply -ml-4 -mr-2 block border-l-4 border-l-green-200 bg-neutral-600 pl-2 pr-4;
 }
 
-/** ADD LINE NUMBERING. (NOT WORKING AFTER GATSBY REMARK PRISMJS TITLE INSTALLED) **/
+/** ADD LINE NUMBERING **/
 .gatsby-highlight pre[class*="language-"].line-numbers {
   @apply pl-11;
 }

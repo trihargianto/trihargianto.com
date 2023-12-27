@@ -39,3 +39,25 @@ Line 5
 `` `
 ```
 
+### Combination
+
+This will highlight lines, show line numbers, and show the file name
+
+> Do not put whitespaces!
+
+```
+```markup{3,5-8}{numberLines:true}:title=.zshrc
+plugins=(
+ git
+ yarn
+ alias-finder
+ autojump
+ npm
+ zsh_reload
+ copydir
+ zsh-interactive-cd
+ zsh-autosuggestions
+ zsh-vim-mode
+)
+`` `
+```
