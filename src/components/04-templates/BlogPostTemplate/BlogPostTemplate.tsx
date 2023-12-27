@@ -47,6 +47,8 @@ type BlogPostTemplateProps = {
 const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
   const { theme } = useDarkMode();
 
+  const changingThemeAttemps = useRef(0);
+
   const htmlContent = data.markdownRemark.html;
 
   const image = data.markdownRemark.frontmatter.image?.childImageSharp?.resize;
@@ -76,15 +78,37 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
 
     script.setAttribute("crossorigin", "anonymous");
 
-    setTimeout(() => {
-      commentsContainer.current?.appendChild(script);
-    }, 300);
+    commentsContainer.current?.appendChild(script);
+  }, []);
 
-    return () => {
-      if (commentsContainer.current) {
-        commentsContainer.current.innerHTML = "";
+  useEffect(() => {
+    function changeCommentTheme(theme: any) {
+      const iframe =
+        document.querySelector<HTMLIFrameElement>(".utterances-frame");
+
+      if (!iframe && changingThemeAttemps.current < 3) {
+        setTimeout(() => {
+          changeCommentTheme(theme);
+
+          changingThemeAttemps.current++;
+        }, 500);
+
+        return;
       }
-    };
+
+      const message = {
+        type: "set-theme",
+        theme: theme === "light" ? "github-light" : "github-dark",
+      };
+
+      if (!iframe) {
+        return;
+      }
+
+      iframe.contentWindow?.postMessage(message, "https://utteranc.es");
+    }
+
+    changeCommentTheme(theme);
   }, [theme]);
 
   return (
