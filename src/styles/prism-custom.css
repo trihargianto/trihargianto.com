@@ -50,6 +50,5 @@
 
 /** GATSBY-REMARK-PRISMJS-COPY-BUTTON **/
 .gatsby-remark-prismjs-copy-button-container {
-  left: 0;
-  padding-right: 8px;
+  /* @apply absolute; */
 }
