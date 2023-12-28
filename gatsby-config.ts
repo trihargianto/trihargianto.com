@@ -172,6 +172,17 @@ const config: GatsbyConfig = {
         showSpinner: true,
       },
     },
+
+    // https://github.com/angeloocana/gatsby-plugin-i18n
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyDefault: "en",
+        useLangKeyLayout: false,
+        langKeyForNull: "en",
+        prefixDefault: false,
+      },
+    },
   ],
 };
 
