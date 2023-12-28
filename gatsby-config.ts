@@ -68,6 +68,9 @@ const config: GatsbyConfig = {
           // https://github.com/otanu/gatsby-remark-prismjs-title
           "gatsby-remark-prismjs-title",
 
+          // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs-copy-button/
+          'gatsby-remark-prismjs-copy-button',
+
           // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
           {
             resolve: "gatsby-remark-prismjs",

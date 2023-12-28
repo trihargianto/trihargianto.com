@@ -36,7 +36,9 @@
   @apply relative top-3 block flex h-10 w-full items-end rounded-tl-md rounded-tr-md bg-neutral-900 px-3 text-sm dark:bg-neutral-950;
 }
 
-.gatsby-code-title + .gatsby-highlight {
+.gatsby-code-title
+  + .gatsby-remark-prismjs-copy-button-container
+  + .gatsby-highlight {
   @apply mt-3 rounded-t-none;
 }
 
@@ -46,4 +48,13 @@
 
 .gatsby-code-title span::after {
   @apply absolute bottom-[0] left-1 top-[0] m-auto h-4 w-4 text-xs content-["📄"];
+}
+
+/** GATSBY-REMARK-PRISMJS-COPY-BUTTON **/
+.gatsby-remark-prismjs-copy-button-container {
+  @apply left-[0] top-2 pr-2;
+}
+
+.gatsby-remark-prismjs-copy-button {
+  @apply bg-gray-400 dark:bg-gray-500;
 }
