@@ -1,3 +1,8 @@
 import React from "react";
+import { useLang } from "../hooks/useLang";
 
-export default () => <div>Indonesian Page!</div> 
+export default () => {
+  const { translate } = useLang();
+
+  return <div>{translate('greetings.hello')}</div>;
+};

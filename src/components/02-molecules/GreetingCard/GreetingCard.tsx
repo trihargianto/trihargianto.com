@@ -1,9 +1,14 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 
 import profilePic from "../../../img/profile-pic-v2.jpg";
+import { useLang } from "../../../hooks/useLang";
 
 const GreetingCard = () => {
+  const { translate } = useLang();
+
+  const res = translate("greetings.whoami");
+
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -26,15 +31,14 @@ const GreetingCard = () => {
 
       <div>
         <h1>
-          Halo, salam kenal!{" "}
+          {translate('greetings.hello')}{" "}
           <span role="img" aria-label="wave emoji">
             👋
           </span>
         </h1>
 
         <p className="mb-5">
-          Saya seorang Software Engineer dari{" "}
-          <span className="font-semibold">Yogyakarta, Indonesia 🇮🇩</span>
+          {translate('greetings.whoami')}{" "} 🇮🇩
         </p>
         <p>{data.site.siteMetadata.description}</p>
       </div>

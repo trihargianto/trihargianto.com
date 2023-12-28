@@ -1,5 +1,8 @@
-import greetings from "./greetings";
+export const lang = {
+  greetings: {
+    hello: "Hello there",
+    whoami: "I am a Software Engineer from Yogyakarta, Indonesia",
+  },
+};
 
-export { default as greetings } from "./greetings";
-
-export type GreetingTypes = { greeting: string; whoAmI: string };
+export default lang;
