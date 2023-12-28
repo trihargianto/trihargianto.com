@@ -63,7 +63,7 @@ Setelah Homebrew ter-install, saya bisa lanjutkan install semua aplikasi yang
 saya butuhkan via Homebrew secara otomatis:
 
 ```shell
-brew install --cask docker google-chrome iterm2 imageoptim kap notion openvpn-connect postman raycast slack spotify sequel-pro visual-studio-code whatsapp
+brew install --cask docker google-chrome iterm2 imageoptim kap notion openvpn-connect postman raycast slack spotify sequel-pro visual-studio-code whatsapp zoom
 ```
 
 <br />
@@ -86,6 +86,7 @@ Perintah di atas akan menginstall aplikasi yang saya butuhkan, yaitu:
 | [Sequel Pro](https://sequelpro.com/download)             | Database UI                |
 | [Visual Studio Code](https://code.visualstudio.com/)     | Code Editor                |
 | [Whatsapp](https://www.whatsapp.com/download)            | Whatsapp Desktop           |
+| [Zoom](https://www.zoom.us/)                             | Virtual meeting platform   |
 
 ### Install Manual
 
