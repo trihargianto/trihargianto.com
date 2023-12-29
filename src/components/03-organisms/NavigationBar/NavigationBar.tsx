@@ -5,6 +5,7 @@ import { Link } from "gatsby";
 import { navbarMenu } from "../../../constants/navbar-menu";
 import BrandLogo from "../../01-atoms/BrandLogo";
 import DarkModeSwitcher from "../../02-molecules/DarkModeSwitcher";
+import LanguageSwitcher from "../../02-molecules/LanguageSwitcher";
 
 interface NavigationBarProps {
   isBorderBottomVisible?: boolean;
@@ -48,6 +49,10 @@ const NavigationBarProps = ({
               )}
             </li>
           ))}
+
+          <li>
+            <LanguageSwitcher />
+          </li>
 
           <li>
             <DarkModeSwitcher />

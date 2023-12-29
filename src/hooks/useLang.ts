@@ -1,17 +1,20 @@
 import { useLocation } from "@reach/router";
+
+import { DEFAULT_LANGUAGE, LANG_EN, LANG_ID } from "../constants/config";
 import { lang as idLang } from "../lang/id";
 import { lang as enLang } from "../lang/en";
-
-// type LanguageTypes = "en" | "id";
 
 export function useLang() {
   const location = useLocation();
 
-  const currentLang = location.pathname.split("/")[1] || "en";
+  const currentUrlPath = location.pathname.split("/")[1];
+
+  const currentLanguage =
+    currentUrlPath === LANG_ID ? LANG_ID : DEFAULT_LANGUAGE;
 
   function getTranslation(contextName: string, keyword: string) {
     try {
-      if (currentLang === "id") {
+      if (currentLanguage === LANG_ID) {
         // @ts-ignore-next
         return idLang[contextName][keyword];
       }
@@ -41,5 +44,6 @@ export function useLang() {
 
   return {
     translate,
+    currentLanguage,
   };
 }
