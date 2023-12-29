@@ -1,6 +1,6 @@
 import { useLocation } from "@reach/router";
 
-import { DEFAULT_LANGUAGE, LANG_EN, LANG_ID } from "../constants/config";
+import { DEFAULT_LANGUAGE, LANG_ID } from "../constants/config";
 import { lang as idLang } from "../lang/id";
 import { lang as enLang } from "../lang/en";
 

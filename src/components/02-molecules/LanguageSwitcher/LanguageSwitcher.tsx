@@ -1,26 +1,18 @@
 import React from "react";
+import { useLocation } from "@reach/router";
 import { Link } from "gatsby";
 
 import { useLang } from "../../../hooks/useLang";
 
-const LanguageSwitcherProps = {};
-
-export default function LanguageSwitcher(props: LanguageSwitcherProps) {
+export default function LanguageSwitcher() {
   const { currentLanguage } = useLang();
-
-  const currentPath = location.pathname;
-
-  console.log(currentPath);
+  const { pathname } = useLocation();
 
   if (currentLanguage === "en") {
-    return <Link to={`/id/${currentPath}`}>🇮🇩</Link>;
+    return <Link to={`/id${pathname}`}>🇮🇩</Link>;
   } else {
-    return <Link to={`/${currentPath}`}>🇺🇸</Link>;
-
     return (
-      <Link to={location.pathname.replace("/" + currentLanguage + "/", "/")}>
-        🇺🇸
-      </Link>
+      <Link to={pathname.replace("/" + currentLanguage + "/", "/")}>🇺🇸</Link>
     );
   }
 }

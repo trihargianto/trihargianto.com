@@ -1,15 +1,13 @@
 import React from "react";
 
-import ProjectCard from "../../02-molecules/ProjectCard";
+import type { PetProjectsQueryTypes } from "../../../hooks/useQuery";
+
 import Button from "../../01-atoms/Button";
+import ProjectCards from "../ProjectCards";
 
 type LatestProjectTypes = {
-  projects: {
-    title: string;
-    description: string;
-    demoLink?: string;
-    githubLink?: string;
-  }[];
+  projects: PetProjectsQueryTypes;
+
   className: string;
 
   // A path link to see the articles when the button is clicked
@@ -30,22 +28,7 @@ const LatestProject = ({
       </Button>
     </div>
 
-    <div className="-m-2 flex flex-wrap sm:flex-row">
-      {projects.map((item, index) => (
-        <div
-          className="w-full p-2 md:w-1/2 lg:w-1/3"
-          key={`latest-project-${index}`}
-        >
-          <ProjectCard
-            name={item.title}
-            demoLink={item.demoLink}
-            githubLink={item.githubLink}
-          >
-            {item.description}
-          </ProjectCard>
-        </div>
-      ))}
-    </div>
+    <ProjectCards projects={projects} />
   </div>
 );
 
