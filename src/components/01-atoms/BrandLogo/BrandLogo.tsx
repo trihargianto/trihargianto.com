@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import IconPng from "../../../img/icon.png";
+import IconPng from "../../../img/icon-logo.png";
 
 type BrandLogoTypes = {
   className?: string;
@@ -12,11 +12,11 @@ const BrandLogo = ({ className = "", ...restProps }: BrandLogoTypes) => (
     <img
       src={IconPng}
       alt="icon"
-      className="mr-1 inline-block"
-      width={28}
-      height={28}
+      className="mr-2 inline-block"
+      width={42}
+      height={42}
     />
-    <span className="hidden sm:inline-block">Tri Hargianto</span>
+    <span className="hidden sm:inline-block">@trihargianto</span>
   </span>
 );
 

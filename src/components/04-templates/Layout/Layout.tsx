@@ -5,13 +5,12 @@ import Footer from "../../03-organisms/Footer";
 
 interface LayoutProps {
   children: React.ReactNode;
-  isNavBorderBottomVisible?: boolean;
 }
 
-const Layout = ({ children, isNavBorderBottomVisible = true }: LayoutProps) => (
+const Layout = ({ children }: LayoutProps) => (
   <div className="relative min-h-screen">
     <div className="w-full pb-48">
-      <NavigationBar isBorderBottomVisible={isNavBorderBottomVisible} />
+      <NavigationBar />
 
       {children}
     </div>

@@ -60,7 +60,7 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
   const latestPublications = publications.slice(0, LIMIT_LATEST_ARTICLES);
 
   return (
-    <Layout isNavBorderBottomVisible={false}>
+    <Layout>
       <SEO title="Home" />
 
       <div className="mb-10">
