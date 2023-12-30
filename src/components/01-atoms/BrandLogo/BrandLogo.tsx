@@ -5,9 +5,14 @@ import IconPng from "../../../img/icon-logo.png";
 
 type BrandLogoTypes = {
   className?: string;
+  isLogoTextVisible?: boolean;
 };
 
-const BrandLogo = ({ className = "", ...restProps }: BrandLogoTypes) => (
+const BrandLogo = ({
+  className = "",
+  isLogoTextVisible = true,
+  ...restProps
+}: BrandLogoTypes) => (
   <span className={clsx(["text-xl font-semibold", className])} {...restProps}>
     <img
       src={IconPng}
@@ -16,7 +21,8 @@ const BrandLogo = ({ className = "", ...restProps }: BrandLogoTypes) => (
       width={42}
       height={42}
     />
-    <span className="hidden sm:inline-block">@trihargianto</span>
+
+    {isLogoTextVisible && <span className="inline-block">@trihargianto</span>}
   </span>
 );
 
