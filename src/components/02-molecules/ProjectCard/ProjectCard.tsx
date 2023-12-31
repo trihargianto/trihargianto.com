@@ -20,9 +20,6 @@ const ProjectCard = ({
     <p className="flex-1 text-slate-400">{children}</p>
 
     <div className="mt-5 flex gap-2">
-      {/* <Button size="xs" variant="secondary">
-        Artikel
-      </Button> */}
       {githubLink && (
         <Button
           size="xs"

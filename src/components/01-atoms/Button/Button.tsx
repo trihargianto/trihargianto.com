@@ -18,8 +18,6 @@ export type ButtonPropTypes = {
 } & React.ComponentProps<"button" | "a">;
 
 const buttonClasses = {
-  base: "rounded-sm",
-
   variant: (variant: ButtonVariantTypes) => {
     const variantClasses: { [key: string]: string } = {
       primary:
@@ -57,7 +55,7 @@ const Button = ({
     /** @ts-expect-error unknown type */
     <Element
       className={clsx([
-        buttonClasses.base,
+        "rounded-md transition-colors",
         buttonClasses.variant(variant),
         buttonClasses.size(size),
         className,

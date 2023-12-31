@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import { useDarkMode } from "../../../hooks/useDarkMode";
 
@@ -8,10 +9,12 @@ const DarkModeSwitcher = () => {
   const isLightMode = theme === "light";
 
   return (
-    <button
+    <motion.button
       type="button"
       className="flex p-1"
       onClick={isLightMode ? setDarkTheme : setLightTheme}
+      whileTap={{ scale: .9 }}
+      whileHover={{ scale: 1.1 }}
     >
       {isLightMode ? (
         <svg
@@ -48,7 +51,7 @@ const DarkModeSwitcher = () => {
       <span className="ml-2 inline-block lg:hidden">
         Ubah ke {theme === "light" ? "Dark" : "Light"} Mode
       </span>
-    </button>
+    </motion.button>
   );
 };
 
