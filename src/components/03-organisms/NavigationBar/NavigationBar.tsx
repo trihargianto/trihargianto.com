@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { Link } from "gatsby";
 import { useLocation } from "@reach/router";
@@ -10,7 +10,10 @@ import DarkModeSwitcher from "../../02-molecules/DarkModeSwitcher";
 
 const NavigationBarProps = () => {
   const location = useLocation();
+  const navRef = useRef<HTMLElement | null>(null);
 
+  const [isNavbarVisible, setNavbarVisible] = useState(true);
+  const [isBorderNavbarVisible, setBorderNavbarVisible] = useState(false);
   const [isMobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   function showMobileMenu() {
@@ -21,8 +24,61 @@ const NavigationBarProps = () => {
     setMobileMenuVisible(false);
   }
 
+  function showNavbarVisible() {
+    setNavbarVisible(true);
+  }
+
+  function hideNavbarVisible() {
+    setNavbarVisible(false);
+  }
+
+  function showBorderNavbar() {
+    setBorderNavbarVisible(true);
+  }
+
+  function hideBorderNavbar() {
+    setBorderNavbarVisible(false);
+  }
+
+  useEffect(() => {
+    /*
+     * When the user scrolls down, hide the navbar.
+     * When the user scrolls up, show the navbar
+     */
+    let prevScrollpos = window.pageYOffset;
+
+    window.onscroll = function () {
+      const currentScrollPos = window.pageYOffset;
+
+      if (prevScrollpos > currentScrollPos) {
+        showNavbarVisible();
+      } else {
+        hideNavbarVisible();
+      }
+
+      const isOnTopPage = currentScrollPos === 0;
+
+      if (isOnTopPage) {
+        hideBorderNavbar();
+      } else {
+        showBorderNavbar();
+      }
+
+      prevScrollpos = currentScrollPos;
+    };
+  }, []);
+
   return (
-    <nav className="mb-8">
+    <nav
+      ref={navRef}
+      className={clsx(
+        isNavbarVisible ? "top-[0]" : "-top-[75px]",
+        "bg-theme fixed z-30 w-full transition-[top] duration-300",
+        isBorderNavbarVisible
+          ? "border-b border-b-gray-300 dark:border-b-gray-800"
+          : "",
+      )}
+    >
       <div className="container mx-auto flex items-center justify-between py-4">
         <Link to="/">
           <BrandLogo />
@@ -126,7 +182,7 @@ const NavigationBarProps = () => {
         {/* Medium Devices */}
         <ul className="hidden items-center gap-7 lg:flex">
           {navbarMenu.map((item, index) => (
-            <li key={`menu-${index}`}>
+            <li key={`menu-${index}`} className="pt-2">
               {item.isExternalLink ? (
                 <a href={item.path} target="_blank" rel="noopener noreferrer">
                   {item.label}

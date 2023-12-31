@@ -46,7 +46,7 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
 
       <section
         dangerouslySetInnerHTML={{ __html: htmlContent }}
-        className="rendered-markdown container mx-auto"
+        className="rendered-markdown container mx-auto mt-5"
       />
 
       <div className="container relative mx-auto mt-14">

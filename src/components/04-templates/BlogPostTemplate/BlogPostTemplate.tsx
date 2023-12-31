@@ -120,7 +120,7 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
         pathname={pathname}
       />
 
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-5">
         <h1 className="mb-0">{title}</h1>
 
         <p className="mb-6 mt-1 text-sm text-gray-700 dark:text-gray-500 sm:text-base">

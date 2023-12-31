@@ -8,12 +8,8 @@ type BrandLogoTypes = {
   isLogoTextVisible?: boolean;
 };
 
-const BrandLogo = ({
-  className = "",
-  isLogoTextVisible = true,
-  ...restProps
-}: BrandLogoTypes) => (
-  <span className={clsx(["text-xl font-semibold", className])} {...restProps}>
+const BrandLogo = ({ className = "", isLogoTextVisible = true, ...restProps }: BrandLogoTypes) => (
+  <span className={clsx(["text-lg font-semibold", className])} {...restProps}>
     <img
       src={IconPng}
       alt="icon"
@@ -21,8 +17,7 @@ const BrandLogo = ({
       width={42}
       height={42}
     />
-
-    {isLogoTextVisible && <span className="inline-block">@trihargianto</span>}
+    <span className="inline-block">@trihargianto</span>
   </span>
 );
 

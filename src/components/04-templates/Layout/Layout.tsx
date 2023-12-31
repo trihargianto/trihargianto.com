@@ -13,6 +13,9 @@ const Layout = ({ children }: LayoutProps) => (
     <div className="w-full pb-48">
       <NavigationBar />
 
+      {/* Must be equal to NavigationBar height */}
+      <div style={{ height: 75 }} />
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 1 }}
