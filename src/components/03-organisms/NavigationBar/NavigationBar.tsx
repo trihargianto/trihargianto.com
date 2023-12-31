@@ -45,27 +45,29 @@ const NavigationBarProps = () => {
      * When the user scrolls down, hide the navbar.
      * When the user scrolls up, show the navbar
      */
-    let prevScrollpos = window.pageYOffset;
+    let lastScrollTop = 0;
 
-    window.onscroll = function () {
-      const currentScrollPos = window.pageYOffset;
+    window.addEventListener("scroll", function () {
+      // @ts-ignore-next
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-      if (prevScrollpos > currentScrollPos) {
-        showNavbarVisible();
-      } else {
+      if (scrollTop > 10 && scrollTop > lastScrollTop) {
         hideNavbarVisible();
+      } else {
+        showNavbarVisible();
       }
 
-      const isOnTopPage = currentScrollPos === 0;
+      const isScrolledToTop = scrollTop < 10;
 
-      if (isOnTopPage) {
+      if (isScrolledToTop) {
         hideBorderNavbar();
       } else {
         showBorderNavbar();
       }
 
-      prevScrollpos = currentScrollPos;
-    };
+      lastScrollTop = scrollTop;
+    });
   }, []);
 
   return (
