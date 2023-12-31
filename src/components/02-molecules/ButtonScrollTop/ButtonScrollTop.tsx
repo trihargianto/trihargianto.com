@@ -4,8 +4,7 @@ import clsx from "clsx";
 import Button from "../../01-atoms/Button";
 
 const ButtonScrollTop = () => {
-  // TODO: set to false
-  const [isButtonVisible, setButtonVisibility] = useState(true);
+  const [isButtonVisible, setButtonVisibility] = useState(false);
 
   function checkScrollTop() {
     if (!isButtonVisible && window.pageYOffset > 400) {
