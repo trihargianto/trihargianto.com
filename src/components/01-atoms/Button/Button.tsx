@@ -45,6 +45,7 @@ const Button = ({
   size = "md",
   as = "button",
   children,
+  isRounded = false,
   className,
   href,
   ...restProps
@@ -55,9 +56,10 @@ const Button = ({
     /** @ts-expect-error unknown type */
     <Element
       className={clsx([
-        "rounded-md transition-colors",
+        "transition-colors",
         buttonClasses.variant(variant),
         buttonClasses.size(size),
+        isRounded ? "rounded-full" : "rounded-md",
         className,
       ])}
       {...(href ? { to: href } : {})}

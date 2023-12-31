@@ -2,10 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { graphql, PageProps } from "gatsby";
 import dayjs from "dayjs";
 
+import { useDarkMode } from "../../../hooks/useDarkMode";
+
 import SocialShareButtons from "../../02-molecules/SocialShareButtons";
 import SEO from "../../02-molecules/SEO";
+import ButtonScrollTop from "../../02-molecules/ButtonScrollTop";
 import Layout from "../Layout";
-import { useDarkMode } from "../../../hooks/useDarkMode";
 
 type BlogPostTemplateProps = {
   data: {
@@ -112,54 +114,58 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
   }, [theme]);
 
   return (
-    <Layout>
-      <SEO
-        title={title}
-        description={description}
-        image={image}
-        pathname={pathname}
-      />
-
-      <div className="container mx-auto mt-5">
-        <h1 className="mb-0">{title}</h1>
-
-        <p className="mb-6 mt-1 text-sm text-gray-700 dark:text-gray-500 sm:text-base">
-          {description}
-        </p>
-
-        <p className="mb-3 mt-1 text-sm text-gray-500">
-          <span>🗓️ {date}</span>
-          <span className="mx-2 text-base font-bold">·</span>
-          <span>⏳ {readingTimeText}</span>
-        </p>
-      </div>
-
-      <section
-        dangerouslySetInnerHTML={{ __html: htmlContent }}
-        className="rendered-markdown container mx-auto"
-      />
-
-      <div className="container mx-auto">
-        <hr className="my-8" />
-
-        <SocialShareButtons
-          socialConfig={{
-            twitter,
-            config: {
-              url: `${url}${slug}`,
-              title,
-              description,
-            },
-          }}
+    <>
+      <ButtonScrollTop />
+      
+      <Layout>
+        <SEO
+          title={title}
+          description={description}
+          image={image}
+          pathname={pathname}
         />
 
-        <p className="mb-6 text-left text-2xl font-semibold md:text-center">
-          Komentar
-        </p>
+        <div className="container mx-auto mt-5">
+          <h1 className="mb-0">{title}</h1>
 
-        <div ref={commentsContainer}></div>
-      </div>
-    </Layout>
+          <p className="mb-6 mt-1 text-sm text-gray-700 dark:text-gray-500 sm:text-base">
+            {description}
+          </p>
+
+          <p className="mb-3 mt-1 text-sm text-gray-500">
+            <span>🗓️ {date}</span>
+            <span className="mx-2 text-base font-bold">·</span>
+            <span>⏳ {readingTimeText}</span>
+          </p>
+        </div>
+
+        <section
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
+          className="rendered-markdown container mx-auto"
+        />
+
+        <div className="container mx-auto">
+          <hr className="my-8" />
+
+          <SocialShareButtons
+            socialConfig={{
+              twitter,
+              config: {
+                url: `${url}${slug}`,
+                title,
+                description,
+              },
+            }}
+          />
+
+          <p className="mb-6 text-left text-2xl font-semibold md:text-center">
+            Komentar
+          </p>
+
+          <div ref={commentsContainer}></div>
+        </div>
+      </Layout>
+    </>
   );
 };
 
