@@ -31,7 +31,7 @@ Sebelum memulai hari, saya menulis semua *task* yang akan saya kerjakan dalam se
 
 Misal, saya mulai kerja jam 9 pagi. Maka setengah jam sebelumnya, setidaknya saya harus menulis semua daftar tugas yang akan saya kerjakan sampai jam 6 sore (8jam kerja).
 
-<img src="daftar-tugas.png" width="100%" alt="Ilustrasi Daftar Tugas" />
+<img src="images/daftar-tugas.png" width="100%" alt="Ilustrasi Daftar Tugas" />
 <p align="center"><small><i>Gambar 1: Ilustrasi Daftar Tugas</i></small></p>
 
 ## Bikin Prioritas ⚖️
@@ -46,7 +46,7 @@ Kenapa penting untuk menentukan prioritas?
 
 Maksudnya, kalau tidak jelas mana yang lebih prioritas, maka kemungkinan yang terjadi adalah lompat-lompat *task* pas kerja dan berakhir gak produktif sama sekali.
 
-<img src="daftar-prioritas.png" width="100%" alt="Ilustrasi Daftar Prioritas" />
+<img src="images/daftar-prioritas.png" width="100%" alt="Ilustrasi Daftar Prioritas" />
 <p align="center"><small><i>Gambar 2: Ilustrasi Daftar Prioritas</i></small></p>
 
 ## Bikin Estimasi Waktu ⏰
@@ -96,8 +96,8 @@ Ketika menjalankan timer di aplikasi Focus To-Do, saya juga sering kali mematika
 > Sebaik-baiknya pekerjaan adalah **yang dikerjakan**
 
 <video autoplay loop muted playsinline width="100%">
-  <source src="get-things-done.webm" type="video/webm">
-  <source src="get-things-done.mp4" type="video/mp4">
+  <source src="images/get-things-done.webm" type="video/webm">
+  <source src="images/get-things-done.mp4" type="video/mp4">
 </video>
 <p align="center"><small><i>Gambar 3: Get Things Done!</i></small></p>
 

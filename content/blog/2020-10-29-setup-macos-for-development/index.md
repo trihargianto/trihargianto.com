@@ -281,7 +281,7 @@ Pengaturan lain
    bagian "view content as" & centang "Name" di bagian "sort by"
 
 <video autoplay loop muted playsinline width="100%">
-  <source src="accessing-screenshots-faster.webm" type="video/webm">
-  <source src="accessing-screenshots-faster.mp4" type="video/mp4">
+  <source src="images/accessing-screenshots-faster.webm" type="video/webm">
+  <source src="images/accessing-screenshots-faster.mp4" type="video/mp4">
 </video>
 <p align="center"><small><i>Gambar 1: Akses screenshot dengan cepat</i></small></p>
