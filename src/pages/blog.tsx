@@ -28,7 +28,7 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
     slug: item.fields.slug,
     title: item.frontmatter.title,
     date: dayjs(item.fields.date).format("DD MMM YYYY"),
-    year: item.fields.year,
+    year: dayjs(item.fields.date).format("YYYY"),
   }));
 
   const articlesByYear = groupBy(articles, "year");
@@ -78,7 +78,6 @@ export const pageQuery = graphql`
         fields {
           slug
           date
-          year: date(formatString: "YYYY")
         }
         frontmatter {
           title
