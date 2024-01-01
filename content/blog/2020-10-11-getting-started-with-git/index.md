@@ -39,7 +39,7 @@ Cara mengeceknya, buka aplikasi Terminal lalu ketikkan `git --version`
 
 Ketika Git sudah terinstall maka akan tampil versi Git di Terminal. Ketika artikel ini ditulis, Git di komputer saya versi 2.24.3. Versinya bisa berbeda di komputermu, kamu tidak harus memiliki versi yang sama untuk dapat mengikuti tutorial ini.
 
-<img src="git-version-check.png" width="100%" alt="Git version check" />
+<img src="images/git-version-check.png" width="100%" alt="Git version check" />
 <p align="center"><small><i>Gambar 1: Cek Versi Git</i></small></p>
 
 Kalau muncul pesan semacam _command not found_, maka kamu perlu menginstall Git dulu.
@@ -63,7 +63,7 @@ Untuk bisa mulai pakai Git, kita harus tau dulu beberapa perintah dasar Command 
 
 Dengan posisi Terminal yang sudah terbuka, kamu bisa coba ketikkan perintah `pwd`. Outputnya bisa semacam **_/Users/nama-kamu_**
 
-<img src="pwd-output.png" width="100%" alt="PWD Output" />
+<img src="images/pwd-output.png" width="100%" alt="PWD Output" />
 <p align="center"><small><i>Gambar 2: Output pwd</i></small></p>
 
 Setelah tau dimana direktori yang sedang aktif sekarang, buat sebuah direktori baru bernama **latihan-git** dengan `mkdir`
@@ -74,7 +74,7 @@ mkdir latihan-git
 
 Untuk melihat apakah direktori kita berhasil dibuat atau tidak, kita bisa cek dengan perintah `ls`
 
-<img src="ls-output.png" width="100%" alt="LS Output" />
+<img src="images/ls-output.png" width="100%" alt="LS Output" />
 <p align="center"><small><i>Gambar 3: Output ls</i></small></p>
 
 Karena direktori kita sudah siap, masuk ke direktori tersebut dengan perintah `cd`:
@@ -141,7 +141,7 @@ Buat latihan, sekarang tambahkan file bernama **index.html** pakai _text editor_
 
 Sekarang balik lagi ke Terminal dan ketikkan perintah `git status`
 
-<img src="git-status-untracked.png" width="100%" alt="Untracked file, git status" />
+<img src="images/git-status-untracked.png" width="100%" alt="Untracked file, git status" />
 <p align="center"><small><i>Gambar 5: Git Status - Untracked</i></small></p>
 
 Dari _output_ di atas, Git ngasih tau ke kita kalau ada satu file yang tidak ia kenali yaitu **index.html** lewat pesan **_Untracked Files_**.
@@ -154,7 +154,7 @@ git add index.html
 
 Lalu eksekusi perintah `git status` lagi
 
-<img src="git-status-staged-indexhtml.png" width="100%" alt="Staged index.html" />
+<img src="images/git-status-staged-indexhtml.png" width="100%" alt="Staged index.html" />
 <p align="center"><small><i>Gambar 6: Git Status - Staged</i></small></p>
 
 Sekarang file **index.html** udah dalam posisi **_Staged_**, yang artinya ia udah terdaftar di Git.
@@ -175,7 +175,7 @@ Ketika pakai Git Commit, kita harus menulis deskripsi singkat tentang commit yan
 
 Sampai sini kita udah simpan perubahan yang kita lakukan, yaitu nambah file baru bernama index.html. Selanjutnya buat bisa liat apa aja commit-commit yang udah pernah kita lakukan, kita bisa pakai perintah `git log`, lalu tekan Enter.
 
-<img src="git-log.png" width="100%" alt="Git Log" />
+<img src="images/git-log.png" width="100%" alt="Git Log" />
 <p align="center"><small><i>Gambar 7: Output Git Log</i></small></p>
 
 Pada screenshot di atas, git log saya menampilkan satu commit aja dengan informasi yang lengkap. Dari mulai siapa yang bikin commit, pesan/deskripsi commit, sampai kapan commit itu dilakukan. Author yang muncul di Git Log adalah apa yang kita atur pada `git config` yang lalu.
@@ -188,29 +188,29 @@ Di awal artikel ini, saya menyebutkan bahwa kemampuan Git ini dapat dimanfaatkan
 
 Jawabannya adalah dengan memanfaatkan satu Repository utama yang bakal jadi pusat bermuaranya kode project kita, dan Repository itu ditaruh di Hosting Repository yang biasa disebut Remote Repository supaya orang yang mau berkontribusi dalam sebuah project tinggal ambil kodenya. Remote repositor inilah yang bakal dipakai buat dirilis ke pengguna aplikasi kita. Ilustrasinya sebagai berikut:
 
-<img src="remote-againts-local.png" width="100%" alt="Remote Repository dan local" />
+<img src="images/remote-againts-local.png" width="100%" alt="Remote Repository dan local" />
 <p align="center"><small><i>Gambar 8: Hubungan Remote Repository & Local</i></small></p>
 
 > Istilah "Local" merujuk pada komputer yang digunakan Developer itu sendiri.
 
 Remote Repository yang bisa kita gunakan, salah satunya [Github](https://github.com). Jadi Git bukanlah Github ya, Git adalah sistem. Sedangkan Github adalah salah satu Hosting Repository yang paling populer. Untuk bisa pakai layanan Github, kamu perlu punya akun dulu disana. Jika belum punya bisa daftar dulu di [situs resminya](https://github.com). Kalau udah daftar, kamu bisa lanjut buat login. Lalu, di homepage klik **New** atau klik **+** lalu **New Repository** buat bikin Repository baru.
 
-<img src="create-repository-via-homepage.png" width="100%" alt="Buat Repository baru via homepage" />
+<img src="images/create-repository-via-homepage.png" width="100%" alt="Buat Repository baru via homepage" />
 <p align="center"><small><i>Gambar 9: Homepage Github</i></small></p>
 
 Selanjutnya, isi nama Repository dan deskripsi (tidak wajib). Nama Repository ini ngga harus sama persis dengan nama direktori di _local_ kita, tapi supaya gampang dikenali, kita bikin sama aja. Jika udah semua, klik **Create Repository**
 
-<img src="create-new-repository.png" width="100%" alt="Form buat Repository baru" />
+<img src="images/create-new-repository.png" width="100%" alt="Form buat Repository baru" />
 <p align="center"><small><i>Gambar 10: Membuat Repository baru di Github</i></small></p>
 
 Setelah proses pembuatan Repository di Github selesai, kamu bakal diarahkan ke Repository halaman Repository tersebut. Scroll ke bawah, lalu _copy_ kode ketiga berikut dan eksekusi di Terminal kamu.
 
-<img src="getting-started-with-new-repo.png" width="100%" alt="Menghubungkan Local Repository ke Remote Repository" />
+<img src="images/getting-started-with-new-repo.png" width="100%" alt="Menghubungkan Local Repository ke Remote Repository" />
 <p align="center" id="gambar-11"><small><i>Gambar 11: Cara menghubungkan local Repository ke remote Repository</i></small></p>
 
 Setelah selesai, kembali ke halaman Repository di Github, lalu refresh halamannya. Tampilannya akan berubah jadi seperti berikut:
 
-<img src="repository-on-github.png" width="100%" alt="Tampilan Repository di Github" />
+<img src="images/repository-on-github.png" width="100%" alt="Tampilan Repository di Github" />
 <p align="center"><small><i>Gambar 12: Tampilan Repository di Github</i></small></p>
 
 Sampai di sini, kamu udah berhasil menghubungkan Local Repository ke Github.
@@ -233,8 +233,8 @@ Perintah Git Pull dilakukan ketika ada perubahan di remote Repository dan kamu h
 Berikut ilustrasi ketika kamu mengerjakan Repository yang sama dengan orang lain.
 
 <video autoplay loop muted playsinline width="100%">
-  <source src="normal-push-and-pull.webm" type="video/webm">
-  <source src="normal-push-and-pull.mp4" type="video/mp4">
+  <source src="images/normal-push-and-pull.webm" type="video/webm">
+  <source src="images/normal-push-and-pull.mp4" type="video/mp4">
 </video>
 <p align="center"><small><i>Gambar 13: Aktifitas Git Push dan Git Pull</i></small></p>
 
@@ -243,7 +243,7 @@ Pada ilustrasi Gambar 13 di atas, kita wajib menjalankan perintah `git pull` set
 Bagaimana kita tau kalau ada perubahan di remote Repository? Apakah kita harus mengecek di Github terlebih dahulu? Jawabanya tidak. Kamu bakal tau dengan sendirinya, karena setiap kali ada perubahan di Remote Repository dan kamu mencoba melakukan Git Push, maka git push mu akan gagal. Jadi kamu harus melakukan Git Pull dulu.
 
 <video autoplay loop muted playsinline width="100%">
-  <source src="failed-git-push.webm" type="video/webm">
-  <source src="failed-git-push.mp4" type="video/mp4">
+  <source src="images/failed-git-push.webm" type="video/webm">
+  <source src="images/failed-git-push.mp4" type="video/mp4">
 </video>
 <p align="center"><small><i>Gambar 14: Git Push gagal, Wajib Git Pull terlebih dahulu</i></small></p>

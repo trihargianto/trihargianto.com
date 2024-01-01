@@ -44,8 +44,8 @@ Trus gimana caranya kita meringankan beban Reviewer dan kode kita bisa cepat _me
 ## Kenapa saya harus peduli?
 
 <video autoplay loop muted playsinline width="100%">
-  <source src="why-should-i-care.webm" type="video/webm">
-  <source src="why-should-i-care.mp4" type="video/mp4">
+  <source src="images/why-should-i-care.webm" type="video/webm">
+  <source src="images/why-should-i-care.mp4" type="video/mp4">
 </video>
 <p align="center"><small><i>Gambar 1: Kenapa saya harus peduli?</i></small></p>
 
@@ -159,7 +159,7 @@ Di beberapa kasus bahkan gak ada deskripsinya sama sekali 😥
 
 Mungkin kalo kodenya dikit masih bisa kita coba cari tau dari kodenya, kalau changes nya lebih dari 50 file gimana? Hmm...
 
-<img src="bad-pr-example.png" width="100%" alt="Bad PR Example" />
+<img src="images/bad-pr-example.png" width="100%" alt="Bad PR Example" />
 <p align="center"><small><i>Gambar 2: Bad PR Example</i></small></p
 
 #### Hasil Unit Tests

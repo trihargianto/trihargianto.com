@@ -48,17 +48,17 @@ yarn eslint --init
 
 Begitu kita menjalankan perintah di atas, akan muncul beberapa pertanyaan dari Eslint. Di pertanyaan pertama, kamu bisa pilih _"To check syntax and find problems"_.
 
-<img src="yarn-init-question-1.png" width="100%" alt="Yarn init - Pertanyaan Pertama" />
+<img src="images/yarn-init-question-1.png" width="100%" alt="Yarn init - Pertanyaan Pertama" />
 <p align="center"><small><i>Gambar 1: Yarn Init - Pertanyaan pertama</i></small></p>
 
 Pertanyaan kedua, pilih sesuai dengan tipe _module_ apa yang kamu gunakan. Saya memilih _"None of these"_ untuk keperluan demo kali ini.
 
-<img src="yarn-init-question-2.png" width="100%" alt="Yarn init - Pertanyaan Kedua" />
+<img src="images/yarn-init-question-2.png" width="100%" alt="Yarn init - Pertanyaan Kedua" />
 <p align="center"><small><i>Gambar 2: Yarn Init - Pertanyaan kedua</i></small></p>
 
 Sisa pertanyaan lainnya bisa dilihat di _screenshot_ berikut (kamu bebas mengatur sesuai kebutuhanmu):
 
-<img src="yarn-init-answers.png" width="100%" alt="Yarn init - Rekap Jawaban" />
+<img src="images/yarn-init-answers.png" width="100%" alt="Yarn init - Rekap Jawaban" />
 <p align="center"><small><i>Gambar 3: Yarn Init - Rekap Jawaban</i></small></p>
 
 Sampai di sini kita bakal dapet file bernama **.eslintrc.json** secara otomatis, dan isi filenya kurang lebih seperti berikut:
@@ -95,7 +95,7 @@ yarn eslint .
 
 > Tanda . (titik) berarti kita menyuruh Eslint memindai semua file yang ada di project kita.
 
-<img src="clean-eslint.png" width="100%" alt="Bersih. Tidak ada laporan dari Eslint" />
+<img src="images/clean-eslint.png" width="100%" alt="Bersih. Tidak ada laporan dari Eslint" />
 <p align="center"><small><i>Gambar 4: Eslint Bersih. Tidak ada laporan error</i></small></p>
 
 ### Menambahkan Aturan di Eslint
@@ -123,7 +123,7 @@ Saya akan coba menambahkan `"no-console": "warn"`.
 
 Ketika `yarn eslint .` dijalankan lagi, bakalan akan ada _warning_ dari Eslint.
 
-<img src="eslint-no-console-warning.png" width="100%" alt="Warning dari Eslint. Tidak boleh ada `console.log` di dalam kode" />
+<img src="images/eslint-no-console-warning.png" width="100%" alt="Warning dari Eslint. Tidak boleh ada `console.log` di dalam kode" />
 <p align="center"><small><i>Gambar 5: Eslint Bersih. Tidak ada laporan error</i></small></p>
 
 Seperti yang diharapkan, kita telah menyuruh Eslint memberikan _warning_ ke kita jika ada `console.log` di dalam kode kita, melalui `"no-console": "warn"`.
@@ -138,14 +138,14 @@ Menjalankan perintah `yarn eslint .` secara berulang-ulang setiap kali kita meng
 
 Setelah kita menginstall Ekstensi Eslint di VSCode, setiap ada kode yang salah akan digaris bawahi oleh ekstensi ini.
 
-<img src="eslint-vscode.png" width="100%" alt="Ekstensi Eslint di VSCode" />
+<img src="images/eslint-vscode.png" width="100%" alt="Ekstensi Eslint di VSCode" />
 <p align="center"><small><i>Gambar 6: Ekstensi Eslint di VSCode</i></small></p>
 
 ### Menggunakan aturan yang sudah disediakan
 
 Sampai di sini, kode **demo.js** mempunyai satu _warning_, yaitu gak boleh ada `console.log` di dalamnya. Tapi, ketika saya hapus perintah `console.log` nya, malah muncul _warning_ lain.
 
-<img src="eslint-no-unused-vars.png" width="100%" alt="Variabel tidak terpakai" />
+<img src="images/eslint-no-unused-vars.png" width="100%" alt="Variabel tidak terpakai" />
 <p align="center"><small><i>Gambar 7: Variabel tidak terpakai</i></small></p>
 
 Padahal kita cuma punya `"no-console": "warn"` di file **eslintrc.json**, kenapa Eslint bisa melaporkan warning itu?
@@ -184,7 +184,7 @@ Namun tidak semua kesalahan bisa di perbaiki secara otomatis. Kita bisa melihat 
 
 Fitur Auto Fix Eslint bisa juga dijalankan di VSCode dengan menekan tombol `CTRL + Shift + P` (di Windows) atau `CMD + Shift + P` (di Mac), lalu cari dan pilih _Eslint: Fix all auto-fixable Problems_.
 
-<img src="vscode-eslint-autofix.png" width="100%" alt="Autofix Eslint di VSCode" />
+<img src="images/vscode-eslint-autofix.png" width="100%" alt="Autofix Eslint di VSCode" />
 <p align="center"><small><i>Gambar 8: Autofix Eslint di VSCode</i></small></p>
 
 ### Mengabaikan file di Eslinit
@@ -282,8 +282,8 @@ Misalnya di Eslint kita set supaya `comma-dangle` menampilkan error, tapi di Pre
 Hal ini bisa bikin frustasi karena setiap kita membetulkan error yang muncul di Eslint, Prettier membalikannya lagi karena kita udah set `formatOnSave` di VSCode. Dan mereka akan saling rebutan saat memformat kode kita.
 
 <video autoplay loop muted playsinline width="100%">
-  <source src="war.webm" type="video/webm">
-  <source src="war.mp4" type="video/mp4">
+  <source src="images/war.webm" type="video/webm">
+  <source src="images/war.mp4" type="video/mp4">
 </video>
 <p align="center"><small><i>Gambar 9: Ilustrasi pertengkaran konfigurasi Eslint dan Prettier</i></small></p
 

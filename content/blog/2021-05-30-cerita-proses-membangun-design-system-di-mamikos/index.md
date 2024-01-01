@@ -47,7 +47,7 @@ Lalu, karena Engineer gak mau nama _library_ nya kepanjangan, maka kami singkat 
 
 ## Principles
 
-<img src="ideas.jpg" width="100%" alt="Principles Illustration" />
+<img src="images/ideas.jpg" width="100%" alt="Principles Illustration" />
 
 <p align="center"><small><i>Gambar 1: Principles Illustration</i></small></p>
 
@@ -77,7 +77,7 @@ Kami juga harus memastikan komponen yang dibikin nanti memang bisa mempercepat p
 
 ## Pemilihan Teknologi
 
-<img src="research.jpg" width="100%" alt="Ilustrasi Pemilihan Teknologi" />
+<img src="images/research.jpg" width="100%" alt="Ilustrasi Pemilihan Teknologi" />
 <p align="center"><small><i>Gambar 2: Ilustrasi Pemilihan Teknologi</i></small></p>
 
 Setelah kami punya principles yang jelas, kami juga harus menentukan teknologi apa aja yang dipakai untuk membangun BanGul. Cara kami memilih teknologinya dibagi jadi dua tahap:
@@ -127,8 +127,8 @@ Selanjutnya, ketika kami melakukan perubahan kode, lalu test runner dijalankan, 
 Dengan begini kami bisa tau semua perubahan yang terjadi, dari perubahan yang disengaja dan tak disengaja.
 
 <video autoplay loop muted playsinline width="100%">
-  <source src="component-visual-testing.webm" type="video/webm">
-  <source src="component-visual-testing.mp4" type="video/mp4">
+  <source src="images/component-visual-testing.webm" type="video/webm">
+  <source src="images/component-visual-testing.mp4" type="video/mp4">
 </video>
 <p align="center"><small><i>Gambar 3: Visual Testing</i></small></p>
 
@@ -140,7 +140,7 @@ Tujuan Unit Testing ini buat memverifikasi tingkah laku tiap komponen. Tingkah l
 
 Selain itu, dengan unit testing juga bisa melakukan test ke logic internal tiap komponen.
 
-<img src="./unit-test.png" width="100%" alt="Unit Testing" />
+<img src="images/./unit-test.png" width="100%" alt="Unit Testing" />
 <p align="center"><small><i>Gambar 4: Unit Testing</i></small></p>
 <br />
 
@@ -159,12 +159,12 @@ Menurut kami, beberapa poin yang harus ada di sebuah dokumentasi yaitu:
 1. Cara install dan cara upgrade BanGul
 2. Cara pakai dan _property_ apa aja yang tersedia di tiap komponen
 
-<img src="demo-button-property.png" width="100%" alt="Property yang disediakan" />
+<img src="images/demo-button-property.png" width="100%" alt="Property yang disediakan" />
 <p align="center"><small><i>Gambar 5: Property yang disediakan</i></small></p>
 
 3. Variasi yang tersedia di tiap komponen
 
-<img src="demo-button-variant.png" width="100%" alt="Variasi Komponen Button" />
+<img src="images/demo-button-variant.png" width="100%" alt="Variasi Komponen Button" />
 <p align="center"><small><i>Gambar 6: Variasi Komponen Button</i></small></p>
 <br />
 
@@ -173,8 +173,8 @@ Menurut kami, beberapa poin yang harus ada di sebuah dokumentasi yaitu:
 5. Satu halaman interaktif khusus tiap komponen. Kami menyebutnya “playground”.
 
 <video autoplay loop muted playsinline width="100%">
-  <source src="demo-button-playground.webm" type="video/webm">
-  <source src="demo-button-playground.mp4" type="video/mp4">
+  <source src="images/demo-button-playground.webm" type="video/webm">
+  <source src="images/demo-button-playground.mp4" type="video/mp4">
 </video>
 <p align="center"><small><i>Gambar 7: Demo Playground</i></small></p>
 
@@ -188,7 +188,7 @@ Untungnya untuk hal ini, kami cukup dimudahkan karena kami memilih [Storybook](h
 
 ## Design Sync Meetup
 
-<img src="meeting.jpg" width="100%" alt="Design Sync Meetup" />
+<img src="images/meeting.jpg" width="100%" alt="Design Sync Meetup" />
 <p align="center"><small><i>Gambar 8: Design Sync Meetup</i></small></p>
 <br />
 
