@@ -1,8 +1,10 @@
 ---
 title: Ngapain Repot Bikin Automation Test
+slug: ngapain-repot-bikin-automation-test
 description: Pentingkah Automation Test?
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Ngapain Repot Bikin Automation Test" />

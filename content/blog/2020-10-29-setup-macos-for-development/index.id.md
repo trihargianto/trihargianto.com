@@ -1,8 +1,10 @@
 ---
 title: Setup MacOS Buat Development
+slug: setup-macos-for-development
 description: Berbagai aplikasi dan pengaturan yang saya gunakan di MacOS untuk development, sebagai seorang web developer.
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Setup MacOS Buat Development" />

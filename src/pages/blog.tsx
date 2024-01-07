@@ -72,7 +72,7 @@ export const pageQuery = graphql`
   query {
     articles: allMarkdownRemark(
       sort: { fields: { date: DESC } }
-      filter: { frontmatter: { category: { eq: "blog" } } }
+      filter: { frontmatter: { category: { eq: "blog" }, lang: { eq: "id" } } }
     ) {
       nodes {
         fields {

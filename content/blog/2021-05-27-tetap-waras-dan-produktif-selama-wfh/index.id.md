@@ -1,8 +1,10 @@
 ---
 title: Tetap Waras & Produktif Selama WFH
+slug: tetap-waras-dan-produktif-selama-wfh
 description: Cara Saya Supaya Bisa Tetep Waras dan Produktif Meskipun Kerja Dari Rumah
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Tetap Waras & Produktif Selama WFH" />

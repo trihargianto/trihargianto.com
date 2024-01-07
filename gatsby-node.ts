@@ -15,9 +15,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           fields {
             slug
+            articleGroup
           }
           frontmatter {
             title
+            lang
           }
         }
       }
@@ -105,6 +107,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           slug: post.fields.slug,
           previous,
           next,
+
+          articleGroup: post.fields.articleGroup,
+
+          // This field assume this site only supports `id` and `en` language
+          alternativeLang: post.frontmatter.lang === "en" ? "id" : "en",
         },
       });
     });
@@ -155,21 +162,28 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     if (blogMatch !== null) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const [_, year, month, day] = blogMatch;
+      const [_, year, month, day, filename] = blogMatch;
 
-      const filename = blogMatch[4];
+      const { lang, slug } = node.frontmatter;
+      const [contentDirectoryName] = filename.split("/");
       const date = new Date(Number(year), Number(month) - 1, Number(day));
 
       createNodeField({
         name: `slug`,
         node,
-        value: `/${filename}`,
+        value: `/${lang}/${slug}`,
       });
 
       createNodeField({
         name: `date`,
         node,
         value: date,
+      });
+
+      createNodeField({
+        name: "articleGroup",
+        node,
+        value: contentDirectoryName,
       });
     } else if (pageMatch) {
       const filename = pageMatch[2];

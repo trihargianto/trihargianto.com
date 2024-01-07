@@ -1,8 +1,10 @@
 ---
 title: Koding Lebih Produktif dengan Plugin Terminal
+slug: koding-lebih-produktif-dengan-plugin-terminal
 description: Beberapa Plugin Terminal yang saya gunakan sehari-hari untuk menunjang produktivitas
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Koding Lebih Produktif dengan Plugin Terminal" />

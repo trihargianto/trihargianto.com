@@ -1,8 +1,10 @@
 ---
 title: Jadi Core Front-End di Mamikos. Kerjaannya ngapain?
+slug: jadi-core-front-end-di-mamikos
 description: Apa saja yang di kerjakaan oleh tim Core Front-End Mamikos dan kenapa tim ini ada di Mamikos.
 category: blog
 featured: cover.png
+lang: id
 ---
 
 <img src="cover.png" alt="Jadi Core Front-End di Mamikos. Kerjaannya ngapain?" />

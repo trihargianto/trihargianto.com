@@ -1,8 +1,10 @@
 ---
 title: Static Testing di Javascript
+slug: static-testing-di-javascript
 description: Static Testing digunakan untuk memvalidasi kode yang telah kita tulis.
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Static Testing di Javascript" class="w-full" />

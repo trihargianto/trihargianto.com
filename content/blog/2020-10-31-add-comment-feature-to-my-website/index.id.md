@@ -1,8 +1,10 @@
 ---
 title: Menambah fitur komentar di web saya
+slug: add-comment-feature-to-my-website
 description: Memanfaatkan Utterances untuk membuat fitur komentar berdasarkan issues di Github
 category: blog
 featured: cover.png
+lang: id
 ---
 
 <img src="cover.png" alt="Menambah fitur komentar di web saya" />
