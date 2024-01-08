@@ -2,7 +2,7 @@ import path from "path";
 import { createFilePath } from "gatsby-source-filesystem";
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   // Get all markdown blog posts sorted by date
   const blogs = await graphql(`
@@ -114,6 +114,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           alternativeLang: post.frontmatter.lang === "en" ? "id" : "en",
         },
       });
+
+      // Create fallback redirection for old blog URLs
+      if (post.frontmatter.lang === "id") {
+        createRedirect({
+          fromPath: `/${post.fields.articleGroup}`,
+          toPath: post.fields.slug,
+        });
+      }
     });
   }
 
