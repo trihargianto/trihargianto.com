@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 
 import profilePic from "../../../img/profile-pic-v2.jpg";
 
@@ -26,17 +26,19 @@ const GreetingCard = () => {
 
       <div>
         <h1>
-          Halo, salam kenal!{" "}
+          Hello there{" "}
           <span role="img" aria-label="wave emoji">
             👋
           </span>
         </h1>
 
         <p className="mb-5">
-          Saya seorang Software Engineer dari{" "}
-          <span className="font-semibold">Yogyakarta, Indonesia 🇮🇩</span>
+          I'm a Software Engineer working in Indonesia 🇮🇩.
         </p>
-        <p>{data.site.siteMetadata.description}</p>
+        <p>
+          Welcome to my digital garden where I put my projects, tutorials,
+          thoughts, and anything else I want to show to the world.
+        </p>
       </div>
     </div>
   );
