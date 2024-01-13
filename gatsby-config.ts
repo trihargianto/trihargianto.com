@@ -6,10 +6,10 @@ const config: GatsbyConfig = {
     author: {
       name: "Tri Hargianto",
       summary:
-        "Developer yang sekarang sedang tinggal dan bekerja di Yogyakarta, Indonesia",
+        "A Software Engineer who loves to learn new things and share knowledge",
     },
     description:
-      "Website ini adalah catatan digital saya, berisi tulisan dari apa yang saya pelajari dan apapun yang ingin saya tulis. Saya harap tulisan saya bisa bermanfaat.",
+      "This site is my digital garden where I put my projects, tutorials, thoughts, and anything else I want to show to the world. ",
     siteUrl: "https://www.trihargianto.com/",
     social: {
       twitter: "trihargianto",
@@ -69,7 +69,7 @@ const config: GatsbyConfig = {
           "gatsby-remark-prismjs-title",
 
           // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs-copy-button/
-          'gatsby-remark-prismjs-copy-button',
+          "gatsby-remark-prismjs-copy-button",
 
           // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
           {
