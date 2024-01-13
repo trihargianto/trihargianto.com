@@ -2,7 +2,7 @@ import path from "path";
 import { createFilePath } from "gatsby-source-filesystem";
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   // Get all markdown blog posts sorted by date
   const blogs = await graphql(`
@@ -15,9 +15,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           fields {
             slug
+            articleGroup
           }
           frontmatter {
             title
+            lang
           }
         }
       }
@@ -43,25 +45,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
-  // Get all markdown projects
-  const projects = await graphql(`
-    {
-      allMarkdownRemark(
-        limit: 1000
-        filter: { frontmatter: { category: { eq: "project" } } }
-      ) {
-        nodes {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-  `);
-
   if (blogs.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -74,17 +57,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       blogs.errors,
     );
     return;
-  } else if (projects.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your project posts`,
-      blogs.errors,
-    );
-    return;
-  }
-
+  } 
+  
   const blogPosts = blogs.data.allMarkdownRemark.nodes;
   const pagePosts = pages.data.allMarkdownRemark.nodes;
-  const projectPosts = projects.data.allMarkdownRemark.nodes;
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -105,8 +81,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           slug: post.fields.slug,
           previous,
           next,
+
+          articleGroup: post.fields.articleGroup,
+
+          // This field assume this site only supports `id` and `en` language
+          alternativeLang: post.frontmatter.lang === "en" ? "id" : "en",
         },
       });
+
+      // Create fallback redirection for old blog URLs
+      if (post.frontmatter.lang === "id") {
+        createRedirect({
+          fromPath: `/${post.fields.articleGroup}`,
+          toPath: post.fields.slug,
+        });
+      }
     });
   }
 
@@ -116,20 +105,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: post.fields.slug,
         component: path.resolve(
           `./src/components/04-templates/PageTemplate/PageTemplate.tsx`,
-        ),
-        context: {
-          slug: post.fields.slug,
-        },
-      });
-    });
-  }
-
-  if (projectPosts.length > 0) {
-    projectPosts.forEach((post) => {
-      createPage({
-        path: post.fields.slug,
-        component: path.resolve(
-          `./src/components/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
         ),
         context: {
           slug: post.fields.slug,
@@ -147,23 +122,22 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     const BLOG_POST_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.+)$/;
     const PAGE_REGEX = /(page\/)(.+)$/;
-    const PROJECT_REGEX = /(project\/)(.+)$/;
 
     const blogMatch = BLOG_POST_REGEX.exec(slug);
     const pageMatch = PAGE_REGEX.exec(slug);
-    const projectMatch = PROJECT_REGEX.exec(slug);
 
     if (blogMatch !== null) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const [_, year, month, day] = blogMatch;
+      const [_, year, month, day, filename] = blogMatch;
 
-      const filename = blogMatch[4];
+      const { lang, slug } = node.frontmatter;
+      const [contentDirectoryName] = filename.split("/");
       const date = new Date(Number(year), Number(month) - 1, Number(day));
 
       createNodeField({
         name: `slug`,
         node,
-        value: `/${filename}`,
+        value: `/${lang}/${slug}`,
       });
 
       createNodeField({
@@ -171,16 +145,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         node,
         value: date,
       });
-    } else if (pageMatch) {
-      const filename = pageMatch[2];
 
       createNodeField({
-        name: `slug`,
+        name: "articleGroup",
         node,
-        value: `/${filename}`,
+        value: contentDirectoryName,
       });
-    } else if (projectMatch) {
-      const filename = projectMatch[2];
+    } else if (pageMatch) {
+      const filename = pageMatch[2];
 
       createNodeField({
         name: `slug`,

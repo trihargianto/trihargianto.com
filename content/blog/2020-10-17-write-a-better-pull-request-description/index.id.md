@@ -1,8 +1,10 @@
 ---
 title: Menulis Deskripsi Pull Request yang lebih baik
+slug: write-a-better-pull-request-description
 description: Apa pentingnya menulis deskripsi di suatu Pull Request dan bagaimana menulis Pull Request yang lebih baik supaya kode kita lebih mudah dipahami orang lain.
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Menulis Deskripsi Pull Request yang lebih baik" />

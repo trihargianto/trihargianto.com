@@ -96,7 +96,7 @@ export const pageQuery = graphql`
   query {
     latestPosts: allMarkdownRemark(
       sort: { fields: { date: DESC } }
-      filter: { frontmatter: { category: { eq: "blog" } } }
+      filter: { frontmatter: { category: { eq: "blog" }, lang: { eq: "id" } } }
       limit: 5
     ) {
       nodes {

@@ -1,8 +1,10 @@
 ---
 title: Cara Supaya Kerja Multitasking Efektif
+slug: cara-supaya-kerja-multitasking-efektif
 description: Beberapa cara saya buat ngatur task yang sejauh ini cukup efektif bagi saya
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Cara Supaya Kerja Multitasking Efektif" />

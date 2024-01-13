@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { graphql, PageProps } from "gatsby";
+import { graphql, Link, PageProps } from "gatsby";
 import dayjs from "dayjs";
 
 import { useDarkMode } from "../../../hooks/useDarkMode";
@@ -11,7 +11,7 @@ import Layout from "../Layout";
 
 type BlogPostTemplateProps = {
   data: {
-    markdownRemark: {
+    article: {
       html: string;
       fields: {
         slug: string;
@@ -34,6 +34,14 @@ type BlogPostTemplateProps = {
         };
       };
     };
+    alternativeLangSlug: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        lang: string;
+      };
+    };
     site: {
       siteMetadata: {
         title: string;
@@ -51,16 +59,20 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
 
   const changingThemeAttemps = useRef(0);
 
-  const htmlContent = data.markdownRemark.html;
+  const htmlContent = data.article.html;
 
-  const image = data.markdownRemark.frontmatter.image?.childImageSharp?.resize;
-  const title = data.markdownRemark.frontmatter.title;
-  const slug = data.markdownRemark.fields.slug;
-  const description = data.markdownRemark.frontmatter.description;
+  const image = data.article.frontmatter.image?.childImageSharp?.resize;
+  const title = data.article.frontmatter.title;
+  const slug = data.article.fields.slug;
+  const description = data.article.frontmatter.description;
   const twitter = data.site.siteMetadata.social.twitter;
   const url = data.site.siteMetadata.siteUrl;
-  const date = dayjs(data.markdownRemark.fields.date).format("DD MMM YYYY");
-  const readingTimeText = data.markdownRemark.fields.readingTime.text;
+  const date = dayjs(data.article.fields.date).format("DD MMM YYYY");
+  const readingTimeText = data.article.fields.readingTime.text;
+
+  const alternativeLangSlug = data.alternativeLangSlug?.fields?.slug;
+  const alternativeLang = data.alternativeLangSlug?.frontmatter?.lang;
+
   const pathname = location.pathname;
 
   const commentsContainer = useRef<HTMLDivElement>(null);
@@ -116,7 +128,7 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
   return (
     <>
       <ButtonScrollTop />
-      
+
       <Layout>
         <SEO
           title={title}
@@ -126,17 +138,45 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
         />
 
         <div className="container mx-auto mt-5">
+          <p className="mb-2 text-sm text-gray-700 dark:text-gray-500">
+            <span>🗓️ {date}</span>
+            <span className="mx-2 text-base font-bold">·</span>
+            <span>🕑 {readingTimeText}</span>
+          </p>
+
           <h1 className="mb-0">{title}</h1>
 
-          <p className="mb-6 mt-1 text-sm text-gray-700 dark:text-gray-500 sm:text-base">
+          <p className="mb-4 mt-2 text-sm text-gray-700 dark:text-gray-500 sm:text-base">
             {description}
           </p>
 
-          <p className="mb-3 mt-1 text-sm text-gray-500">
-            <span>🗓️ {date}</span>
-            <span className="mx-2 text-base font-bold">·</span>
-            <span>⏳ {readingTimeText}</span>
-          </p>
+          {!!alternativeLangSlug && (
+            <div className="mb-3 block w-full">
+              <span>
+                {alternativeLang === "id" ? (
+                  <>
+                    🇮🇩
+                    <Link
+                      to={alternativeLangSlug}
+                      className="ml-2 underline hover:no-underline"
+                    >
+                      Baca versi Indonesia
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    🇺🇸
+                    <Link
+                      to={alternativeLangSlug}
+                      className="ml-2 underline hover:no-underline"
+                    >
+                      Read in English
+                    </Link>
+                  </>
+                )}
+              </span>
+            </div>
+          )}
         </div>
 
         <section
@@ -170,8 +210,8 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
 };
 
 export const query = graphql`
-  query ($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query ($slug: String!, $articleGroup: String!, $alternativeLang: String!) {
+    article: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       fields {
         slug
@@ -192,6 +232,17 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    alternativeLangSlug: markdownRemark(
+      fields: { articleGroup: { eq: $articleGroup } }
+      frontmatter: { lang: { eq: $alternativeLang } }
+    ) {
+      fields {
+        slug
+      }
+      frontmatter {
+        lang
       }
     }
     site {

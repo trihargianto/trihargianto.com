@@ -1,8 +1,10 @@
 ---
 title: Cerita Proses Membangun Design System di Mamikos
+slug: cerita-proses-membangun-design-system-di-mamikos
 description: Proses bagaimana saya beserta teman-teman di Mamikos membangun Design System.
 category: blog
 featured: cover.png
+lang: id
 ---
 
 <img src="cover.png" alt="Cerita Proses Membangun Design System di Mamikos" />

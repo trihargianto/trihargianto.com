@@ -1,8 +1,10 @@
 ---
 title: Perjalanan Belajar & Pendapat Saya tentang Vim
+slug: perjalanan-belajar-vim
 description: Perjalanan saya belajar menulis kode menggunakan Vim sebagai teks editor
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Perjalanan Belajar Vim" />

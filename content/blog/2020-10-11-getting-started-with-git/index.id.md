@@ -1,8 +1,10 @@
 ---
 title: Tutorial Git - Memulai menggunakan Version Control
+slug: getting-started-with-git
 description: Belajar bagaimana menggunakan Git untuk membantu proses development. Git merupakan alat utama yang pasti akan kamu gunakan setiap hari, sepanjang karirmu sebagai developer.
 category: blog
 featured: cover.jpg
+lang: id
 ---
 
 <img src="cover.jpg" alt="Tutorial Git - Memulai menggunakan Version Control" />
