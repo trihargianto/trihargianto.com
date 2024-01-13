@@ -45,25 +45,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
-  // Get all markdown projects
-  const projects = await graphql(`
-    {
-      allMarkdownRemark(
-        limit: 1000
-        filter: { frontmatter: { category: { eq: "project" } } }
-      ) {
-        nodes {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-  `);
-
   if (blogs.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -76,17 +57,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       blogs.errors,
     );
     return;
-  } else if (projects.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your project posts`,
-      blogs.errors,
-    );
-    return;
-  }
-
+  } 
+  
   const blogPosts = blogs.data.allMarkdownRemark.nodes;
   const pagePosts = pages.data.allMarkdownRemark.nodes;
-  const projectPosts = projects.data.allMarkdownRemark.nodes;
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -138,20 +112,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
   }
-
-  if (projectPosts.length > 0) {
-    projectPosts.forEach((post) => {
-      createPage({
-        path: post.fields.slug,
-        component: path.resolve(
-          `./src/components/04-templates/BlogPostTemplate/BlogPostTemplate.tsx`,
-        ),
-        context: {
-          slug: post.fields.slug,
-        },
-      });
-    });
-  }
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -162,11 +122,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     const BLOG_POST_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.+)$/;
     const PAGE_REGEX = /(page\/)(.+)$/;
-    const PROJECT_REGEX = /(project\/)(.+)$/;
 
     const blogMatch = BLOG_POST_REGEX.exec(slug);
     const pageMatch = PAGE_REGEX.exec(slug);
-    const projectMatch = PROJECT_REGEX.exec(slug);
 
     if (blogMatch !== null) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -195,14 +153,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       });
     } else if (pageMatch) {
       const filename = pageMatch[2];
-
-      createNodeField({
-        name: `slug`,
-        node,
-        value: `/${filename}`,
-      });
-    } else if (projectMatch) {
-      const filename = projectMatch[2];
 
       createNodeField({
         name: `slug`,
