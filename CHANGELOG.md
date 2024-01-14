@@ -1,5 +1,25 @@
 # tri-hargianto-official-website
 
+## 2.8.0
+
+### Minor Changes
+
+- 8805e4b: Add page transition using framer-motion
+- f07742c: Revamp navbar so it'll be mobile friendly 📱
+- 0e95c62: Add Scroll to Top button on detail article page
+- e85bd5f: Add copy cody button on articles that contains code snippet
+- 4309370: Add multilanguage support for articles
+- 05225eb: Update About Me page
+- 6f92a0c: Hide navbar when scrolling down and show again when scrolling up
+- 5609c7d: Add active page indicator on navbar items
+- 0e95c62: add scroll to top button for article
+
+### Patch Changes
+
+- 259c295: Fix Comment Box doubled on post page
+- c01c31b: Fix navbar dissappear on scrolled to top on Safari
+- 8fec5a0: fix year grouping on blog page
+
 ## 2.7.0
 
 ### Minor Changes
