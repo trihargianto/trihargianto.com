@@ -26,7 +26,7 @@ const LatestProject = ({
       <h2>Pet Projects</h2>
 
       <Button as="a" href={seeAllLink}>
-        Lihat Semua
+        See More
       </Button>
     </div>
 

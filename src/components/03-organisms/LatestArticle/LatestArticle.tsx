@@ -33,7 +33,7 @@ const LatestArticle = ({
       <h2>{sectionTitle}</h2>
 
       <Button as="a" href={seeAllLink}>
-        Lihat Semua
+        See More
       </Button>
     </div>
 

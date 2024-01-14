@@ -49,7 +49,7 @@ const DarkModeSwitcher = () => {
       )}
 
       <span className="ml-2 inline-block lg:hidden">
-        Ubah ke {theme === "light" ? "Dark" : "Light"} Mode
+        Switch to {theme === "light" ? "Dark" : "Light"} Mode
       </span>
     </motion.button>
   );
