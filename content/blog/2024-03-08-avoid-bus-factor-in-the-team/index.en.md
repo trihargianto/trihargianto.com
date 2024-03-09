@@ -1,6 +1,6 @@
 ---
 title: Avoid Bus Factors in the Team
-slug: menghindari-bus-factor-dalam-tim
+slug: avoid-bus-factors-in-the-team
 description: What are Bus Factors and how to avoid them
 category: blog
 featured: cover.jpg
