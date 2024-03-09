@@ -51,9 +51,9 @@ Buatlah kultur dalam tim dimana dokumentasi menjadi bagian dari pekerjaan sehari
 
 ## Kesimpulan
 
-Memahami dan menghindari Bus Factor merupakan salah satu hal yang sangat penting dalam tim, terlebih jika kita seorang Leader, maka kemampuan kita me-mitigasi nya sedini mungkin sangatlah krusial.
+Memahami dan menghindari Bus Factor merupakan salah satu hal yang sangat penting dalam tim, terlebih jika kita seorang Leader, maka kemampuan kita mencegahnya sedini mungkin sangatlah krusial.
 
-Salah satu hal yang saya suka dari aktifitas me-mitigasi Bus Factor ini adalah membuat semua anggota tim berkembang karena belajar hal baru dari rekan satu timnya. Selain itu, belajar hal baru juga merupakan aktifitas yang menyenangkan dan menghindarkan anggota tim dari rutinitas membosankan yang itu-itu saja.
+Salah satu hal yang saya suka dari aktifitas pencegahan Bus Factor ini adalah membuat semua anggota tim berkembang karena belajar hal baru dari rekan satu timnya. Selain itu, belajar hal baru juga merupakan aktifitas yang menyenangkan dan menghindarkan anggota tim dari rutinitas membosankan yang itu-itu saja.
 
 Semoga tulisan saya di sini bermanfaat.
 
