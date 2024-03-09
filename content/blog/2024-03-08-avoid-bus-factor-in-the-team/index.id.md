@@ -7,7 +7,7 @@ featured: cover.jpg
 lang: id
 ---
 
-<img src="cover.jpg" alt="Perjalanan Belajar Vim" />
+<img src="cover.jpg" alt="Menghindari Bus Factor dalam Tim" />
 
 <p align="center"><small><span>Original Photo by <a href="https://unsplash.com/photos/person-in-red-sweater-holding-babys-hand-Zyx1bK9mqmA" target="_blank" rel="noopener">Hannah Busing</a></span></small></p>
 
