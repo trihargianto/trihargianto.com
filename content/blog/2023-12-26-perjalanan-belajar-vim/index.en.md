@@ -1,13 +1,13 @@
 ---
-title: My Thoughts About Vim and How I Learnt to Use It
+title: My Thoughts about Vim and How I Learned to Use It
 slug: my-thoughts-on-vim
-description: How I learnt to use Vim as my primary text editor
+description: How I learned to use Vim as my primary text editor
 category: blog
 featured: cover.jpg
 lang: en
 ---
 
-<img src="cover.jpg" alt="Perjalanan Belajar Vim" />
+<img src="cover.jpg" alt="My Thoughts about Vim and How I Learned to Use It" />
 
 <p align="center"><small><span>Original Photo by <a href="https://unsplash.com/photos/macbook-pro-on-top-of-brown-table-1SAnrIxw5OY" target="_blank" rel="noopener">Kari Shea</a></span></small></p>
 
