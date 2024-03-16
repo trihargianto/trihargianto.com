@@ -6,25 +6,31 @@ import dayjs from "dayjs";
 import Layout from "../components/04-templates/Layout";
 import SEO from "../components/02-molecules/SEO";
 
-interface BlogPageProps {
-  articles: {
-    nodes: {
-      fields: {
-        slug: string;
-        date: string;
-        year: string;
-      };
-      frontmatter: {
-        title: string;
-        description: string;
-        category: string;
-      };
-    }[];
+interface ArticleNode {
+  fields: {
+    slug: string;
+    date: string;
+    year: string;
+    articleGroup: string;
+  };
+  frontmatter: {
+    title: string;
+    description: string;
+    category: string;
+    lang: string;
   };
 }
 
+interface ArticleNodes {
+  nodes: ArticleNode[];
+}
+
+interface BlogPageProps {
+  articles: ArticleNodes;
+}
+
 const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
-  const articles = data.articles.nodes.map((item) => ({
+  const articles = getEnArticlesWhenAvailable(data.articles).map((item) => ({
     slug: item.fields.slug,
     title: item.frontmatter.title,
     date: dayjs(item.fields.date).format("DD MMM YYYY"),
@@ -68,21 +74,41 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
   );
 };
 
+function getEnArticlesWhenAvailable(data: ArticleNodes) {
+  const filteredData: { [key: string]: ArticleNode } = {};
+
+  // Filter data by unique names
+  data.nodes.forEach((item) => {
+    const { articleGroup } = item.fields;
+
+    if (
+      !filteredData[articleGroup] ||
+      filteredData[articleGroup].frontmatter.lang !== "en"
+    ) {
+      filteredData[articleGroup] = item;
+    }
+  });
+
+  return Object.values(filteredData);
+}
+
 export const pageQuery = graphql`
   query {
     articles: allMarkdownRemark(
       sort: { fields: { date: DESC } }
-      filter: { frontmatter: { category: { eq: "blog" }, lang: { eq: "id" } } }
+      filter: { frontmatter: { category: { eq: "blog" } } }
     ) {
       nodes {
         fields {
           slug
           date
+          articleGroup
         }
         frontmatter {
           title
           description
           category
+          lang
         }
       }
     }

@@ -12,20 +12,26 @@ import SEO from "../components/02-molecules/SEO";
 
 const LIMIT_LATEST_ARTICLES = 5;
 
-interface IndexPageProps {
-  latestPosts: {
-    nodes: {
-      fields: {
-        slug: string;
-        date: string;
-      };
-      frontmatter: {
-        title: string;
-        description: string;
-        category: string;
-      };
-    }[];
+interface LatestPost {
+  fields: {
+    slug: string;
+    date: string;
+    articleGroup: string;
   };
+  frontmatter: {
+    title: string;
+    description: string;
+    category: string;
+    lang: string;
+  };
+}
+
+interface LatestPosts {
+  nodes: LatestPost[];
+}
+
+interface IndexPageProps {
+  latestPosts: LatestPosts;
   latestProjects: {
     nodes: {
       fields: {
@@ -43,11 +49,13 @@ interface IndexPageProps {
 }
 
 const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
-  const latestArticles = data.latestPosts.nodes.map((node) => ({
-    title: node.frontmatter.title,
-    date: dayjs(node.fields.date).format("DD MMM YYYY"),
-    slug: node.fields.slug,
-  }));
+  const latestArticles = getEnArticlesWhenAvailable(data.latestPosts).map(
+    (node) => ({
+      title: node.frontmatter.title,
+      date: dayjs(node.fields.date).format("DD MMM YYYY"),
+      slug: node.fields.slug,
+    }),
+  );
 
   const latestProjects = data.latestProjects.nodes.map((node) => ({
     title: node.frontmatter.title,
@@ -92,22 +100,42 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
   );
 };
 
+function getEnArticlesWhenAvailable(data: LatestPosts) {
+  const filteredData: { [key: string]: LatestPost } = {};
+
+  // Filter data by unique names
+  data.nodes.forEach((item) => {
+    const { articleGroup } = item.fields;
+
+    if (
+      !filteredData[articleGroup] ||
+      filteredData[articleGroup].frontmatter.lang !== "en"
+    ) {
+      filteredData[articleGroup] = item;
+    }
+  });
+
+  return Object.values(filteredData);
+}
+
 export const pageQuery = graphql`
   query {
     latestPosts: allMarkdownRemark(
       sort: { fields: { date: DESC } }
-      filter: { frontmatter: { category: { eq: "blog" }, lang: { eq: "id" } } }
-      limit: 5
+      filter: { frontmatter: { category: { eq: "blog" } } }
+      limit: 8
     ) {
       nodes {
         fields {
           slug
           date
+          articleGroup
         }
         frontmatter {
           title
           description
           category
+          lang
         }
       }
     }
