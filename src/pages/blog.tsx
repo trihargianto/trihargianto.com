@@ -42,7 +42,7 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
 
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO title="Blog | Tri Hargianto" />
 
       <div className="mb-10">
         <div className="container mx-auto mt-5">

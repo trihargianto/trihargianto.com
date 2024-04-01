@@ -7,7 +7,7 @@ import SEO from "../components/02-molecules/SEO";
 const PublicationsPage = () => {
   return (
     <Layout>
-      <SEO title="Publications" />
+      <SEO title="Publications | Tri Hargianto" />
 
       <div className="mb-10">
         <div className="container mx-auto mt-5">

@@ -131,7 +131,7 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
 
       <Layout>
         <SEO
-          title={title}
+          title={`${title} | Tri Hargianto`}
           description={description}
           image={image}
           pathname={pathname}

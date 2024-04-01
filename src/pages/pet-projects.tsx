@@ -33,7 +33,7 @@ const ProjectPage = ({ data }: PageProps<ProjectPageProps>) => {
 
   return (
     <Layout>
-      <SEO title="Pet Projects" />
+      <SEO title="Pet Projects | Tri Hargianto" />
 
       <div className="mb-10">
         <div className="container mx-auto mt-5">

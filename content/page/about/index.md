@@ -1,6 +1,6 @@
 ---
-title: About Me
-description: Sebuah halaman perkenalan Tri Hargianto
+title: About | Tri Hargianto
+description: Tri Hargianto short introduction
 category: page
 ---
 
