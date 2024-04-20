@@ -11,7 +11,7 @@ lang: en
 
 <p align="center"><small><span>Original Photo by <a href="https://unsplash.com/photos/shallow-focus-photo-of-person-using-macbook-6Dv3pe-JnSg" target="_blank" rel="noopener">@wocintechchat</a></span></small></p>
 
-## How I Become a Sofware Engineer
+## How I Become a Software Engineer
 
 It has been more than 10 years since I started my career in software development. Being a software engineer is one of the things I am most grateful for in my life.
 
@@ -56,7 +56,7 @@ Sharing is also part of the learning process. I had several presentational talks
 
 ## The Freedom of Remote Work
 
-Since most of the time software engineers worked in front of the screen. I had the chance to work from home. Having the ability to work from home is a privilege for software like me since I can spend more time with my wife and family.
+Since most of the time software engineers worked in front of the screen. I had the chance to work from home. Having the ability to work from home is a privilege for someone like me since I can spend more time with my wife and family.
 
 ## Networking and Community Engagement
 
@@ -64,7 +64,7 @@ Despite my introverted nature, immersing myself in programming communities has b
 
 ## Earned more money
 
-At the time this article was written, Software engineering is one of the highest-paid jobs in my country and I earned a lot from this job to buy stuff I like and help my family to solve our financial problems. I also able generate more money from things other than coding, for example being a programming instructor or a consultant.
+At the time this article was written, Software engineering is one of the high-paid jobs in my country and I earned a lot from this job to buy stuff I like and help my family to solve our financial problems. I also able to make more money from things other than coding, for example being a programming instructor or a consultant.
 
 ## Conclusion
 
