@@ -23,6 +23,12 @@ There is a really nice article called [Spaces vs. Tabs: A 20-Year Debate Reignit
 
 If you ask me, I'm a person who believe **Spaces are better than Tabs**.
 
+Before you continue reading and think that this topic isn't important, there's a funny video from [Sillicon Valley](https://www.hbo.com/silicon-valley):
+
+<a href="https://www.youtube.com/watch?v=SsoOG6ZeyUI" target="_blank" rel="noopener">
+  <img src="images/youtube-tabs-vs-spaces.jpg" alt="Sillicon Valey: Tabs vs Spaces" width="100%" />
+</a>
+
 ## Tabs: Inconsistency across editors
 
 I tried to use tabs using several text editors, but I always ended up using spaces. Here are some examples of how tabs are rendered across different editors:
