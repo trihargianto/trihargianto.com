@@ -22,9 +22,4 @@ export const navbarMenu: {
       path: "/pet-projects/",
       label: "Pet Projects",
     },
-    {
-      path: "https://trihargianto.notion.site/trihargianto/Resume-e7af731cfb5a473e8ef128b18a5c35ce",
-      label: "Resume",
-      isExternalLink: true,
-    },
   ];
