@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { navbarMenu } from "../../../constants/navbar-menu";
 import BrandLogo from "../../01-atoms/BrandLogo";
 import DarkModeSwitcher from "../../02-molecules/DarkModeSwitcher";
+import Alert from "../../02-molecules/Alert";
 
 const NavigationBarProps = () => {
   const location = useLocation();
@@ -81,6 +82,8 @@ const NavigationBarProps = () => {
           : "",
       )}
     >
+      <Alert />
+
       <div className="container mx-auto flex items-center justify-between py-4">
         <Link to="/">
           <BrandLogo />

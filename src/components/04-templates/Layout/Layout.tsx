@@ -19,7 +19,7 @@ const Layout = ({ children }: LayoutProps) => (
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 1 }}
-        transition={{ type: "spring", duration: .5 }}
+        transition={{ type: "spring", duration: 0.5 }}
       >
         {children}
       </motion.div>
