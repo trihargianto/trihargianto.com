@@ -9,7 +9,7 @@ lang: en
 
 <img src="cover.png" alt="Building my newsletter - Speak in Engineering" />
 
-<p>&nbsp;</p>
+<p></p>
 
 I want my life to have meaning and give value to others. Extracting what’s inside my brain into articles and delivering them to my subscribers, hoping that they’ll be useful and have a real impact based on my personal experience is part of my mission.
 
@@ -37,6 +37,6 @@ If you would like to know what’s inside my brain based on my personal experien
 
 <p align="center">
   <a href="https://speakengineering.substack.com/subscribe" target="_blank" rel="noopener noreferrer" class="text-white bg-blue-500 border-blue-500 border hover:bg-blue-600 dark:bg-blue-800 dark:border-transparent dark:hover:bg-blue-900 px-4 py-2.5 my-4 inline-block rounded-md" style="text-decoration: none">
-    Click to subscribe Speak in Engineering for free
+    Click to subscribe for free
   </a>
 </p>
