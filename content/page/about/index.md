@@ -20,7 +20,7 @@ You can contact me by email at
 - [LinkedIn](https://www.linkedin.com/in/trihargianto/)
 - [GitHub](https://github.com/trihargianto)
 
-## What I'm doing now
+## 👨🏻‍💻 What I'm doing now
 
 _Updated June 30th, 2024_
 
@@ -30,7 +30,30 @@ this site.
 
 I also starting my own Newsletter called [Speak In Engineering](https://speakengineering.substack.com/). Subscribe to get quick, actionable tips for improving engineering skills, advancing your career, leading effectively, and enhancing personal growth and productivity.
 
-## Tools
+## 🧠 Source of thoughts
+
+All of the things that help my journey as a software engineer, professional, and human being:
+
+### Podcast
+
+Top 3 podcasts that I listen to regularly (tech and non-tech):
+
+- [Tech Lead Journal](https://techleadjournal.dev/): A podcast for technical leaders, hosted by [Henry Suryawirawan](https://www.linkedin.com/in/henry-suryawirawan/).
+- [Thirthy Days of Lunch](https://www.thirtydaysoflunch.com/): A podcast on practical life skills, hosted by [@fellexandro](https://www.instagram.com/fellexandro) and [@sheggario](https://www.instagram.com/sheggario/).
+- [Hiduplah Indonesia Maya](https://open.noice.id/catalog/ab88f196-a8a2-4ec0-9272-c7f82e68f935): A podcast from [Pandji Pragiwaksono](https://www.instagram.com/pandji.pragiwaksono/?hl=en) which discusses all the excitement that is happening in Indonesian cyberspace.
+
+### Newsletter
+
+- [The Pragmatic Engineer](https://blog.pragmaticengineer.com/): A weekly newsletter for new and experienced software engineers.
+- [Frontend Focus](https://frontendfoc.us/): A weekly newsletter for front-end developers.
+- [JavaScript Weekly](https://javascriptweekly.com/): A weekly newsletter for JavaScript developers.
+
+### Others
+
+- [GreatFrontEnd](https://greatfrontend.com): A curated list of great resources for Front-End developers.
+- [@ecommurz](https://www.instagram.com/ecommurz/): Indonesian Biggest Tech Execs & Workers community
+
+## ⚒️ Tools
 
 ### Hardware
 
@@ -47,7 +70,7 @@ I also starting my own Newsletter called [Speak In Engineering](https://speakeng
 - [LazyGit](https://github.com/jesseduffield/lazygit): An amazing terminal-based UI for git, works great with LazyVim.
 - [Notion](https://www.notion.so/): My go-to tool for note-taking and organizing my second brain.
 
-## Random facts
+## 🙃 Random facts
 
 - I had my first PC and learned programming with PHP in 2013.
 - I'm a partial color blind. That's why I made

@@ -67,7 +67,7 @@ const Endorsements = () => {
 
   return (
     <>
-      <p className="mb-5 text-2xl font-semibold">What they said about me</p>
+      <p className="mb-5 text-2xl font-semibold">🗣️ What they said about me</p>
 
       <div
         className={clsx(
