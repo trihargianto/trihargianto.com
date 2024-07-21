@@ -32,7 +32,7 @@ I also starting my own Newsletter called [Speak In Engineering](https://speakeng
 
 ## 🧠 Source of thoughts
 
-All of the things that help my journey as a software engineer, professional, and human being:
+Some sources that help my journey as a software engineer, professional, and human being:
 
 ### Podcast
 
