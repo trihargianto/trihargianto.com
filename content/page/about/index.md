@@ -42,8 +42,9 @@ Top 3 podcasts that I listen to regularly (tech and non-tech):
 - [Thirthy Days of Lunch](https://www.thirtydaysoflunch.com/): A podcast on practical life skills, hosted by [@fellexandro](https://www.instagram.com/fellexandro) and [@sheggario](https://www.instagram.com/sheggario/).
 - [Hiduplah Indonesia Maya](https://open.noice.id/catalog/ab88f196-a8a2-4ec0-9272-c7f82e68f935): A podcast from [Pandji Pragiwaksono](https://www.instagram.com/pandji.pragiwaksono/?hl=en) which discusses all the excitement that is happening in Indonesian cyberspace.
 
-### Newsletter
+### Books & Newsletter
 
+- [Tri's Curated Books Collection](https://www.libib.com/u/trihargianto): My personal curated list of books that I've read (Tech & Non-tech).
 - [The Pragmatic Engineer](https://blog.pragmaticengineer.com/): A weekly newsletter for new and experienced software engineers.
 - [Frontend Focus](https://frontendfoc.us/): A weekly newsletter for front-end developers.
 - [JavaScript Weekly](https://javascriptweekly.com/): A weekly newsletter for JavaScript developers.
