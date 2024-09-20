@@ -21,7 +21,7 @@ lang: en
 
 ## Background
 
-It’s been more than 1 year since my team and I [decided on the minimum supported browsers to be supported in Mamikos Web](https://medium.com/mamitech/deciding-the-minimum-browser-versions-to-be-supported-in-mamikos-com-e493d2d04caf). 
+It’s been more than 1 year since my team and I [decided on the minimum browsers versions to be supported in mamikos.com](https://medium.com/mamitech/deciding-the-minimum-browser-versions-to-be-supported-in-mamikos-com-e493d2d04caf). 
 We’ve relied on that data to help us determine whether some new features are ready to be used. 
 I admit it’s annoying to update the data regularly, but it’s worth the effort.
 
@@ -65,7 +65,7 @@ The simplest way to decide is by analyzing your target users’ behavior and the
 
 ### Follow Baseline 
 
-[Baseline](https://web.dev/baseline) is an initiative from [WebDX Community Group](https://www.w3.org/community/webdx/) to help developers easily identify features that are stable and well-supported by all major browsers. Read more about it here.
+[Baseline](https://web.dev/baseline) is an initiative from [WebDX Community Group](https://www.w3.org/community/webdx/) to help developers easily identify features that are stable and well-supported by all major browsers. 
 
 Baseline is a really great choice in case you don’t have analytics installed on your site and you want to rely on global data. The drawback from it is it’s relatively new, hence not all features have a Baseline label yet. 
 
