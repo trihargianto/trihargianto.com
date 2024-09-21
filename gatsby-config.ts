@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
@@ -175,6 +176,11 @@ const config: GatsbyConfig = {
         showSpinner: true,
       },
     },
+
+    // https://docs.sentry.io/platforms/javascript/guides/gatsby/
+    {
+      resolve: "@sentry/gatsby"
+    }
   ],
 };
 

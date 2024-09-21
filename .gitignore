@@ -4,6 +4,8 @@ node_modules/
 public
 src/gatsby-types.d.ts
 yarn-error.log
+.env
+!.env.example
 
 # Yarn
 .yarn/*
