@@ -11,18 +11,16 @@ lang: en
 
 <p align="center"><small><span>Original Photo by <a href="https://unsplash.com/photos/logo-JySoEnr-eOg?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash" target="_blank" rel="noopener">Denny Müller</a></span></small></p>
 
-
 ## Table Of Contents
 
 ```toc
 
 ```
 
-
 ## Background
 
-It’s been more than 1 year since my team and I [decided on the minimum browsers versions to be supported in mamikos.com](https://medium.com/mamitech/deciding-the-minimum-browser-versions-to-be-supported-in-mamikos-com-e493d2d04caf). 
-We’ve relied on that data to help us determine whether some new features are ready to be used. 
+It’s been more than 1 year since my team and I [decided on the minimum browsers versions to be supported in mamikos.com](https://medium.com/mamitech/deciding-the-minimum-browser-versions-to-be-supported-in-mamikos-com-e493d2d04caf).
+We’ve relied on that data to help us determine whether some new features are ready to be used.
 I admit it’s annoying to update the data regularly, but it’s worth the effort.
 
 ## Why should you care
@@ -41,7 +39,7 @@ Transpilation is the practice of transforming modern code into traditional code.
 
 It’s hard to tell unless we have the data.
 
-### Avoid putting useless Polyfill 
+### Avoid putting useless Polyfill
 
 Polyfill is a piece of code used to provide modern functionality on older browsers that do not natively support it. Putting them without any clear direction into our web apps could bloat our JavaScript file size and impact the performance since the decision is based on the assumption.
 
@@ -49,7 +47,7 @@ Polyfill is a piece of code used to provide modern functionality on older browse
 
 QA / Testers would have a clear direction on which browser version to be supported, so the website has a chance to be more stable on those targeted browsers.
 
-### Unsupported browser alert 
+### Unsupported browser alert
 
 Putting an unsupported browser alert might seems not cool to our site, but it’s way better than letting our users experience broken features without them knowing why.
 
@@ -57,23 +55,25 @@ Imagine you ship a new syntax to the production and your site’s broken from th
 
 ## How to decide them
 
-Now we know how important it is, then how to decide them? There are several methods to get this: 
+Now we know how important it is, then how to decide them? There are several methods to get this:
 
 ### Analyze your website’s visitors
 
 The simplest way to decide is by analyzing your target users’ behavior and the browsers they commonly use. Tools like Google Analytics can provide detailed insights into what browsers and versions your visitors use most. This is my preferred and main method to decide in my company though.
 
-### Follow Baseline 
+> Read my article on [How to Analyze Browser Visitors with Google Analytics 4](/en/how-to-analyze-browser-visitors-with-google-analytics-4/)
 
-[Baseline](https://web.dev/baseline) is an initiative from [WebDX Community Group](https://www.w3.org/community/webdx/) to help developers easily identify features that are stable and well-supported by all major browsers. 
+### Follow Baseline
 
-Baseline is a really great choice in case you don’t have analytics installed on your site and you want to rely on global data. The drawback from it is it’s relatively new, hence not all features have a Baseline label yet. 
+[Baseline](https://web.dev/baseline) is an initiative from [WebDX Community Group](https://www.w3.org/community/webdx/) to help developers easily identify features that are stable and well-supported by all major browsers.
+
+Baseline is a really great choice in case you don’t have analytics installed on your site and you want to rely on global data. The drawback from it is it’s relatively new, hence not all features have a Baseline label yet.
 
 ### Follow the framework requirement
 
 If you’re using a framework to build your site, most of them should have shared their minimum supported browsers on their documentation like [what Next.js has](https://nextjs.org/docs/architecture/supported-browsers) for instance. This could be the easiest way to know your supported browsers.
 
-## Conclusion 
+## Conclusion
 
 Whatever your methods to decide the minimum supported browser is up to you and make sure to decide it according to your target users.
 
