@@ -1,5 +1,12 @@
 # tri-hargianto-official-website
 
+## 2.9.0
+
+### Minor Changes
+
+- 1e787fd: remove motion on page to improve load time
+- aeb67f0: update Netlify Status badge link
+
 ## 2.8.0
 
 ### Minor Changes
