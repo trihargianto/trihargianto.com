@@ -52,7 +52,7 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
   const latestArticles = getEnArticlesWhenAvailable(data.latestPosts).map(
     (node) => ({
       title: node.frontmatter.title,
-      date: dayjs(node.fields.date).format("DD MMM YYYY"),
+      date: dayjs(node.fields.date).format("MMM YYYY"),
       slug: node.fields.slug,
     }),
   );

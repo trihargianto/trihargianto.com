@@ -67,7 +67,7 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
   const description = data.article.frontmatter.description;
   const twitter = data.site.siteMetadata.social.twitter;
   const url = data.site.siteMetadata.siteUrl;
-  const date = dayjs(data.article.fields.date).format("DD MMM YYYY");
+  const date = dayjs(data.article.fields.date).format("MMM YYYY");
   const readingTimeText = data.article.fields.readingTime.text;
 
   const alternativeLangSlug = data.alternativeLangSlug?.fields?.slug;

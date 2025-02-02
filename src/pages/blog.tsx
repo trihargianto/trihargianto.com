@@ -33,7 +33,7 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
   const articles = getEnArticlesWhenAvailable(data.articles).map((item) => ({
     slug: item.fields.slug,
     title: item.frontmatter.title,
-    date: dayjs(item.fields.date).format("DD MMM YYYY"),
+    date: dayjs(item.fields.date).format("MMM YYYY"),
     year: dayjs(item.fields.date).format("YYYY"),
   }));
 
