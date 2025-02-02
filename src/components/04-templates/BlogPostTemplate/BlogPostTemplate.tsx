@@ -199,7 +199,7 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
           />
 
           <p className="mb-6 text-left text-2xl font-semibold md:text-center">
-            Komentar
+            Comments
           </p>
 
           <div ref={commentsContainer}></div>
