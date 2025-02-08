@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { kebabCase } from "lodash-es";
 
 import Button from "../../01-atoms/Button";
 
@@ -43,7 +44,11 @@ const LatestArticle = ({
         className="flex flex-row justify-between border-b-2 border-b-gray-200 py-3 dark:border-b-gray-800"
       >
         {item.slug ? (
-          <Link to={item.slug} className="font-medium hover:underline">
+          <Link
+            to={item.slug}
+            className="font-medium hover:underline"
+            style={{ viewTransitionName: kebabCase(item.title) }}
+          >
             {item.title}
           </Link>
         ) : (

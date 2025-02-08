@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, Link, PageProps } from "gatsby";
-import { groupBy } from "lodash-es";
+import { groupBy, kebabCase } from "lodash-es";
 import dayjs from "dayjs";
 
 import Layout from "../components/04-templates/Layout";
@@ -57,7 +57,11 @@ const BlogPage = ({ data }: PageProps<BlogPageProps>) => {
                   key={`latest-article-${index}`}
                   className="flex flex-row justify-between border-b border-b-gray-200 py-3 dark:border-b-gray-800"
                 >
-                  <Link to={item.slug} className="font-medium hover:underline">
+                  <Link
+                    to={item.slug}
+                    className="font-medium hover:underline"
+                    style={{ viewTransitionName: `${kebabCase(item.title)}` }}
+                  >
                     {item.title}
                   </Link>
 

@@ -5,7 +5,7 @@ import profilePicWebp from "../../../img/profile-pic-v3.webp";
 import { useTypingTextEffect } from "../../../hooks/useTypingTextEffect";
 
 const greetings = [
-  "Welcome to my little corner of internet.",
+  "Welcome to my little corner of the internet.",
   "Hello! You’ve entered my digital HQ.",
   "You’ve reached the right coordinates.",
 ];

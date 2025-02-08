@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { graphql, Link, PageProps } from "gatsby";
 import dayjs from "dayjs";
+import { kebabCase } from "lodash-es";
 
 import { useDarkMode } from "../../../hooks/useDarkMode";
 
@@ -144,7 +145,9 @@ const BlogPostTemplate = ({ data, location }: BlogPostTemplateProps) => {
             <span>🕑 {readingTimeText}</span>
           </p>
 
-          <h1 className="mb-0">{title}</h1>
+          <h1 className="mb-0" style={{ viewTransitionName: kebabCase(title) }}>
+            {title}
+          </h1>
 
           <p className="mb-4 mt-2 text-sm text-gray-700 dark:text-gray-500 sm:text-base">
             {description}
