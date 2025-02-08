@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import "dotenv/config";
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
@@ -161,8 +161,8 @@ const config: GatsbyConfig = {
         ],
         web: [
           {
-            name: `Inter`,
-            file: `https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap`,
+            name: `Plus Jakarta Sans`,
+            file: `https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap`,
           },
         ],
       },
@@ -179,8 +179,8 @@ const config: GatsbyConfig = {
 
     // https://docs.sentry.io/platforms/javascript/guides/gatsby/
     {
-      resolve: "@sentry/gatsby"
-    }
+      resolve: "@sentry/gatsby",
+    },
   ],
 };
 

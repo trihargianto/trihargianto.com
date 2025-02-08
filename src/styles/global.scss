@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: "Inter";
+  font-family: "Plus Jakarta Sans";
   @extend .bg-theme;
 
   @apply transition-colors duration-200;
@@ -59,7 +59,7 @@ h6 {
   }
 
   p {
-    @apply mb-5 leading-7;
+    @apply mb-5 leading-8;
   }
 
   ul,
