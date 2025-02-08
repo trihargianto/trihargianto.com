@@ -16,17 +16,17 @@ const GreetingCard = () => {
   const typingText = useTypingTextEffect(randomGreeting, 80);
 
   return (
-    <div className="flex flex-row items-center gap-8 sm:flex-row md:w-full lg:w-5/6">
-      <picture className="w-1/3">
+    <div className="flex flex-row items-center gap-8 sm:flex-row md:w-full md:gap-0 lg:w-5/6">
+      <picture className="w-1/4">
         <source srcSet={profilePicWebp} type="image/webp" />
         <img
           src={profilePicPng}
           alt="Tri Hargianto"
-          className="aspect-[2/3] sm:w-72 md:w-56"
+          className="aspect-[2/3] sm:w-72 md:w-40"
         />
       </picture>
 
-      <div className="w-2/3">
+      <div className="w-3/4">
         <h1 className="h-12 text-xl sm:h-auto sm:text-2xl">{typingText}</h1>
 
         <p className="mb-5">
