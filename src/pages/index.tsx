@@ -72,7 +72,7 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
       <SEO title="trihargianto.com - A personal digital garden by Tri Hargianto" />
 
       <div className="mb-10">
-        <div className="container mx-auto mt-5">
+        <div className="container mx-auto">
           <GreetingCard />
 
           <LatestArticle

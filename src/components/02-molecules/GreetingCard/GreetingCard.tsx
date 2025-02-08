@@ -1,15 +1,15 @@
 import React from "react";
 
-import profilePic from "../../../img/profile-pic-v2.jpg";
+import profilePicPng from "../../../img/profile-pic-v3.png";
+import profilePicWebp from "../../../img/profile-pic-v3.webp";
 
 const GreetingCard = () => {
   return (
-    <div className="flex flex-col items-start gap-8 sm:flex-row md:w-full lg:w-5/6">
-      <img
-        src={profilePic}
-        alt="Tri Hargianto"
-        className="aspect-square w-40 rounded-xl sm:w-48 md:w-40"
-      />
+    <div className="flex flex-row items-center gap-8 sm:flex-row md:w-full lg:w-5/6">
+      <picture className="aspect-[2/3] w-80 sm:w-72 md:w-56">
+        <source srcSet={profilePicWebp} type="image/webp" />
+        <img src={profilePicPng} alt="Tri Hargianto" />
+      </picture>
 
       <div>
         <h1>
@@ -21,8 +21,12 @@ const GreetingCard = () => {
 
         <p className="mb-5">I&apos;m a Software Engineer from Indonesia 🇮🇩</p>
         <p>
-          Welcome to my digital garden where I put my projects, tutorials,
-          thoughts, and anything else I want to show to the world.
+          Welcome to my digital garden where I share{" "}
+          <span className="hidden sm:inline">
+            my projects, tutorials, thoughts, and
+          </span>{" "}
+          everything <span className="hidden sm:inline">else I want to </span>
+          the world.
         </p>
       </div>
     </div>
