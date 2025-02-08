@@ -1,5 +1,22 @@
 # tri-hargianto-official-website
 
+## 2.10.0
+
+### Minor Changes
+
+- 816e341: Add view-transitions-api support!
+- 0819498: update font from "Inter" to "Plus Jakarta Sans"
+- 52bcde7: update line-height to 2rem on detail article
+- 2b5dab5: Remove date from articles and publications so only month and year left
+- b2c0ba5: Update profile picture on homepage greeting
+- f0926ac: update greeting message to use typing effect on homepage
+- 080560d: Update favicon and brand logo appearance
+
+### Patch Changes
+
+- bd5d2fa: Fix layout shift on greeting's image
+- 1ca8563: Fix comment's title typo
+
 ## 2.9.0
 
 ### Minor Changes
