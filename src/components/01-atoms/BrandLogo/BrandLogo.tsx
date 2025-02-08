@@ -1,23 +1,22 @@
 import React from "react";
 import clsx from "clsx";
 
-import IconPng from "../../../img/icon-logo.png";
+import IconPng from "../../../img/icon-logo-v2.jpg";
 
 type BrandLogoTypes = {
   className?: string;
-  isLogoTextVisible?: boolean;
 };
 
-const BrandLogo = ({ className = "", isLogoTextVisible = true, ...restProps }: BrandLogoTypes) => (
+const BrandLogo = ({ className = "", ...restProps }: BrandLogoTypes) => (
   <span className={clsx(["text-lg font-semibold", className])} {...restProps}>
     <img
       src={IconPng}
       alt="icon"
-      className="mr-2 inline-block"
-      width={42}
-      height={42}
+      className="mr-2 inline-block aspect-square w-8 rounded-full"
     />
-    <span className="inline-block">@trihargianto</span>
+    <span className="inline-block text-slate-700 dark:text-slate-300">
+      trihargianto.com
+    </span>
   </span>
 );
 

@@ -119,7 +119,7 @@ const NavigationBarProps = () => {
             >
               <div className="container mx-auto flex w-full items-end justify-between">
                 <Link to="/">
-                  <BrandLogo isLogoTextVisible={false} />
+                  <BrandLogo />
                 </Link>
 
                 <button onClick={hideMobileMenu}>
