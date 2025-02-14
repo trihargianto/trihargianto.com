@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { publications } from "../content/publications";
+---
+
+<BaseLayout pageTitle="Publications | Tri Hargianto">
+  <h1>Publications 📰</h1>
+
+  {
+    publications.map((item) => (
+      <div class="flex flex-row justify-between border-b-2 py-3 border-b-gray-200 dark:border-b-gray-800">
+        <div>
+          <a
+            href={item.link}
+            class="font-medium hover:underline"
+            target="__blank"
+            rel="noopener noreferrer"
+          >
+            {item.title}
+          </a>
+
+          <p class="mt-1 text-sm text-slate-500">- {item.platform}</p>
+        </div>
+
+        <span class="hidden text-right text-slate-400 md:block md:w-40">
+          {item.date}
+        </span>
+      </div>
+    ))
+  }
+</BaseLayout>

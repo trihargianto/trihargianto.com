@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import { groupBy, kebabCase } from "lodash-es";
+import dayjs from "dayjs";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map((item) => ({
+    slug: item.id,
+    title: item.data.title,
+    date: dayjs(item.data.pubDate).format("MMM YYYY"),
+    year: dayjs(item.data.pubDate).format("YYYY"),
+  }));
+
+const articlesByYear = groupBy(posts, "year");
+const years = Object.keys(articlesByYear).sort().reverse();
+---
+
+<BaseLayout pageTitle="Blog | Tri Hargianto">
+  <div class="mb-10">
+    <h1>Blog</h1>
+    <ul>
+      {
+        years.map((year) => (
+          <div class="mb-10">
+            <h2 class="mb-2">{year}</h2>
+
+            {articlesByYear[year].map((item) => (
+              <div class="flex flex-row justify-between border-b border-b-gray-200 py-3 dark:border-b-gray-800">
+                <a
+                  href={`/blog/${item.slug}`}
+                  class="font-medium hover:underline"
+                  style={{
+                    viewTransitionName: `${kebabCase(item.title)}`,
+                  }}
+                >
+                  {item.title}
+                </a>
+
+                <span class="hidden text-slate-400 md:block">{item.date}</span>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

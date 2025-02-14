@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard";
+
+const allProjects = await getCollection("project");
+
+const projects = allProjects.map((project) => ({
+  title: project.data.title,
+  slug: project.id,
+  description: project.data.description,
+  demoLink: project.data.demoLink,
+  githubLink: project.data.githubLink,
+}));
+---
+
+<BaseLayout pageTitle="Pet Projects | Tri Hargianto">
+  <div class="mb-8">
+    <h1 class="mb-0">Pet Projects 🐈</h1>
+    <p class="mt-1 text-sm text-gray-500 sm:text-base">
+      Some of my work that I worked on my spare time for fun
+    </p>
+  </div>
+
+  <div class="-m-2 flex flex-wrap sm:flex-row">
+    {
+      projects.map((item) => (
+        <div class="w-full p-2 md:w-1/2 lg:w-1/3">
+          <ProjectCard
+            name={item.title}
+            demoLink={item.demoLink}
+            githubLink={item.githubLink}
+          >
+            {item.description}
+          </ProjectCard>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>

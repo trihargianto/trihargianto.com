@@ -1,0 +1,67 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import dayjs from "dayjs";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import GreetingCard from "../components/GreetingCard";
+import LatestArticle from "../components/LatestArticle";
+import LatestProject from "../components/LatestProject";
+
+import { publications } from "../content/publications";
+
+const allBlogPosts = await getCollection("blog");
+const allProjects = await getCollection("project");
+
+const latestArticles = allBlogPosts
+  // Sort by `pubDate` in descending order
+  .sort((a, b) => {
+    return dayjs(b.data.pubDate).valueOf() - dayjs(a.data.pubDate).valueOf();
+  })
+  // Limit to 5 latest articles
+  .slice(0, 8)
+  .map((post) => ({
+    title: post.data.title,
+    date: dayjs(post.data.pubDate).format("MMM YYYY"),
+    slug: post.id,
+  }));
+
+const LIMIT_LATEST_ARTICLES = 5;
+
+const latestPublications = publications.slice(0, LIMIT_LATEST_ARTICLES);
+
+const latestProjects = allProjects.map((project) => ({
+  title: project.data.title,
+  slug: project.id,
+  description: project.data.description,
+  demoLink: project.data.demoLink,
+  githubLink: project.data.githubLink,
+}));
+---
+
+<BaseLayout
+  pageTitle="trihargianto.com - A personal digital garden by Tri Hargianto"
+>
+  <GreetingCard client:load />
+
+  <LatestArticle
+    sectionTitle="Latest Articles"
+    articles={latestArticles}
+    className="mt-14"
+    seeAllLink="/blog"
+    client:idle
+  />
+
+  <LatestArticle
+    sectionTitle="Publications"
+    articles={latestPublications}
+    className="mt-14"
+    seeAllLink="/publications"
+  />
+
+  <LatestProject
+    projects={latestProjects}
+    className="mt-14"
+    seeAllLink="/pet-projects"
+  />
+</BaseLayout>

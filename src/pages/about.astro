@@ -1,0 +1,26 @@
+---
+import { getEntry, render } from "astro:content";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Endorsements from "../components/Endorsements";
+
+const aboutPost = await getEntry("singlePage", "about");
+
+if (!aboutPost) {
+  throw new Error("Could not find about post");
+}
+
+const { Content } = await render(aboutPost);
+---
+
+<BaseLayout pageTitle={aboutPost.data.title}>
+  <h1>About Me</h1>
+
+  <div class="prose dark:prose-invert max-w-none">
+    <Content />
+  </div>
+
+  <div class="relative mx-auto mt-14">
+    <Endorsements client:visible />
+  </div>
+</BaseLayout>

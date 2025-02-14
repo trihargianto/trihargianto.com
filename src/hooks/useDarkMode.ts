@@ -1,64 +1,39 @@
-import { useEffect, useState } from "react";
-import useLocalStorageState from "use-local-storage-state";
+import { useState, useEffect } from "react";
 
-type ThemeTypes = "light" | "dark" | "";
+export const useDarkMode = () => {
+  const getInitialTheme = () => {
+    if (typeof window !== "undefined") {
+      const localStorageTheme = localStorage.getItem("theme");
 
-export function useDarkMode() {
-  const [userTheme, setUserTheme] = useLocalStorageState<ThemeTypes>("theme", {
-    defaultValue: "",
-  });
+      if (localStorageTheme && ["dark", "light"].includes(localStorageTheme)) {
+        return localStorageTheme;
+      }
 
-  const [systemTheme, setSystemTheme] = useState<ThemeTypes>("light");
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
 
-  function setDarkTheme() {
-    setUserTheme("dark");
-  }
+    return "light"; // Default theme for SSR
+  };
 
-  function setLightTheme() {
-    setUserTheme("light");
-  }
+  const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
-    const isUserSetTheThemeManually = userTheme !== "";
-
-    if (!isUserSetTheThemeManually) {
-      if (!window.matchMedia) {
-        return;
-      }
-
-      const colorSchemeQuery = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      );
-
-      setDocumentThemeClass(colorSchemeQuery.matches);
-      setSystemTheme(colorSchemeQuery.matches ? "dark" : "light");
-
-      function onMediaQueryChange(event: MediaQueryListEvent) {
-        setDocumentThemeClass(event.matches);
-        setSystemTheme(event.matches ? "dark" : "light");
-      }
-
-      colorSchemeQuery.addEventListener("change", onMediaQueryChange);
-
-      return () => {
-        colorSchemeQuery.removeEventListener("change", onMediaQueryChange);
-      };
-    }
-
-    setDocumentThemeClass(userTheme === "dark");
-
-    function setDocumentThemeClass(isDarkTheme: boolean) {
-      if (isDarkTheme) {
-        document.documentElement.classList.add("dark");
-      } else {
+    if (typeof document !== "undefined") {
+      if (theme === "light") {
         document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
       }
-    }
-  }, [userTheme]);
 
-  return {
-    theme: !!userTheme ? userTheme : systemTheme,
-    setDarkTheme,
-    setLightTheme,
+      localStorage.setItem("theme", theme || "light");
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
-}
+
+  return { theme, toggleTheme };
+};
