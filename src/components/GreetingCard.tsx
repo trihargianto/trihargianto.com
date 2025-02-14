@@ -25,7 +25,9 @@ const GreetingCard = () => {
       </picture>
 
       <div className="w-3/4">
-        <h1 className="h-12 text-xl sm:h-auto sm:text-2xl">{typingText}</h1>
+        <h2 className="h-15 text-xl sm:h-auto sm:text-2xl mb-2 sm:mb-5">
+          {typingText}
+        </h2>
 
         <p className="mb-5">
           I&apos;m{" "}
