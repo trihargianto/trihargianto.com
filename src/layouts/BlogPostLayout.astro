@@ -2,17 +2,27 @@
 import "../styles/global.css";
 
 import type { CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
 import { Image } from "astro:assets";
 import dayjs from "dayjs";
 import { kebabCase } from "lodash-es";
 
-import { SOCIAL_TWITTER, SITE_URL } from "../constants/config";
+import {
+  SOCIAL_TWITTER,
+  SITE_URL,
+  NAVBAR_HEIGHT_ESTIMATION_IN_PX,
+} from "../constants/config";
 import SocialShareButtons from "../components/SocialShareButtons";
 import BlogComments from "../components/BlogComments";
-import ButtonScrollTop from "../components/ButtonScrollTop";
+// import ButtonScrollTop from "../components/ButtonScrollTop";
+import TableOfContents from "../components/TableOfContents.tsx";
+import TocDrawerButton from "../components/TocDrawerButton.tsx";
 import BaseLayout from "./BaseLayout.astro";
+import clsx from "clsx";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & {
+  headings: MarkdownHeading[];
+};
 
 const {
   slug,
@@ -22,16 +32,19 @@ const {
   featured,
   featuredSource,
   featuredSourceUrl,
+  headings,
 } = Astro.props;
 
 const date = dayjs(pubDate).format("MMM YYYY");
+
+const articleHasHeadings = headings.length > 0;
 ---
 
 <BaseLayout
   pageTitle={`${title} | Tri Hargianto`}
   pageDescription={description}
 >
-  <ButtonScrollTop client:idle />
+  <!-- <ButtonScrollTop client:idle /> -->
 
   <p class="mb-2 text-sm text-gray-700 dark:text-gray-500">
     <span>🗓️ {date}</span>
@@ -63,13 +76,40 @@ const date = dayjs(pubDate).format("MMM YYYY");
     ) : null
   }
 
-  <section class="max-w-none prose dark:prose-invert mt-8">
-    <slot />
+  <section class="flex max-w-none prose dark:prose-invert pt-6">
+    <div
+      class:list={{
+        "w-full lg:w-3/4 lg:pr-7": articleHasHeadings,
+      }}
+    >
+      <slot />
+    </div>
+
+    {
+      articleHasHeadings ? (
+        <>
+          {/* Desktop */}
+          <div class="hidden lg:block w-1/4 pl-6">
+            <div
+              class:list={["sticky right-8 w-full overflow-auto duration-300"]}
+              style={{
+                top: `${NAVBAR_HEIGHT_ESTIMATION_IN_PX + 10}px`,
+              }}
+            >
+              <TableOfContents headings={headings} client:visible />
+            </div>
+          </div>
+
+          {/* Mobile */}
+          <div class="block lg:hidden">
+            <TocDrawerButton client:visible headings={headings} />
+          </div>
+        </>
+      ) : null
+    }
   </section>
 
   <div class="container mx-auto">
-    <hr class="my-8" />
-
     <SocialShareButtons
       socialConfig={{
         twitter: SOCIAL_TWITTER,

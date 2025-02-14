@@ -46,3 +46,8 @@ h5 {
 h6 {
   @apply text-xs font-semibold sm:text-sm;
 }
+
+/** Customize @tailwindcss/typography */
+.prose h2:first-child {
+  @apply mt-0;
+}
