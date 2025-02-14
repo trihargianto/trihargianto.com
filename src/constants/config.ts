@@ -9,3 +9,5 @@ export const AUTHOR_SUMMARY =
 
 export const SOCIAL_TWITTER = "trihargianto";
 export const SOCIAL_GITHUB = "trihargianto";
+
+export const NAVBAR_HEIGHT_ESTIMATION_IN_PX = 75;

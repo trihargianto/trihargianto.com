@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 
+import { NAVBAR_HEIGHT_ESTIMATION_IN_PX } from "../constants/config";
 import NavigationBar from "../components/NavigationBar";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
@@ -27,7 +28,7 @@ const { pageTitle, pageDescription } = Astro.props;
         <NavigationBar client:load currentUrlPath={currentUrlPath} />
 
         {/* Must be equal to NavigationBar height */}
-        <div style="height: 72px;"></div>
+        <div style={`height: ${NAVBAR_HEIGHT_ESTIMATION_IN_PX}px;`}></div>
 
         <div class="mb-10">
           <Container className="py-6 lg:py-8"><slot /></Container>

@@ -1,17 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { navbarMenu } from "../constants/navbar-menu";
+import { useNavbarScrollVisibility } from "../hooks/useNavbarScrollVisibility";
 import BrandLogo from "./BrandLogo";
 import DarkModeSwitcher from "./DarkModeSwitcher";
 import Container from "./Container";
 
-const NavigationBarProps = ({ currentUrlPath }: { currentUrlPath: string }) => {
+const NavigationBar = ({ currentUrlPath }: { currentUrlPath: string }) => {
+  const { isBorderNavbarVisible, isNavbarVisible } =
+    useNavbarScrollVisibility();
+
   const navRef = useRef<HTMLElement | null>(null);
 
-  const [isNavbarVisible, setNavbarVisible] = useState(true);
-  const [isBorderNavbarVisible, setBorderNavbarVisible] = useState(false);
   const [isMobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   function showMobileMenu() {
@@ -21,52 +23,6 @@ const NavigationBarProps = ({ currentUrlPath }: { currentUrlPath: string }) => {
   function hideMobileMenu() {
     setMobileMenuVisible(false);
   }
-
-  function showNavbarVisible() {
-    setNavbarVisible(true);
-  }
-
-  function hideNavbarVisible() {
-    setNavbarVisible(false);
-  }
-
-  function showBorderNavbar() {
-    setBorderNavbarVisible(true);
-  }
-
-  function hideBorderNavbar() {
-    setBorderNavbarVisible(false);
-  }
-
-  useEffect(() => {
-    /*
-     * When the user scrolls down, hide the navbar.
-     * When the user scrolls up, show the navbar
-     */
-    let lastScrollTop = 0;
-
-    window.addEventListener("scroll", function () {
-      // @ts-ignore-next
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > 10 && scrollTop > lastScrollTop) {
-        hideNavbarVisible();
-      } else {
-        showNavbarVisible();
-      }
-
-      const isScrolledToTop = scrollTop < 10;
-
-      if (isScrolledToTop) {
-        hideBorderNavbar();
-      } else {
-        showBorderNavbar();
-      }
-
-      lastScrollTop = scrollTop;
-    });
-  }, []);
 
   return (
     <nav
@@ -213,4 +169,4 @@ const NavigationBarProps = ({ currentUrlPath }: { currentUrlPath: string }) => {
   );
 };
 
-export default NavigationBarProps;
+export default NavigationBar;
