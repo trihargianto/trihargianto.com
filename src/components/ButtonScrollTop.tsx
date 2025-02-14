@@ -36,7 +36,7 @@ const ButtonScrollTop = () => {
       className={clsx(
         "md:h-15 h-16 w-16",
         "fixed bottom-5 right-5 z-30 inline-flex items-center justify-center shadow-md",
-        isButtonVisible ? "flex" : "hidden",
+        isButtonVisible ? "flex" : "hidden!",
       )}
     >
       <svg
