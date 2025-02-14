@@ -115,7 +115,7 @@ const NavigationBarProps = ({ currentUrlPath }: { currentUrlPath: string }) => {
               exit={{ opacity: 0, y: -50 }}
               transition={{ type: "spring", duration: 0.5 }}
             >
-              <div className="container mx-auto flex w-full items-end justify-between">
+              <div className="container mx-auto flex w-full items-end justify-between px-6">
                 <a href="/">
                   <BrandLogo />
                 </a>
