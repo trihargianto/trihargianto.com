@@ -13,10 +13,10 @@ export default function TocDrawerButton({ headings }: TocDrawerButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Drawer.Root open={isOpen} onOpenChange={setIsOpen}>
+    <Drawer.Root open={isOpen} onOpenChange={setIsOpen} modal={false}>
       <Drawer.Trigger
         className={clsx([
-          "fixed bottom-6 right-6",
+          "fixed z-30 bottom-6 right-6",
           "flex h-10 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full px-4",
           "text-sm font-medium shadow-sm transition-all",
           "text-slate-600 bg-slate-200 border-slate-300 border hover:bg-slate-300 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-900 dark:text-slate-200",
