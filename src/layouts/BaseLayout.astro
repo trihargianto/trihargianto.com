@@ -1,0 +1,64 @@
+---
+import "../styles/global.css";
+
+import NavigationBar from "../components/NavigationBar";
+import Container from "../components/Container";
+import Footer from "../components/Footer";
+import BaseHead from "../components/BaseHead.astro";
+
+type Props = {
+  pageTitle: string;
+  pageDescription?: string;
+};
+
+const currentUrlPath = Astro.url.pathname;
+
+const { pageTitle, pageDescription } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={pageTitle} description={pageDescription} />
+  </head>
+  <body>
+    <div class="relative min-h-screen">
+      <div class="w-full pb-48">
+        <NavigationBar client:load currentUrlPath={currentUrlPath} />
+
+        {/* Must be equal to NavigationBar height */}
+        <div style="height: 72px;"></div>
+
+        <div class="mb-10">
+          <Container className="py-6 lg:py-8"><slot /></Container>
+        </div>
+      </div>
+
+      <Footer client:visible />
+    </div>
+
+    <script is:inline>
+      const theme = (() => {
+        const localStorageTheme = localStorage?.getItem("theme") ?? "";
+
+        if (["dark", "light"].includes(localStorageTheme)) {
+          return localStorageTheme;
+        }
+
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+
+        return "light";
+      })();
+
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+
+      window.localStorage.setItem("theme", theme);
+    </script>
+  </body>
+</html>
