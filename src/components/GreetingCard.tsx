@@ -1,18 +1,7 @@
 import profilePicPng from "../img/profile-pic-v3.png";
 import profilePicWebp from "../img/profile-pic-v3.webp";
-import { useTypingTextEffect } from "../hooks/useTypingTextEffect";
 
-const greetings = [
-  "Welcome to my little internet corner.",
-  "Hello! You’ve entered my digital HQ.",
-  "You’ve reached the right coordinates.",
-];
-
-const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-const GreetingCard = () => {
-  const typingText = useTypingTextEffect(randomGreeting, 80);
-
+const GreetingCard = ({ children }) => {
   return (
     <div className="flex flex-row items-center gap-8 sm:flex-row md:w-full md:gap-0 lg:w-5/6">
       <picture className="w-1/4">
@@ -26,7 +15,7 @@ const GreetingCard = () => {
 
       <div className="w-3/4">
         <h2 className="h-15 text-xl sm:h-auto sm:text-2xl mb-2 sm:mb-5">
-          {typingText}
+          {children}
         </h2>
 
         <p className="mb-5">
