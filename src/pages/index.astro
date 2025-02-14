@@ -42,13 +42,15 @@ const latestProjects = allProjects.map((project) => ({
 <BaseLayout
   pageTitle="trihargianto.com - A personal digital garden by Tri Hargianto"
 >
-  <GreetingCard client:load />
+  <GreetingCard>
+    <span id="greeting-text"></span>
+  </GreetingCard>
 
   <LatestArticle
     sectionTitle="Latest Articles"
     articles={latestArticles}
     className="mt-14"
-    seeAllLink="/blog"
+    seeAllLink="/blog/"
     client:idle
   />
 
@@ -56,12 +58,38 @@ const latestProjects = allProjects.map((project) => ({
     sectionTitle="Publications"
     articles={latestPublications}
     className="mt-14"
-    seeAllLink="/publications"
+    seeAllLink="/publications/"
   />
 
   <LatestProject
     projects={latestProjects}
     className="mt-14"
-    seeAllLink="/pet-projects"
+    seeAllLink="/pet-projects/"
   />
 </BaseLayout>
+
+<script>
+  /* Greeting text typing effect */
+  const speed = 80;
+  let i = 0;
+
+  const greetings = [
+    "Welcome to my little internet corner.",
+    "Hello! You’ve entered my digital HQ.",
+    "You’ve reached the right coordinates.",
+  ];
+
+  const greetingText = greetings[Math.floor(Math.random() * greetings.length)];
+
+  (function greetingTextTypingEffect() {
+    if (i < greetingText.length) {
+      const greetingTextElement = document.getElementById("greeting-text");
+
+      if (greetingTextElement) {
+        greetingTextElement.innerHTML += greetingText.charAt(i);
+        i++;
+        setTimeout(greetingTextTypingEffect, speed);
+      }
+    }
+  })();
+</script>
