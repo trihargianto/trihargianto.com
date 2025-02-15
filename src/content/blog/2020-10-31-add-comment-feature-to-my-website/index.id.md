@@ -4,6 +4,7 @@ slug: add-comment-feature-to-my-website
 description: Memanfaatkan Utterances untuk membuat fitur komentar berdasarkan issues di Github
 featured: cover.png
 pubDate: "Oct 31 2020"
+tags: ["announcement", "javascript"]
 ---
 
 Sebenarnya saya gak berpikiran menambahkan fitur komentar di web ini ketika web ini pertama kali dibuat, tapi setelah dipikir-pikir ya gak ada salahnya kalau ada fitur komentarnya, hehe.

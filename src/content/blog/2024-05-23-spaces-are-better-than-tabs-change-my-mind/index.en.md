@@ -6,6 +6,7 @@ featured: cover.jpg
 pubDate: "2024-05-23"
 featuredSourceUrl: "https://unsplash.com/photos/black-and-white-typewriter-on-brown-wooden-table-di8ognBauG0"
 featuredSource: "Wilhelm Gunkel"
+tags: ["opinion"]
 ---
 
 **⚠️ Warning:** The opinion in this article may differ from your own. You can also share your opinion in the comment section below if you disagree with me 😁.

@@ -4,6 +4,7 @@ slug: building-my-newsletter
 description: An introduction to my newsletter
 featured: cover.png
 pubDate: "2024-07-01"
+tags: ["announcement"]
 ---
 
 I want my life to have meaning and give value to others. Extracting what’s inside my brain into articles and delivering them to my subscribers, hoping that they’ll be useful and have a real impact based on my personal experience is part of my mission.

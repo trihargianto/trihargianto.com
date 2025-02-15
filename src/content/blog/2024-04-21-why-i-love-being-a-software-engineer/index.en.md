@@ -6,6 +6,7 @@ featured: cover.jpg
 pubDate: 2024-04-21
 featuredSourceUrl: "https://unsplash.com/photos/shallow-focus-photo-of-person-using-macbook-6Dv3pe-JnSg"
 featuredSource: "@wocintechchat"
+tags: ["opinion", "personal-experience"]
 ---
 
 ## How I Become a Software Engineer

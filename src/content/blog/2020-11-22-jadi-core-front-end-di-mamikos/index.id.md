@@ -4,6 +4,7 @@ slug: jadi-core-front-end-di-mamikos
 description: Apa saja yang di kerjakaan oleh tim Core Front-End Mamikos dan kenapa tim ini ada di Mamikos.
 featured: cover.png
 pubDate: 2020-11-22
+tags: ["personal-experience", "mamikos"]
 ---
 
 ## Preface

@@ -6,6 +6,7 @@ featured: cover.jpg
 pubDate: 2024-03-16
 featuredSourceUrl: "https://unsplash.com/photos/a-close-up-of-a-logo-j_DmMNZK-jo"
 featuredSource: "Gaspar Uhas"
+tags: ["opinion"]
 ---
 
 How often do you get stuck when trying to solve a particular problem? Or a few times have a brilliant idea that comes out of nowhere but a few days or even hours later you forget it completely? Many of us certainly experience it, including myself of course.

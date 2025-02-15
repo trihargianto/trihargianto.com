@@ -6,6 +6,7 @@ featured: cover.jpg
 pubDate: "2024-06-16"
 featuredSourceUrl: "https://unsplash.com/photos/turned-on-gray-laptop-computer-XJXWbfSo2f0"
 featuredSource: "Luca Bravo"
+tags: ["personal-experience", "opinion", "guideline"]
 ---
 
 ## Preface

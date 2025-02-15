@@ -6,6 +6,7 @@ featured: cover.jpg
 pubDate: 2024-03-08
 featuredSourceUrl: "https://unsplash.com/photos/person-in-red-sweater-holding-babys-hand-Zyx1bK9mqmA"
 featuredSource: "Hannah Busing"
+tags: ["opinion", "leadership"]
 ---
 
 ## What is Bus Factor?
