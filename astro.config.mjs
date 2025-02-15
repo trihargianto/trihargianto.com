@@ -9,10 +9,19 @@ import tailwindcss from "@tailwindcss/vite";
 
 import netlify from "@astrojs/netlify";
 
+import expressiveCode from "astro-expressive-code";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [
+    expressiveCode({
+      themes: ["catppuccin-frappe", "one-light"],
+    }),
+    mdx(),
+    sitemap(),
+    react(),
+  ],
 
   vite: {
     plugins: [tailwindcss()],

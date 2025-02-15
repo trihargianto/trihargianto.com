@@ -18,7 +18,7 @@ const { pageTitle, pageDescription } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="github-dark">
   <head>
     <BaseHead title={pageTitle} description={pageDescription} />
   </head>
@@ -55,8 +55,17 @@ const { pageTitle, pageDescription } = Astro.props;
 
       if (theme === "light") {
         document.documentElement.classList.remove("dark");
+
+        // expressive-code
+        document.documentElement.setAttribute("data-theme", "one-light");
       } else {
         document.documentElement.classList.add("dark");
+
+        // expressive-code
+        document.documentElement.setAttribute(
+          "data-theme",
+          "catppuccin-frappe",
+        );
       }
 
       window.localStorage.setItem("theme", theme);
