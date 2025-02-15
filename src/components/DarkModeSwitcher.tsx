@@ -7,6 +7,12 @@ const DarkModeSwitcher = () => {
 
     const isDark = element.classList.contains("dark");
 
+    if (isDark) {
+      document.documentElement.setAttribute("data-theme", "catppuccin-frappe");
+    } else {
+      document.documentElement.setAttribute("data-theme", "one-light");
+    }
+
     localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 
