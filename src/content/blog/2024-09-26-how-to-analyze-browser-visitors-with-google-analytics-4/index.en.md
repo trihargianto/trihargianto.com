@@ -6,6 +6,7 @@ featured: cover.jpg
 featuredSource: Google
 featuredSourceUrl: https://www.google.com/analytics
 pubDate: "2024-09-26"
+tags: ["how-to"]
 ---
 
 ## Preface

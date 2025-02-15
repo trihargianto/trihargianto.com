@@ -6,6 +6,7 @@ featured: cover.jpg
 pubDate: 2020-12-20
 featuredSourceUrl: "https://www.freepik.com/vectors/technology"
 featuredSource: "vectorpocket"
+tags: ["opinion"]
 ---
 
 Saat membuat aplikasi, cara tercepat untuk mem-validasi apakah fitur yang kita bikin bekerja sesuai yang kita harapkan atau belum adalah dengan mencobanya secara langsung.

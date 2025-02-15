@@ -6,6 +6,7 @@ featured: cover.jpg
 featuredSource: Denny Müller
 featuredSourceUrl: https://unsplash.com/photos/logo-JySoEnr-eOg?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash
 pubDate: "2024-11-03"
+tags: ["how-to"]
 ---
 
 ## Preface

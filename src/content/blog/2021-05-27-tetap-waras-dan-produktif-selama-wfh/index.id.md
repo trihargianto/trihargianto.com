@@ -6,6 +6,7 @@ featured: cover.jpg
 pubDate: 2021-05-27
 featuredSourceUrl: "https://unsplash.com/@jasonstrull"
 featuredSource: "Jason Strull"
+tags: ["productivity", "personal-experience"]
 ---
 
 ## Preface
@@ -28,7 +29,7 @@ Lalu, apa yang saya lakukan buat mengatasi permasalahan di atas?
 
 Selama bekerja remote dari rumah (WFH), saya jadi lebih sadar betapa pentingnya punya kemampuan buat ngatur task secara efektif ketika harus multitasking.
 
-Beberapa waktu lalu, saya nulis artikel terpisah tentang <a href="/cara-supaya-kerja-multitasking-efektif" target="_blank" rel="noopener">Cara Supaya Kerja Multitasking Efektif</a>. Sejauh ini, metode tersebut juga cukup efektif menjaga saya untuk menghindari kebiasaan menunda-nunda.
+Beberapa waktu lalu, saya nulis artikel terpisah tentang <a href="/blog/cara-supaya-kerja-multitasking-efektif" target="_blank" rel="noopener">Cara Supaya Kerja Multitasking Efektif</a>. Sejauh ini, metode tersebut juga cukup efektif menjaga saya untuk menghindari kebiasaan menunda-nunda.
 
 Kamu bisa baca artikelnya dulu supaya bisa memahami artikel di halaman ini secara utuh 👌.
 

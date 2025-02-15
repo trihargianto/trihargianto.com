@@ -3,9 +3,8 @@ import "../styles/global.css";
 
 import type { CollectionEntry } from "astro:content";
 import type { MarkdownHeading } from "astro";
-import { Image } from "astro:assets";
 import dayjs from "dayjs";
-import { kebabCase } from "lodash-es";
+import { kebabCase, lowerCase } from "lodash-es";
 
 import {
   SOCIAL_TWITTER,
@@ -14,28 +13,18 @@ import {
 } from "../constants/config";
 import SocialShareButtons from "../components/SocialShareButtons";
 import BlogComments from "../components/BlogComments";
-// import ButtonScrollTop from "../components/ButtonScrollTop";
 import TableOfContents from "../components/TableOfContents.tsx";
 import TocDrawerButton from "../components/TocDrawerButton.tsx";
 import BaseLayout from "./BaseLayout.astro";
-import clsx from "clsx";
+import Badge from "../components/Badge";
 
 type Props = CollectionEntry<"blog">["data"] & {
   headings: MarkdownHeading[];
 };
 
-const {
-  slug,
-  title,
-  description,
-  pubDate,
-  featured,
-  featuredSource,
-  featuredSourceUrl,
-  headings,
-} = Astro.props;
+const { slug, title, description, pubDate, headings, tags } = Astro.props;
 
-const date = dayjs(pubDate).format("MMM YYYY");
+const date = dayjs(pubDate).format("MMMM DD, YYYY");
 
 const articleHasHeadings = headings.length > 0;
 ---
@@ -44,39 +33,70 @@ const articleHasHeadings = headings.length > 0;
   pageTitle={`${title} | Tri Hargianto`}
   pageDescription={description}
 >
-  <!-- <ButtonScrollTop client:idle /> -->
-
-  <p class="mb-2 text-sm text-gray-700 dark:text-gray-500">
-    <span>🗓️ {date}</span>
-  </p>
+  {
+    tags && tags.length > 0 ? (
+      <p class="mb-4 text-sm text-gray-700 dark:text-gray-500">
+        <span class="inline-flex gap-2">
+          {tags?.map((tag) => (
+            <Badge>{lowerCase(tag)}</Badge>
+          ))}
+        </span>
+      </p>
+    ) : null
+  }
 
   <h1 class="mb-3!" style={{ viewTransitionName: kebabCase(title) }}>
     {title}
   </h1>
 
-  <p class="mb-4 text-sm! text-gray-700 dark:text-gray-500 sm:text-base">
+  <p class="mb-4 text-sm! text-gray-500 dark:text-gray-400 sm:text-base">
     {description}
   </p>
 
-  <Image src={featured} alt={title} class="w-full" />
+  <p
+    class="mb-4 text-xs flex items-center gap-2 text-gray-500 dark:text-gray-400"
+  >
+    <span class="inline-flex items-center gap-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
+        ></path>
+      </svg>
 
-  {
-    featuredSource && featuredSourceUrl ? (
-      <p class="w-full text-xs mt-1 text-center">
-        Original Photo by
-        <a
-          href={featuredSourceUrl}
-          target="_blank"
-          rel="noopener"
-          class="underline"
-        >
-          {featuredSource}
-        </a>
-      </p>
-    ) : null
-  }
+      {date}
+    </span>
 
-  <section class="flex max-w-none prose dark:prose-invert pt-6">
+    <!-- 
+    TODO: Add estimated read time
+    <span class="inline-flex items-center gap-2 ml-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+        ></path>
+      </svg>
+      10 mins read
+    </span> -->
+  </p>
+
+  <section class="flex max-w-none prose dark:prose-invert lg:pt-4">
     <div
       class:list={{
         "w-full lg:w-3/4 lg:pr-7": articleHasHeadings,

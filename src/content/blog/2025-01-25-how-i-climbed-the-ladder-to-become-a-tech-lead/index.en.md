@@ -6,6 +6,7 @@ featured: cover.jpg
 featuredSource: Rob Walsh
 featuredSourceUrl: https://unsplash.com/photos/person-hand-holding-paper-4lfrwRyHRYk?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash
 pubDate: "2025-01-25"
+tags: ["personal-experience"]
 ---
 
 In this post, I’ll share my experience on how I became a Tech Lead. Working in this role for almost two years made me think: "Is there any specific reason why I was chosen over others?"
