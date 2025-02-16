@@ -38,7 +38,37 @@ const currentSelectedTopic = Astro.params?.topic || "all";
   <div class="mb-10">
     <h1>Blog</h1>
 
-    <section class="flex max-w-none lg:pt-4">
+    <section class="flex flex-col lg:flex-row-reverse max-w-none lg:pt-4">
+      <div class="w-full lg:w-1/4 lg:pl-6 mb-8">
+        <span class="font-semibold mb-5 inline-block text-sm md:text-base"
+          >Choose Topic</span
+        >
+
+        <div class="flex flex-wrap gap-1.5">
+          <Badge
+            isClickable
+            isActive={currentSelectedTopic === "all"}
+            className="blog-page-tag-item"
+            {...{ "data-tag-name": "all" }}
+          >
+            all
+          </Badge>
+
+          {
+            allAvailableTags.map((tag) => (
+              <Badge
+                isClickable
+                isActive={tag === currentSelectedTopic}
+                className="blog-page-tag-item"
+                {...{ "data-tag-name": tag }}
+              >
+                {lowerCase(tag)}
+              </Badge>
+            ))
+          }
+        </div>
+      </div>
+
       <div class:list={["w-full lg:w-3/4 lg:pr-7"]}>
         <ul>
           {
@@ -67,34 +97,6 @@ const currentSelectedTopic = Astro.params?.topic || "all";
             ))
           }
         </ul>
-      </div>
-
-      <div class="hidden lg:block w-1/4 pl-6">
-        <span class="font-semibold mb-5 inline-block">Choose Topic</span>
-
-        <div class="flex flex-wrap gap-1.5">
-          <Badge
-            isClickable
-            isActive={currentSelectedTopic === "all"}
-            className="blog-page-tag-item"
-            {...{ "data-tag-name": "all" }}
-          >
-            all
-          </Badge>
-
-          {
-            allAvailableTags.map((tag) => (
-              <Badge
-                isClickable
-                isActive={tag === currentSelectedTopic}
-                className="blog-page-tag-item"
-                {...{ "data-tag-name": tag }}
-              >
-                {lowerCase(tag)}
-              </Badge>
-            ))
-          }
-        </div>
       </div>
     </section>
   </div>
