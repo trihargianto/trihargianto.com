@@ -39,7 +39,7 @@ const LatestArticle = ({
     {articles.map((item, index) => (
       <div
         key={`latest-article-${index}`}
-        className="flex flex-row justify-between border-b-2 border-b-gray-200 py-3 dark:border-b-gray-800"
+        className="flex flex-row justify-between border-b-2 last:border-b-0 border-b-gray-200 py-3 dark:border-b-gray-800"
       >
         {item.slug ? (
           <a
