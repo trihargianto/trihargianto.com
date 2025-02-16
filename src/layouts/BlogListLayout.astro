@@ -1,0 +1,121 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { groupBy, kebabCase, lowerCase, upperFirst } from "lodash-es";
+import dayjs from "dayjs";
+
+import BaseLayout from "./BaseLayout.astro";
+import Badge from "../components/Badge";
+
+type Props = {
+  posts?: CollectionEntry<"blog">[];
+};
+
+const allAvailablePosts = await getCollection("blog");
+
+const allAvailableTags = [
+  ...new Set(allAvailablePosts.flatMap((item) => item.data.tags)),
+].sort();
+
+const sourcePosts = Astro.props.posts ? Astro.props.posts : allAvailablePosts;
+
+const posts = sourcePosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map((item) => ({
+    ...item,
+    date: dayjs(item.data.pubDate).format("MMM YYYY"),
+    year: dayjs(item.data.pubDate).format("YYYY"),
+  }));
+
+const postsByYear = groupBy(posts, "year");
+const years = Object.keys(postsByYear).sort().reverse();
+
+const currentSelectedTopic = Astro.params?.topic || "all";
+---
+
+<BaseLayout
+  pageTitle={`${upperFirst(currentSelectedTopic)} Articles | Blog | Tri Hargianto`}
+>
+  <div class="mb-10">
+    <h1>Blog</h1>
+
+    <section class="flex flex-col lg:flex-row-reverse max-w-none lg:pt-4">
+      <div class="w-full lg:w-1/4 lg:pl-6 mb-8">
+        <span class="font-semibold mb-5 inline-block text-sm md:text-base"
+          >Choose Topic</span
+        >
+
+        <div class="flex flex-wrap gap-1.5">
+          <Badge
+            isClickable
+            isActive={currentSelectedTopic === "all"}
+            className="blog-page-tag-item"
+            {...{ "data-tag-name": "all" }}
+          >
+            all
+          </Badge>
+
+          {
+            allAvailableTags.map((tag) => (
+              <Badge
+                isClickable
+                isActive={tag === currentSelectedTopic}
+                className="blog-page-tag-item"
+                {...{ "data-tag-name": tag }}
+              >
+                {lowerCase(tag)}
+              </Badge>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class:list={["w-full lg:w-3/4 lg:pr-7"]}>
+        <ul>
+          {
+            years.map((year) => (
+              <div class="mb-10">
+                <h2 class="mb-2">{year}</h2>
+
+                {postsByYear[year].map((item) => (
+                  <div class="flex flex-row justify-between border-b border-b-gray-200 py-3 dark:border-b-gray-800">
+                    <a
+                      href={`/blog/${item.data.slug}`}
+                      class="font-medium hover:underline"
+                      style={{
+                        viewTransitionName: `${kebabCase(item.data.title)}`,
+                      }}
+                    >
+                      {item.data.title}
+                    </a>
+
+                    <span class="hidden text-slate-400 md:block">
+                      {item.date}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  /** Tag buttons handler */
+  const tagButtons = document.querySelectorAll(".blog-page-tag-item");
+
+  tagButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const tagName = event.target.getAttribute("data-tag-name");
+
+      if (tagName === "all") {
+        window.location.href = "/blog";
+        return;
+      }
+
+      window.location.href = `/blog/topic/${tagName}`;
+    });
+  });
+</script>
