@@ -13,7 +13,10 @@ if (!aboutPost) {
 const { Content } = await render(aboutPost);
 ---
 
-<BaseLayout pageTitle={aboutPost.data.title}>
+<BaseLayout
+  pageTitle={aboutPost.data.title}
+  pageDescription={aboutPost.data.description}
+>
   <h1>About Me</h1>
 
   <div class="prose dark:prose-invert max-w-none">
