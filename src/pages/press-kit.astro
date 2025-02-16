@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const images = [
+  {
+    highRes: "/img/press/photo-1-transparent.png",
+    lowRes: "/img/press/photo-1-transparent.webp",
+    alt: "Casual Transparent",
+  },
+  {
+    highRes: "/img/press/photo-1.jpg",
+    lowRes: "/img/press/photo-1.webp",
+    alt: "Casual White",
+  },
+];
+---
+
+<BaseLayout pageTitle="Press Kit">
+  <div class="w-full prose dark:prose-invert">
+    <h1>Press Kit</h1>
+    <p>
+      If you would like to invite me as a guest or speaker at your conference,
+      feel free to use the following information and photos for your event.
+    </p>
+
+    <h2 class="text-lg! my-0! font-bold text-slate-500">Title</h2>
+    <p class="mt-0">Principal Software Engineer, Frontend at Mamikos</p>
+
+    <h2 class="text-lg! my-0! font-bold text-slate-500">Photos</h2>
+    <p class="mt-0 italic">Click to get the high-resolution image</p>
+
+    <div class="flex flex-wrap gap-4">
+      {
+        images.map((image) => (
+          <a
+            class="p-0 m-0 w-full h-auto md:w-[300px] md:h-[300px] relative cursor-pointer"
+            href={image.highRes}
+            target="_blank"
+          >
+            <picture class="m-0!">
+              <source srcset={image.lowRes} type="image/webp" />
+              <img
+                src={image.highRes}
+                alt={image.alt}
+                class="w-full aspect-square"
+              />
+            </picture>
+            <div class="absolute bottom-[20px] left-[0] bg-black text-white py-1 px-4 shadow-md">
+              {image.alt}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
