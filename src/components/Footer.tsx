@@ -18,7 +18,7 @@ const links = {
     { href: "/blog", label: "Blog" },
     { href: "/pet-projects", label: "Pet Projects" },
     { href: "/publications", label: "Publications" },
-    { href: "/press-kit", label: "Press Kit" },
+    { href: "/media-kit", label: "Media Kit" },
     // TODO: Add Guest Book feature
     // { href: "/guest-book", label: "Guest Book" },
   ],
@@ -55,7 +55,11 @@ const Footer = () => {
         <Container>
           <div className="w-full flex flex-col sm:flex-row justify-between gap-4">
             <div className="w-full sm:w-2/6 pr-4 mb-6">
-              <h4 className="mb-2">trihargianto.com</h4>
+              <h4 className="mb-2 font-bold">
+                <a href="/" className="hover:underline">
+                  trihargianto.com
+                </a>
+              </h4>
               <p className="mb-3">The personal website of Tri Hargianto.</p>
 
               <p>
