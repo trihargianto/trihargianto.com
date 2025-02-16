@@ -29,7 +29,7 @@ const NavigationBar = ({ currentUrlPath }: { currentUrlPath: string }) => {
       ref={navRef}
       className={clsx(
         isNavbarVisible ? "top-[0]" : "-top-[75px]",
-        "bg-theme fixed z-30 w-full transition-[top] duration-300",
+        "bg-theme fixed z-20 w-full transition-[top] duration-300",
         isBorderNavbarVisible
           ? "border-b border-b-gray-300 dark:border-b-gray-800"
           : "",
@@ -62,7 +62,7 @@ const NavigationBar = ({ currentUrlPath }: { currentUrlPath: string }) => {
           {isMobileMenuVisible && (
             <motion.div
               className={clsx(
-                "fixed z-30 flex flex-col items-start py-4",
+                "fixed z-20 flex flex-col items-start py-4",
                 "bottom-[0] left-[0] right-[0] top-[0]",
                 "bg-theme",
               )}

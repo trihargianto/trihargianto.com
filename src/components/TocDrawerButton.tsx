@@ -16,7 +16,7 @@ export default function TocDrawerButton({ headings }: TocDrawerButtonProps) {
     <Drawer.Root open={isOpen} onOpenChange={setIsOpen} modal={false}>
       <Drawer.Trigger
         className={clsx([
-          "fixed z-30 bottom-6 right-6",
+          "fixed z-10 bottom-6 right-6",
           "flex h-10 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full px-4",
           "text-sm font-medium shadow-sm transition-all",
           "text-slate-600 bg-slate-200 border-slate-300 border hover:bg-slate-300 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-900 dark:text-slate-200",
@@ -39,16 +39,21 @@ export default function TocDrawerButton({ headings }: TocDrawerButtonProps) {
         Table of Contents
       </Drawer.Trigger>
       <Drawer.Portal>
-        <Drawer.Title></Drawer.Title>
-        <Drawer.Overlay className="z-40 fixed inset-0 bg-black/40" />
-        <Drawer.Content className="bg-gray-100 dark:bg-[#2a2a2a] flex flex-col rounded-t-[10px] mt-24 h-fit fixed bottom-0 left-0 right-0 outline-none z-50">
-          <div className="py-6 px-4">
-            <div className="mx-auto w-12 h-1 flex-shrink-0 rounded-full bg-gray-300 mb-3" />
+        <Drawer.Overlay className="fixed inset-0 bg-black" />
+        <Drawer.Content className="shadow-md z-10 bg-white dark:bg-slate-800 flex flex-col rounded-t-[10px] mt-24 h-[80%] lg:h-[320px] fixed bottom-0 left-0 right-0 outline-none">
+          <div
+            aria-hidden
+            className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 my-4"
+          />
 
-            <TableOfContents
-              headings={headings}
-              onClickTocItem={() => setIsOpen(false)}
-            />
+          <div className="px-6 pb-4 rounded-t-[10px] flex-1 overflow-y-auto">
+            <div className="max-w-md mx-auto space-y-4">
+              <Drawer.Title></Drawer.Title>
+              <TableOfContents
+                headings={headings}
+                onClickTocItem={() => setIsOpen(false)}
+              />
+            </div>
           </div>
         </Drawer.Content>
       </Drawer.Portal>

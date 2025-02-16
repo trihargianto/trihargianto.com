@@ -48,14 +48,14 @@ const TableOfContents = ({
           <li
             key={slug}
             className={clsx([
-              "my-0!",
+              "my-0! list-disc",
               depth === 2 ? "ml-0" : depth === 3 ? "ml-4" : "ml-8",
             ])}
           >
             <a
               href={`#${slug}`}
               className={clsx([
-                "text-gray-500 block py-1.5 px-0 text-sm transition-colors no-underline hover:text-blue-500 dark:hover:text-blue-300",
+                "text-gray-500 dark:text-gray-400 block py-1.5 px-0 text-sm transition-colors no-underline hover:text-blue-500 dark:hover:text-blue-300",
               ])}
               onClick={onClickTocItem}
             >
