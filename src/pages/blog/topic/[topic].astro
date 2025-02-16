@@ -1,0 +1,31 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+
+import BlogListLayout from "../../../layouts/BlogListLayout.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+
+  const topics = allPosts.flatMap((post) => post.data.tags ?? []);
+
+  const allUniqueTopics = [...new Set(topics)];
+
+  return allUniqueTopics.map((topic) => ({
+    params: { topic },
+    props: { posts: allPosts },
+  }));
+}
+
+type Props = {
+  posts: CollectionEntry<"blog">[];
+};
+
+const { topic } = Astro.params;
+const { posts } = Astro.props;
+
+const filteredPostByTopic = posts.filter((post) =>
+  post.data.tags?.includes(topic),
+);
+---
+
+<BlogListLayout posts={filteredPostByTopic} />
