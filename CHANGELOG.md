@@ -1,5 +1,32 @@
 # tri-hargianto-official-website
 
+## 3.1.0
+
+### Minor Changes
+
+- 549644a: chore: upgrade Astro to 5.3.0
+- e9ff585: feat: add press-kit page
+- 22e8a14: feat: update meta description for all pages
+- e6891f7: feat: table of contents for desktop
+- 89d59af: feat: filter post by topic (desktop)
+- d8d1af8: Feat: add tags for each article
+- 0fcf30c: feat: filter poast by topic (mobile)
+- 1251bf2: feat: put scroll to top button on toc desktop
+- b4c2ad0: feat: table of contents for mobile
+- 1e474bd: feat: update footer appearance
+- 97fc444: Use [expressive-code](https://expressive-code.com/) for syntax-highlighting
+
+### Patch Changes
+
+- dcecc89: Table of Contents can’t scroll properly for long contents
+- 58925e9: Fix: Trailing slash for the page links
+- b59d446: fix: padding-bottom for navbar too wide
+- 848ae5a: fix: hydration error on greeting component
+- 26e02b0: Fix: toc link can't be clicked properly on mobile
+- 26e02b0: fix: z-index issue on drawer button
+- 44ee3bd: fix: ugly greeting component height on mobile
+- 2708cb5: Fix redirection issue on Netlify.
+
 ## 3.0.0
 
 ### Major Changes
