@@ -45,7 +45,7 @@ const links = {
 const Footer = () => {
   return (
     <>
-      <div className="h-[550px] sm:h-70"></div>
+      <div className="h-[650px] sm:h-70"></div>
 
       <footer
         className={clsx(

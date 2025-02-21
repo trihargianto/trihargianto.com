@@ -98,7 +98,7 @@ const Endorsements = () => {
             )}
           />
 
-          <div className="absolute bottom-[10px] left-[0] right-[0] z-20 flex justify-center">
+          <div className="absolute bottom-[10px] left-[0] right-[0] z-10 flex justify-center">
             <Button
               variant="primary"
               onClick={() => setAllEndorserVisible(true)}

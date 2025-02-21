@@ -73,7 +73,7 @@ const currentSelectedTopic = Astro.params?.topic || "all";
       <ul>
         {
           years.map((year) => (
-            <div class="mb-10">
+            <div class="mb-10 last:mb-0">
               <h2 class="mb-2">{year}</h2>
 
               {postsByYear[year].map((item) => (
