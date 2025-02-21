@@ -22,4 +22,8 @@ export const navbarMenu: {
     path: "/pet-projects/",
     label: "Pet Projects",
   },
+  {
+    path: "/speaking/",
+    label: "Speaking",
+  },
 ];
