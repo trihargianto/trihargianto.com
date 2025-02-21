@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import Button from "../components/Button";
+
+const talks = [
+  // 2025
+  {
+    imageDefault: "/img/posters/jogjajs-33.jpeg",
+    imageWebp: "/img/posters/jogjajs-33.webp",
+    title: "JogjaJS February Meetup",
+    description: "Build Fast & Modern Websites with Astro Web Framework",
+    date: "2025-02-26",
+    recordingLink: "",
+    slideLink: "",
+  },
+
+  // 2023
+  {
+    imageDefault: "/img/posters/jogjajs-31.jpeg",
+    imageWebp: "/img/posters/jogjajs-31.webp",
+    title: "JogjaJS x Mamikos x Jakpat",
+    description: "Frontend Testing Practice & Principle in mamikos.com",
+    date: "2023-10-28",
+    recordingLink: "",
+    slideLink: "x",
+  },
+
+  // 2021
+  {
+    imageDefault: "/img/posters/jogjajs-26.jpg",
+    imageWebp: "/img/posters/jogjajs-26.webp",
+    title: "DILO Jogja Community Gathering",
+    description: "Day to Day Work as a Frontend Developer",
+    date: "2021-08-28",
+  },
+
+  // 2020
+  {
+    imageDefault: "/img/posters/jogjajs-22.jpg",
+    imageWebp: "/img/posters/jogjajs-22.webp",
+    title: "GDG Indonesia Online Meetup",
+    description: "Firebase Online Web Study Jam",
+    date: "2020-04-26",
+  },
+
+  // 2018
+  {
+    imageDefault: "/img/posters/jogjajs-11.jpg",
+    imageWebp: "/img/posters/jogjajs-11.webp",
+    title: "Kitabisa Tech Meetup",
+    description: "Styling React Applications",
+    date: "2018-04-21",
+    slideLink:
+      "https://speakerdeck.com/trihargianto/styling-react-applications-at-jogjajs",
+  },
+  {
+    imageDefault: "/img/posters/intro-react.png",
+    imageWebp: "/img/posters/intro-react.webp",
+    title: "PT Otret Dot Com Tech Talk",
+    description: "Introduction to React",
+    date: "2018-03-23",
+    slideLink: "https://speakerdeck.com/trihargianto/introduction-to-react",
+  },
+  {
+    imageDefault: "/img/posters/jumpstart-react-redux.jpg",
+    imageWebp: "/img/posters/jumpstart-react-redux.webp",
+    title: "Forum Open Source Akakom",
+    description: "Jumpstart to React + Redux",
+    date: "2018-05-26",
+    slideLink:
+      "https://speakerdeck.com/trihargianto/jumpstart-to-react-plus-redux-at-fosa-dot-akakom",
+  },
+];
+---
+
+<BaseLayout
+  pageTitle="Speaking | Tri Hargianto"
+  pageDescription="I love sharing my expertise with other software engineers. I've had the opportunity to speak at several events, covering various modern web development technologies"
+>
+  <div class="prose dark:prose-invert max-w-none">
+    <h1>Public Speaking</h1>
+
+    <p>
+      I love sharing my expertise with other software engineers. I've had the
+      opportunity to speak at several events, covering various modern web
+      development technologies such as React, Vue.js, and Frontend Development
+      Best Practices.
+    </p>
+
+    <p>I would love to know about your conference / event and be part of it.</p>
+
+    <Button size="sm" as="a" href="/about">Invite me to speak</Button>
+
+    <img src="/img/speaking-cover.png" alt="Speaking Cover" />
+
+    <h2>Past Public Appearances</h2>
+    {
+      (
+        <div class="flex flex-wrap -mx-2">
+          {talks.map((talk) => (
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <HorizontalCard {...talk} />
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

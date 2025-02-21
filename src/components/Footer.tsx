@@ -16,9 +16,11 @@ const links = {
   sitemap: [
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
+    { href: "/media-kit", label: "Media Kit" },
     { href: "/pet-projects", label: "Pet Projects" },
     { href: "/publications", label: "Publications" },
-    { href: "/media-kit", label: "Media Kit" },
+    { href: "/speaking", label: "Speaking" },
+
     // TODO: Add Guest Book feature
     // { href: "/guest-book", label: "Guest Book" },
   ],

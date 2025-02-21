@@ -1,0 +1,91 @@
+---
+import dayjs from "dayjs";
+
+const {
+  imageDefault,
+  imageWebp,
+  title = "Default Title",
+  description = "Default description",
+  date = "2023-01-01",
+  recordingLink,
+  slideLink,
+} = Astro.props;
+
+const formattedDate = dayjs(date).format("MMMM DD, YYYY");
+---
+
+<div
+  class="relative flex flex-col md:flex-row w-full bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 rounded-lg"
+>
+  <a
+    href={imageDefault}
+    target="_blank"
+    class="hidden lg:block relative p-2.5 w-50 h-50 shrink-0 overflow-hidden"
+  >
+    <picture class="my-0!">
+      <source srcset={imageWebp} type="image/webp" />
+      <img
+        src={imageDefault}
+        alt={title}
+        class="h-full w-full rounded-md md:rounded-lg object-cover mt-0 aspect-square"
+      />
+    </picture>
+  </a>
+  <div class="p-4 flex flex-col">
+    <div class="flex-1">
+      <h4
+        class="mt-0! mb-2! text-slate-800 dark:text-slate-200 text-xl font-semibold"
+      >
+        {title}
+      </h4>
+      <div class="text-xs text-slate-600 dark:text-slate-400 flex gap-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
+          ></path>
+        </svg>
+        {formattedDate}
+      </div>
+      <p class="mt-2 mb-0 md:mt-4 leading-normal font-light line-clamp-2">
+        {description}
+      </p>
+    </div>
+
+    <div class="flex gap-3 mt-2">
+      {
+        recordingLink && (
+          <a
+            href={recordingLink}
+            class="text-slate-800 dark:text-slate-200 font-semibold text-sm hover:underline flex items-center"
+            target="_blank"
+          >
+            Watch Recording
+          </a>
+        )
+      }
+
+      {recordingLink && slideLink && " / "}
+
+      {
+        slideLink && (
+          <a
+            href={slideLink}
+            class="text-slate-800 dark:text-slate-200 font-semibold text-sm hover:underline flex items-center"
+            target="_blank"
+          >
+            View Slides
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>

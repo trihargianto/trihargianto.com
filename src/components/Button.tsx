@@ -55,7 +55,7 @@ const Button = ({
     // @ts-expect-error unknown type
     <Element
       className={clsx([
-        "transition-colors inline-block",
+        "transition-colors inline-block cursor-pointer no-underline!",
         buttonClasses.variant(variant),
         buttonClasses.size(size),
         isRounded ? "rounded-full" : "rounded-md",
