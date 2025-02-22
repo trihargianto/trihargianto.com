@@ -26,36 +26,44 @@ const { pageTitle, pageDescription, preventIndexing } = Astro.props;
     {preventIndexing && <meta name="robots" content="noindex, nofollow" />}
 
     <script is:inline>
-      const theme = (() => {
-        const localStorageTheme = localStorage?.getItem("theme") ?? "";
+      window.theme = null;
 
-        if (["dark", "light"].includes(localStorageTheme)) {
-          return localStorageTheme;
+      function applyTheme() {
+        window.theme = (() => {
+          const localStorageTheme = localStorage?.getItem("theme") ?? "";
+
+          if (["dark", "light"].includes(localStorageTheme)) {
+            return localStorageTheme;
+          }
+
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+          }
+
+          return "light";
+        })();
+
+        if (window.theme === "light") {
+          document.documentElement.classList.remove("dark");
+
+          // expressive-code
+          document.documentElement.setAttribute("data-theme", "one-light");
+        } else {
+          document.documentElement.classList.add("dark");
+
+          // expressive-code
+          document.documentElement.setAttribute(
+            "data-theme",
+            "catppuccin-frappe",
+          );
         }
 
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-
-        return "light";
-      })();
-
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-
-        // expressive-code
-        document.documentElement.setAttribute("data-theme", "one-light");
-      } else {
-        document.documentElement.classList.add("dark");
-
-        // expressive-code
-        document.documentElement.setAttribute(
-          "data-theme",
-          "catppuccin-frappe",
-        );
+        window.localStorage.setItem("theme", window.theme);
       }
 
-      window.localStorage.setItem("theme", theme);
+      document.addEventListener("astro:after-swap", applyTheme);
+
+      applyTheme();
     </script>
   </head>
   <body>

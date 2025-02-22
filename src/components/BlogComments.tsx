@@ -13,7 +13,8 @@ const BlogComments = () => {
 
     script.setAttribute(
       "theme",
-      theme === "light" ? "github-light" : "github-dark",
+      // @ts-ignore
+      window?.theme === "light" ? "github-light" : "github-dark",
     );
 
     script.setAttribute("crossorigin", "anonymous");
