@@ -102,19 +102,24 @@ const currentSelectedTopic = Astro.params?.topic || "all";
 </BaseLayout>
 
 <script is:inline>
-  /** Tag buttons handler */
-  const tagButtons = document.querySelectorAll(".blog-page-tag-item");
+  function enableTagButtonClickListener() {
+    const tagButtons = document.querySelectorAll(".blog-page-tag-item");
 
-  tagButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const tagName = event.target.getAttribute("data-tag-name");
+    tagButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const tagName = event.target.getAttribute("data-tag-name");
 
-      if (tagName === "all") {
-        window.location.href = "/blog";
-        return;
-      }
+        if (tagName === "all") {
+          window.location.href = "/blog";
+          return;
+        }
 
-      window.location.href = `/blog/topic/${tagName}`;
+        window.location.href = `/blog/topic/${tagName}`;
+      });
     });
-  });
+  }
+
+  enableTagButtonClickListener();
+
+  document.addEventListener("astro:page-load", enableTagButtonClickListener);
 </script>
