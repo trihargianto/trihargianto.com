@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import clsx from "clsx";
 
 import {
@@ -8,6 +9,8 @@ import {
   SOCIAL_GITHUB_LINK,
   SOCIAL_LINKEDIN_LINK,
   SOCIAL_MEDIUM_LINK,
+  RESUME_LINK,
+  BOOK_SHELF_LINK,
 } from "../constants/config";
 import Button from "./Button";
 import Container from "./Container";
@@ -25,6 +28,8 @@ const links = {
     // { href: "/guest-book", label: "Guest Book" },
   ],
   external: [
+    { href: RESUME_LINK, label: "Resume" },
+    { href: BOOK_SHELF_LINK, label: "Book Shelf" },
     // { href: BOOK_NOTES_LINK, label: "Book Notes" },
     // { href: CHEATSHEETS_LINK, label: "Cheatsheets" },
     // { href: LEARNING_NOTES_LINK, label: "Learning Notes" },
@@ -45,7 +50,7 @@ const links = {
 const Footer = () => {
   return (
     <>
-      <div className="h-[650px] sm:h-70"></div>
+      <div className="h-[750px] sm:h-70"></div>
 
       <footer
         className={clsx(
@@ -97,8 +102,7 @@ const Footer = () => {
                   ))}
                 </ul>
               </div>
-              {/* TODO: External links */}
-              {/* <div className="w-full sm:w-1/3 mb-10">
+              <div className="w-full sm:w-1/3 mb-10">
                 <h4 className="mb-2 font-bold text-base!">External</h4>
                 <ul>
                   {links.external.map((link) => (
@@ -107,7 +111,7 @@ const Footer = () => {
                     </li>
                   ))}
                 </ul>
-              </div> */}
+              </div>
               <div className="w-full sm:w-1/3 mb-10">
                 <h4 className="mb-2 font-bold text-base!">Social Media</h4>
                 <ul>
@@ -126,7 +130,12 @@ const Footer = () => {
   );
 };
 
-function ExternalLink({ href, children }) {
+interface ExternalLinkProps {
+  href: string;
+  children: ReactNode;
+}
+
+function ExternalLink({ href, children }: ExternalLinkProps) {
   return (
     <a
       href={href}
