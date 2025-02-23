@@ -1,5 +1,18 @@
 # tri-hargianto-official-website
 
+## 3.2.0
+
+### Minor Changes
+
+- 642335f: feat: enable astro client router transition
+- d7d3312: feat: add external links to footer
+- 99c8736: feat: add /speaking page to highlight my public speaking events
+
+### Patch Changes
+
+- 439afc3: fix: avoid Flash of unstyled content (FOUC) for dark mode
+- 34f8b8e: fix: canonical url
+
 ## 3.1.0
 
 ### Minor Changes
