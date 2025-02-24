@@ -3,31 +3,80 @@ title: About | Tri Hargianto
 description: Tri Hargianto short introduction
 ---
 
+import { Image } from "astro:assets";
+import Button from "../../components/Button";
 import Endorsements from "../../components/Endorsements";
+import MeTakingASipImage from "../../img/me-taking-a-sip.jpg";
+import JogjajsGroupImage from "../../img/jogjajs-group.jpg";
 
-Hello, I'm Tri Hargianto. I'm a Software Engineer working in Yogyakarta,
-Indonesia. Welcome to my digital garden where I put my projects, tutorials,
-thoughts, and anything else I want to show to the world.
+<div class="flex flex-col-reverse md:flex-row md:gap-8">
+  <div class="w-full md:w-2/3">
+    <p class="hidden md:block">Hello, I'm Tri Hargianto, a Software Engineer based in [Yogyakarta,
+    Indonesia](https://maps.app.goo.gl/2vfZA4xCvVkqXovS6).</p>
 
-Check out my [Pet Projects](/pet-projects) page to see some highlights of my
-open-source work, my [Blog](/blog) for tutorials & my thoughts, and lastly my
-[Publications](/publications) page where I put links to my publications on Medium. My motivation for this site is to share what I've learned with the world.
+    <p>I specialize in Web
+    Frontend Development and enjoy writing, teaching, and sharing knowledge.</p>
+    Check out my [Blog](/blog) for tutorials, [Pet Projects](/pet-projects) for
+    open-source work, and [Publications](/publications) for my Medium articles.
+    This site is my platform to share what I've learned.
 
-You can contact me by email at
-[trihargianto@gmail.com](mailto:trihargianto@gmail.com)
+    <h2> 📬 Contact</h2>
 
-- [LinkedIn](https://www.linkedin.com/in/trihargianto/)
-- [GitHub](https://github.com/trihargianto)
+    You can contact me by email at
+    <a href="mailto:trihargianto@gmail.com">trihargianto@gmail.com</a>
+
+    You can also find me on the internet at <a href="https://www.linkedin.com/in/trihargianto/">LinkedIn</a> and <a href="https://github.com/trihargianto">Github</a>.
+
+  </div>
+
+  <div class="w-full md:w-80">
+    <p class="block md:hidden mb-10">Hello, I'm Tri Hargianto, a Software Engineer based in [Yogyakarta,
+    Indonesia](https://maps.app.goo.gl/2vfZA4xCvVkqXovS6).</p>
+
+     <Image src={MeTakingASipImage} alt="Tri Hargianto taking a sip" class="rotate-3 h-auto transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" />
+
+  </div>
+</div>
+
+--
 
 ## 👨🏻‍💻 What I'm doing now
 
 _Updated February 16th, 2025_
 
-Currently I'm a Principal Software Engineer, Frontend at [Mamikos.com](https://mamikos.com) for frontend
-team and also working on my several projects including everything you see in
+### Professional Work
+
+Currently I'm a Principal Software Engineer at [Mamikos.com](https://mamikos.com) for frontend
+team.
+
+### Side Project
+
+I'm working on my several projects including everything you see in
 this site.
 
-I also starting my own Newsletter called [Speak In Engineering](https://speakengineering.substack.com/). Subscribe to get quick, actionable tips for improving engineering skills, advancing your career, leading effectively, and enhancing personal growth and productivity.
+I also starting my own Newsletter called [Speak in Engineering](https://speakengineering.substack.com/). Subscribe to get the latest articles delivered directly to your inbox.
+
+### Building a Tech Community
+
+<div class="flex flex-col lg:flex-row md:gap-8">
+  <div class="w-full lg:w-1/3">
+    <Image
+      src={JogjajsGroupImage}
+      alt="JogjaJS Group"
+      class="w-full h-auto rounded-lg my-4!"
+    />
+  </div>
+  <div class="w-full lg:w-2/3">
+    I'm a co-organizer of [JogjaJS](https://jogjajs.org/), a JavaScript community in Yogyakarta. We regularly host meetups, workshops, and other events to support the growth of developers.
+
+    To date, we have over **1000 members**, conducted more than **30 events**, and have been contributing for over **8 years**.
+
+    <span class="block sm:hidden md:block">This makes JogjaJS the largest JavaScript community in Yogyakarta, Indonesia.</span>
+
+  </div>
+</div>
+
+--
 
 ## 🧠 Source of thoughts
 
@@ -53,6 +102,8 @@ Top 3 podcasts that I listen to regularly (tech and non-tech):
 - [GreatFrontEnd](https://greatfrontend.com): A curated list of great resources for Front-End developers.
 - [@ecommurz](https://www.instagram.com/ecommurz/): Indonesian Biggest Tech Execs & Workers community
 
+--
+
 ## ⚒️ Tools
 
 ### Hardware
@@ -69,6 +120,8 @@ Top 3 podcasts that I listen to regularly (tech and non-tech):
 - [iTerm2](https://iterm2.com/) + [Tmux](https://github.com/tmux/tmux/wiki) + [Zsh](https://ohmyz.sh/): The best terminal setup for me.
 - [LazyGit](https://github.com/jesseduffield/lazygit): An amazing terminal-based UI for git, works great with LazyVim.
 - [Notion](https://www.notion.so/): My go-to tool for note-taking and organizing my second brain.
+
+--
 
 ## 🙃 Random facts
 
