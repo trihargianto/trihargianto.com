@@ -18,6 +18,7 @@ export const SOCIAL_MEDIUM_LINK = `https://medium.com/@${SOCIAL_MEDIUM}`;
 export const RESUME_LINK =
   "https://trihargianto.notion.site/Resume-e7af731cfb5a473e8ef128b18a5c35ce";
 export const BOOK_SHELF_LINK = "https://www.libib.com/u/trihargianto";
+export const MENTORSHIP_LINK = "https://adplist.org/mentors/tri-hargianto";
 
 export const NEWSLETTER_LINK = "https://speakengineering.substack.com";
 export const BOOK_NOTES_LINK = "/book-notes";
