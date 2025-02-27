@@ -1,0 +1,286 @@
+---
+title: Setup MacOS for Development
+slug: setup-macos-for-development
+description: Various applications and settings I use on MacOS for development, as a web developer.
+pubDate: "2020-10-29"
+featured: cover.jpg
+featuredSourceUrl: "https://unsplash.com/@basico?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+featuredSource: "Gustavo Espindola"
+tags: ["macos", "setup"]
+---
+
+import Video from "../../../components/Video";
+
+## Preface
+
+> This article is a living document, meaning that when I use something new or need to add something, I will update this article as well.
+
+> Last updated: December 24, 2023
+
+When this article was first written, I didn't know how to quickly set up the applications, configurations, and tools I often use on my MacBook for development. Several times I struggled when I had to use a fresh MacBook according to my needs. Whether it's provided by the office, after being reset, or a new MacBook.
+
+I even once needed a whole day to configure everything I needed, so I couldn't be productive right away. Every time I felt everything was complete, when working, it turned out there was something missing, and eventually, my work was disrupted because I had to continue setting up again to work comfortably.
+
+I created this article as a note to make it easier when I have to set up again later. Since I am a Web Developer, most of the applications and configurations I do here will be around JavaScript / NodeJS. So, if you have the same profession as me, I hope this article can be your note too.
+
+## Homebrew
+
+Install [Homebrew](https://brew.sh/) as a package manager on Mac. The installation method for Homebrew is quite clear on its website.
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+## Desktop Applications
+
+The applications I use are divided into two types: automatic installation via Homebrew and manual installation.
+
+### Automatic Installation
+
+After Homebrew is installed, I can continue to install all the applications I need via Homebrew automatically:
+
+```shell
+brew install --cask docker google-chrome iterm2 imageoptim kap notion openvpn-connect postman raycast slack spotify sequel-pro visual-studio-code whatsapp
+```
+
+The command above will install the applications I need, namely:
+
+| Program                                                  | Function                |
+| -------------------------------------------------------- | ----------------------- |
+| [Docker](https://www.docker.com/products/docker-desktop) | Environment Tool        |
+| [Google Chrome](https://www.google.com/chrome/)          | Web Browser             |
+| [iTerm2](https://www.iterm2.com/downloads.html)          | Terminal Alternative    |
+| [ImageOptim](https://imageoptim.com/mac)                 | Image Compressor        |
+| [Kap](https://getkap.co/)                                | Screen Recorder         |
+| [Notion](https://www.notion.so/desktop)                  | Note-taking Application |
+| [OpenVPN Connect Client](https://openvpn.net/client/)    | For Using VPN           |
+| [Postman](https://www.postman.com/downloads/)            | API Tool                |
+| [Raycast](https://raycast.com/)                          | Launcher                |
+| [Slack](https://slack.com/downloads)                     | Communication           |
+| [Spotify](https://www.spotify.com/id/download/mac/b/)    | Music                   |
+| [Sequel Pro](https://sequelpro.com/download)             | Database UI             |
+| [Visual Studio Code](https://code.visualstudio.com/)     | Code Editor             |
+| [Whatsapp](https://www.whatsapp.com/download)            | Whatsapp Desktop        |
+
+### Manual Installation
+
+Because not all applications are available in Homebrew Cask by default, they have to be installed manually.
+
+| Program                                                                                     | Function                                           |
+| ------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| [Codewhisperer](https://aws.amazon.com/codewhisperer/)                                      | Terminal auto-completion                           |
+| [Focus To-Do](https://www.focustodo.cn/)                                                    | Pomodoro & Todo App                                |
+| [LogiOptions+](https://www.logitech.com/id-id/software/logi-options-plus.html)              | Logitech Mouse App                                 |
+| [ObinsKit](https://www.hexcore.xyz/obinskit/releases)                                       | [Anne Pro 2](https://getannepro.com/) Keyboard App |
+| [XAMPP 7.3.33.0](https://sourceforge.net/projects/xampp/files/XAMPP%20Mac%20OS%20X/7.3.33/) | PHP 7.3 + MySQL Runner                             |
+
+## Shell
+
+I use [Zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) as the main shell. Fortunately, [MacOS Sonoma](https://www.apple.com/id/macos/sonoma/) already includes Zsh as the default shell. So, just install [Oh My Zsh](https://ohmyz.sh/) to get all the plugins I need right away.
+
+### Install Ohmyzsh
+
+```shell
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+### Ohmyzsh Plugins
+
+The plugins I often use in ZSH are as follows:
+
+#### Built-in Plugin
+
+Plugins that are automatically available when installing Ohmyzsh so just activate them
+
+| Plugin                                                                                          | Function                                    |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| [Alias Finder](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder)             | To find aliases in Shell                    |
+| [Autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump)                     | Jump directories in Shell quickly           |
+| [Copydir](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copydir)                       | Copy the active directory path to clipboard |
+| [Git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)                               | Git command shortcuts                       |
+| [Yarn](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/yarn)                             | Yarn command shortcuts                      |
+| [ZSH Interactive CD](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-interactive-cd) | Easier directory navigation                 |
+| [ZSH Reload](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh_reload)                 | Quick way to reload ZSH configuration       |
+
+#### External Plugin
+
+Ohmyzsh plugins that must be downloaded manually:
+
+| Plugin                                                                  | Function                      |
+| ----------------------------------------------------------------------- | ----------------------------- |
+| [ZSH Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) | Autocomplete based on history |
+| [ZSH Vim Mode](https://github.com/softmoth/zsh-vim-mode)                | Vim-like Shell                |
+
+After ensuring the Built-in and External Plugins above are installed, we just need to activate the plugins in the **~/.zshrc** file:
+
+```txt{3,5-16}:title=~/.zshrc
+...
+
+alias af="alias-finder -l"
+
+plugins=(
+ git
+ yarn
+ alias-finder
+ autojump
+ npm
+ zsh_reload
+ copydir
+ zsh-interactive-cd
+ zsh-autosuggestions
+ zsh-vim-mode
+)
+
+...
+```
+
+Don't forget to reload the **~/.zshrc** configuration file:
+
+```shell
+source ~/.zshrc
+```
+
+> I have discussed the plugins above in the article [More Productive Coding with Terminal Plugins](/blog/koding-lebih-produktif-dengan-plugin-terminal/)
+
+## Node.js
+
+I choose to install Node.js via Node Version Manager (NVM) so I can easily switch versions, as I often need to switch to older or newer Node versions. Besides that, for the package manager, I still prefer using [Yarn](https://yarnpkg.com/) over NPM because it's faster.
+
+### Install NVM & Node.js
+
+Install NVM
+
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+```
+
+Install Latest Node
+
+```shell
+nvm install node
+```
+
+Switch Node Version
+
+```shell
+nvm install xx.xx && nvm use xx.xx
+```
+
+Then set the newly installed one as the default
+
+```shell
+nvm alias default xx.xx
+```
+
+### Install Yarn via Homebrew
+
+```shell
+brew install yarn
+```
+
+## Git
+
+Installation and Configuration of Git
+
+### Install
+
+Install Git via Homebrew:
+
+```shell
+brew install git
+```
+
+After Git is installed, make sure to set up the profile in the global configuration
+
+```shell
+git config --global user.name "Full Name" && git config --global user.email "emailaddress@mail.com"
+```
+
+### Git Syntax Highlighter
+
+I also like to use [Delta](https://dandavison.github.io/delta/) for syntax highlighting in Git to make it more comfortable when doing `git diff` or `git show`.
+
+Install Delta:
+
+```shell
+brew install git-delta
+```
+
+Then edit the **~/.gitconfig** file. Usually, I configure it like this.
+
+```txt:title=~/.gitconfig
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+```
+
+[Click here](https://dandavison.github.io/delta/configuration.html) to see what configurations are available.
+
+## System Settings
+
+_This section I use MacOS Sonoma and depends on personal preference..._
+
+### Desktop & Dock
+
+- Set "Default web browser" to Google Chrome
+- Disable "Show suggested and recent apps in Dock" to keep the Dock consistent
+- Adjust Dock size to be smaller because the default size is too big for me
+
+### Accessibility
+
+- Open "Pointer Control" > "Trackpad Options", and set "Dragging Style" to "Three Finger Drag" to drag-and-drop using three fingers.
+
+### Trackpad
+
+- Check "Tap to click" so you don't always have to press the Trackpad to click
+
+### Keyboard
+
+Even though the language I use on the Mac is English, I have to make sure the following settings are off so that every time I write an Indonesian word, the Mac doesn't try to change it to a word it thinks is correct.
+
+In the "Input Sources" section, click "Edit" then set the following options:
+
+- Disable "Show Input menu in menu bar"
+- Disable "Correct spelling automatically"
+- Disable "Capitalize words automatically"
+- Disable "Show inline predictive text"
+- Disable "Add period with double-space"
+- Disable "Use smart quotes and dashes"
+
+## Misc
+
+Other settings
+
+### Quick access to screenshots
+
+1. Create a folder named "Screenshots" on the Desktop
+2. Press `Cmd` + `Shift` + `5`. Then click "Options" > "Other Location"
+3. Select the folder created in step 1
+4. Press `Esc` to exit the screenshot setting
+5. Open Finder, find the "Screenshots" folder on the Desktop, then drag the folder to the Dock
+6. With the folder now in the Dock, right-click on the folder and check "Fan" in the "view content as" section & check "Name" in the "sort by" section
+
+import AccessingScreenshotsFasterWebm from "images/accessing-screenshots-faster.webm";
+import AccessingScreenshotsFasterMp4 from "images/accessing-screenshots-faster.mp4";
+
+<Video
+  webm={AccessingScreenshotsFasterWebm}
+  mp4={AccessingScreenshotsFasterMp4}
+/>
+
+<p align="center">
+  <small>
+    <i>Figure 1: Quick access to screenshots</i>
+  </small>
+</p>
