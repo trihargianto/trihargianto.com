@@ -8,7 +8,7 @@ tags: ["setup", "terminal", "how-to", "macos"]
 
 ## Preface
 
-Setup a personal computer never been easy for me. Installing and configuring the apps sometimes become a tedious task. Especially when I got a new computer since I need to re-install and re-configure everything from scratch.
+Setting up a personal computer has never been easy for me. Installing and configuring the apps sometimes becomes a tedious task, especially when I get a new computer since I need to re-install and re-configure everything from scratch.
 
 My solution for this is by wrote [an article about it](/blog/setup-macos-for-development). So, in case I need to replace my computer, I can reproduce my previous computer environment easier just by reading the article.
 
@@ -30,7 +30,7 @@ Imagine if all of your Dotfiles are living in a single directory, so you can use
 
 ## GNU Stow as solution
 
-After digging the solution on the Internet, I found out that we can manage our Dotfiles easily using [GNU Stow](https://www.gnu.org/software/stow/). This software enable us to manage every Dotfiles a single directory ✨
+After digging the solution on the Internet, I found out that we can manage our Dotfiles easily using [GNU Stow](https://www.gnu.org/software/stow/). This software enable us to manage every Dotfiles in a single directory ✨
 
 ### Installation
 
@@ -92,7 +92,7 @@ Let's say you also want to store your Tmux, Neovim, and SSH configurations in th
 
 Example structure:
 
-```
+```txt
 
 ~/.dotfiles/
 ├── nvim/
