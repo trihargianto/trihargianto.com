@@ -16,6 +16,8 @@ export const SOCIAL_GITHUB_LINK = `https://github.com/${SOCIAL_GITHUB}`;
 export const SOCIAL_TWITTER_LINK = `https://twitter.com/${SOCIAL_TWITTER}`;
 export const SOCIAL_MEDIUM_LINK = `https://medium.com/@${SOCIAL_MEDIUM}`;
 
+export const PERFORMANCE_INSIGHTS_LINK = "https://inspect.trihargianto.com";
+
 // Resume will be redirected via Netlify Redirects
 export const RESUME_LINK = "https://trihargianto.com/resume";
 
