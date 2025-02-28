@@ -12,6 +12,7 @@ import {
   RESUME_LINK,
   BOOK_SHELF_LINK,
   MENTORSHIP_LINK,
+  BOOKMARKS_LINK,
 } from "../constants/config";
 import Button from "./Button";
 import Container from "./Container";
@@ -30,6 +31,7 @@ const links = {
   ],
   external: [
     { href: BOOK_SHELF_LINK, label: "Book Shelf" },
+    { href: BOOKMARKS_LINK, label: "Bookmarks" },
     { href: MENTORSHIP_LINK, label: "Mentorship" },
     { href: RESUME_LINK, label: "Resume" },
     // { href: BOOK_NOTES_LINK, label: "Book Notes" },

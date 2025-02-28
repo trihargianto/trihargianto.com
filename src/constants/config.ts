@@ -15,10 +15,18 @@ export const SOCIAL_LINKEDIN_LINK = `https://www.linkedin.com/in/${SOCIAL_LINKED
 export const SOCIAL_GITHUB_LINK = `https://github.com/${SOCIAL_GITHUB}`;
 export const SOCIAL_TWITTER_LINK = `https://twitter.com/${SOCIAL_TWITTER}`;
 export const SOCIAL_MEDIUM_LINK = `https://medium.com/@${SOCIAL_MEDIUM}`;
-export const RESUME_LINK =
-  "https://trihargianto.notion.site/Resume-e7af731cfb5a473e8ef128b18a5c35ce";
-export const BOOK_SHELF_LINK = "https://www.libib.com/u/trihargianto";
-export const MENTORSHIP_LINK = "https://adplist.org/mentors/tri-hargianto";
+
+// Resume will be redirected via Netlify Redirects
+export const RESUME_LINK = "https://trihargianto.com/resume";
+
+// Book Shelf will be redirected via Netlify Redirects
+export const BOOK_SHELF_LINK = "https://trihargianto.com/bookshelf";
+
+// Mentorship will be redirected via Netlify Redirects
+export const MENTORSHIP_LINK = "https://trihargianto.com/mentorship";
+
+// Bookmarks will be redirected via Netlify Redirects
+export const BOOKMARKS_LINK = "https://trihargianto.com/bookmarks";
 
 export const NEWSLETTER_LINK = "https://speakengineering.substack.com";
 export const BOOK_NOTES_LINK = "/book-notes";

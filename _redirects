@@ -9,4 +9,11 @@
 /en/* /blog/:splat 301
 
 # My shortcut link presentation
-/slide-astro https://slide-astro-tri.netlify.app
+/slide-astro https://slide-astro-tri.netlify.app 302
+
+# External links 
+/resume https://trihargianto.notion.site/Resume-1a832741691b81a99c4ffe021c986f12 302
+/bookmarks https://trihargianto.notion.site/Tri-Hargianto-s-Bookmarks-1a532741691b8041bf2efbf653759d48 302
+/bookshelf https://www.libib.com/u/trihargianto 302
+/mentorship https://adplist.org/mentors/tri-hargianto 302
+
