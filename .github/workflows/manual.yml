@@ -16,29 +16,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check if Netlify secrets are set
-        run: |
-          if [[ -z "${{ secrets.NETLIFY_SITE_ID }}" ]]; then
-            echo "❌ NETLIFY_SITE_ID is NOT set"
-          else
-            echo "✅ NETLIFY_SITE_ID is set"
-          fi
+      - name: Install Dependencies
+        run: npm install -g @unlighthouse/cli puppeteer netlify-cli
 
-          if [[ -z "${{ secrets.NETLIFY_AUTH_TOKEN }}" ]]; then
-            echo "❌ NETLIFY_AUTH_TOKEN is NOT set"
-          else
-            echo "✅ NETLIFY_AUTH_TOKEN is set"
-          fi
+      - name: Unlighthouse assertions and client
+        # run: unlighthouse-ci --site https://www.trihargianto.com/ --budget 75 --build-static
+        run: unlighthouse-ci --site https://www.trihargianto.com --build-static
 
-      # - name: Install Dependencies
-      #   run: npm install -g @unlighthouse/cli puppeteer netlify-cli
-
-      # - name: Unlighthouse assertions and client
-      #   # run: unlighthouse-ci --site https://www.trihargianto.com/ --budget 75 --build-static
-      #   run: unlighthouse-ci --site https://www.trihargianto.com --build-static
-
-      # - name: Deploy
-      #   run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions."
-      #   env:
-      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Deploy
+        run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
