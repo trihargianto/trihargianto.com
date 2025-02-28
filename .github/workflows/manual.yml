@@ -1,7 +1,12 @@
 name: Assertions and static report
 
+# on:
+#   workflow_dispatch:
+
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - unlighthouse-ci
 
 jobs:
   demo:
