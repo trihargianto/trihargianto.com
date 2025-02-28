@@ -1,12 +1,7 @@
 name: Assertions and static report
 
-# on:
-#   workflow_dispatch:
-
 on:
-  push:
-    branches:
-      - unlighthouse-ci
+  workflow_dispatch:
 
 jobs:
   demo:
@@ -20,7 +15,6 @@ jobs:
         run: npm install -g @unlighthouse/cli puppeteer netlify-cli
 
       - name: Unlighthouse assertions and client
-        # run: unlighthouse-ci --site https://www.trihargianto.com/ --budget 75 --build-static
         run: unlighthouse-ci --site https://www.trihargianto.com --build-static
 
       - name: Deploy
