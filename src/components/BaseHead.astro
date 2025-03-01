@@ -18,10 +18,15 @@ const {
 } = Astro.props;
 ---
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0YX3YD7TKV"
-></script>
-<script>
+<!-- Preconnect domains -->
+<link rel="preconnect" href="https://www.google-analytics.com" />
+
+<!-- <link rel="preconnect" href="https://www.google-analytics.com" /> --><!-- Google tag (gtag.js) -->
+<script
+  async
+  is:inline
+  src="https://www.googletagmanager.com/gtag/js?id=G-0YX3YD7TKV"></script>
+<script is:inline>
   // @ts-ignore
   window.dataLayer = window.dataLayer || [];
   function gtag() {
