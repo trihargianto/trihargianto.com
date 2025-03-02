@@ -1,26 +1,26 @@
 ---
-import { Picture } from "astro:assets";
-
 import profilePicPng from "../img/profile-pic-v3.png";
+import profilePicWebp from "../img/profile-pic-v3.webp";
+import profilePicAvif from "../img/profile-pic-v3.avif";
 ---
 
 <div
   class="flex flex-row items-center gap-8 sm:flex-row md:w-full md:gap-0 lg:w-5/6"
 >
-  <div class="w-1/4">
-    <Picture
-      src={profilePicPng}
-      formats={["avif", "webp"]}
-      alt="Tri Hargianto Portrait Photo"
+  <picture class="w-1/4">
+    <source srcset={profilePicAvif.src} type="image/avif" />
+    <source srcset={profilePicWebp.src} type="image/webp" />
+    <img
+      src={profilePicPng.src}
+      alt="Tri Hargianto"
       class="aspect-[2/3] sm:w-72 md:w-40"
       width={140}
       height={240}
-      quality={80}
     />
-  </div>
+  </picture>
 
   <div class="w-3/4">
-    <h2 class="h-15 text-xl sm:h-auto sm:text-2xl mb-2 sm:mb-5">
+    <h2 class="h-15 text-xl sm:h-7 sm:text-2xl mb-2 sm:mb-5">
       <span id="greeting-text"></span>
     </h2>
 
@@ -51,26 +51,29 @@ import profilePicPng from "../img/profile-pic-v3.png";
 
 <script>
   /* Greeting text typing effect */
-  const speed = 80;
-  let i = 0;
+  document.addEventListener("astro:page-load", function () {
+    const speed = 80;
+    let i = 0;
 
-  const greetings = [
-    "Welcome to my little internet corner.",
-    "Hello! You’ve entered my digital HQ.",
-    "You’ve reached the right coordinates.",
-  ];
+    const greetings = [
+      "Welcome to my little internet corner.",
+      "Hello! You’ve entered my digital HQ.",
+      "You’ve reached the right coordinates.",
+    ];
 
-  const greetingText = greetings[Math.floor(Math.random() * greetings.length)];
+    const greetingText =
+      greetings[Math.floor(Math.random() * greetings.length)];
 
-  (function greetingTextTypingEffect() {
-    if (i < greetingText.length) {
-      const greetingTextElement = document.getElementById("greeting-text");
+    (function greetingTextTypingEffect() {
+      if (i < greetingText.length) {
+        const greetingTextElement = document.getElementById("greeting-text");
 
-      if (greetingTextElement) {
-        greetingTextElement.innerHTML += greetingText.charAt(i);
-        i++;
-        setTimeout(greetingTextTypingEffect, speed);
+        if (greetingTextElement) {
+          greetingTextElement.innerHTML += greetingText.charAt(i);
+          i++;
+          setTimeout(greetingTextTypingEffect, speed);
+        }
       }
-    }
-  })();
+    })();
+  });
 </script>

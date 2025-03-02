@@ -29,6 +29,7 @@ const EndorseCard = ({
           src={photo}
           alt="endorser"
           className="mr-4 h-10 w-10 rounded-full"
+          loading="lazy"
         />
 
         <div>
