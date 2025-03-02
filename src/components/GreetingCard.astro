@@ -1,0 +1,76 @@
+---
+import { Picture } from "astro:assets";
+
+import profilePicPng from "../img/profile-pic-v3.png";
+---
+
+<div
+  class="flex flex-row items-center gap-8 sm:flex-row md:w-full md:gap-0 lg:w-5/6"
+>
+  <div class="w-1/4">
+    <Picture
+      src={profilePicPng}
+      formats={["avif", "webp"]}
+      alt="Tri Hargianto Portrait Photo"
+      class="aspect-[2/3] sm:w-72 md:w-40"
+      width={140}
+      height={240}
+      quality={80}
+    />
+  </div>
+
+  <div class="w-3/4">
+    <h2 class="h-15 text-xl sm:h-auto sm:text-2xl mb-2 sm:mb-5">
+      <span id="greeting-text"></span>
+    </h2>
+
+    <p class="mb-5">
+      I'm
+      <span class="font-bold text-blue-700 dark:text-blue-400">
+        Tri Hargianto
+      </span>
+      , a Software Engineer
+      <a href="https://maps.app.goo.gl/p1eF4Amvin6GGofB6" target="_blank">
+        <span class="mt-1 inline-block sm:mt-0 sm:inline">
+          from Indonesia
+        </span>
+      </a>
+      🇮🇩
+    </p>
+    <p class="hidden sm:block">
+      This site is a place where I share
+      <span class="hidden sm:inline">
+        my projects, tutorials, thoughts, and
+      </span>
+      everything
+      <span class="hidden sm:inline">else I want to</span>
+      share with the world.
+    </p>
+  </div>
+</div>
+
+<script>
+  /* Greeting text typing effect */
+  const speed = 80;
+  let i = 0;
+
+  const greetings = [
+    "Welcome to my little internet corner.",
+    "Hello! You’ve entered my digital HQ.",
+    "You’ve reached the right coordinates.",
+  ];
+
+  const greetingText = greetings[Math.floor(Math.random() * greetings.length)];
+
+  (function greetingTextTypingEffect() {
+    if (i < greetingText.length) {
+      const greetingTextElement = document.getElementById("greeting-text");
+
+      if (greetingTextElement) {
+        greetingTextElement.innerHTML += greetingText.charAt(i);
+        i++;
+        setTimeout(greetingTextTypingEffect, speed);
+      }
+    }
+  })();
+</script>
