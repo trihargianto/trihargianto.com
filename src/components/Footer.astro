@@ -1,0 +1,167 @@
+---
+import {
+  NEWSLETTER_LINK,
+  SOCIAL_GITHUB_LINK,
+  SOCIAL_LINKEDIN_LINK,
+  SOCIAL_MEDIUM_LINK,
+  RESUME_LINK,
+  BOOK_SHELF_LINK,
+  MENTORSHIP_LINK,
+  BOOKMARKS_LINK,
+} from "../constants/config";
+import Button from "./Button";
+import Container from "./Container";
+
+import IconLinkedIn from "./IconLinkedIn.astro";
+import IconGithub from "./IconGithub.astro";
+import IconMedium from "./IconMedium.astro";
+
+const links = {
+  sitemap: [
+    { href: "/about/", label: "About" },
+    { href: "/blog/", label: "Blog" },
+    { href: "/media-kit/", label: "Media Kit" },
+    { href: "/pet-projects/", label: "Pet Projects" },
+    { href: "/publications/", label: "Publications" },
+    { href: "/speaking/", label: "Speaking" },
+  ],
+  external: [
+    { href: BOOK_SHELF_LINK, label: "Book Shelf" },
+    { href: BOOKMARKS_LINK, label: "Bookmarks" },
+    { href: MENTORSHIP_LINK, label: "Mentorship" },
+    { href: RESUME_LINK, label: "Resume" },
+  ],
+  contact: [
+    {
+      href: SOCIAL_GITHUB_LINK,
+      label: "Github",
+      icon: IconGithub,
+    },
+    {
+      href: SOCIAL_LINKEDIN_LINK,
+      label: "LinkedIn",
+      icon: IconLinkedIn,
+    },
+    {
+      href: SOCIAL_MEDIUM_LINK,
+      label: "Medium",
+      icon: IconMedium,
+    },
+  ],
+  insights: [
+    { href: "https://inspect.trihargianto.com", label: "Performance" },
+    { href: "/rss.xml", label: "RSS" },
+  ],
+};
+---
+
+<div class="h-[850px] sm:h-70"></div>
+
+<footer
+  class:list={[
+    "border-t border-t-gray-300 dark:border-t-slate-800",
+    "bg-theme text-sm",
+    "absolute bottom-0 flex h-auto w-full flex-col items-center justify-end pt-10 pb-3",
+  ]}
+>
+  <Container>
+    <div class="w-full flex flex-col sm:flex-row justify-between gap-4">
+      <div class="w-full sm:w-2/6 pr-4 mb-6">
+        <h4 class="mb-2 font-bold">
+          <a href="/" class="hover:underline"> trihargianto.com </a>
+        </h4>
+        <p class="mb-3">The personal website of Tri Hargianto.</p>
+
+        <div class="flex gap-2 my-4">
+          {
+            links.contact.map((link) => (
+              <a
+                href={link.href}
+                title={link.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline hover:cursor-alias"
+              >
+                <link.icon />
+              </a>
+            ))
+          }
+        </div>
+
+        <p>
+          Join my newsletter to get the latest articles delivered directly to
+          your inbox.
+        </p>
+
+        <Button
+          variant="secondary"
+          className="mt-5"
+          as="a"
+          href={`${NEWSLETTER_LINK}?utm_source=trihargianto`}
+          target="_blank"
+        >
+          Subscribe
+        </Button>
+
+        <div class="mt-8">
+          Copyright &copy; {new Date().getFullYear()} Tri Hargianto
+        </div>
+      </div>
+
+      <div class="w-full sm:w-4/6 md:w-3/6 lg:w-2/6 sm:flex gap-6 justify-end">
+        <div class="w-full sm:w-1/3 mb-10">
+          <h4 class="mb-2 font-bold text-base!">Sitemap</h4>
+          <ul>
+            {
+              links.sitemap.map((link) => (
+                <li class="mb-2">
+                  <a href={link.href} class="hover:underline">
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="w-full sm:w-1/3 mb-10">
+          <h4 class="mb-2 font-bold text-base!">Resources</h4>
+          <ul>
+            {
+              links.external.map((link) => (
+                <li class="mb-2">
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline hover:cursor-alias"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="w-full sm:w-1/3 mb-10">
+          <h4 class="mb-2 font-bold text-base!">The Website</h4>
+          <ul>
+            {
+              links.insights.map((link) => (
+                <li class="mb-2">
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline hover:cursor-alias"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Container>
+</footer>

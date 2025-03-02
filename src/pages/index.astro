@@ -1,10 +1,10 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import dayjs from "dayjs";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import GreetingCard from "../components/GreetingCard";
+import GreetingCard from "../components/GreetingCard.astro";
 import LatestArticle from "../components/LatestArticle";
 import LatestProject from "../components/LatestProject";
 
@@ -42,9 +42,7 @@ const latestProjects = allProjects.map((project) => ({
 <BaseLayout
   pageTitle="trihargianto.com - A personal digital garden by Tri Hargianto"
 >
-  <GreetingCard>
-    <span id="greeting-text"></span>
-  </GreetingCard>
+  <GreetingCard />
 
   <LatestArticle
     sectionTitle="Latest Articles"
@@ -67,29 +65,3 @@ const latestProjects = allProjects.map((project) => ({
     seeAllLink="/pet-projects/"
   />
 </BaseLayout>
-
-<script>
-  /* Greeting text typing effect */
-  const speed = 80;
-  let i = 0;
-
-  const greetings = [
-    "Welcome to my little internet corner.",
-    "Hello! You’ve entered my digital HQ.",
-    "You’ve reached the right coordinates.",
-  ];
-
-  const greetingText = greetings[Math.floor(Math.random() * greetings.length)];
-
-  (function greetingTextTypingEffect() {
-    if (i < greetingText.length) {
-      const greetingTextElement = document.getElementById("greeting-text");
-
-      if (greetingTextElement) {
-        greetingTextElement.innerHTML += greetingText.charAt(i);
-        i++;
-        setTimeout(greetingTextTypingEffect, speed);
-      }
-    }
-  })();
-</script>

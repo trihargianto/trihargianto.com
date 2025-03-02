@@ -1,0 +1,196 @@
+---
+import { navbarMenu } from "../constants/navbar-menu";
+
+import BrandLogo from "./BrandLogo.astro";
+import DarkModeSwitcher from "./DarkModeSwitcher.astro";
+import Container from "./Container.astro";
+
+interface Props {
+  currentUrlPath: string;
+}
+
+const { currentUrlPath } = Astro.props;
+---
+
+<nav
+  id="navbar"
+  class:list={[
+    "top-[0]",
+    "bg-theme fixed z-20 w-full transition-[top] duration-300",
+    "border-b border-b-gray-300 dark:border-b-gray-800",
+  ]}
+>
+  <Container className="flex items-center justify-between py-4">
+    <a href="/">
+      <BrandLogo />
+    </a>
+
+    {/* Mobile Devices */}
+    <button
+      class="inline-block lg:hidden cursor-pointer"
+      id="hamburger"
+      title="Hamburger button"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width={1.5}
+        stroke="currentColor"
+        class="h-10 w-10"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"></path>
+      </svg>
+    </button>
+
+    <div
+      class:list={[
+        "hidden",
+        "fixed z-20 flex flex-col items-start py-3",
+        "bottom-[0] left-[0] right-[0] top-[0]",
+        "bg-theme",
+      ]}
+      id="mobile-menu"
+      style="view-transition-name:mobile-menu"
+    >
+      <div class="container mx-auto flex w-full items-end justify-between px-6">
+        <a href="/">
+          <BrandLogo />
+        </a>
+
+        <button class="inline-block lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-10 w-10"
+            id="mobile-menu-close"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex w-full flex-1 flex-col items-center justify-center">
+        {
+          navbarMenu.map((item) => (
+            <li class="my-3 list-none text-xl">
+              {item.isExternalLink ? (
+                <a href={item.path} target="_blank" rel="noopener noreferrer">
+                  {item.label}
+                </a>
+              ) : (
+                <a href={item.path}>{item.label}</a>
+              )}
+
+              <div class="flex w-full justify-center">
+                <div
+                  class:list={[
+                    "mt-1 h-1 w-8",
+                    item.path === currentUrlPath
+                      ? "bg-blue-500"
+                      : "bg-transparent",
+                  ]}
+                />
+              </div>
+            </li>
+          ))
+        }
+
+        <div class="my-6"></div>
+
+        <DarkModeSwitcher />
+      </div>
+    </div>
+
+    {/* Medium Devices */}
+    <ul class="hidden items-center gap-7 lg:flex">
+      {
+        navbarMenu.map((item) => (
+          <li class="pt-2">
+            {item.isExternalLink ? (
+              <a href={item.path} target="_blank" rel="noopener noreferrer">
+                {item.label}
+              </a>
+            ) : (
+              <a href={item.path}>{item.label}</a>
+            )}
+
+            <div class="flex w-full justify-center">
+              <div
+                class:list={[
+                  "mt-1 h-1 w-8",
+                  item.path === currentUrlPath
+                    ? "bg-blue-500"
+                    : "bg-transparent",
+                ]}
+              />
+            </div>
+          </li>
+        ))
+      }
+
+      <li class="mb-1">
+        <DarkModeSwitcher />
+      </li>
+    </ul>
+  </Container>
+</nav>
+
+<script>
+  document.addEventListener("astro:page-load", function listenToggleMenu() {
+    const elements = document.querySelectorAll(
+      "#hamburger, #mobile-menu-close",
+    );
+
+    function toggleHiddenClass() {
+      document.getElementById("mobile-menu")?.classList.toggle("hidden");
+    }
+
+    elements.forEach((el) => {
+      el.addEventListener("click", () => {
+        if (!document.startViewTransition) {
+          toggleHiddenClass();
+          return;
+        }
+
+        document.startViewTransition(() => toggleHiddenClass());
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener(
+    "astro:page-load",
+    function listenNavbarVisibility() {
+      let lastScrollTop = 0;
+
+      const navbar = document.querySelector("#navbar");
+      const navbarVisibleClass = "top-[0]";
+      const navbarHiddenClass = "-top-[75px]";
+
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+          navbar?.classList.add(navbarHiddenClass);
+          navbar?.classList.remove(navbarVisibleClass);
+        } else {
+          navbar?.classList.remove(navbarHiddenClass);
+          navbar?.classList.add(navbarVisibleClass);
+        }
+
+        lastScrollTop = scrollTop;
+      });
+    },
+  );
+</script>
