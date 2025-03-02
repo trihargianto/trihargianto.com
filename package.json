@@ -33,6 +33,7 @@
     "vaul": "^1.1.2"
   },
   "devDependencies": {
+    "@types/dom-view-transitions": "^1.0.6",
     "@types/lodash-es": "^4.17.12",
     "prettier": "^3.5.1",
     "prettier-plugin-astro": "^0.14.1",

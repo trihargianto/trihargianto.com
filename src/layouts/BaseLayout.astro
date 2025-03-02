@@ -2,7 +2,7 @@
 import "../styles/global.css";
 
 import { NAVBAR_HEIGHT_ESTIMATION_IN_PX } from "../constants/config";
-import NavigationBar from "../components/NavigationBar";
+import NavigationBar from "../components/NavigationBar.astro";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import BaseHead from "../components/BaseHead.astro";
@@ -69,7 +69,7 @@ const { pageTitle, pageDescription, preventIndexing } = Astro.props;
   <body>
     <div class="relative min-h-screen">
       <div class="w-full pb-16">
-        <NavigationBar client:load currentUrlPath={currentUrlPath} />
+        <NavigationBar currentUrlPath={currentUrlPath} />
 
         {/* Must be equal to NavigationBar height */}
         <div style={`height: ${NAVBAR_HEIGHT_ESTIMATION_IN_PX}px;`}></div>
