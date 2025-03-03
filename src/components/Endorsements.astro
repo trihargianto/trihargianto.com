@@ -1,8 +1,6 @@
-import { useState } from "react";
-import clsx from "clsx";
-
-import Button from "./Button";
-import EndorseCard from "./EndorseCard";
+---
+import Button from "./Button.astro";
+import EndorseCard from "./EndorseCard.astro";
 
 import GigaPrakosaJpg from "../img/endorsers/giga-prakosa.jpg";
 import AlfanJpg from "../img/endorsers/ahmad-alfan.jpg";
@@ -61,55 +59,59 @@ const endorsements = [
       "Come and make an impact! Slogan that I want to give for him. Such a talented frontend engineer, I learn a lot from him. He always set a good example in every works that he do. He always come up with a great idea to improve our development team!",
   },
 ];
+---
 
-const Endorsements = () => {
-  const [isAllEndorserVisible, setAllEndorserVisible] = useState(false);
+<script>
+  const endorserListElement = document.getElementById("endorser-list");
+  const showMoreEndorserElement = document.getElementById("show-more-endorser");
+  const showMoreEndorserBtn = document.getElementById("show-more-endorser-btn");
 
-  return (
-    <>
-      <p className="mb-5 text-2xl font-semibold">🗣️ What they said about me</p>
+  showMoreEndorserBtn?.addEventListener("click", () => {
+    if (endorserListElement) {
+      endorserListElement.style.height = "auto";
+      endorserListElement.style.overflow = "visible";
+      showMoreEndorserElement?.remove();
+      showMoreEndorserBtn?.remove();
+    }
+  });
+</script>
 
-      <div
-        className={clsx(
-          "-m-2 flex flex-row flex-wrap",
-          !isAllEndorserVisible ? "h-[700px] overflow-hidden" : "",
-        )}
-      >
-        {endorsements.map((item, index) => (
-          <div key={`endorse-card-${index}`} className="w-full p-2 md:w-1/2">
-            <EndorseCard
-              name={item.name}
-              description={item.description}
-              photo={item.photo}
-              profileLink={item.link}
-              title={item.title}
-            />
-          </div>
-        ))}
-      </div>
+<div>
+  <p class="mb-5 text-2xl font-semibold">🗣️ What they said about me</p>
 
-      {!isAllEndorserVisible && (
-        <>
-          <div
-            className={clsx(
-              "absolute bottom-[0] left-[0] right-[0] z-10 h-96 w-full",
-              "bg-gradient-to-b from-[rgba(31,41,55,0)] to-slate-100",
-              "dark:bg-gradient-to-b dark:from-[rgba(31,41,55,0)] dark:to-[#121927]",
-            )}
+  <div
+    class="-m-2 flex flex-row flex-wrap"
+    id="endorser-list"
+    style="height: 700px; overflow: hidden;"
+  >
+    {
+      endorsements.map((item, index) => (
+        <div class="w-full p-2 md:w-1/2">
+          <EndorseCard
+            name={item.name}
+            description={item.description}
+            photo={item.photo}
+            profileLink={item.link}
+            title={item.title}
           />
+        </div>
+      ))
+    }
+  </div>
 
-          <div className="absolute bottom-[10px] left-[0] right-[0] z-10 flex justify-center">
-            <Button
-              variant="primary"
-              onClick={() => setAllEndorserVisible(true)}
-            >
-              Load More
-            </Button>
-          </div>
-        </>
-      )}
-    </>
-  );
-};
+  <div
+    id="show-more-endorser"
+    class:list={[
+      "absolute bottom-[0] left-[0] right-[0] z-10 h-96 w-full",
+      "bg-gradient-to-b from-[rgba(31,41,55,0)] to-slate-100",
+      "dark:bg-gradient-to-b dark:from-[rgba(31,41,55,0)] dark:to-[#121927]",
+    ]}
+  >
+  </div>
 
-export default Endorsements;
+  <div
+    class="absolute bottom-[10px] left-[0] right-[0] z-10 flex justify-center"
+  >
+    <Button variant="primary" id="show-more-endorser-btn"> Load More </Button>
+  </div>
+</div>

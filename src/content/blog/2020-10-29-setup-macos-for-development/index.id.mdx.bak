@@ -9,7 +9,7 @@ featuredSource: "Gustavo Espindola"
 tags: ["macos", "setup"]
 ---
 
-import Video from "../../../components/Video";
+import Video from "../../../components/Video.astro";
 
 ## Preface
 

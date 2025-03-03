@@ -1,0 +1,33 @@
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const commentsContainer = document.querySelector("#comment-container");
+
+    const loadComments = () => {
+      const script = document.createElement("script");
+      script.src = "https://utteranc.es/client.js";
+      script.async = true;
+      script.setAttribute("issue-term", "pathname");
+      script.setAttribute("repo", "trihargianto/comments");
+      script.setAttribute(
+        "theme",
+        // @ts-ignore
+        window?.theme === "light" ? "github-light" : "github-dark",
+      );
+      script.setAttribute("crossorigin", "anonymous");
+      commentsContainer?.appendChild(script);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadComments();
+        observer.disconnect();
+      }
+    });
+
+    if (commentsContainer) {
+      observer.observe(commentsContainer);
+    }
+  });
+</script>
+
+<div id="comment-container"></div>
