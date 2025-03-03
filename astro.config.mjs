@@ -10,7 +10,7 @@ import netlify from "@astrojs/netlify";
 import expressiveCode from "astro-expressive-code";
 import sentry from "@sentry/astro";
 
-const { SENTRY_DSN, SENTRY_AUTH_TOKEN } = loadEnv(
+const { SENTRY_DSN, SENTRY_AUTH_TOKEN, SENTRY_SAMPLE_RATE } = loadEnv(
   process.env.NODE_ENV || "development",
   process.cwd(),
   "",
@@ -32,6 +32,7 @@ if (sentryDsn && sentryAuthToken) {
   integrations.push(
     sentry({
       dsn: sentryDsn,
+      tracesSampleRate: process.env.NODE_ENV === "production" ? 0.3 : 1,
       sourceMapsUploadOptions: {
         project: "trihargiantocom",
         authToken: sentryAuthToken,
@@ -51,4 +52,3 @@ export default defineConfig({
 
   adapter: netlify(),
 });
-
