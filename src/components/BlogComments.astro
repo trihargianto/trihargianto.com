@@ -14,7 +14,11 @@
         window?.theme === "light" ? "github-light" : "github-dark",
       );
       script.setAttribute("crossorigin", "anonymous");
-      commentsContainer?.appendChild(script);
+
+      if (commentsContainer) {
+        commentsContainer.innerHTML = "";
+        commentsContainer.appendChild(script);
+      }
     };
 
     const observer = new IntersectionObserver((entries) => {
