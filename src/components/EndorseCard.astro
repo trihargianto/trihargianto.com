@@ -1,0 +1,40 @@
+---
+interface Props {
+  name: string;
+  title: string;
+  description: string;
+  photo: string;
+  profileLink: string;
+}
+
+const { name, description, photo, profileLink, title } = Astro.props;
+---
+
+<div
+  class="flex h-full flex-col justify-center bg-white px-6 py-6 dark:bg-gray-800"
+>
+  <p class="mb-8">"{description}"</p>
+
+  <div class="flex">
+    <img
+      src={photo}
+      alt="endorser"
+      class="mr-4 h-10 w-10 rounded-full"
+      loading="lazy"
+    />
+
+    <div>
+      <p class="font-semibold">
+        <a
+          href={profileLink}
+          target="_blank"
+          rel="noreferrer"
+          class="text-sm underline hover:no-underline"
+        >
+          {name}
+        </a>
+      </p>
+      <p class="text-xs text-slate-600 dark:text-slate-400">{title}</p>
+    </div>
+  </div>
+</div>

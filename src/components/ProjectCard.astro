@@ -1,0 +1,77 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  name: string;
+  demoLink?: string;
+  githubLink?: string;
+}
+
+const { name, demoLink, githubLink } = Astro.props;
+---
+
+<div
+  class="flex h-full w-full flex-col border-2 border-slate-200 bg-white px-6 py-5 dark:border-transparent dark:bg-slate-800"
+>
+  <p class="mb-2 font-semibold">{name}</p>
+  <p class="flex-1 text-slate-400"><slot /></p>
+
+  <div class="mt-5 flex gap-2">
+    {
+      githubLink && (
+        <Button
+          size="xs"
+          variant="secondary"
+          as="a"
+          href={githubLink}
+          target="__blank"
+          rel="noopener noreferrer"
+        >
+          Source{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-3 inline w-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+            />
+          </svg>
+        </Button>
+      )
+    }
+    {
+      demoLink && (
+        <Button
+          size="xs"
+          variant="secondary"
+          as="a"
+          href={demoLink}
+          target="__blank"
+          rel="noopener noreferrer"
+        >
+          Demo
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-3 inline w-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+            />
+          </svg>
+        </Button>
+      )
+    }
+  </div>
+</div>

@@ -1,12 +1,9 @@
-import type { ComponentProps, ReactNode } from "react";
-import clsx from "clsx";
-
+---
 type ButtonVariantTypes = "primary" | "secondary" | "tertiary";
 
 type ButtonSizeTypes = "xs" | "sm" | "md";
 
-export type ButtonPropTypes = {
-  children: ReactNode;
+interface ButtonPropTypes {
   variant?: ButtonVariantTypes;
   size?: ButtonSizeTypes;
   isRounded?: boolean;
@@ -14,7 +11,8 @@ export type ButtonPropTypes = {
   as?: "button" | "a";
   href?: string;
   className?: string;
-} & ComponentProps<"button" | "a">;
+  id?: string;
+}
 
 const buttonClasses = {
   variant: (variant: ButtonVariantTypes) => {
@@ -39,34 +37,29 @@ const buttonClasses = {
   },
 };
 
-const Button = ({
+const {
   variant = "primary",
   size = "md",
   as = "button",
-  children,
   isRounded = false,
   className,
   href,
   ...restProps
-}: ButtonPropTypes) => {
-  const Element = as === "a" ? "a" : as;
+} = Astro.props;
 
-  return (
-    // @ts-expect-error unknown type
-    <Element
-      className={clsx([
-        "transition-colors inline-block cursor-pointer no-underline!",
-        buttonClasses.variant(variant),
-        buttonClasses.size(size),
-        isRounded ? "rounded-full" : "rounded-md",
-        className,
-      ])}
-      {...(href ? { href } : {})}
-      {...restProps}
-    >
-      {children}
-    </Element>
-  );
-};
+const Element = as === "a" ? "a" : as;
+---
 
-export default Button;
+<Element
+  class:list={[
+    "transition-colors inline-block cursor-pointer no-underline!",
+    buttonClasses.variant(variant),
+    buttonClasses.size(size),
+    isRounded ? "rounded-full" : "rounded-md",
+    className,
+  ]}
+  {...href ? { href } : {}}
+  {...restProps}
+>
+  <slot />
+</Element>
