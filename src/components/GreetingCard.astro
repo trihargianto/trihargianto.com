@@ -21,7 +21,7 @@ import profilePicAvif from "../img/profile-pic-v3.avif";
 
   <div class="w-3/4">
     <h2 class="h-15 text-xl sm:h-7 sm:text-2xl mb-2 sm:mb-5">
-      <span id="greeting-text"></span>
+      Welcome to my little internet corner.
     </h2>
 
     <p class="mb-5">
@@ -50,35 +50,35 @@ import profilePicAvif from "../img/profile-pic-v3.avif";
 </div>
 
 <script>
-  /* Greeting text typing effect */
-  function initializeGreeting() {
-    const speed = 80;
-    let i = 0;
-
-    const greetings = [
-      "Welcome to my little internet corner.",
-      "Hello! You've entered my digital HQ.",
-      "You've reached the right coordinates.",
-    ];
-
-    const greetingText =
-      greetings[Math.floor(Math.random() * greetings.length)];
-
-    const greetingTextElement = document.getElementById("greeting-text");
-
-    if (greetingTextElement) {
-      greetingTextElement.textContent = "";
-
-      const greetingTextTypingEffect = () => {
-        if (i < greetingText.length) {
-          greetingTextElement.innerHTML += greetingText.charAt(i);
-          i++;
-          setTimeout(greetingTextTypingEffect, speed);
-        }
-      };
-      greetingTextTypingEffect();
-    }
-  }
-
-  document.addEventListener("astro:page-load", initializeGreeting);
+  // TODO: Fix typing text issue
+  // function initializeGreeting() {
+  //   const speed = 80;
+  //   let i = 0;
+  //
+  //   const greetings = [
+  //     "Welcome to my little internet corner.",
+  //     "Hello! You've entered my digital HQ.",
+  //     "You've reached the right coordinates.",
+  //   ];
+  //
+  //   const greetingText =
+  //     greetings[Math.floor(Math.random() * greetings.length)];
+  //
+  //   const greetingTextElement = document.getElementById("greeting-text");
+  //
+  //   if (greetingTextElement) {
+  //     greetingTextElement.textContent = "";
+  //
+  //     const greetingTextTypingEffect = () => {
+  //       if (i < greetingText.length) {
+  //         greetingTextElement.innerHTML += greetingText.charAt(i);
+  //         i++;
+  //         setTimeout(greetingTextTypingEffect, speed);
+  //       }
+  //     };
+  //     greetingTextTypingEffect();
+  //   }
+  // }
+  //
+  // document.addEventListener("astro:page-load", initializeGreeting);
 </script>
