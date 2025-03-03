@@ -51,29 +51,34 @@ import profilePicAvif from "../img/profile-pic-v3.avif";
 
 <script>
   /* Greeting text typing effect */
-  document.addEventListener("astro:page-load", function () {
+  function initializeGreeting() {
     const speed = 80;
     let i = 0;
 
     const greetings = [
       "Welcome to my little internet corner.",
-      "Hello! You’ve entered my digital HQ.",
-      "You’ve reached the right coordinates.",
+      "Hello! You've entered my digital HQ.",
+      "You've reached the right coordinates.",
     ];
 
     const greetingText =
       greetings[Math.floor(Math.random() * greetings.length)];
 
-    (function greetingTextTypingEffect() {
-      if (i < greetingText.length) {
-        const greetingTextElement = document.getElementById("greeting-text");
+    const greetingTextElement = document.getElementById("greeting-text");
 
-        if (greetingTextElement) {
+    if (greetingTextElement) {
+      greetingTextElement.textContent = "";
+
+      const greetingTextTypingEffect = () => {
+        if (i < greetingText.length) {
           greetingTextElement.innerHTML += greetingText.charAt(i);
           i++;
           setTimeout(greetingTextTypingEffect, speed);
         }
-      }
-    })();
-  });
+      };
+      greetingTextTypingEffect();
+    }
+  }
+
+  document.addEventListener("astro:page-load", initializeGreeting);
 </script>
