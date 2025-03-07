@@ -49,8 +49,13 @@ const links = {
     },
   ],
   insights: [
-    { href: "https://inspect.trihargianto.com", label: "Performance" },
-    { href: "/rss.xml", label: "RSS" },
+    { href: "/guest-book/", label: "Guest Book", isExternal: false },
+    {
+      href: "https://inspect.trihargianto.com",
+      label: "Performance",
+      isExternal: true,
+    },
+    { href: "/rss.xml", label: "RSS", isExternal: true },
   ],
 };
 ---
@@ -152,7 +157,12 @@ const links = {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="hover:underline hover:cursor-alias"
+                    class:list={[
+                      "hover:underline",
+                      link.isExternal
+                        ? "hover:cursor-alias"
+                        : "hover:cursor-pointer",
+                    ]}
                   >
                     {link.label}
                   </a>

@@ -1,0 +1,19 @@
+---
+import BlogComments from "../components/BlogComments.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageTitle="Pet Projects | Tri Hargianto" pageDescription="">
+  <h1>🙋‍♂️ Guest Book</h1>
+
+  <section>
+    <p>
+      This page contains messages from people from the internet. <br />Feel free
+      to leave your messages, share your thoughts, or just saying hi to me.
+    </p>
+
+    <div class="mt-8">
+      <BlogComments />
+    </div>
+  </section>
+</BaseLayout>
