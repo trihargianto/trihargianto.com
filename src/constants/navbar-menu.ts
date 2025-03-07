@@ -18,10 +18,10 @@ export const navbarMenu: {
     path: "/publications/",
     label: "Publications",
   },
-  {
-    path: "/pet-projects/",
-    label: "Pet Projects",
-  },
+  // {
+  //   path: "/pet-projects/",
+  //   label: "Pet Projects",
+  // },
   {
     path: "/speaking/",
     label: "Speaking",

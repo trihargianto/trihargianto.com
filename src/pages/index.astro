@@ -6,7 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import GreetingCard from "../components/GreetingCard.astro";
 import LatestArticle from "../components/LatestArticle.astro";
-import LatestProject from "../components/LatestProject.astro";
+// import LatestProject from "../components/LatestProject.astro";
 
 import { publications } from "../content/publications";
 
@@ -58,9 +58,9 @@ const latestProjects = allProjects.map((project) => ({
     seeAllLink="/publications/"
   />
 
-  <LatestProject
-    projects={latestProjects}
-    className="mt-14"
-    seeAllLink="/pet-projects/"
-  />
+  <!-- <LatestProject -->
+  <!--   projects={latestProjects} -->
+  <!--   className="mt-14" -->
+  <!--   seeAllLink="/pet-projects/" -->
+  <!-- /> -->
 </BaseLayout>
