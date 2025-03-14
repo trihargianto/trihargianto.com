@@ -155,7 +155,7 @@ const links = {
                 <li class="mb-2">
                   <a
                     href={link.href}
-                    target="_blank"
+                    target={link.isExternal ? 'target="_blank"' : ""}
                     rel="noopener noreferrer"
                     class:list={[
                       "hover:underline",

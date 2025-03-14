@@ -9,9 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.0.8",
-    "@astrojs/netlify": "^6.2.0",
-    "@astrojs/react": "^4.2.0",
+    "@astrojs/mdx": "^4.2.0",
+    "@astrojs/netlify": "^6.2.3",
+    "@astrojs/react": "^4.2.1",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "@heroicons/react": "^2.2.0",
@@ -20,7 +20,7 @@
     "@tailwindcss/vite": "^4.0.6",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "astro": "^5.3.0",
+    "astro": "^5.5.2",
     "astro-expressive-code": "^0.40.2",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
@@ -39,5 +39,6 @@
     "prettier-plugin-astro": "^0.14.1",
     "sharp": "^0.33.5",
     "vite": "^6.2.0"
-  }
+  },
+  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195"
 }
