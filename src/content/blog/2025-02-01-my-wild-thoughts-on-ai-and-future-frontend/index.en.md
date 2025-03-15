@@ -1,7 +1,7 @@
 ---
 title: My Wild Thoughts on AI and the Future of Frontend Development
 slug: my-wild-thoughts-on-ai-and-the-future-of-frontend-development
-description: Will AI change frontend development as we know it? How AI might replace junior developers, reshape UI design, and redefine the way we interact with the web. Just a crazy thought—or a glimpse into the future?
+description: How AI might replace junior developers, reshape UI design, and redefine the way we interact with the web. Just a crazy thought—or a glimpse into the future?
 featured: ./cover.jpg
 featuredSource: Possessed Photography
 featuredSourceUrl: https://unsplash.com/photos/closeup-photo-of-white-robot-arm-jIBMSMs4_kA

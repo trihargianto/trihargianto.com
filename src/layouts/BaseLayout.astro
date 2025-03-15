@@ -10,18 +10,19 @@ import BaseHead from "../components/BaseHead.astro";
 type Props = {
   pageTitle: string;
   pageDescription?: string;
+  ogImage?: string;
   preventIndexing?: boolean;
 };
 
 const currentUrlPath = Astro.url.pathname;
 
-const { pageTitle, pageDescription, preventIndexing } = Astro.props;
+const { pageTitle, pageDescription, ogImage, preventIndexing } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" data-theme="github-dark">
   <head>
-    <BaseHead title={pageTitle} description={pageDescription} />
+    <BaseHead title={pageTitle} description={pageDescription} image={ogImage} />
 
     {preventIndexing && <meta name="robots" content="noindex, nofollow" />}
 
