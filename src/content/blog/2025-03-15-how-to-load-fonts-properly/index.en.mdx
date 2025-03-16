@@ -22,11 +22,11 @@ impact negatively for our website.
 In this article, I will show you how to optimize font loading to improve web
 performance.
 
-## How Fonts Impact Web Performance
+## The Cost of Fonts
 
 Given this simple example:
 
-```html {5,9}
+```html {5,9} showLineNumbers startLineNumber=5
 ...
 <head>
   <link
@@ -87,15 +87,15 @@ Impacting the overall web performance score.
   https://www.webpagetest.org/vitals.php?test=250316_BiDcRS_1F1&run=2
 </Aside>
 
-## Consider Using System Fonts (Recommended)
+## Use System Fonts
 
 If it's possible, consider to use system fonts instead of using the custom one
 because browsers don't need to download any additional font resources online.
 
-The beauty of a system fonts is it can matches with the user's current Operating
-System.
+This method is what **I recommend for most websites** since it's simple, and can
+matches with the user's current Operating System.
 
-```html del={3-6} {9-20}
+```html del={3-6} {9-20} showLineNumbers startLineNumber=5
 ...
 <head>
   <link
@@ -131,8 +131,8 @@ System.
 
 ## Custom Font Best Practices
 
-If the system fonts are not an option, you can still improve the custom fonts by
-following these best practices:
+If the system fonts are not an option, you can still optimize the custom fonts
+by following these best practices:
 
 ### Use WOFF2 File Format
 
@@ -140,9 +140,10 @@ Make sure to load the WOFF2 format. It's a modern font format optimized for the
 web. The silver bullet here is just ignore WOFF, TTF, OTF format if you don't
 support old browsers like Internet Explorer.
 
-Google Fonts already use this format by default and ignore other formats.
+Google Fonts already use this format by default and ignore other formats in
+their CSS file:
 
-```css
+```css title="https://fonts.googleapis.com/css2?family=Roboto"
 @font-face {
   font-family: "Roboto";
   font-style: normal;
@@ -156,30 +157,76 @@ Google Fonts already use this format by default and ignore other formats.
 ### Use Self-Hosted Fonts
 
 Instead of loading the font from Google Fonts, I'd recommend to download the
-fonts locally and then load them to your site so the fonts can be downloaded
+fonts locally, put to your site, and load them so the fonts can be downloaded
 from the same domain.
 
 This practice can eliminate the SSL, DNS, and Connection Process compared to the
 external domains.
 
-```css del={5,6} ins={7}
+```css {5} title="style.css"
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/roboto/v47/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmZiAr0klQmz24O0g.woff2)
-    format("woff2");
   src: url(/fonts/roboto-regular.woff2) format("woff2");
 }
 ...
 
 ```
 
+<Aside>
+  Google Fonts only provide the TTF format to download. You'll need to download
+  them from other places. I recommend to get your WOFF2 fonts at
+  [google-webfonts-helper](https://gwfh.mranftl.com/fonts) by [Mario
+  Ranftl](https://mranftl.com/).
+</Aside>
+
 ### Use font-display: swap
 
-### Preload Important Above-the-fold Fonts
+When defining the `@font-face` rule, make sure to also put the
+`font-display: swap;` property to instruct the browser to use the fallback font
+to display the text until the custom font has fully downloaded.
+
+This ensure our site doesn't have the FOIT issue.
+
+```css ins={5}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/roboto-regular.woff2) format("woff2");
+}
+...
+
+```
+
+Putting this property to the font definition improves the user experience by
+displaying the text immediately with the fallback font.
+
+<div class="flex gap-2 not-prose my-4 flex-col md:flex-row">
+
+  <div>
+
+![Without font-display: swap](images/without-font-display.png)
+
+    <p class="text-center mt-2">Without font-display: swap</p>
+
+  </div>
+
+  <div>
+
+![With font-display: swap](images/with-font-display.png)
+
+    <p class="text-center mt-2">With font-display: swap 👍</p>
+
+  </div>
+
+</div>
 
 ### Load Only Necessary Weights and Styles
+
+### Preload Important Above-the-fold Fonts
 
 ### Use System Fonts as Fallback
 
