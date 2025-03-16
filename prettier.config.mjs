@@ -11,7 +11,7 @@ export default {
   singleAttributePerLine: false,
   htmlWhitespaceSensitivity: "css",
   vueIndentScriptAndStyle: false,
-  proseWrap: "preserve",
+  proseWrap: "always",
   insertPragma: false,
   printWidth: 80,
   requirePragma: false,
