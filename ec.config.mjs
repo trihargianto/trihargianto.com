@@ -4,4 +4,14 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 
 export default defineEcConfig({
   plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
+
+  defaultProps: {
+    showLineNumbers: false,
+
+    overridesByLang: {
+      "js,ts,html,css": {
+        showLineNumbers: true,
+      },
+    },
+  },
 });
