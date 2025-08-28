@@ -1,0 +1,23 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import CheatsheetPostLayout from "../../layouts/CheatsheetPostLayout.astro";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+  const cheatsheets = await getCollection("cheatsheets");
+
+  return cheatsheets.map((cheatsheet) => ({
+    params: { slug: cheatsheet.id },
+    props: cheatsheet,
+  }));
+}
+type Props = CollectionEntry<"cheatsheets">;
+
+const cheatsheet = Astro.props;
+
+const { Content, headings } = await render(cheatsheet);
+---
+
+<CheatsheetPostLayout headings={headings} {...cheatsheet.data}>
+  <Content />
+</CheatsheetPostLayout>
