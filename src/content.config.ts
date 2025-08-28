@@ -35,6 +35,21 @@ const project = defineCollection({
     }),
 });
 
+const cheatsheets = defineCollection({
+  loader: glob({ base: "./src/content/cheatsheets", pattern: "**/*.{md,mdx}" }),
+
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      slug: z.string(),
+      description: z.string(),
+      category: z.string(),
+      featured: image().optional(),
+      featuredSource: z.string().optional(),
+      featuredSourceUrl: z.string().optional(),
+    }),
+});
+
 const singlePage = defineCollection({
   loader: glob({ base: "./src/content/single-page", pattern: "**/*.{md,mdx}" }),
 
@@ -45,4 +60,4 @@ const singlePage = defineCollection({
     }),
 });
 
-export const collections = { blog, project, singlePage };
+export const collections = { blog, project, singlePage, cheatsheets };

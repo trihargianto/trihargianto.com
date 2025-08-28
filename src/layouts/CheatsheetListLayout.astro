@@ -1,0 +1,197 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { kebabCase } from "lodash-es";
+
+import BaseLayout from "./BaseLayout.astro";
+
+type Props = {
+  cheatsheets?: CollectionEntry<"cheatsheets">[];
+};
+
+const allAvailableCheatsheets = await getCollection("cheatsheets");
+
+const sourceCheatsheets = Astro.props.cheatsheets ? Astro.props.cheatsheets : allAvailableCheatsheets;
+
+const cheatsheets = sourceCheatsheets;
+
+// Group cheatsheets by their category field
+const cheatsheetsByCategory = cheatsheets.reduce((acc, cheatsheet) => {
+  const categoryName = cheatsheet.data.category || 'Uncategorized';
+  
+  if (!acc[categoryName]) {
+    acc[categoryName] = [];
+  }
+  acc[categoryName].push(cheatsheet);
+  return acc;
+}, {} as Record<string, typeof cheatsheets>);
+
+
+const categories = Object.keys(cheatsheetsByCategory).sort();
+---
+
+<BaseLayout
+  pageTitle="Cheatsheets | Tri Hargianto"
+  pageDescription="A collection of personal how-to documents, quick references, and cheatsheets organized by categories."
+>
+  <h1>Cheatsheets</h1>
+  
+  <p class="text-gray-600 dark:text-gray-400 mb-8">
+    Personal how-to documents and quick references organized by topics
+  </p>
+
+  <section class="max-w-none">
+    <!-- File browser style accordion -->
+    <div class="border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-gray-900 shadow-sm">
+      {
+        categories.map((category) => (
+          <div class="border-b border-gray-200 dark:border-gray-600 last:border-b-0">
+            <!-- Category Header -->
+            <button
+              class="accordion-header w-full px-4 py-3 text-left bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center justify-between group cursor-pointer"
+              data-category={kebabCase(category)}
+            >
+              <div class="flex items-center gap-3">
+                <div class="transition-transform duration-200 group-data-[expanded]:rotate-90">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 2L8.5 6L4.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="text-lg">📂</div>
+                <span class="font-medium text-gray-900 dark:text-gray-200">{category}</span>
+                <span class="text-sm text-gray-500 dark:text-gray-500">
+                  ({cheatsheetsByCategory[category].length} {cheatsheetsByCategory[category].length === 1 ? 'item' : 'items'})
+                </span>
+              </div>
+            </button>
+
+            <!-- Category Content -->
+            <div 
+              class="accordion-content overflow-hidden transition-all duration-300 ease-in-out"
+              data-category={kebabCase(category)}
+              style="max-height: 0px;"
+            >
+              <div class="bg-white dark:bg-gray-900">
+                {
+                  cheatsheetsByCategory[category].map((item) => (
+                    <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-100 dark:border-gray-600 last:border-b-0 group">
+                      <div class="flex items-center gap-3 flex-1 min-w-0">
+                        <div class="text-base opacity-70">📄</div>
+                        <a
+                          href={`/cheatsheets/${item.data.slug}`}
+                          class="font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-300 truncate group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors"
+                          style={{
+                            viewTransitionName: `${kebabCase(item.data.title)}`,
+                          }}
+                          title={item.data.description}
+                        >
+                          {item.data.title}
+                        </a>
+                      </div>
+                      
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Quick stats -->
+    <div class="mt-6 text-sm text-gray-500 dark:text-gray-400">
+      Total: {cheatsheets.length} cheatsheets across {categories.length} categories
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function initAccordion() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header:not([data-initialized])');
+    
+    // Get current expanded category from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const expandedCategory = urlParams.get('category');
+    
+    accordionHeaders.forEach((header) => {
+      header.setAttribute('data-initialized', 'true');
+      header.setAttribute('aria-expanded', 'false');
+      
+      header.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const category = header.dataset.category;
+        const content = document.querySelector(`.accordion-content[data-category="${category}"]`);
+        const isExpanded = header.getAttribute('aria-expanded') === 'true';
+        const arrow = header.querySelector('.transition-transform');
+        
+        if (!content) return;
+        
+        // Close all other accordions first
+        accordionHeaders.forEach((otherHeader) => {
+          if (otherHeader !== header) {
+            const otherCategory = otherHeader.dataset.category;
+            const otherContent = document.querySelector(`.accordion-content[data-category="${otherCategory}"]`);
+            const otherArrow = otherHeader.querySelector('.transition-transform');
+            
+            if (otherContent) {
+              otherContent.style.maxHeight = '0px';
+              otherHeader.setAttribute('aria-expanded', 'false');
+              otherHeader.classList.remove('bg-gray-100', 'dark:bg-gray-700');
+              if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+            }
+          }
+        });
+        
+        if (isExpanded) {
+          // Collapse current
+          content.style.maxHeight = '0px';
+          header.setAttribute('aria-expanded', 'false');
+          header.classList.remove('bg-gray-100', 'dark:bg-gray-700');
+          if (arrow) arrow.style.transform = 'rotate(0deg)';
+          
+          // Remove query parameter
+          const url = new URL(window.location);
+          url.searchParams.delete('category');
+          window.history.replaceState({}, '', url);
+        } else {
+          // Expand current
+          content.style.maxHeight = content.scrollHeight + 'px';
+          header.setAttribute('aria-expanded', 'true');
+          header.classList.add('bg-gray-100', 'dark:bg-gray-700');
+          if (arrow) arrow.style.transform = 'rotate(90deg)';
+          
+          // Add query parameter
+          const url = new URL(window.location);
+          url.searchParams.set('category', category);
+          window.history.replaceState({}, '', url);
+        }
+      });
+    });
+    
+    // Restore accordion state from URL or auto-expand first
+    setTimeout(() => {
+      if (expandedCategory) {
+        const headerToExpand = document.querySelector(`.accordion-header[data-category="${expandedCategory}"]`);
+        if (headerToExpand) {
+          headerToExpand.click();
+          return;
+        }
+      }
+      
+      // Fallback: expand first category
+      const firstHeader = accordionHeaders[0];
+      if (firstHeader) firstHeader.click();
+    }, 100);
+  }
+
+  // Initialize on different load states
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAccordion);
+  } else {
+    initAccordion();
+  }
+  
+  // Handle Astro page transitions
+  document.addEventListener('astro:page-load', initAccordion);
+</script>

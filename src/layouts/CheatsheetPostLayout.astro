@@ -1,0 +1,59 @@
+---
+import "../styles/global.css";
+
+import type { CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
+import { kebabCase } from "lodash-es";
+
+import { NAVBAR_HEIGHT_ESTIMATION_IN_PX } from "../constants/config";
+import TableOfContents from "../components/TableOfContents.tsx";
+import TocDrawerButton from "../components/TocDrawerButton.tsx";
+import BaseLayout from "./BaseLayout.astro";
+
+type Props = CollectionEntry<"cheatsheets">["data"] & {
+  headings: MarkdownHeading[];
+};
+
+const { title, description, headings } = Astro.props;
+
+const articleHasHeadings = headings.length > 0;
+---
+
+<BaseLayout pageTitle={"Test"} pageDescription={description}>
+  <h1 class="mb-0!" style={{ viewTransitionName: kebabCase(title) }}>
+    {title}
+  </h1>
+
+  <section class="flex max-w-none prose dark:prose-invert lg:pt-4">
+    <div
+      class:list={{
+        "w-full lg:w-3/4 lg:pr-7": articleHasHeadings,
+      }}
+    >
+      <slot />
+    </div>
+
+    {
+      articleHasHeadings ? (
+        <>
+          {/* Desktop */}
+          <div class="hidden lg:block w-1/4 pl-6">
+            <div
+              class:list={["sticky right-8 w-full overflow-auto duration-300"]}
+              style={{
+                top: `${NAVBAR_HEIGHT_ESTIMATION_IN_PX + 10}px`,
+              }}
+            >
+              <TableOfContents headings={headings} client:visible />
+            </div>
+          </div>
+
+          {/* Mobile */}
+          <div class="block lg:hidden">
+            <TocDrawerButton client:visible headings={headings} />
+          </div>
+        </>
+      ) : null
+    }
+  </section>
+</BaseLayout>
