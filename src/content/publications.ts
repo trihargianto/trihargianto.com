@@ -1,5 +1,11 @@
 export const publications = [
   {
+    title: "How We Plan Improvements for Our Core Frontend System",
+    date: "Oct 2025",
+    link: "https://medium.com/mamitech/how-we-plan-improvements-for-our-core-frontend-system-571227cd52ac",
+    platform: "Mamitech",
+  },
+  {
     title:
       "Deciding the Minimum Browser Versions to be Supported in Mamikos.com",
     date: "Dec 2022",
