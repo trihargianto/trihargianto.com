@@ -19,7 +19,7 @@ const { title, description, headings } = Astro.props;
 const articleHasHeadings = headings.length > 0;
 ---
 
-<BaseLayout pageTitle={"Test"} pageDescription={description}>
+<BaseLayout pageTitle={title} pageDescription={description}>
   <h1 class="mb-0!" style={{ viewTransitionName: kebabCase(title) }}>
     {title}
   </h1>
