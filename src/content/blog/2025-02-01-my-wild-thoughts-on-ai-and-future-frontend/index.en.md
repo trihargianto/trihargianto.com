@@ -6,7 +6,7 @@ featured: ./cover.jpg
 featuredSource: Possessed Photography
 featuredSourceUrl: https://unsplash.com/photos/closeup-photo-of-white-robot-arm-jIBMSMs4_kA
 pubDate: "2025-02-01"
-tags: ["opinion"]
+tags: ["ai", "opinion"]
 ---
 
 There isn’t a single day without news about the rise of Artificial Intelligence. Many companies try to keep themselves relevant by not just utilizing the well-known AI models like [OpenAI’s](https://openai.com/), but also developing their own Models. Google has [**Gemini**](https://gemini.google.com/), Meta has [**Llama**](https://www.llama.com/), and many others are joining the race.
