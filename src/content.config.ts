@@ -27,6 +27,7 @@ const blog = defineCollection({
       featured: image().optional(),
       featuredSource: z.string().optional(),
       featuredSourceUrl: z.string().optional(),
+      featuredPost: z.boolean().optional().default(false),
     }),
 });
 

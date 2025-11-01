@@ -1,0 +1,109 @@
+---
+import ArticleCard from "./ArticleCard";
+import Button from "./Button.astro";
+
+interface Props {
+  // Section title
+  sectionTitle: string;
+
+  // Articles
+  articles: {
+    title: string;
+    date: string;
+    slug?: string;
+    link?: string;
+    platform?: string;
+    tags?: string[];
+    featuredImage?: string;
+    description?: string;
+  }[];
+
+  // CSS Classes
+  className?: string;
+
+  // A path link to see the articles when the button is clicked
+  seeAllLink: string;
+
+  // Grid columns configuration
+  columns?: "2" | "3" | "4";
+}
+
+const {
+  sectionTitle,
+  articles,
+  className = "",
+  seeAllLink,
+  columns = "3",
+} = Astro.props;
+
+// Map columns to grid classes
+const gridClasses = {
+  "2": "grid-cols-1 md:grid-cols-2",
+  "3": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+  "4": "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
+};
+---
+
+<section class={className} data-animate="fadeInUp">
+  <!-- Section Header -->
+  <div class="mb-6 flex items-center justify-between">
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
+      {sectionTitle}
+    </h2>
+
+    <Button as="a" href={seeAllLink}> See More </Button>
+  </div>
+
+  <!-- Articles Grid -->
+  <div
+    class={`grid ${gridClasses[columns]} gap-6`}
+    data-stagger="true"
+  >
+    {
+      articles.map((article) => (
+        <div data-animate="fadeInUp">
+          <ArticleCard
+            title={article.title}
+            date={article.date}
+            slug={article.slug}
+            link={article.link}
+            platform={article.platform}
+            tags={article.tags}
+            featuredImage={article.featuredImage}
+            description={article.description}
+            client:load
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  /* Enhanced typography */
+  h2 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  /* Grid enhancements */
+  .grid {
+    align-items: stretch;
+  }
+
+  /* Smooth transitions */
+  section {
+    transition-property: opacity, transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    section,
+    section * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import type { CallToActionCopy } from "../../constants/about";
+
+const { headline, subheadline, primaryCta, secondaryCta, availability, responseTime } =
+  Astro.props as CallToActionCopy;
+---
+<section
+  id="connect"
+  class="relative mt-24 overflow-hidden rounded-3xl border border-sky-500/30 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-10 text-slate-100 shadow-2xl sm:p-12 lg:p-16"
+>
+  <div class="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-sky-500/20 blur-3xl" />
+  <div class="pointer-events-none absolute right-0 bottom-0 h-80 w-80 rounded-full bg-purple-500/10 blur-3xl" />
+
+  <div class="relative space-y-8">
+    <div class="space-y-4 text-balance">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
+        Let's Collaborate
+      </p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        {headline}
+      </h2>
+      <p class="max-w-2xl text-base text-slate-200">
+        {subheadline}
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-4">
+      {primaryCta && (
+        <a
+          href={primaryCta.href}
+          class="inline-flex items-center rounded-full bg-sky-400 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-sky-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200"
+        >
+          {primaryCta.label}
+        </a>
+      )}
+
+      {secondaryCta && (
+        <a
+          href={secondaryCta.href}
+          class="inline-flex items-center rounded-full border border-slate-600 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200"
+        >
+          {secondaryCta.label}
+        </a>
+      )}
+    </div>
+
+    <div class="flex flex-wrap gap-6 text-sm text-slate-300">
+      {availability && (
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+          {availability}
+        </div>
+      )}
+      {responseTime && (
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-2.5 w-2.5 rounded-full bg-sky-300" />
+          {responseTime}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+/* ArticleCard Component Styles */
+
+.article-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 140px;
+}
+
+.article-card a {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+/* Smooth hover transitions */
+.article-card {
+  will-change: transform, box-shadow;
+}
+
+/* Focus states for accessibility */
+.article-card a:focus {
+  outline: 2px solid rgb(14 165 233); /* sky-500 */
+  outline-offset: 2px;
+  border-radius: 0.75rem;
+}
+
+/* Dark mode focus */
+@media (prefers-color-scheme: dark) {
+  .article-card a:focus {
+    outline-color: rgb(56 189 248); /* sky-400 */
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .article-card,
+  .article-card * {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .article-card:hover {
+    transform: none !important;
+  }
+}

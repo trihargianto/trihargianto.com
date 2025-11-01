@@ -1,10 +1,10 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import { groupBy, kebabCase, lowerCase, upperFirst } from "lodash-es";
-import dayjs from "dayjs";
+import { upperFirst, lowerCase } from "lodash-es";
 
 import BaseLayout from "./BaseLayout.astro";
-import Badge from "../components/Badge.astro";
+import BlogHeroSection from "../components/BlogHeroSection.astro";
+import BlogContainer from "../components/BlogContainer";
 
 type Props = {
   posts?: CollectionEntry<"blog">[];
@@ -12,114 +12,91 @@ type Props = {
 
 const allAvailablePosts = await getCollection("blog");
 
-const allAvailableTags = [
-  ...new Set(allAvailablePosts.flatMap((item) => item.data.tags)),
-].sort();
-
 const sourcePosts = Astro.props.posts ? Astro.props.posts : allAvailablePosts;
 
-const posts = sourcePosts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .map((item) => ({
-    ...item,
-    date: dayjs(item.data.pubDate).format("MMM YYYY"),
-    year: dayjs(item.data.pubDate).format("YYYY"),
-  }));
+// Sort posts by date (newest first)
+const sortedPosts = sourcePosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 
-const postsByYear = groupBy(posts, "year");
-const years = Object.keys(postsByYear).sort().reverse();
+// Get featured post or latest post
+const featuredPost =
+  sortedPosts.find((post) => post.data.featuredPost) || sortedPosts[0];
+
+// Get all posts except the featured one for the grid/list
+const otherPosts = sortedPosts.filter((post) => post.id !== featuredPost?.id);
+
+// Read content for all posts (needed for reading time calculation)
+const postContents = new Map<string, string>();
+const featuredImages = new Map<string, string>();
+
+for (const post of sortedPosts) {
+  postContents.set(post.id, post.body);
+
+  // Serialize featured image src if it exists
+  if (post.data.featured) {
+    featuredImages.set(post.id, post.data.featured.src);
+  }
+}
+
+// Get featured post content
+const featuredContent = featuredPost ? postContents.get(featuredPost.id) || "" : "";
 
 const currentSelectedTopic = Astro.params?.topic || "all";
 ---
 
 <BaseLayout
   pageTitle={`${upperFirst(lowerCase(currentSelectedTopic))} Articles | Blog | Tri Hargianto`}
-  pageDescription="A collection of articles about web development, programming, and other related topics."
+  pageDescription="A collection of articles about web development, programming, and other related topics. Explore insights on frontend engineering, performance optimization, developer experience, and more."
 >
-  <h1>Blog</h1>
-
-  <section class="flex flex-col lg:flex-row-reverse max-w-none lg:pt-4">
-    <div class="w-full lg:w-1/4 lg:pl-6 mb-8">
-      <span class="font-semibold mb-5 inline-block text-sm md:text-base"
-        >Choose Topic</span
-      >
-
-      <div class="flex flex-wrap gap-1.5">
-        <Badge
-          isClickable
-          isActive={currentSelectedTopic === "all"}
-          className="blog-page-tag-item"
-          {...{ "data-tag-name": "all" }}
-        >
-          all
-        </Badge>
-
-        {
-          allAvailableTags.map((tag) => (
-            <Badge
-              isClickable
-              isActive={tag === currentSelectedTopic}
-              className="blog-page-tag-item"
-              {...{ "data-tag-name": tag }}
-            >
-              {lowerCase(tag)}
-            </Badge>
-          ))
-        }
-      </div>
+  <div class="max-w-7xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        Blog
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
+        Thoughts, ideas, and insights on web development, programming, and
+        everything in between.
+      </p>
     </div>
 
-    <div class:list={["w-full lg:w-3/4 lg:pr-7"]}>
-      <ul>
-        {
-          years.map((year) => (
-            <div class="mb-10 last:mb-0">
-              <h2 class="mb-2">{year}</h2>
+    <!-- Hero Section - Featured Post -->
+    {
+      featuredPost && (
+        <BlogHeroSection post={featuredPost} content={featuredContent} />
+      )
+    }
 
-              {postsByYear[year].map((item) => (
-                <div class="flex flex-row justify-between border-b last:border-b-0 border-b-gray-200 py-3 dark:border-b-gray-800">
-                  <a
-                    href={`/blog/${item.data.slug}`}
-                    class="font-medium hover:underline"
-                    style={{
-                      viewTransitionName: `${kebabCase(item.data.title)}`,
-                    }}
-                  >
-                    {item.data.title}
-                  </a>
-
-                  <span class="hidden text-slate-400 md:block">
-                    {item.date}
-                  </span>
-                </div>
-              ))}
-            </div>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
+    <!-- Blog Container with Search, Filter, and Posts -->
+    <BlogContainer
+      posts={otherPosts}
+      postContents={postContents}
+      featuredImages={featuredImages}
+      client:load
+    />
+  </div>
 </BaseLayout>
 
-<script is:inline>
-  function enableTagButtonClickListener() {
-    const tagButtons = document.querySelectorAll(".blog-page-tag-item");
-
-    tagButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const tagName = event.target.getAttribute("data-tag-name");
-
-        if (tagName === "all") {
-          window.location.href = "/blog";
-          return;
-        }
-
-        window.location.href = `/blog/topic/${tagName}`;
-      });
-    });
+<style>
+  /* Enhanced typography */
+  h1 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
-  enableTagButtonClickListener();
+  /* Smooth transitions */
+  * {
+    transition-property: color, background-color, border-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+  }
 
-  document.addEventListener("astro:page-load", enableTagButtonClickListener);
-</script>
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+</style>

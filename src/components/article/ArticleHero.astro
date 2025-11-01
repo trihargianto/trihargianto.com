@@ -1,0 +1,282 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  id: string;
+  title: string;
+  image?: ImageMetadata;
+  alt: string;
+  aspectRatio?: "16:9" | "3:2" | "21:9";
+  creditLabel?: string;
+  creditUrl?: string;
+}
+
+const {
+  id,
+  title,
+  image,
+  alt,
+  aspectRatio = "16:9",
+  creditLabel,
+  creditUrl,
+} = Astro.props;
+
+const aspectClass = {
+  "16:9": "aspect-[16/9]",
+  "3:2": "aspect-[3/2]",
+  "21:9": "aspect-[21/9]",
+}[aspectRatio];
+---
+
+<section
+  id={id}
+  class="relative group rounded-[28px] overflow-hidden bg-slate-200 dark:bg-slate-800"
+  data-hero-container
+>
+  <div
+    class:list={[
+      "relative w-full h-full",
+      aspectClass,
+    ]}
+  >
+    {image ? (
+      <Image
+        src={image}
+        alt={alt || title}
+        class="w-full h-full object-cover will-change-transform transition-transform duration-700 ease-out"
+        widths={[640, 960, 1280, 1600]}
+        sizes="(max-width: 768px) 100vw, 92vw"
+        loading="lazy"
+        decoding="async"
+        format="avif"
+        placeholder="blurred"
+        data-hero-image
+      />
+    ) : (
+      <div
+        class="w-full h-full bg-gradient-to-br from-sky-400/40 via-indigo-500/40 to-purple-500/30 dark:from-sky-500/20 dark:via-indigo-500/20 dark:to-purple-500/20 flex items-center justify-center"
+        aria-hidden="true"
+      >
+        <span class="text-3xl md:text-4xl font-semibold text-slate-600/70 dark:text-slate-300/50">
+          {title}
+        </span>
+      </div>
+    )}
+
+    <div
+      class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent transition-opacity duration-300 group-hover:opacity-95"
+      data-hero-gradient
+    />
+
+    <button
+      type="button"
+      class="absolute right-6 bottom-6 z-10 flex items-center gap-2 rounded-full bg-black/55 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-md transition hover:bg-black/75 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-2 focus-visible:ring-sky-500"
+      data-hero-lightbox-trigger
+      aria-label="Open featured image in full screen"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-5 w-5"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4.5 9.75V4.5h5.25M19.5 9.75V4.5H14.25M4.5 14.25V19.5h5.25M19.5 14.25V19.5H14.25"
+        />
+      </svg>
+      View
+    </button>
+
+    {creditLabel && (
+      <div class="absolute left-6 bottom-6 md:bottom-auto md:top-6 z-10">
+        <span
+          class="inline-flex items-center gap-1 rounded-full bg-black/45 px-3 py-1 text-xs text-white shadow backdrop-blur"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-4 w-4"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 6.75h-7.5m7.5 4.5h-7.5m7.5 4.5h-7.5M4.5 6.75h.008v.008H4.5V6.75Zm.492 0a.492.492 0 1 1-.984 0 .492.492 0 0 1 .984 0ZM4.5 11.25h.008v.008H4.5v-.008Zm.492 0a.492.492 0 1 1-.984 0 .492.492 0 0 1 .984 0Zm0 4.5a.492.492 0 1 1-.984 0 .492.492 0 0 1 .984 0Z"
+            />
+          </svg>
+          Photo by{" "}
+          {creditUrl ? (
+            <a
+              href={creditUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-semibold underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 rounded"
+            >
+              {creditLabel}
+            </a>
+          ) : (
+            <span class="font-semibold">{creditLabel}</span>
+          )}
+        </span>
+      </div>
+    )}
+  </div>
+</section>
+
+<dialog
+  class="article-lightbox fixed inset-0 z-[60] hidden"
+  data-hero-lightbox
+  aria-label="Featured image lightbox"
+>
+  <div
+    class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+    data-lightbox-backdrop
+  ></div>
+  <div
+    class="pointer-events-none fixed inset-6 md:inset-16 opacity-0 transition-opacity duration-300 flex items-center justify-center"
+    data-lightbox-content
+  ></div>
+  <button
+    type="button"
+    class="fixed top-6 right-6 z-[61] inline-flex items-center justify-center rounded-full bg-black/60 text-white h-12 w-12 backdrop-blur hover:bg-black/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500"
+    data-lightbox-close
+    aria-label="Close full screen image"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="h-6 w-6"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  </button>
+</dialog>
+
+<script is:inline>
+  (() => {
+    const heroId = ${JSON.stringify(id)};
+    const hero = document.getElementById(heroId);
+    if (!hero) return;
+
+    const container = hero.closest("[data-hero-container]");
+    const image = hero.querySelector("[data-hero-image]");
+    const lightboxTrigger = hero.querySelector("[data-hero-lightbox-trigger]");
+    const lightbox =
+      hero.nextElementSibling instanceof HTMLDialogElement
+        ? hero.nextElementSibling
+        : null;
+    const backdrop = lightbox?.querySelector("[data-lightbox-backdrop]");
+    const lightboxContent = lightbox?.querySelector("[data-lightbox-content]");
+    const lightboxClose = lightbox?.querySelector("[data-lightbox-close]");
+
+    let animationFrame: number | null = null;
+    let lastScrollY = 0;
+    let prefersReducedMotion = false;
+
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    prefersReducedMotion = motionQuery.matches;
+    const onMotionChange = (event) => {
+      prefersReducedMotion = event.matches;
+      if (prefersReducedMotion && image) {
+        image.style.transform = "";
+      }
+    };
+    motionQuery.addEventListener("change", onMotionChange);
+
+    const updateParallax = () => {
+      if (!image || prefersReducedMotion) return;
+
+      const rect = container?.getBoundingClientRect();
+      if (!rect) return;
+
+      const progress = rect.top / window.innerHeight;
+      const translate = Math.max(Math.min(progress * 22, 18), -18);
+      image.style.transform = `translateY(${translate}px) scale(1.08)`;
+    };
+
+    const onScroll = () => {
+      if (animationFrame !== null) {
+        cancelAnimationFrame(animationFrame);
+      }
+      animationFrame = window.requestAnimationFrame(() => {
+        lastScrollY = window.scrollY;
+        updateParallax();
+      });
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateParallax);
+
+    const openLightbox = () => {
+      if (!(lightbox instanceof HTMLDialogElement) || !(lightboxContent instanceof HTMLElement)) {
+        return;
+      }
+
+      if (!lightbox.open) {
+        lightbox.showModal();
+      }
+      const img = image?.cloneNode(true);
+      lightbox.classList.remove("hidden");
+      document.body.dataset.lightboxOpen = "true";
+      lightboxContent.innerHTML = "";
+      if (img instanceof HTMLElement) {
+        img.removeAttribute("style");
+        img.classList.remove("rounded-[28px]");
+        img.classList.add("max-h-full", "max-w-full", "object-contain");
+        lightboxContent.appendChild(img);
+      }
+
+      window.setTimeout(() => {
+        backdrop?.classList.add("opacity-100");
+        lightboxContent.classList.add("opacity-100");
+      }, 10);
+    };
+
+    const closeLightbox = () => {
+      if (!(lightbox instanceof HTMLDialogElement)) return;
+      backdrop?.classList.remove("opacity-100");
+      lightboxContent?.classList.remove("opacity-100");
+      window.setTimeout(() => {
+        lightbox.close();
+        lightbox.classList.add("hidden");
+        document.body.removeAttribute("data-lightbox-open");
+      }, 220);
+    };
+
+    const onKeydown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+    };
+
+    lightboxTrigger?.addEventListener("click", openLightbox);
+    lightboxClose?.addEventListener("click", closeLightbox);
+    backdrop?.addEventListener("click", closeLightbox);
+    lightbox?.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closeLightbox();
+    });
+    window.addEventListener("keydown", onKeydown);
+
+    document.addEventListener("astro:before-preparation", () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateParallax);
+      window.removeEventListener("keydown", onKeydown);
+      motionQuery.removeEventListener("change", onMotionChange);
+    });
+  })();
+</script>

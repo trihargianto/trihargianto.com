@@ -1,28 +1,44 @@
 ---
-import { getEntry, render } from "astro:content";
-
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Endorsements from "../components/Endorsements.astro";
+import AboutHero from "../components/about/AboutHero";
+import QuickStats from "../components/about/QuickStats";
+import JourneyTimeline from "../components/about/JourneyTimeline";
+import SkillsShowcase from "../components/about/SkillsShowcase";
+import ImpactMetrics from "../components/about/ImpactMetrics";
+import CallToAction from "../components/about/CallToAction.astro";
+import {
+  heroPhotos,
+  heroStatements,
+  quickStats,
+  journeyMilestones,
+  skillCategories,
+  impactMetrics,
+  callToActionCopy,
+} from "../constants/about";
+import { getEntry } from "astro:content";
 
 const aboutPost = await getEntry("singlePage", "about");
 
 if (!aboutPost) {
   throw new Error("Could not find about post");
 }
-const { Content } = await render(aboutPost);
 ---
 
 <BaseLayout
   pageTitle={aboutPost.data.title}
   pageDescription={aboutPost.data.description}
 >
-  <h1>About Me</h1>
+  <div class="space-y-20 lg:space-y-24">
+    <AboutHero statements={heroStatements} photos={heroPhotos} client:load />
+    <QuickStats stats={quickStats} client:load />
+    <JourneyTimeline milestones={journeyMilestones} client:load />
+    <SkillsShowcase categories={skillCategories} client:load />
+    <ImpactMetrics metrics={impactMetrics} client:load />
+    <CallToAction {...callToActionCopy} />
 
-  <div class="prose dark:prose-invert max-w-none">
-    <Content />
-  </div>
-
-  <div class="relative mx-auto mt-14">
-    <Endorsements />
+    <div class="relative mx-auto max-w-5xl">
+      <Endorsements />
+    </div>
   </div>
 </BaseLayout>

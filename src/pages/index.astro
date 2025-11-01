@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 import GreetingCard from "../components/GreetingCard.astro";
-import LatestArticle from "../components/LatestArticle.astro";
+import LatestArticlesGrid from "../components/LatestArticlesGrid.astro";
 import SkillsSection from "../components/SkillsSection.astro";
 // import LatestProject from "../components/LatestProject.astro";
 
@@ -19,17 +19,25 @@ const latestArticles = allBlogPosts
   .sort((a, b) => {
     return dayjs(b.data.pubDate).valueOf() - dayjs(a.data.pubDate).valueOf();
   })
-  // Limit to 5 latest articles
-  .slice(0, 8)
+  // Limit to 6 latest articles for grid layout (2 rows x 3 columns)
+  .slice(0, 6)
   .map((post) => ({
     title: post.data.title,
     date: dayjs(post.data.pubDate).format("MMM YYYY"),
     slug: post.id,
+    tags: post.data.tags,
+    featuredImage: post.data.featured?.src,
+    description: post.data.description,
   }));
 
-const LIMIT_LATEST_ARTICLES = 5;
+const LIMIT_LATEST_PUBLICATIONS = 6;
 
-const latestPublications = publications.slice(0, LIMIT_LATEST_ARTICLES);
+const latestPublications = publications.slice(0, LIMIT_LATEST_PUBLICATIONS).map((pub) => ({
+  title: pub.title,
+  date: pub.date,
+  link: pub.link,
+  platform: pub.platform,
+}));
 
 const latestProjects = allProjects.map((project) => ({
   title: project.data.title,
@@ -51,18 +59,20 @@ const latestProjects = allProjects.map((project) => ({
     <SkillsSection clientDirective="visible" />
   </div>
 
-  <LatestArticle
+  <LatestArticlesGrid
     sectionTitle="Latest Articles"
     articles={latestArticles}
     className="mt-14"
     seeAllLink="/blog/"
+    columns="3"
   />
 
-  <LatestArticle
+  <LatestArticlesGrid
     sectionTitle="Publications"
     articles={latestPublications}
     className="mt-14"
     seeAllLink="/publications/"
+    columns="3"
   />
 
   <!-- <LatestProject -->

@@ -13,8 +13,8 @@ interface Props {
 const { socialConfig } = Astro.props;
 ---
 
-<div class="mb-10 flex h-12 items-center md:mb-5 gap-1">
-  <span>Share: &nbsp;</span>
+<div class="mb-10 flex h-12 items-center md:mb-5 gap-2">
+  <span class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">Share</span>
   <button
     id="share-facebook"
     aria-label="Share on Facebook"
@@ -71,6 +71,36 @@ const { socialConfig } = Astro.props;
       </svg>
     </span>
   </button>
+  &nbsp;
+  <button
+    id="share-reddit"
+    aria-label="Share on Reddit"
+    class="cursor-pointer"
+  >
+    <span class="[&>svg]:h-5 [&>svg]:w-5">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        fill="currentColor"
+      >
+        <path
+          d="M440.5 236.1c-15.2 0-29.1 6.2-39.2 16.2-38.6-27.9-90.5-45.9-148.8-48.5l31.7-145.4 101.4 22.6c0 24.1 19.5 43.7 43.7 43.7 24.1 0 43.7-19.6 43.7-43.7S454 37.5 429.8 37.5c-16.5 0-30.9 9.4-38.2 23.2l-115.4-25.8c-4.6-1-9.2 2-10.2 6.6l-35.6 163.5c-56.8 2.7-108.1 20.6-146 48.4-10.1-10-24-16.3-39.2-16.3C18.9 236.1 0 255 0 278.6c0 24 19.4 43.5 43.4 43.5 11.1 0 21.3-4.1 29-10.9 0 1.4-.1 2.8-.1 4.1 0 72.1 86 130.5 192 130.5s192-58.4 192-130.5c0-1.3 0-2.6-.1-4 7.7 6.8 17.8 10.8 28.9 10.8 24 0 43.5-19.4 43.5-43.4s-19.5-42.6-43.6-42.6ZM166.5 312.1c0-17.6 14.3-31.8 31.8-31.8 17.6 0 31.9 14.2 31.9 31.8s-14.3 31.8-31.9 31.8c-17.5 0-31.8-14.2-31.8-31.8Zm176.8 85.5c-21.4 21.4-68 22.9-87.3 22.9s-65.9-1.6-87.3-22.9c-4.8-4.8-4.8-12.5 0-17.3 4.8-4.8 12.5-4.8 17.3 0 12.5 12.5 39.5 17.1 69.9 17.1s57.4-4.6 69.9-17.1c4.8-4.8 12.5-4.8 17.3 0 4.8 4.8 4.8 12.5.2 17.3Zm-5.6-53.7c-17.5 0-31.8-14.2-31.8-31.8s14.3-31.8 31.8-31.8c17.6 0 31.9 14.2 31.9 31.8s-14.3 31.8-31.9 31.8Z"
+        />
+      </svg>
+    </span>
+  </button>
+  &nbsp;
+  <button
+    id="share-copy"
+    aria-label="Copy article link"
+    class="relative cursor-pointer"
+  >
+    <span class="[&>svg]:h-5 [&>svg]:w-5">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3a2.25 2.25 0 0 1-2.25 2.25h-9A2.25 2.25 0 0 1 2.25 20.25v-9a2.25 2.25 0 0 1 2.25-2.25h3M9 15h6.75A2.25 2.25 0 0 0 18 12.75v-9A2.25 2.25 0 0 0 15.75 1.5h-9A2.25 2.25 0 0 0 4.5 3.75V9" />
+      </svg>
+    </span>
+  </button>
 </div>
 
 <script is:inline define:vars={{ socialConfig }}>
@@ -83,6 +113,12 @@ const { socialConfig } = Astro.props;
   document
     .getElementById("share-linkedin")
     .addEventListener("click", shareOnLinkedin);
+  document
+    .getElementById("share-reddit")
+    .addEventListener("click", shareOnReddit);
+  document
+    .getElementById("share-copy")
+    .addEventListener("click", copyLink);
 
   function shareOnFacebook() {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(socialConfig.config.url)}`;
@@ -97,5 +133,36 @@ const { socialConfig } = Astro.props;
   function shareOnLinkedin() {
     const linkedinUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(socialConfig.config.url)}`;
     window.open(linkedinUrl, "_blank");
+  }
+
+  function shareOnReddit() {
+    const redditUrl = `https://www.reddit.com/submit?url=${encodeURIComponent(socialConfig.config.url)}&title=${encodeURIComponent(socialConfig.config.title)}`;
+    window.open(redditUrl, "_blank");
+  }
+
+  async function copyLink() {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(socialConfig.config.url);
+      } else {
+        const temp = document.createElement("textarea");
+        temp.value = socialConfig.config.url;
+        temp.style.position = "absolute";
+        temp.style.opacity = "0";
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+      }
+      const button = document.getElementById("share-copy");
+      if (button) {
+        button.dataset.copied = "true";
+        setTimeout(() => {
+          delete button.dataset.copied;
+        }, 2000);
+      }
+    } catch (error) {
+      console.error("Unable to copy", error);
+    }
   }
 </script>

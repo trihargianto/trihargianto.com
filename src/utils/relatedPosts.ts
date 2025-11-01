@@ -19,7 +19,7 @@ export async function getRelatedPosts(
 
   // Score and sort posts
   const scored = allPosts
-    .filter((p) => p.id !== currentSlug)
+    .filter((p) => p.data.slug !== currentSlug)
     .map((post) => {
       const postTags = post.data.tags || [];
       const currentTagsSet = new Set(currentTags);
@@ -50,5 +50,17 @@ export async function getRelatedPosts(
     })
     .slice(0, limit);
 
-  return scored.map((item) => item.post);
+  if (scored.length >= limit) {
+    return scored.map((item) => item.post);
+  }
+
+  const scoredIds = new Set(scored.map((item) => item.post.id));
+
+  const fallback = allPosts
+    .filter((post) => post.data.slug !== currentSlug && !scoredIds.has(post.id))
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+    .slice(0, limit - scored.length)
+    .map((post) => ({ post }));
+
+  return [...scored, ...fallback].map((item) => item.post);
 }
