@@ -1,0 +1,31 @@
+---
+import SkillsSectionClient from "./SkillsSectionClient";
+import { skills } from "../constants/skills";
+
+type ClientDirective = "load" | "visible" | "idle" | "only";
+
+const {
+  clientDirective = "visible",
+  framework = "react",
+}:
+  | {
+      clientDirective?: "load" | "visible" | "idle";
+      framework?: "react";
+    }
+  | {
+      clientDirective: "only";
+      framework: "react";
+    } = Astro.props;
+---
+{clientDirective === "load" ? (
+  <SkillsSectionClient skills={skills} client:load />
+) : clientDirective === "idle" ? (
+  <SkillsSectionClient skills={skills} client:idle />
+) : clientDirective === "only" ? (
+  <SkillsSectionClient
+    skills={skills}
+    client:only={framework}
+  />
+) : (
+  <SkillsSectionClient skills={skills} client:visible />
+)}

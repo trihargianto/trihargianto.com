@@ -2,12 +2,16 @@
 import profilePicPng from "../img/profile-pic-v3.png";
 import profilePicWebp from "../img/profile-pic-v3.webp";
 import profilePicAvif from "../img/profile-pic-v3.avif";
+import CountUp from "./CountUp.astro";
 ---
 
 <div
   class="flex flex-col sm:flex-row items-center gap-8 md:w-full md:gap-8 lg:w-5/6"
 >
-  <picture class="w-32 sm:w-1/4 flex-shrink-0">
+  <picture
+    class="w-32 sm:w-1/4 flex-shrink-0"
+    data-animate="fadeInLeft"
+  >
     <source srcset={profilePicAvif.src} type="image/avif" />
     <source srcset={profilePicWebp.src} type="image/webp" />
     <img
@@ -22,17 +26,37 @@ import profilePicAvif from "../img/profile-pic-v3.avif";
   </picture>
 
   <div class="flex-1">
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
+    <h1
+      class="text-3xl sm:text-4xl font-bold mb-4 leading-tight"
+      data-animate="fadeInUp"
+      data-delay="100"
+    >
       Building frontend systems that scale & perform
     </h1>
 
-    <p class="text-lg sm:text-xl mb-6 text-gray-700 dark:text-gray-300">
+    <p
+      class="text-lg sm:text-xl mb-6 text-gray-700 dark:text-gray-300"
+      data-animate="fadeInUp"
+      data-delay="200"
+    >
       Frontend Tech Lead specializing in performance optimization, developer
-      experience, and team leadership. Proven track record cutting build times
-      93%.
+      experience, and team leadership. Proven track record cutting build times{" "}
+      <CountUp
+        endValue={93}
+        suffix="%"
+        showPlus
+        className="inline-flex items-baseline font-semibold text-sky-600 dark:text-sky-400"
+        plusClassName="text-base sm:text-lg"
+        clientDirective="load"
+      />{" "}
+      reduction.
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-4">
+    <div
+      class="flex flex-col sm:flex-row gap-4"
+      data-animate="fadeInUp"
+      data-delay="300"
+    >
       <a
         href="/performance-wins/"
         class="inline-block px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg transition-colors duration-150 ease-out text-center"
@@ -48,3 +72,17 @@ import profilePicAvif from "../img/profile-pic-v3.avif";
     </div>
   </div>
 </div>
+
+<script>
+  import { initScrollReveal } from "../utils/scrollReveal";
+
+  // Initialize scroll reveal animations
+  document.addEventListener("DOMContentLoaded", () => {
+    initScrollReveal();
+  });
+
+  // Re-initialize on Astro page transitions
+  document.addEventListener("astro:page-load", () => {
+    initScrollReveal();
+  });
+</script>

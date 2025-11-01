@@ -6,6 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import GreetingCard from "../components/GreetingCard.astro";
 import LatestArticle from "../components/LatestArticle.astro";
+import SkillsSection from "../components/SkillsSection.astro";
 // import LatestProject from "../components/LatestProject.astro";
 
 import { publications } from "../content/publications";
@@ -34,8 +35,10 @@ const latestProjects = allProjects.map((project) => ({
   title: project.data.title,
   slug: project.id,
   description: project.data.description,
+  category: project.data.category,
   demoLink: project.data.demoLink,
   githubLink: project.data.githubLink,
+  tags: project.data.tags,
 }));
 ---
 
@@ -43,6 +46,10 @@ const latestProjects = allProjects.map((project) => ({
   pageTitle="trihargianto.com - A personal digital garden by Tri Hargianto"
 >
   <GreetingCard />
+
+  <div class="mt-14">
+    <SkillsSection clientDirective="visible" />
+  </div>
 
   <LatestArticle
     sectionTitle="Latest Articles"
