@@ -113,12 +113,15 @@ const endorsements = [
 </script>
 
 <div>
-  <p class="mb-5 text-2xl font-semibold">🗣️ What they said about me</p>
+  <p class="mb-5 text-2xl font-semibold" data-animate="fadeInUp">
+    🗣️ What they said about me
+  </p>
 
   <div
     class="-m-2 flex flex-row flex-wrap"
     id="endorser-list"
     style="height: 700px; overflow: hidden;"
+    data-stagger="true"
   >
     {
       endorsements.map((item, index) => (
@@ -151,3 +154,17 @@ const endorsements = [
     <Button variant="primary" id="show-more-endorser-btn"> Load More </Button>
   </div>
 </div>
+
+<script>
+  import { initScrollReveal } from "../utils/scrollReveal";
+
+  // Initialize scroll reveal animations
+  document.addEventListener("DOMContentLoaded", () => {
+    initScrollReveal();
+  });
+
+  // Re-initialize on Astro page transitions
+  document.addEventListener("astro:page-load", () => {
+    initScrollReveal();
+  });
+</script>

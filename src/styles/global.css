@@ -73,6 +73,31 @@ small {
   transition-timing-function: ease-out;
 }
 
+/* Scroll reveal animations */
+[data-animate] {
+  opacity: 0;
+  transition:
+    opacity 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+[data-animate="fadeInUp"] {
+  transform: translateY(30px);
+}
+
+[data-animate="fadeInLeft"] {
+  transform: translateX(-30px);
+}
+
+[data-animate="fadeInRight"] {
+  transform: translateX(30px);
+}
+
+[data-animate].animate-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -82,6 +107,12 @@ small {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Disable scroll reveal animations for users who prefer reduced motion */
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
@@ -104,4 +135,24 @@ body.custom-cursor-enabled * {
 /* Optional: Add cursor-interactive class to elements that should trigger expansion */
 .cursor-interactive {
   /* This class can be added to any element to make it interactive with the cursor */
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+  scroll-padding-top: 80px; /* Offset for fixed navbar */
+}
+
+/* Active link highlighting styles */
+a[data-active="true"] {
+  @apply text-sky-500 dark:text-sky-400;
+}
+
+/* Ensure reading progress bar appears above navbar but below cursor */
+.reading-progress {
+  z-index: 50;
+}
+
+/* Back to top button styles */
+.back-to-top-button {
+  z-index: 40;
 }
