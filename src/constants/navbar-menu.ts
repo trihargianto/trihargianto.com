@@ -7,23 +7,27 @@ export const navbarMenu: {
   isExternalLink?: boolean;
 }[] = [
   {
-    path: "/about/",
-    label: "About",
+    path: "/",
+    label: "Home",
   },
   {
     path: "/blog/",
     label: "Blog",
   },
   {
-    path: "/publications/",
-    label: "Publications",
+    path: "/performance-wins/",
+    label: "Performance Wins",
   },
-  // {
-  //   path: "/pet-projects/",
-  //   label: "Pet Projects",
-  // },
   {
     path: "/speaking/",
     label: "Speaking",
+  },
+  {
+    path: "/about/",
+    label: "About",
+  },
+  {
+    path: "/cheatsheets/",
+    label: "Cheatsheets",
   },
 ];

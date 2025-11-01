@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  pageTitle="Colophon"
+  pageDescription="How this site is built - stack, tools, and technical choices"
+>
+  <article class="prose dark:prose-invert max-w-3xl mx-auto">
+    <h1>Colophon</h1>
+
+    <p>
+      This site is built with <strong>Astro 5</strong>, styled with <strong
+        >Tailwind CSS 4</strong
+      >, and deployed on <strong>Netlify</strong>. Content is authored in
+      Markdown/MDX, managed via Astro Content Collections, and
+      version-controlled with Git. Analytics run on a privacy-first setup (no
+      cookies, no tracking pixels). Dark mode persists via <code
+        >localStorage</code
+      >.
+    </p>
+
+    <h2>Stack</h2>
+
+    <ul>
+      <li>
+        <strong>Framework:</strong> Astro 5 (static site generation, partial hydration)
+      </li>
+      <li>
+        <strong>Styling:</strong> Tailwind CSS 4 (utility-first, JIT compiler)
+      </li>
+      <li>
+        <strong>Syntax highlighting:</strong> astro-expressive-code (Catppuccin
+        Frappé / One Light)
+      </li>
+      <li>
+        <strong>OG images:</strong> astro-og-canvas (dynamic social cards)
+      </li>
+      <li>
+        <strong>Deployment:</strong> Netlify (edge functions, automatic redirects)
+      </li>
+      <li>
+        <strong>Monitoring:</strong> Sentry (error tracking), Unlighthouse (performance
+        audits)
+      </li>
+    </ul>
+
+    <h2>Typography</h2>
+
+    <p>
+      System font stack for body (optimized for performance and readability
+      across platforms). Monospace for code blocks.
+    </p>
+
+    <h2>Why These Choices</h2>
+
+    <ul>
+      <li>
+        <strong>Astro:</strong> Zero JS by default, best Lighthouse scores, content-first
+        architecture aligns with blog-heavy site.
+      </li>
+      <li>
+        <strong>Tailwind 4:</strong> Faster builds, better DX with autocomplete,
+        smaller CSS footprint vs. v3.
+      </li>
+      <li>
+        <strong>Netlify:</strong> Edge-first CDN, instant rollbacks, seamless <code
+          >_redirects</code
+        > handling for legacy i18n routes.
+      </li>
+    </ul>
+
+    <h2>Performance</h2>
+
+    <p>
+      View live performance metrics at <a
+        href="https://inspect.trihargianto.com"
+        target="_blank"
+        rel="noopener noreferrer">inspect.trihargianto.com</a
+      >. The site is monitored continuously with Unlighthouse to ensure Core
+      Web Vitals remain within acceptable thresholds.
+    </p>
+  </article>
+</BaseLayout>

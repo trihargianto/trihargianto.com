@@ -7,6 +7,11 @@
   navigation: auto;
 }
 
+/* Accent color as CSS variable */
+:root {
+  --color-accent: #0ea5e9; /* sky-500 */
+}
+
 .bg-theme {
   @apply bg-slate-100 dark:bg-[#111927] dark:text-gray-100;
 }
@@ -30,32 +35,54 @@ body {
     "Noto Color Emoji";
 
   @apply bg-slate-100 dark:bg-[#111927] dark:text-gray-100;
-
+  @apply text-base leading-relaxed;
   @apply transition-colors duration-200;
 }
 
+/* Updated type scale per plan */
 h1 {
-  @apply mb-5 text-2xl font-semibold sm:mb-7 sm:text-3xl;
+  @apply mb-5 text-[2.5rem] leading-tight font-bold sm:mb-7;
 }
 
 h2 {
-  @apply text-xl font-semibold sm:text-2xl;
+  @apply text-[2rem] leading-snug font-bold;
 }
 
 h3 {
-  @apply text-lg font-semibold sm:text-xl;
+  @apply text-[1.5rem] leading-snug font-semibold;
 }
 
 h4 {
-  @apply text-base font-semibold sm:text-lg;
+  @apply text-[1.25rem] leading-normal font-semibold;
 }
 
 h5 {
-  @apply text-sm font-semibold sm:text-base;
+  @apply text-[1.125rem] leading-normal font-semibold;
 }
 
 h6 {
-  @apply text-xs font-semibold sm:text-sm;
+  @apply text-base leading-normal font-semibold;
+}
+
+small {
+  @apply text-sm leading-normal;
+}
+
+/* Subtle, purposeful motion */
+* {
+  transition-timing-function: ease-out;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /** Customize @tailwindcss/typography */

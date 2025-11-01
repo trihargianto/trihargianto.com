@@ -13,6 +13,16 @@ const blog = defineCollection({
       description: z.string(),
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
+      category: z
+        .enum([
+          "Frontend Engineering",
+          "Performance",
+          "Developer Experience",
+          "Leadership",
+          "Slow Productivity",
+          "Web Fundamentals",
+        ])
+        .optional(),
       tags: z.array(z.string()).optional(),
       featured: image().optional(),
       featuredSource: z.string().optional(),

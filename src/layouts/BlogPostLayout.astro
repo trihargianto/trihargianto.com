@@ -17,12 +17,14 @@ import TableOfContents from "../components/TableOfContents.tsx";
 import TocDrawerButton from "../components/TocDrawerButton.tsx";
 import BaseLayout from "./BaseLayout.astro";
 import Badge from "../components/Badge.astro";
+import RelatedPosts from "../components/RelatedPosts.astro";
 
 type Props = CollectionEntry<"blog">["data"] & {
   headings: MarkdownHeading[];
 };
 
-const { slug, title, description, pubDate, headings, tags } = Astro.props;
+const { slug, title, description, pubDate, headings, tags, category } =
+  Astro.props;
 
 const date = dayjs(pubDate).format("MMMM DD, YYYY");
 
@@ -35,6 +37,20 @@ const articleHasHeadings = headings.length > 0;
   ogImage={`/open-graph/${slug}.png`}
 >
   {
+    category && (
+      <div class="mb-4">
+        <span class="inline-block px-3 py-1 bg-sky-500 text-white text-sm font-semibold rounded-full">
+          {category}
+        </span>
+      </div>
+    )
+  }
+
+  <h1 class="mb-3!" style={{ viewTransitionName: kebabCase(title) }}>
+    {title}
+  </h1>
+
+  {
     tags && tags.length > 0 ? (
       <p class="mb-4 text-sm text-gray-700 dark:text-gray-500">
         <span class="inline-flex gap-2">
@@ -45,10 +61,6 @@ const articleHasHeadings = headings.length > 0;
       </p>
     ) : null
   }
-
-  <h1 class="mb-3!" style={{ viewTransitionName: kebabCase(title) }}>
-    {title}
-  </h1>
 
   <p class="mb-4 text-sm! text-gray-500 dark:text-gray-400 sm:text-base">
     {description}
@@ -131,16 +143,20 @@ const articleHasHeadings = headings.length > 0;
   </section>
 
   <div class="container mx-auto">
-    <SocialShareButtons
-      socialConfig={{
-        twitter: SOCIAL_TWITTER,
-        config: {
-          url: `${SITE_URL}${slug}`,
-          title,
-          description,
-        },
-      }}
-    />
+    <RelatedPosts currentSlug={slug} currentTags={tags} />
+
+    <div class="mt-12">
+      <SocialShareButtons
+        socialConfig={{
+          twitter: SOCIAL_TWITTER,
+          config: {
+            url: `${SITE_URL}${slug}`,
+            title,
+            description,
+          },
+        }}
+      />
+    </div>
 
     <p class="mb-6 text-left text-2xl font-semibold md:text-center">Comments</p>
 

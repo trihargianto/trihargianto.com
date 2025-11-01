@@ -1,11 +1,11 @@
 export const SITE_TITLE = "Tri Hargianto";
 export const SITE_DESCRIPTION =
-  "This site is my digital garden where I put my projects, tutorials, thoughts, and anything else I want to show to the world.";
+  "Frontend Tech Lead · Performance, DX & scalable systems · Helping teams ship faster with better user experience";
 export const SITE_URL = "https://www.trihargianto.com/";
 
 export const AUTHOR_NAME = "Tri Hargianto";
 export const AUTHOR_SUMMARY =
-  "A Software Engineer who loves to learn new things and share knowledge";
+  "Frontend Tech Lead specializing in performance optimization, developer experience, and team leadership";
 
 export const SOCIAL_TWITTER = "trihargianto";
 export const SOCIAL_GITHUB = "trihargianto";
