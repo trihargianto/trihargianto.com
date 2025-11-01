@@ -9,6 +9,7 @@ import BaseHead from "../components/BaseHead.astro";
 import CustomCursor from "../components/CustomCursor";
 import ReadingProgress from "../components/ReadingProgress";
 import BackToTop from "../components/BackToTop";
+import ParallaxBackground from "../components/ParallaxBackground";
 
 type Props = {
   pageTitle: string;
@@ -71,10 +72,11 @@ const { pageTitle, pageDescription, ogImage, preventIndexing } = Astro.props;
     </script>
   </head>
   <body>
+    <ParallaxBackground client:load />
     <ReadingProgress client:load />
     <CustomCursor client:load />
     <BackToTop client:load />
-    <div class="relative min-h-screen">
+    <div class="relative min-h-screen z-10">
       <div class="w-full pb-16">
         <NavigationBar currentUrlPath={currentUrlPath} />
 
