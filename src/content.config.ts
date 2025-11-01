@@ -42,6 +42,7 @@ const project = defineCollection({
       category: z.string(),
       demoLink: z.string(),
       githubLink: z.string(),
+      tags: z.array(z.string()).optional(),
     }),
 });
 

@@ -1,13 +1,15 @@
 ---
-import ProjectCard from "./ProjectCard.astro";
+import ProjectCardInteractive from "./ProjectCardInteractive";
 import Button from "./Button.astro";
 
 interface Props {
   projects: {
     title: string;
     description: string;
+    category?: string;
     demoLink?: string;
     githubLink?: string;
+    tags?: string[];
   }[];
   className: string;
 
@@ -29,13 +31,15 @@ const { projects, className, seeAllLink } = Astro.props;
     {
       projects.map((item) => (
         <div class="w-full p-2 md:w-1/2 lg:w-1/3">
-          <ProjectCard
+          <ProjectCardInteractive
+            client:load
             name={item.title}
+            description={item.description}
+            category={item.category}
             demoLink={item.demoLink}
             githubLink={item.githubLink}
-          >
-            {item.description}
-          </ProjectCard>
+            tags={item.tags}
+          />
         </div>
       ))
     }

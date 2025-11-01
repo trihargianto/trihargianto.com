@@ -2,6 +2,7 @@ import type { MarkdownHeading } from "astro";
 import clsx from "clsx";
 
 import { useScrollToTop } from "../hooks/useScrollToTop";
+import { useActiveSection } from "../hooks/useActiveSection";
 
 type TableOfContentsProps = {
   headings: MarkdownHeading[];
@@ -13,6 +14,10 @@ const TableOfContents = ({
   onClickTocItem = () => null,
 }: TableOfContentsProps) => {
   const { isTriggerVisible, scrollTop } = useScrollToTop();
+
+  // Extract section IDs for active section detection
+  const sectionIds = headings.map(({ slug }) => slug);
+  const activeSection = useActiveSection(sectionIds, 100);
 
   return (
     <>
@@ -44,25 +49,33 @@ const TableOfContents = ({
       </span>
 
       <ul className="px-5 mt-4">
-        {headings.map(({ depth, slug, text }) => (
-          <li
-            key={slug}
-            className={clsx([
-              "my-0! list-disc",
-              depth === 2 ? "ml-0" : depth === 3 ? "ml-4" : "ml-8",
-            ])}
-          >
-            <a
-              href={`#${slug}`}
+        {headings.map(({ depth, slug, text }) => {
+          const isActive = activeSection === slug;
+
+          return (
+            <li
+              key={slug}
               className={clsx([
-                "text-gray-500 dark:text-gray-400 block py-1.5 px-0 text-sm transition-colors no-underline hover:text-blue-500 dark:hover:text-blue-300",
+                "my-0! list-disc",
+                depth === 2 ? "ml-0" : depth === 3 ? "ml-4" : "ml-8",
               ])}
-              onClick={onClickTocItem}
             >
-              {text}
-            </a>
-          </li>
-        ))}
+              <a
+                href={`#${slug}`}
+                className={clsx([
+                  "block py-1.5 px-0 text-sm transition-all duration-200 no-underline",
+                  isActive
+                    ? "text-sky-500 dark:text-sky-400 font-semibold scale-105"
+                    : "text-gray-500 dark:text-gray-400 hover:text-sky-500 dark:hover:text-sky-400",
+                ])}
+                onClick={onClickTocItem}
+                data-active={isActive}
+              >
+                {text}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </>
   );
