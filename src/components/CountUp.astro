@@ -1,0 +1,30 @@
+---
+import CountUpClient from "./CountUpClient";
+
+type ClientDirective = "load" | "visible" | "idle" | "only";
+
+const {
+  clientDirective = "visible",
+  framework = "react",
+  ...props
+}: {
+  clientDirective?: ClientDirective;
+  framework?: "react";
+  endValue: number;
+  duration?: number;
+  className?: string;
+  suffix?: string;
+  decimalPlaces?: number;
+  showPlus?: boolean;
+  plusClassName?: string;
+} = Astro.props;
+---
+{clientDirective === "load" ? (
+  <CountUpClient {...props} client:load />
+) : clientDirective === "idle" ? (
+  <CountUpClient {...props} client:idle />
+) : clientDirective === "only" ? (
+  <CountUpClient {...props} client:only={framework} />
+) : (
+  <CountUpClient {...props} client:visible />
+)}

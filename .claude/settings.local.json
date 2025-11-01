@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: add custom cursor with interactive hover effects\n\nImplement custom circular cursor (20px diameter, expands to 40px on hover) with smooth follow animation and brand-colored glow effect. Cursor shows \"View\" text when hovering project cards and automatically disables on touch devices. Uses requestAnimationFrame for optimal performance.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm build:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

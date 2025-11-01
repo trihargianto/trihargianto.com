@@ -2,31 +2,106 @@
 import "../styles/global.css";
 
 import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import type { MarkdownHeading } from "astro";
 import dayjs from "dayjs";
-import { kebabCase, lowerCase } from "lodash-es";
+import relativeTime from "dayjs/plugin/relativeTime";
+import { kebabCase } from "lodash-es";
 
 import {
-  SOCIAL_TWITTER,
-  SITE_URL,
   NAVBAR_HEIGHT_ESTIMATION_IN_PX,
+  SITE_URL,
+  SOCIAL_TWITTER,
 } from "../constants/config";
-import SocialShareButtons from "../components/SocialShareButtons.astro";
-import BlogComments from "../components/BlogComments.astro";
+import { primaryAuthor } from "../constants/author";
+import { calculateReadingTime } from "../utils/readingTime";
+
+import BaseLayout from "./BaseLayout.astro";
+import ArticleHero from "../components/article/ArticleHero.astro";
+import ArticleMeta from "../components/article/ArticleMeta.tsx";
+import ArticleActionBar from "../components/article/ArticleActionBar.tsx";
+import HeadingEnhancer from "../components/article/HeadingEnhancer.tsx";
+import SelectionShare from "../components/article/SelectionShare.tsx";
+import MediaLightbox from "../components/article/MediaLightbox.tsx";
+import ReactionPanel from "../components/article/ReactionPanel.tsx";
+import NewsletterSignup from "../components/article/NewsletterSignup.tsx";
 import TableOfContents from "../components/TableOfContents.tsx";
 import TocDrawerButton from "../components/TocDrawerButton.tsx";
-import BaseLayout from "./BaseLayout.astro";
+import SocialShareButtons from "../components/SocialShareButtons.astro";
+import RelatedPosts from "../components/RelatedPosts.astro";
+import BlogComments from "../components/BlogComments.astro";
+import ReadingProgressBar from "../components/ReadingProgressBar";
+import BackToTop from "../components/BackToTop.tsx";
 import Badge from "../components/Badge.astro";
+
+dayjs.extend(relativeTime);
 
 type Props = CollectionEntry<"blog">["data"] & {
   headings: MarkdownHeading[];
+  body: string;
 };
 
-const { slug, title, description, pubDate, headings, tags } = Astro.props;
+const {
+  slug,
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  headings,
+  tags = [],
+  category,
+  featured,
+  featuredSource,
+  featuredSourceUrl,
+  body,
+} = Astro.props;
 
-const date = dayjs(pubDate).format("MMMM DD, YYYY");
+const formattedPubDate = dayjs(pubDate).format("MMM DD, YYYY");
+const relativePubDate = dayjs(pubDate).fromNow();
+const formattedUpdatedDate = updatedDate
+  ? dayjs(updatedDate).format("MMM DD, YYYY")
+  : null;
+const updatedIso = updatedDate ? updatedDate.toISOString() : undefined;
+
+const readingStats = calculateReadingTime(body);
+const { text: readingTimeText, minutes: readingMinutes, words: readingWords } =
+  readingStats;
 
 const articleHasHeadings = headings.length > 0;
+const heroId = `article-hero-${slug}`;
+
+const siteBaseUrl = SITE_URL.replace(/\/$/, "");
+const canonicalUrl = `${siteBaseUrl}/blog/${slug}`;
+
+const allPosts = await getCollection("blog");
+const sortedPosts = allPosts
+  .slice()
+  .sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
+const currentIndex = sortedPosts.findIndex((post) => post.data.slug === slug);
+const previousPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+const nextPost =
+  currentIndex >= 0 && currentIndex < sortedPosts.length - 1
+    ? sortedPosts[currentIndex + 1]
+    : null;
+const latestAuthorPosts = allPosts
+  .filter((post) => post.data.slug !== slug)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+const previousUrl = previousPost ? `/blog/${previousPost.data.slug}` : null;
+const nextUrl = nextPost ? `/blog/${nextPost.data.slug}` : null;
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
+  category
+    ? {
+        label: category,
+        href: `/blog/category/${encodeURIComponent(category)}`,
+      }
+    : { label: "All articles", href: "/blog" },
+  { label: title, href: null },
+];
 ---
 
 <BaseLayout
@@ -34,116 +109,460 @@ const articleHasHeadings = headings.length > 0;
   pageDescription={description}
   ogImage={`/open-graph/${slug}.png`}
 >
-  {
-    tags && tags.length > 0 ? (
-      <p class="mb-4 text-sm text-gray-700 dark:text-gray-500">
-        <span class="inline-flex gap-2">
-          {tags?.map((tag) => (
-            <Badge>{lowerCase(tag)}</Badge>
+  <ReadingProgressBar
+    client:load
+    target=".article-prose"
+    totalMinutes={readingMinutes}
+  />
+  <BackToTop client:load />
+  <ArticleActionBar
+    client:load
+    slug={slug}
+    title={title}
+    shareUrl={canonicalUrl}
+    readingMinutes={readingMinutes}
+  />
+  <SelectionShare client:load shareUrl={canonicalUrl} />
+  <MediaLightbox client:load />
+
+  <article class="relative pb-24 lg:pb-28">
+    <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <nav
+        class="text-sm font-medium text-slate-500 dark:text-slate-400"
+        aria-label="Breadcrumb"
+      >
+        <ol class="flex flex-wrap items-center gap-1">
+          {breadcrumbs.map((crumb, index) => (
+            <li class="flex items-center gap-1">
+              {
+                crumb.href ? (
+                  <a
+                    href={crumb.href}
+                    class="rounded px-2 py-1 transition hover:bg-slate-200/60 hover:text-slate-800 dark:hover:bg-slate-800/70 dark:hover:text-slate-200"
+                  >
+                    {crumb.label}
+                  </a>
+                ) : (
+                  <span class="rounded px-2 py-1 text-slate-700 dark:text-slate-200">
+                    {crumb.label}
+                  </span>
+                )
+              }
+              {index < breadcrumbs.length - 1 && (
+                <span aria-hidden class="text-slate-400">/</span>
+              )}
+            </li>
           ))}
-        </span>
-      </p>
-    ) : null
-  }
+        </ol>
+      </nav>
 
-  <h1 class="mb-3!" style={{ viewTransitionName: kebabCase(title) }}>
-    {title}
-  </h1>
+      <header class="mt-8 space-y-10 md:mt-12 md:space-y-12">
+        <ArticleHero
+          id={heroId}
+          title={title}
+          image={featured}
+          alt={title}
+          creditLabel={featuredSource}
+          creditUrl={featuredSourceUrl}
+        />
 
-  <p class="mb-4 text-sm! text-gray-500 dark:text-gray-400 sm:text-base">
-    {description}
-  </p>
+        <div class="space-y-8">
+          {
+            tags.includes("featured") && (
+              <Badge className="bg-amber-400/90 text-amber-950 border-0 font-semibold px-4 py-1.5 shadow">
+                Featured insight
+              </Badge>
+            )
+          }
 
-  <p
-    class="mb-4 text-xs flex items-center gap-2 text-gray-500 dark:text-gray-400"
-  >
-    <span class="inline-flex items-center gap-2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
-        ></path>
-      </svg>
-
-      {date}
-    </span>
-
-    <!-- 
-    TODO: Add estimated read time
-    <span class="inline-flex items-center gap-2 ml-2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
-        ></path>
-      </svg>
-      10 mins read
-    </span> -->
-  </p>
-
-  <section class="flex max-w-none prose dark:prose-invert lg:pt-4">
-    <div
-      class:list={{
-        "w-full lg:w-3/4 lg:pr-7": articleHasHeadings,
-      }}
-    >
-      <slot />
-    </div>
-
-    {
-      articleHasHeadings ? (
-        <>
-          {/* Desktop */}
-          <div class="hidden lg:block w-1/4 pl-6">
-            <div
-              class:list={["sticky right-8 w-full overflow-auto duration-300"]}
-              style={{
-                top: `${NAVBAR_HEIGHT_ESTIMATION_IN_PX + 10}px`,
-              }}
+          <div>
+            <h1
+              class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl"
+              style={{ viewTransitionName: kebabCase(title) }}
             >
-              <TableOfContents headings={headings} client:visible />
+              {title}
+            </h1>
+            <p class="mt-5 max-w-3xl text-lg font-medium leading-relaxed text-slate-600 dark:text-slate-300 sm:text-xl">
+              {description}
+            </p>
+          </div>
+
+          <ArticleMeta
+            client:load
+            slug={slug}
+            title={title}
+            category={category}
+            tags={tags}
+            formattedPublishedDate={formattedPubDate}
+            relativePublishedDate={relativePubDate}
+            publishedISO={pubDate.toISOString()}
+            formattedUpdatedDate={formattedUpdatedDate}
+            updatedISO={updatedIso}
+            readingTimeLabel={readingTimeText}
+            readingMinutes={readingMinutes}
+            wordCount={readingWords}
+            author={primaryAuthor}
+          />
+        </div>
+      </header>
+
+      <section class="relative mt-16 lg:mt-20 article-shell">
+        {
+          articleHasHeadings && (
+            <div class="mb-6 lg:hidden">
+              <TocDrawerButton client:visible headings={headings} />
+            </div>
+          )
+        }
+
+        <div class="grid gap-12 lg:grid-cols-[minmax(0,720px)_minmax(220px,1fr)] lg:gap-16">
+          <div>
+            <div
+              class="article-prose prose prose-lg mx-auto max-w-none text-slate-800 prose-headings:scroll-mt-[var(--article-heading-offset,120px)] prose-headings:font-semibold prose-h2:mt-14 prose-h3:mt-10 prose-h4:mt-8 prose-p:text-[1.125rem] prose-p:leading-[1.8] prose-p:tracking-tight prose-a:font-semibold prose-a:text-sky-600 prose-a:underline-offset-4 hover:prose-a:text-sky-700 dark:text-slate-100 dark:prose-invert dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300"
+              style={{ "--article-heading-offset": `${NAVBAR_HEIGHT_ESTIMATION_IN_PX + 64}px` }}
+            >
+              <HeadingEnhancer client:load />
+              <slot />
             </div>
           </div>
 
-          {/* Mobile */}
-          <div class="block lg:hidden">
-            <TocDrawerButton client:visible headings={headings} />
+          {
+            articleHasHeadings && (
+              <aside class="hidden lg:block article-sidebar">
+                <div
+                  class="sticky top-[calc(var(--navbar-height,0px)+24px)] flex flex-col gap-8"
+                  style={{ "--navbar-height": `${NAVBAR_HEIGHT_ESTIMATION_IN_PX}px` }}
+                >
+                  <div class="rounded-3xl bg-white/80 p-6 shadow-xl ring-1 ring-slate-200/70 backdrop-blur-lg dark:bg-slate-900/80 dark:ring-slate-800/70">
+                    <TableOfContents headings={headings} client:visible />
+                  </div>
+
+                  <div class="rounded-3xl border border-slate-200/70 bg-white/80 p-4 shadow-lg dark:border-slate-800/70 dark:bg-slate-900/80">
+                    <div class="flex items-center gap-3">
+                      <img
+                        src={primaryAuthor.avatar.src}
+                        alt={`${primaryAuthor.name} avatar`}
+                        width={48}
+                        height={48}
+                        class="h-12 w-12 rounded-2xl object-cover"
+                        loading="lazy"
+                      />
+                      <div class="flex-1">
+                        <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                          {primaryAuthor.name}
+                        </p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                          {primaryAuthor.role}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      {primaryAuthor.socials.slice(0, 2).map((social) => (
+                        <a
+                          key={social.label}
+                          href={social.url}
+                          class="inline-flex items-center gap-2 rounded-full border border-slate-200/70 px-3 py-1 text-xs font-semibold text-slate-600 transition hover:border-sky-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-300"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {social.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="rounded-3xl bg-slate-900 text-white p-6 shadow-lg ring-1 ring-slate-800/80 dark:bg-slate-800">
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">
+                      Share the insight
+                    </h3>
+                    <p class="mt-2 text-sm text-slate-200">
+                      Know someone who needs this? Send it their way in one click.
+                    </p>
+                    <div class="mt-4 flex flex-col gap-3">
+                      <a
+                        class="inline-flex items-center justify-between rounded-2xl bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20"
+                        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(canonicalUrl)}&via=${SOCIAL_TWITTER}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Share on X</span>
+                        <span aria-hidden>↗</span>
+                      </a>
+                      <a
+                        class="inline-flex items-center justify-between rounded-2xl bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20"
+                        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(canonicalUrl)}&title=${encodeURIComponent(title)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Share on LinkedIn</span>
+                        <span aria-hidden>↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+            )
+          }
+        </div>
+      </section>
+
+      <footer class="mt-20 space-y-16">
+        <section class="rounded-3xl border border-slate-200/70 bg-white/90 px-6 py-8 shadow-xl dark:border-slate-800/70 dark:bg-slate-900/80">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex items-start gap-5">
+              <img
+                src={primaryAuthor.avatar.src}
+                width={96}
+                height={96}
+                alt={`${primaryAuthor.name} headshot`}
+                class="h-24 w-24 rounded-3xl border-4 border-white object-cover shadow-lg dark:border-slate-800"
+                loading="lazy"
+              />
+              <div>
+                <div class="flex items-center gap-3">
+                  <a
+                    href="/about"
+                    class="text-xl font-semibold text-slate-900 transition hover:text-sky-600 dark:text-white dark:hover:text-sky-300"
+                  >
+                    {primaryAuthor.name}
+                  </a>
+                  <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-sky-600 dark:bg-sky-500/20 dark:text-sky-300">
+                    Author
+                  </span>
+                </div>
+                <p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">
+                  {primaryAuthor.role}
+                </p>
+                <p class="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
+                  {primaryAuthor.bio}
+                </p>
+                <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
+                  {primaryAuthor.socials.map((social) => (
+                    <a
+                      href={social.url}
+                      key={social.label}
+                      class="inline-flex items-center gap-2 rounded-full border border-slate-200/80 px-3 py-1.5 font-semibold text-slate-600 transition hover:border-sky-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-200"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>{social.label}</span>
+                      <span aria-hidden>↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div class="max-w-md rounded-3xl bg-slate-900/90 p-5 text-white shadow-xl ring-1 ring-slate-800 dark:bg-slate-800/80">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                More from Tri
+              </p>
+              <ul class="mt-3 space-y-3">
+                {latestAuthorPosts.map((post) => (
+                  <li key={post.id}>
+                    <a
+                      href={`/blog/${post.data.slug}`}
+                      class="group flex items-center justify-between gap-4 text-sm font-semibold text-slate-200 transition hover:text-sky-300"
+                    >
+                      <span>{post.data.title}</span>
+                      <span aria-hidden class="text-slate-400 transition group-hover:translate-x-1 group-hover:text-sky-300">
+                        →
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </>
-      ) : null
-    }
-  </section>
+        </section>
 
-  <div class="container mx-auto">
-    <SocialShareButtons
-      socialConfig={{
-        twitter: SOCIAL_TWITTER,
-        config: {
-          url: `${SITE_URL}${slug}`,
-          title,
-          description,
-        },
-      }}
-    />
+        {(previousPost || nextPost) && (
+          <section class="grid gap-6 lg:grid-cols-2">
+            {previousPost && (
+              <a
+                href={`/blog/${previousPost.data.slug}`}
+                class="group relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white/90 p-6 shadow-xl transition hover:-translate-y-1 hover:border-sky-200 hover:shadow-2xl dark:border-slate-800/70 dark:bg-slate-900/80"
+                aria-label={`Previous article: ${previousPost.data.title}`}
+              >
+                {previousPost.data.featured && (
+                  <div class="pointer-events-none absolute inset-0 opacity-30 transition group-hover:opacity-40">
+                    <Image
+                      src={previousPost.data.featured}
+                      alt={previousPost.data.title}
+                      widths={[480, 720]}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-br from-white via-white/80 to-transparent dark:from-slate-900 dark:via-slate-900/80" />
+                  </div>
+                )}
+                <div class="relative z-10 flex flex-col gap-3">
+                  <span class="inline-flex w-fit items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-500 dark:bg-slate-800/60 dark:text-slate-300">
+                    <span aria-hidden>←</span> Previous
+                  </span>
+                  <h4 class="text-xl font-semibold text-slate-900 transition group-hover:text-sky-600 dark:text-white dark:group-hover:text-sky-300">
+                    {previousPost.data.title}
+                  </h4>
+                  <p class="text-sm text-slate-600 line-clamp-3 dark:text-slate-300">
+                    {previousPost.data.description}
+                  </p>
+                  <div class="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-sky-600 dark:text-sky-300">
+                    Read next
+                    <span aria-hidden>↗</span>
+                  </div>
+                </div>
+              </a>
+            )}
 
-    <p class="mb-6 text-left text-2xl font-semibold md:text-center">Comments</p>
+            {nextPost && (
+              <a
+                href={`/blog/${nextPost.data.slug}`}
+                class="group relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white/90 p-6 shadow-xl transition hover:-translate-y-1 hover:border-sky-200 hover:shadow-2xl dark:border-slate-800/70 dark:bg-slate-900/80"
+                aria-label={`Next article: ${nextPost.data.title}`}
+              >
+                {nextPost.data.featured && (
+                  <div class="pointer-events-none absolute inset-0 opacity-30 transition group-hover:opacity-40">
+                    <Image
+                      src={nextPost.data.featured}
+                      alt={nextPost.data.title}
+                      widths={[480, 720]}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-br from-white via-white/80 to-transparent dark:from-slate-900 dark:via-slate-900/80" />
+                  </div>
+                )}
+                <div class="relative z-10 flex flex-col gap-3 text-right">
+                  <span class="inline-flex w-fit items-center gap-2 self-end rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-500 dark:bg-slate-800/60 dark:text-slate-300">
+                    Next <span aria-hidden>→</span>
+                  </span>
+                  <h4 class="text-xl font-semibold text-slate-900 transition group-hover:text-sky-600 dark:text-white dark:group-hover:text-sky-300">
+                    {nextPost.data.title}
+                  </h4>
+                  <p class="text-sm text-slate-600 line-clamp-3 dark:text-slate-300">
+                    {nextPost.data.description}
+                  </p>
+                  <div class="mt-2 inline-flex items-center justify-end gap-2 text-xs font-semibold text-sky-600 dark:text-sky-300">
+                    Dive in
+                    <span aria-hidden>↗</span>
+                  </div>
+                </div>
+              </a>
+            )}
+          </section>
+        )}
 
-    <BlogComments />
-  </div>
+        <ReactionPanel client:load slug={slug} />
+
+        <NewsletterSignup client:load slug={slug} />
+
+        <section>
+          <div class="rounded-3xl bg-slate-900 px-6 py-8 text-white shadow-xl ring-1 ring-slate-800 dark:bg-slate-800/90">
+            <h3 class="text-xl font-semibold">Share this article</h3>
+            <p class="mt-2 max-w-2xl text-sm text-slate-300">
+              Spread the word—your network will thank you (and so will the author).
+            </p>
+            <div class="mt-6">
+              <SocialShareButtons
+                socialConfig={{
+                  twitter: SOCIAL_TWITTER,
+                  config: {
+                    url: canonicalUrl,
+                    title,
+                    description,
+                  },
+                }}
+              />
+            </div>
+          </div>
+        </section>
+
+        <RelatedPosts currentSlug={slug} currentTags={tags} />
+
+        <section class="rounded-3xl border border-slate-200/70 bg-white/80 px-6 py-8 shadow-xl backdrop-blur dark:border-slate-800/70 dark:bg-slate-900/80">
+          <h3 class="text-2xl font-semibold text-slate-900 dark:text-white text-center">
+            Comments
+          </h3>
+          <p class="mt-2 text-center text-sm text-slate-500 dark:text-slate-400">
+            Join the conversation—share what resonated or ask a follow-up question.
+          </p>
+          <div class="mt-8">
+            <BlogComments />
+          </div>
+        </section>
+
+        <div class="text-center">
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-2 rounded-full border border-slate-300/80 px-5 py-2 text-sm font-semibold text-slate-600 transition hover:border-sky-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700/70 dark:text-slate-300"
+          >
+            <span aria-hidden>←</span> Back to all articles
+          </a>
+        </div>
+      </footer>
+    </div>
+  </article>
 </BaseLayout>
+
+<style>
+  :global(body[data-lightbox-open="true"]) {
+    overflow: hidden;
+  }
+
+  .article-prose h2,
+  .article-prose h3,
+  .article-prose h4 {
+    position: relative;
+  }
+
+  .article-prose h2::before,
+  .article-prose h3::before,
+  .article-prose h4::before {
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(14, 165, 233, 0.6),
+      rgba(99, 102, 241, 0.55)
+    );
+    transition: height 0.3s ease;
+  }
+
+  .article-prose h2:hover::before,
+  .article-prose h3:hover::before,
+  .article-prose h4:hover::before {
+    height: 70%;
+  }
+
+  @media (max-width: 1023px) {
+    .article-prose h2::before,
+    .article-prose h3::before,
+    .article-prose h4::before {
+      display: none;
+    }
+  }
+</style>
+
+{(previousUrl || nextUrl) && (
+  <script is:inline define:vars={{ previousUrl, nextUrl }}>
+    document.addEventListener("keydown", (event) => {
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement || event.target instanceof HTMLSelectElement || event.defaultPrevented) {
+        return;
+      }
+
+      if (event.key === "j" && previousUrl) {
+        window.location.href = previousUrl;
+      }
+      if (event.key === "k" && nextUrl) {
+        window.location.href = nextUrl;
+      }
+    });
+  </script>
+)}

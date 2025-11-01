@@ -6,6 +6,9 @@ import NavigationBar from "../components/NavigationBar.astro";
 import Container from "../components/Container.astro";
 import Footer from "../components/Footer.astro";
 import BaseHead from "../components/BaseHead.astro";
+import ReadingProgress from "../components/ReadingProgress";
+import BackToTop from "../components/BackToTop";
+import ParallaxBackground from "../components/ParallaxBackground";
 
 type Props = {
   pageTitle: string;
@@ -68,7 +71,10 @@ const { pageTitle, pageDescription, ogImage, preventIndexing } = Astro.props;
     </script>
   </head>
   <body>
-    <div class="relative min-h-screen">
+    <ParallaxBackground client:load />
+    <ReadingProgress client:load />
+    <BackToTop client:load />
+    <div class="relative min-h-screen z-10">
       <div class="w-full pb-16">
         <NavigationBar currentUrlPath={currentUrlPath} />
 

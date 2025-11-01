@@ -11,7 +11,9 @@ const { name, demoLink, githubLink } = Astro.props;
 ---
 
 <div
-  class="flex h-full w-full flex-col border-2 border-slate-200 bg-white px-6 py-5 dark:border-transparent dark:bg-slate-800"
+  class="project-card flex h-full w-full flex-col border-2 border-slate-200 bg-white px-6 py-5 dark:border-transparent dark:bg-slate-800"
+  data-cursor-view="true"
+  data-animate="fadeInUp"
 >
   <p class="mb-2 font-semibold">{name}</p>
   <p class="flex-1 text-slate-400"><slot /></p>

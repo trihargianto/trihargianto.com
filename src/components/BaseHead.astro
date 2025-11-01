@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../constants/config";
 import { ClientRouter } from "astro:transitions";
+import Analytics from "./Analytics.astro";
 
 interface Props {
   title: string;
@@ -16,28 +17,15 @@ const {
   description = SITE_DESCRIPTION,
   image = "/img/default-og-image.png",
 } = Astro.props;
+
+// Format title per plan: {Page Title} · Tri Hargianto
+const formattedTitle = title.includes("Tri Hargianto")
+  ? title
+  : `${title} · Tri Hargianto`;
 ---
 
-<!-- Preconnect domains -->
-<link rel="preconnect" href="https://www.google-analytics.com" />
-
-<!-- <link rel="preconnect" href="https://www.google-analytics.com" /> --><!-- Google tag (gtag.js) -->
-<script
-  async
-  is:inline
-  src="https://www.googletagmanager.com/gtag/js?id=G-0YX3YD7TKV"></script>
-<script is:inline>
-  // @ts-ignore
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    // @ts-ignore
-    dataLayer.push(arguments);
-  }
-  // @ts-ignore
-  gtag("js", new Date());
-  // @ts-ignore
-  gtag("config", "G-0YX3YD7TKV");
-</script>
+<!-- Analytics (Google Analytics, Plausible, or Umami) -->
+<Analytics />
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
@@ -56,22 +44,27 @@ const {
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{formattedTitle}</title>
+<meta name="title" content={formattedTitle} />
 <meta name="description" content={description} />
+<meta name="author" content="Tri Hargianto" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:title" content={formattedTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={formattedTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:creator" content="@trihargianto" />
 
 <ClientRouter />

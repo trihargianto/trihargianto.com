@@ -1,0 +1,93 @@
+/* Masonry Grid Styles */
+.blog-masonry-container {
+  width: 100%;
+}
+
+.blog-masonry-grid {
+  display: flex;
+  margin-left: -1rem; /* Gutter size offset */
+  width: auto;
+}
+
+.blog-masonry-grid-column {
+  padding-left: 1rem; /* Gutter size */
+  background-clip: padding-box;
+}
+
+.blog-masonry-grid-column > div {
+  margin-bottom: 1rem;
+}
+
+/* Card size variations for visual interest */
+.blog-card-wrapper[data-card-size="small"] {
+  /* Standard height */
+}
+
+.blog-card-wrapper[data-card-size="medium"] {
+  /* Slightly larger */
+  transform: scale(1);
+}
+
+.blog-card-wrapper[data-card-size="large"] {
+  /* Largest size for featured/recent posts */
+  transform: scale(1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .blog-masonry-grid {
+    margin-left: 0;
+  }
+
+  .blog-masonry-grid-column {
+    padding-left: 0;
+  }
+
+  .blog-masonry-grid-column > div {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Animation for grid items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blog-card-wrapper {
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Stagger animation for each card */
+.blog-card-wrapper:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.blog-card-wrapper:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.blog-card-wrapper:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.blog-card-wrapper:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.blog-card-wrapper:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.blog-card-wrapper:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .blog-card-wrapper {
+    animation: none;
+  }
+}

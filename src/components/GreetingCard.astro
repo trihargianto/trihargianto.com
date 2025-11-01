@@ -2,83 +2,87 @@
 import profilePicPng from "../img/profile-pic-v3.png";
 import profilePicWebp from "../img/profile-pic-v3.webp";
 import profilePicAvif from "../img/profile-pic-v3.avif";
+import CountUp from "./CountUp.astro";
 ---
 
 <div
-  class="flex flex-row items-center gap-8 sm:flex-row md:w-full md:gap-0 lg:w-5/6"
+  class="flex flex-col sm:flex-row items-center gap-8 md:w-full md:gap-8 lg:w-5/6"
 >
-  <picture class="w-1/4">
+  <picture
+    class="w-32 sm:w-1/4 flex-shrink-0"
+    data-animate="fadeInLeft"
+  >
     <source srcset={profilePicAvif.src} type="image/avif" />
     <source srcset={profilePicWebp.src} type="image/webp" />
     <img
       src={profilePicPng.src}
       alt="Tri Hargianto"
-      class="aspect-[2/3] sm:w-72 md:w-40"
+      class="aspect-[2/3] rounded-lg"
       width={140}
       height={240}
+      loading="eager"
+      decoding="async"
     />
   </picture>
 
-  <div class="w-3/4">
-    <h2 class="h-15 text-xl sm:h-7 sm:text-2xl mb-2 sm:mb-5">
-      Welcome to my little internet corner.
-    </h2>
+  <div class="flex-1">
+    <h1
+      class="text-3xl sm:text-4xl font-bold mb-4 leading-tight"
+      data-animate="fadeInUp"
+      data-delay="100"
+    >
+      Building frontend systems that scale & perform
+    </h1>
 
-    <p class="mb-5">
-      I'm
-      <span class="font-bold text-blue-700 dark:text-blue-400">
-        Tri Hargianto
-      </span>
-      , a Software Engineer
-      <a href="https://maps.app.goo.gl/p1eF4Amvin6GGofB6" target="_blank">
-        <span class="mt-1 inline-block sm:mt-0 sm:inline">
-          from Indonesia
-        </span>
+    <p
+      class="text-lg sm:text-xl mb-6 text-gray-700 dark:text-gray-300"
+      data-animate="fadeInUp"
+      data-delay="200"
+    >
+      Frontend Tech Lead specializing in performance optimization, developer
+      experience, and team leadership. Proven track record cutting build times{" "}
+      <CountUp
+        endValue={93}
+        suffix="%"
+        showPlus
+        className="inline-flex items-baseline font-semibold text-sky-600 dark:text-sky-400"
+        plusClassName="text-base sm:text-lg"
+        clientDirective="load"
+      />{" "}
+      reduction.
+    </p>
+
+    <div
+      class="flex flex-col sm:flex-row gap-4"
+      data-animate="fadeInUp"
+      data-delay="300"
+    >
+      <a
+        href="/performance-wins/"
+        class="inline-block px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg transition-colors duration-150 ease-out text-center"
+      >
+        View Performance Wins
       </a>
-      🇮🇩
-    </p>
-    <p class="hidden sm:block">
-      This site is a place where I share
-      <span class="hidden sm:inline">
-        my projects, tutorials, thoughts, and
-      </span>
-      everything
-      <span class="hidden sm:inline">else I want to</span>
-      share with the world.
-    </p>
+      <a
+        href="/blog/"
+        class="inline-block px-6 py-3 border-2 border-sky-500 text-sky-500 dark:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-950 font-semibold rounded-lg transition-colors duration-150 ease-out text-center"
+      >
+        Read Engineering Blog
+      </a>
+    </div>
   </div>
 </div>
 
 <script>
-  // TODO: Fix typing text issue
-  // function initializeGreeting() {
-  //   const speed = 80;
-  //   let i = 0;
-  //
-  //   const greetings = [
-  //     "Welcome to my little internet corner.",
-  //     "Hello! You've entered my digital HQ.",
-  //     "You've reached the right coordinates.",
-  //   ];
-  //
-  //   const greetingText =
-  //     greetings[Math.floor(Math.random() * greetings.length)];
-  //
-  //   const greetingTextElement = document.getElementById("greeting-text");
-  //
-  //   if (greetingTextElement) {
-  //     greetingTextElement.textContent = "";
-  //
-  //     const greetingTextTypingEffect = () => {
-  //       if (i < greetingText.length) {
-  //         greetingTextElement.innerHTML += greetingText.charAt(i);
-  //         i++;
-  //         setTimeout(greetingTextTypingEffect, speed);
-  //       }
-  //     };
-  //     greetingTextTypingEffect();
-  //   }
-  // }
-  //
-  // document.addEventListener("astro:page-load", initializeGreeting);
+  import { initScrollReveal } from "../utils/scrollReveal";
+
+  // Initialize scroll reveal animations
+  document.addEventListener("DOMContentLoaded", () => {
+    initScrollReveal();
+  });
+
+  // Re-initialize on Astro page transitions
+  document.addEventListener("astro:page-load", () => {
+    initScrollReveal();
+  });
 </script>

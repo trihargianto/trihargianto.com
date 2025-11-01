@@ -1,0 +1,165 @@
+---
+import "../styles/global.css";
+
+import type { CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
+import dayjs from "dayjs";
+import { kebabCase, lowerCase } from "lodash-es";
+
+import {
+  SOCIAL_TWITTER,
+  SITE_URL,
+  NAVBAR_HEIGHT_ESTIMATION_IN_PX,
+} from "../constants/config";
+import SocialShareButtons from "../components/SocialShareButtons.astro";
+import BlogComments from "../components/BlogComments.astro";
+import TableOfContents from "../components/TableOfContents.tsx";
+import TocDrawerButton from "../components/TocDrawerButton.tsx";
+import BaseLayout from "./BaseLayout.astro";
+import Badge from "../components/Badge.astro";
+import RelatedPosts from "../components/RelatedPosts.astro";
+
+type Props = CollectionEntry<"blog">["data"] & {
+  headings: MarkdownHeading[];
+};
+
+const { slug, title, description, pubDate, headings, tags, category } =
+  Astro.props;
+
+const date = dayjs(pubDate).format("MMMM DD, YYYY");
+
+const articleHasHeadings = headings.length > 0;
+---
+
+<BaseLayout
+  pageTitle={`${title} | Tri Hargianto`}
+  pageDescription={description}
+  ogImage={`/open-graph/${slug}.png`}
+>
+  {
+    category && (
+      <div class="mb-4">
+        <span class="inline-block px-3 py-1 bg-sky-500 text-white text-sm font-semibold rounded-full">
+          {category}
+        </span>
+      </div>
+    )
+  }
+
+  <h1 class="mb-3!" style={{ viewTransitionName: kebabCase(title) }}>
+    {title}
+  </h1>
+
+  {
+    tags && tags.length > 0 ? (
+      <p class="mb-4 text-sm text-gray-700 dark:text-gray-500">
+        <span class="inline-flex gap-2">
+          {tags?.map((tag) => (
+            <Badge>{lowerCase(tag)}</Badge>
+          ))}
+        </span>
+      </p>
+    ) : null
+  }
+
+  <p class="mb-4 text-sm! text-gray-500 dark:text-gray-400 sm:text-base">
+    {description}
+  </p>
+
+  <p
+    class="mb-4 text-xs flex items-center gap-2 text-gray-500 dark:text-gray-400"
+  >
+    <span class="inline-flex items-center gap-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
+        ></path>
+      </svg>
+
+      {date}
+    </span>
+
+    <!-- 
+    TODO: Add estimated read time
+    <span class="inline-flex items-center gap-2 ml-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+        ></path>
+      </svg>
+      10 mins read
+    </span> -->
+  </p>
+
+  <section class="flex max-w-none prose dark:prose-invert lg:pt-4">
+    <div
+      class:list={{
+        "w-full lg:w-3/4 lg:pr-7": articleHasHeadings,
+      }}
+    >
+      <slot />
+    </div>
+
+    {
+      articleHasHeadings ? (
+        <>
+          {/* Desktop */}
+          <div class="hidden lg:block w-1/4 pl-6">
+            <div
+              class:list={["sticky right-8 w-full overflow-auto duration-300"]}
+              style={{
+                top: `${NAVBAR_HEIGHT_ESTIMATION_IN_PX + 10}px`,
+              }}
+            >
+              <TableOfContents headings={headings} client:visible />
+            </div>
+          </div>
+
+          {/* Mobile */}
+          <div class="block lg:hidden">
+            <TocDrawerButton client:visible headings={headings} />
+          </div>
+        </>
+      ) : null
+    }
+  </section>
+
+  <div class="container mx-auto">
+    <RelatedPosts currentSlug={slug} currentTags={tags} />
+
+    <div class="mt-12">
+      <SocialShareButtons
+        socialConfig={{
+          twitter: SOCIAL_TWITTER,
+          config: {
+            url: `${SITE_URL}${slug}`,
+            title,
+            description,
+          },
+        }}
+      />
+    </div>
+
+    <p class="mb-6 text-left text-2xl font-semibold md:text-center">Comments</p>
+
+    <BlogComments />
+  </div>
+</BaseLayout>

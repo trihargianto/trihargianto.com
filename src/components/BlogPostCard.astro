@@ -1,0 +1,210 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import Badge from "./Badge.astro";
+import { calculateReadingTime } from "../utils/readingTime";
+
+dayjs.extend(relativeTime);
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  content: string;
+  size?: "small" | "medium" | "large";
+}
+
+const { post, content, size = "medium" } = Astro.props;
+const { data } = post;
+const readingTime = calculateReadingTime(content);
+const formattedDate = dayjs(data.pubDate).fromNow();
+
+// Card sizes for masonry layout
+const sizeClasses = {
+  small: "blog-card-small",
+  medium: "blog-card-medium",
+  large: "blog-card-large",
+};
+---
+
+<article
+  class={`blog-post-card group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${sizeClasses[size]}`}
+>
+  <!-- Featured Image -->
+  <a
+    href={`/blog/${data.slug}`}
+    class="block relative overflow-hidden aspect-video"
+    aria-label={`Read article: ${data.title}`}
+  >
+    {
+      data.featured ? (
+        <Image
+          src={data.featured}
+          alt={data.title}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          loading="lazy"
+        />
+      ) : (
+        <div class="w-full h-full bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 dark:from-sky-600 dark:via-blue-700 dark:to-indigo-800" />
+      )
+    }
+
+    <!-- Category Badge Overlay -->
+    {
+      data.category && (
+        <div class="absolute top-3 left-3 z-10">
+          <Badge className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-gray-900 dark:text-white border-0 font-semibold text-xs px-3 py-1">
+            {data.category}
+          </Badge>
+        </div>
+      )
+    }
+
+    <!-- Hover Overlay with Excerpt -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+    >
+      <p class="text-white text-sm line-clamp-3 leading-relaxed">
+        {data.description}
+      </p>
+    </div>
+  </a>
+
+  <!-- Card Content -->
+  <div class="p-5">
+    <!-- Meta Information -->
+    <div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-3">
+      <!-- Publication Date -->
+      <div class="flex items-center gap-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-4 h-4"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+          ></path>
+        </svg>
+        <time datetime={data.pubDate.toISOString()}>{formattedDate}</time>
+      </div>
+
+      <!-- Reading Time -->
+      <div class="flex items-center gap-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-4 h-4"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>{readingTime.text}</span>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <h3 class="mb-3">
+      <a
+        href={`/blog/${data.slug}`}
+        class="text-xl font-bold text-gray-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 line-clamp-2"
+      >
+        {data.title}
+      </a>
+    </h3>
+
+    <!-- Tags -->
+    {
+      data.tags && data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {data.tags.slice(0, 3).map((tag) => (
+            <a
+              href={`/blog/topic/${tag}`}
+              class="text-xs text-gray-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+            >
+              #{tag}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  <!-- Read More Link (appears on hover) -->
+  <div
+    class="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+    <a
+      href={`/blog/${data.slug}`}
+      class="inline-flex items-center gap-1 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:gap-2 transition-all duration-200"
+      aria-label={`Read more about ${data.title}`}
+    >
+      <span>Read more</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-4 h-4"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+      </svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  /* Masonry card size variations */
+  .blog-card-small {
+    /* Standard card */
+  }
+
+  .blog-card-medium {
+    /* Slightly taller for variety */
+  }
+
+  .blog-card-large {
+    /* Featured/larger cards */
+  }
+
+  /* Hover effects */
+  .blog-post-card {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .blog-post-card:hover {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    border-color: rgb(186 230 253);
+  }
+
+  :global(.dark) .blog-post-card:hover {
+    border-color: rgb(7 89 133);
+  }
+
+  /* Ensure smooth transitions */
+  @media (prefers-reduced-motion: reduce) {
+    .blog-post-card,
+    .blog-post-card * {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>

@@ -13,10 +13,21 @@ const blog = defineCollection({
       description: z.string(),
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
+      category: z
+        .enum([
+          "Frontend Engineering",
+          "Performance",
+          "Developer Experience",
+          "Leadership",
+          "Slow Productivity",
+          "Web Fundamentals",
+        ])
+        .optional(),
       tags: z.array(z.string()).optional(),
       featured: image().optional(),
       featuredSource: z.string().optional(),
       featuredSourceUrl: z.string().optional(),
+      featuredPost: z.boolean().optional().default(false),
     }),
 });
 
@@ -32,6 +43,7 @@ const project = defineCollection({
       category: z.string(),
       demoLink: z.string(),
       githubLink: z.string(),
+      tags: z.array(z.string()).optional(),
     }),
 });
 

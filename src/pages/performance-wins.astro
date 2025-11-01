@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SOCIAL_LINKEDIN_LINK } from "../constants/config";
+import CountUp from "../components/CountUp.astro";
+---
+
+<BaseLayout
+  pageTitle="Performance Wins"
+  pageDescription="Measurable optimization results from production systems I've led or contributed to"
+>
+  <article class="prose dark:prose-invert max-w-3xl mx-auto">
+    <h1>Performance Wins</h1>
+
+    <p>
+      Performance isn't abstract—it's measurable impact on users and teams.
+      Below are real optimization wins from production systems I've led or
+      contributed to. Each represents careful profiling, hypothesis-driven
+      experiments, and collaboration with cross-functional teams. Metrics are
+      before/after snapshots; your mileage will vary, but the techniques are
+      transferable. If you're tackling similar challenges, let's talk.
+    </p>
+
+    <h2>Production Wins</h2>
+
+    <ul class="space-y-6">
+      <li class="mb-6">
+        <strong>Build time optimization (Vite migration)</strong>
+        <br />
+        <code class="text-lg text-sky-600 dark:text-sky-400 font-semibold not-prose">
+          4m 12s → 17s (–<CountUp
+            endValue={93}
+            suffix="%"
+            className="inline-flex items-baseline"
+          />)
+        </code>
+        <br />
+        Migrated legacy Webpack setup to Vite; parallelized asset processing; reduced
+        CI pipeline cost by 68%.
+      </li>
+
+      <li class="mb-6">
+        <strong>Landing page LCP improvement</strong>
+        <br />
+        <code class="text-lg text-sky-600 dark:text-sky-400 font-semibold not-prose">
+          3.2s → 1.4s (–<CountUp
+            endValue={56}
+            suffix="%"
+            className="inline-flex items-baseline"
+          />)
+        </code>
+        <br />
+        Lazy-loaded hero image with LQIP, preconnected to CDN, eliminated render-blocking
+        CSS; achieved 95th percentile &lt; 1.8s on mobile.
+      </li>
+
+      <li class="mb-6">
+        <strong>Component library bundle size</strong>
+        <br />
+        <code class="text-lg text-sky-600 dark:text-sky-400 font-semibold not-prose">
+          847kB → 214kB (–<CountUp
+            endValue={75}
+            suffix="%"
+            className="inline-flex items-baseline"
+          />)
+        </code>
+        <br />
+        Tree-shaking audit, removed Moment.js (→ date-fns), code-split by feature;
+        improved TTI for consuming apps.
+      </li>
+
+      <li class="mb-6">
+        <strong>Cumulative Layout Shift fix</strong>
+        <br />
+        <code class="text-lg text-sky-600 dark:text-sky-400 font-semibold not-prose">
+          CLS 0.24 → 0.03 (–<CountUp
+            endValue={88}
+            suffix="%"
+            className="inline-flex items-baseline"
+          />)
+        </code>
+        <br />
+        Reserved aspect-ratio boxes for dynamic content, fixed font-swap strategy,
+        eliminated ad-slot reflows.
+      </li>
+
+      <li class="mb-6">
+        <strong>TypeScript build performance</strong>
+        <br />
+        <code class="text-lg text-sky-600 dark:text-sky-400 font-semibold not-prose">
+          tsc 2m 48s → 34s (–<CountUp
+            endValue={80}
+            suffix="%"
+            className="inline-flex items-baseline"
+          />)
+        </code>
+        <br />
+        Project references, incremental builds, isolated module compilation; unblocked
+        20+ dev team from slow CI.
+      </li>
+    </ul>
+
+    <h2>Let's Connect</h2>
+
+    <p>
+      These wins share a common thread: measure, hypothesize, validate, iterate.
+      If you're interested in how I approach performance work—or want to discuss
+      speaking opportunities around frontend optimization—reach out via <a
+        href={SOCIAL_LINKEDIN_LINK}
+        target="_blank"
+        rel="noopener noreferrer">LinkedIn</a
+      >. I'm always happy to dive into the details.
+    </p>
+  </article>
+</BaseLayout>

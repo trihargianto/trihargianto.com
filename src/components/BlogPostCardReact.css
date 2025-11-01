@@ -1,0 +1,18 @@
+/* Blog Post Card React Styles */
+
+.blog-post-card {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.blog-post-card:hover {
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+/* Ensure smooth transitions */
+@media (prefers-reduced-motion: reduce) {
+  .blog-post-card,
+  .blog-post-card * {
+    transition: none !important;
+    transform: none !important;
+  }
+}
