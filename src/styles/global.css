@@ -137,22 +137,6 @@ small {
   @apply mt-0;
 }
 
-/* Custom cursor styles */
-body.custom-cursor-enabled,
-body.custom-cursor-enabled * {
-  cursor: none !important;
-}
-
-/* Ensure cursor is visible */
-.custom-cursor {
-  will-change: transform;
-}
-
-/* Optional: Add cursor-interactive class to elements that should trigger expansion */
-.cursor-interactive {
-  /* This class can be added to any element to make it interactive with the cursor */
-}
-
 /* Smooth scroll behavior for anchor links */
 html {
   scroll-padding-top: 80px; /* Offset for fixed navbar */
